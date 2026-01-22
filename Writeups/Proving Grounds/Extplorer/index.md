@@ -1,3 +1,12 @@
+---
+title: "Nmap 실무 치트시트"
+date: 2026-01-22
+tags:
+  - oscp
+  - reconnaissance
+  - nmap
+---
+
 # Enumeration
 
 ## Nmap
@@ -72,7 +81,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.77 seconds
 
 `Wordpress CMS` is being used on port 80
 
-![image-20260121225818713](Extplorer/image-20260121225818713.png)
+![image-20260122010244961](./image-20260122010244961.png)
 
 `wpscan` returned some hits on vulnerable plugins/themes.
 
@@ -249,17 +258,17 @@ Starting gobuster in directory enumeration mode
 
 I was able to login with the default credentials `admin:admin` .
 
-![image-20260121230549783](Extplorer/image-20260121230549783.png)
+![image-20260122010307326](./image-20260122010307326.png)
 
-![image-20260121230601208](Extplorer/image-20260121230601208.png)
+![image-20260122010315968](./image-20260122010315968.png)
 
 Inside `/filemanager/config/.htusers.php` , I found credentials for two accounts: `admin` and `dora` . The passwords for these users appear to be hashed using different algorithms. I am almost certain the admin hash is MD5. Also its password should be `admin` because I’m currently logged in as admin haha.
 
-![image-20260121230617965](Extplorer/image-20260121230617965.png)
+![image-20260122010329180](./image-20260122010329180.png)
 
 Crackstation confirmed.
 
-![image-20260121230627540](Extplorer/image-20260121230627540.png)
+![image-20260122010336364](./image-20260122010336364.png)
 
 `hashcat` is telling me Dora’s hash algorithm is `bcrypt` . Let’s crack it.
 
@@ -303,7 +312,7 @@ dora@192.168.148.16: Permission denied (publickey).
 
 Alternatively, I simply uploaded `php-reverse-shell.php` file inside `/filemanager/config` . Then I navigated to the path on the browser.
 
-![image-20260121230646329](Extplorer/image-20260121230646329.png)
+![image-20260122010348185](./image-20260122010348185.png)
 
 The payload was triggered and it connected to my nc listener. I got the shell as `www-data`
 
