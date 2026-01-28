@@ -1,11 +1,6 @@
----
-title: "Nmap 실무 치트시트"
-date: 2026-01-22
-tags:
-  - oscp
-  - reconnaissance
-  - nmap
----
+Writeup by wook413
+
+[TOC]
 
 # Enumeration
 
@@ -81,7 +76,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.77 seconds
 
 `Wordpress CMS` is being used on port 80
 
-![image-20260122010244961](./image-20260122010244961.png)
+![image-20260128094837172](./Extplorer.assets/image-20260128094837172.png)
 
 `wpscan` returned some hits on vulnerable plugins/themes.
 
@@ -258,17 +253,17 @@ Starting gobuster in directory enumeration mode
 
 I was able to login with the default credentials `admin:admin` .
 
-![image-20260122010307326](./image-20260122010307326.png)
+![image-20260128094856955](./Extplorer.assets/image-20260128094856955.png)
 
-![image-20260122010315968](./image-20260122010315968.png)
+![image-20260128094904196](./Extplorer.assets/image-20260128094904196.png)
 
 Inside `/filemanager/config/.htusers.php` , I found credentials for two accounts: `admin` and `dora` . The passwords for these users appear to be hashed using different algorithms. I am almost certain the admin hash is MD5. Also its password should be `admin` because I’m currently logged in as admin haha.
 
-![image-20260122010329180](./image-20260122010329180.png)
+![image-20260128094914350](./Extplorer.assets/image-20260128094914350.png)
 
 Crackstation confirmed.
 
-![image-20260122010336364](./image-20260122010336364.png)
+![image-20260128094921963](./Extplorer.assets/image-20260128094921963.png)
 
 `hashcat` is telling me Dora’s hash algorithm is `bcrypt` . Let’s crack it.
 
@@ -312,7 +307,7 @@ dora@192.168.148.16: Permission denied (publickey).
 
 Alternatively, I simply uploaded `php-reverse-shell.php` file inside `/filemanager/config` . Then I navigated to the path on the browser.
 
-![image-20260122010348185](./image-20260122010348185.png)
+![image-20260128094937025](./Extplorer.assets/image-20260128094937025.png)
 
 The payload was triggered and it connected to my nc listener. I got the shell as `www-data`
 
@@ -350,7 +345,7 @@ www-data
 www-data@dora:/$ 
 ```
 
-### Shell as `dora`
+## Shell as `dora`
 
 `/etc/passwd` shows the user does exist.
 
@@ -498,3 +493,4 @@ root
 root@dora:/# id
 uid=0(root) gid=0(root) groups=0(root)
 ```
+
