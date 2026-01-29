@@ -2,6 +2,8 @@
 
 Hi I'm Wook.
 
-I'm a cybersecurity professional by day and an aspiring pentester or red teamer by night. Currently focused on the OSCP, this blog tracks my growth as a specialist, a husband, and a cat dad. Welcome to my digital notebook on the road to becoming a more well-rounded expert and--hopefully--a better adult.
+I'm not sure how you ended up in this humble corner of the internet, but I created this blog because my internal storage has hit its limit, and I need a place to dump all this vast information.
 
-<img src="/assets/cocacola.jpg" alt="" style="width: 300px; display: block; margin: 0 auto;">
+I'm a cybersecurity specialist, a husband and a father of two cats. Currently I'm focused on the OSCP. This space tracks my evolution into a pentester, red teamer, and hopfully a more knowledgeable but still likeable human being.
+
+<img src="/assets/wook_photo.jpg.jpg" alt="" style="width: 300px; display: block; margin: 0 auto;">
