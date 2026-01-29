@@ -28,27 +28,39 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </body>
 </html>"""
 
-def make_index(target_dir):
-    for root, dirs, files in os.walk(target_dir):
-        # .git이나 .assets 폴더 내부는 인덱스를 만들지 않음
-        if '.git' in root or '.assets' in root: continue
+def make_index(base_dir):
+    # base_dir 내부에서만 작동하도록 설정
+    target_path = os.path.join(os.getcwd(), base_dir)
+    
+    if not os.path.exists(target_path):
+        print(f"❌ '{base_dir}' 폴더를 찾을 수 없습니다.")
+        return
+
+    # 제외할 목록
+    EXCLUDE_LIST = ['.git', '.github', '.assets', 'index.html']
+
+    for root, dirs, files in os.walk(target_path):
+        # 특정 제외 폴더가 경로에 포함되면 건너뜀
+        if any(ex in root for ex in EXCLUDE_LIST):
+            continue
         
         items_html = ""
         
-        # 폴더 목록 (정렬 없이 그대로 추가)
-        for d in dirs:
-            if d.startswith('.') or d.endswith('.assets'): continue
+        # 1. 폴더 목록 처리 (이름 뒤에 / 추가)
+        for d in sorted(dirs):
+            if d.startswith('.') or d.endswith('.assets') or d in EXCLUDE_LIST:
+                continue
             items_html += f'<tr><td>📂 <a href="./{d}/">{d}/</a></td></tr>\n'
             
-        # 파일 목록 (정렬 없이 그대로 추가)
-        for f in files:
-            if f != 'index.html' and not f.endswith('.py') and not f.startswith('.'):
-                items_html += f'<tr><td>📄 <a href="./{f}">{f}</a></td></tr>\n'
+        # 2. 파일 목록 처리 (슬래시 없이 이름만)
+        for f in sorted(files):
+            if f.startswith('.') or f in EXCLUDE_LIST or f.endswith('.py'):
+                continue
+            items_html += f'<tr><td>📄 <a href="./{f}">{f}</a></td></tr>\n'
         
-        # 경로 표시 최적화
-        abs_target = os.path.abspath(target_dir)
-        abs_root = os.path.abspath(root)
-        display_path = abs_root.replace(abs_target, "").replace("\\", "/") or "/"
+        # 웹 주소에 표시될 경로 계산
+        # 루트(wook413) 기준의 경로를 보여주기 위해 가공
+        display_path = root.replace(os.getcwd(), "").replace("\\", "/")
         
         full_html = HTML_TEMPLATE.format(path=display_path, items=items_html)
         
@@ -56,5 +68,6 @@ def make_index(target_dir):
             f.write(full_html)
 
 if __name__ == "__main__":
-    make_index(".")
-    print("✅ 완료! 모든 폴더에 index.html이 생성되었습니다.")
+    # 범위를 'writeups' 폴더로 한정
+    make_index("writeups")
+    print("✅ 'writeups' 폴더 내의 모든 인덱스 파일 생성이 완료되었습니다!")
