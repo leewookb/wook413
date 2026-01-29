@@ -2,6 +2,6 @@
 
 Hi I'm Wook.
 
-I'm a cybersecurity enthusiast, a husband, and father of two cats. I started this blog as a digital notebook for my professional growth and personal milestones. Currently, I'm focused on the OSCP, and this site tracks my progress toward becoming a pen tester, a cybersecurity professional, and--hopefully--a decent human adult.
+I'm a cybersecurity professional by day and an aspiring pentester or red teamer by night. Currently focused on the OSCP, this blog tracks my growth as a specialist, a husband, and a cat dad. Welcome to my digital notebook on the road to becoming a more well-rounded expert and--hopefully--a better adult.
 
 <img src="/assets/cocacola.jpg" alt="" style="width: 300px; display: block; margin: 0 auto;">
