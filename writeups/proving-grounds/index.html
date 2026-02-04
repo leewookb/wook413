@@ -10,22 +10,30 @@
     <title>wook413</title>
     <style>
         :root { --bg: #ffffff; --text: #1a1a1a; --link: #0066cc; --border: #eeeeee; }
-        body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); padding: 40px 20px; max-width: 900px; margin: 0 auto; }
+        body { font-family: -apple-system, 'JetBrains Mono', 'Roboto Mono', 'Consolas', monospace; background: var(--bg); color: var(--text); padding: 40px 20px; max-width: 900px; margin: 0 auto; }
         h1 { font-size: 1.5rem; border-bottom: 2px solid var(--text); padding-bottom: 10px; margin-bottom: 20px; word-break: break-all; }
         table { width: 100%; border-collapse: collapse; }
         
-        /* 아이콘과 텍스트가 한 줄에 나오도록 Flexbox 적용 */
-        td { border-bottom: 1px solid var(--border); }
+        td { border-bottom: 1px solid var(--border); padding: 10px 5px; }
         td a { 
-            display: flex; 
+            display: inline-flex; 
             align-items: center; 
-            gap: 10px; 
-            padding: 12px 5px; 
+            gap: 8px; 
             color: var(--link); 
             text-decoration: none; 
         }
-        td a:hover { text-decoration: underline; background: #f0f7ff; }
         
+        td a span.label { 
+            padding: 2px 4px; 
+            border-radius: 3px; 
+            transition: background 0.2s;
+        }
+        
+        td a:hover span.label { 
+            text-decoration: underline; 
+            background: #f0f7ff; 
+        }
+
         footer { margin-top: 50px; font-size: 0.8rem; color: #999; text-align: center; }
         @media (max-width: 600px) { body { padding: 15px; } h1 { font-size: 1.1rem; } }
     </style>
@@ -34,21 +42,21 @@
     <h1>Index of /wook413/writeups/proving-grounds</h1>
     <table>
         <tbody>
-            <tr><td><a href="../">⤴️ ../</a></td></tr>
-            <tr><td><a href="./algernon/">📂 algernon/</a></td></tr>
-<tr><td><a href="./apex/">📂 apex/</a></td></tr>
-<tr><td><a href="./craft/">📂 craft/</a></td></tr>
-<tr><td><a href="./extplorer/">📂 extplorer/</a></td></tr>
-<tr><td><a href="./hunit/">📂 hunit/</a></td></tr>
-<tr><td><a href="./jacko/">📂 jacko/</a></td></tr>
-<tr><td><a href="./pc/">📂 pc/</a></td></tr>
-<tr><td><a href="./peppo/">📂 peppo/</a></td></tr>
-<tr><td><a href="./postfish/">📂 postfish/</a></td></tr>
-<tr><td><a href="./sorcerer/">📂 sorcerer/</a></td></tr>
-<tr><td><a href="./squid/">📂 squid/</a></td></tr>
-<tr><td><a href="./sybaris/">📂 sybaris/</a></td></tr>
-<tr><td><a href="./walla/">📂 walla/</a></td></tr>
-
+            <tr><td><a href="../"><span>⤴️</span> <span class="label">../</span></a></td></tr>
+            <tr><td><a href="./access/"><span>📂</span> <span class="label">access/</span></a></td></tr>
+<tr><td><a href="./algernon/"><span>📂</span> <span class="label">algernon/</span></a></td></tr>
+<tr><td><a href="./apex/"><span>📂</span> <span class="label">apex/</span></a></td></tr>
+<tr><td><a href="./craft/"><span>📂</span> <span class="label">craft/</span></a></td></tr>
+<tr><td><a href="./extplorer/"><span>📂</span> <span class="label">extplorer/</span></a></td></tr>
+<tr><td><a href="./hunit/"><span>📂</span> <span class="label">hunit/</span></a></td></tr>
+<tr><td><a href="./jacko/"><span>📂</span> <span class="label">jacko/</span></a></td></tr>
+<tr><td><a href="./pc/"><span>📂</span> <span class="label">pc/</span></a></td></tr>
+<tr><td><a href="./peppo/"><span>📂</span> <span class="label">peppo/</span></a></td></tr>
+<tr><td><a href="./postfish/"><span>📂</span> <span class="label">postfish/</span></a></td></tr>
+<tr><td><a href="./sorcerer/"><span>📂</span> <span class="label">sorcerer/</span></a></td></tr>
+<tr><td><a href="./squid/"><span>📂</span> <span class="label">squid/</span></a></td></tr>
+<tr><td><a href="./sybaris/"><span>📂</span> <span class="label">sybaris/</span></a></td></tr>
+<tr><td><a href="./walla/"><span>📂</span> <span class="label">walla/</span></a></td></tr>
         </tbody>
     </table>
     <footer>&copy; 2026 wook413.</footer>
