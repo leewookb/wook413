@@ -61,7 +61,7 @@ def make_index(base_folder_name):
         print(f"❌ '{base_folder_name}' 폴더를 찾을 수 없습니다.")
         return
 
-    EXCLUDE_DIRS = ['.git', '.github', '.assets']
+    EXCLUDE_DIRS = ['.git', '.github', '.assets', 'OSCP']
     EXCLUDE_FILES = ['CNAME', 'index.html', 'README.md', 'README.html']
 
     for root, dirs, files in os.walk(target_path):
@@ -102,7 +102,7 @@ def make_index(base_folder_name):
 
 if __name__ == "__main__":
     # 이제 처리하고 싶은 상위 폴더들만 리스트로 넣어주면 끝!
-    folders = ["writeups", "OSCP"]
+    folders = ["writeups"]
     for folder in folders:
         make_index(folder)
     print("✅ 모든 인덱스 생성이 완료되었습니다!")
