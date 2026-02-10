@@ -38,6 +38,9 @@ PORT   STATE SERVICE VERSION
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 11.89 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10 -Pn
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-17 16:08 UTC

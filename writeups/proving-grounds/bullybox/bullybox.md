@@ -20,6 +20,9 @@ PORT   STATE SERVICE
 80/tcp open  http
 
 Nmap done: 1 IP address (1 host up) scanned in 15.60 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 22,80                 
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-26 17:10 UTC
@@ -38,6 +41,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 8.48 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-26 17:10 UTC
@@ -129,6 +135,9 @@ Disallow: /bb-modules/
 Disallow: /bb-uploads/
 Disallow: /bb-vendor/
 Disallow: /install/
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ gobuster dir -u <http://bullybox.local> -w /usr/share/seclists/Discovery/Web-Content/common.txt
 ===============================================================

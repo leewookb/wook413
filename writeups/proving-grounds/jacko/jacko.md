@@ -166,6 +166,9 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 14.89 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sV --script=vuln -p 139,445                                  
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-15 03:22 UTC
@@ -192,7 +195,9 @@ I attempted Null Authentication, but the server blocked the attempt.
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ smbclient -N -L //$IP                    
 session setup failed: NT_STATUS_ACCESS_DENIED
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ smbmap -H $IP        
 

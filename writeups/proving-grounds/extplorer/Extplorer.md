@@ -269,8 +269,10 @@ Crackstation confirmed.
 
 ```bash
 ┌──(kali㉿kali)-[~/Desktop]
-└─$ echo '$2a$08$zyiNvVoP/UuSMgO2rKDtLuox.vYj.3hZPVYq3i4oG3/CtgET7CjjS' > hash.txt                            
-                                                                                                                                          
+└─$ echo '$2a$08$zyiNvVoP/UuSMgO2rKDtLuox.vYj.3hZPVYq3i4oG3/CtgET7CjjS' > hash.txt           
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ hashcat hash.txt                                                   
 hashcat (v6.2.6) starting in autodetect mode
@@ -445,13 +447,20 @@ I downloaded both `/etc/shadow` and `/etc/passwd` to combine them first with `un
 ```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ echo "root:$6$AIWcIr8PEVxEWgv1$3mFpTQAc9Kzp4BGUQ2sPYYFE/dygqhDiv2Yw.XcU.Q8n1YO05.a/4.D/x4ojQAkPnv/v7Qrw7Ici7.hs0sZiC.:19453:0:99999:7:::" > shadow.txt
+```
 
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
-└─$ unshadow passwd.txt shadow.txt > unshadow.txt 
-                                 
+└─$ unshadow passwd.txt shadow.txt > unshadow.txt
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ cat unshadow.txt| head -n 1
 root:mFpTQAc9Kzp4BGUQ2sPYYFE/dygqhDiv2Yw.XcU.Q8n1YO05.a/4.D/x4ojQAkPnv/v7Qrw7Ici7.hs0sZiC.:0:0:root:/root:/bin/bash
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ john unshadow.txt --wordlist=/usr/share/wordlists/rockyou.txt
 Using default input encoding: UTF-8
@@ -467,7 +476,9 @@ Then I simply saved the hash separately into a file `roothash.txt` and `john` cr
 ```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ echo '$6$AIWcIr8PEVxEWgv1$3mFpTQAc9Kzp4BGUQ2sPYYFE/dygqhDiv2Yw.XcU.Q8n1YO05.a/4.D/x4ojQAkPnv/v7Qrw7Ici7.hs0sZiC.' > roothash.txt
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ john roothash.txt --wordlist=/usr/share/wordlists/rockyou.txt 
 Warning: detected hash type "sha512crypt", but the string is also recognized as "HMAC-SHA256"

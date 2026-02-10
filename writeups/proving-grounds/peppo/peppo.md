@@ -8,7 +8,7 @@ Writeup by wook413
 
 As always, I started with a comprehensive TCP port scan followed by a targeted scan on the discovered ports, and lastly a UDP scan on the top 10 ports.
 
-```sql
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -Pn -n --open --min-rate 3000 -p-
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-19 01:19 UTC
@@ -24,6 +24,9 @@ PORT      STATE SERVICE
 10000/tcp open  snet-sensor-mgmt
 
 Nmap done: 1 IP address (1 host up) scanned in 43.92 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 22,113,5432,8080,10000                          
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-19 01:21 UTC
@@ -98,6 +101,9 @@ Service Info: OSs: Linux, FreeBSD; CPE: cpe:/o:linux:linux_kernel, cpe:/o:freebs
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 44.92 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10               
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-19 01:23 UTC

