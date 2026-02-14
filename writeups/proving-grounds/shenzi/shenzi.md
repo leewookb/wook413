@@ -254,9 +254,9 @@ Nmap done: 1 IP address (1 host up) scanned in 17.53 seconds
 
 The landing page was a standard default page that only provided access to `phpinfo()`.
 
-![image-20260212215609138](./shenzi.assets/image-20260212215609138.png)
+<img src="./shenzi.assets/image-20260212215609138.png" alt="image-20260212215609138" style="zoom:67%;" />
 
-![image-20260212215615332](./shenzi.assets/image-20260212215615332.png)
+<img src="./shenzi.assets/image-20260212215615332.png" alt="image-20260212215615332" style="zoom:67%;" />
 
 Initial directory brute-forcing with `gobuster` returned several results, but none provided a clear path forward.
 
@@ -300,7 +300,7 @@ Starting gobuster in directory enumeration mode
 
 Following a sudden hunch, I tried appending `/shenzi`, the name of the SMB share, to the target IP address. This successfully revealed a hidden `WordPress` installation.
 
-![image-20260212215624516](./shenzi.assets/image-20260212215624516.png)
+<img src="./shenzi.assets/image-20260212215624516.png" alt="image-20260212215624516" style="zoom:67%;" />
 
 I ran a subsequent `gobuster` scan against the `/shenzi` directory and located the `/admin` path, which redirected to `wp-login.php`
 
@@ -343,17 +343,17 @@ Starting gobuster in directory enumeration mode
 
 Using the credentials found earlier in `passwords.txt` , I successfully authenticated to the `WordPress` dashboard.
 
-![image-20260212215631378](./shenzi.assets/image-20260212215631378.png)
+<img src="./shenzi.assets/image-20260212215631378.png" alt="image-20260212215631378" style="zoom:67%;" />
 
-![image-20260212215635430](./shenzi.assets/image-20260212215635430.png)
+<img src="./shenzi.assets/image-20260212215635430.png" alt="image-20260212215635430" style="zoom:67%;" />
 
 Leveraging the **Theme Editor** in the WordPress admin panel, I found I could overwrite existing files. I replaced the content of `404.php` with an `Ivan-Sincek.php` reverse shell payload.
 
-![image-20260212215640772](./shenzi.assets/image-20260212215640772.png)
+<img src="./shenzi.assets/image-20260212215640772.png" alt="image-20260212215640772" style="zoom: 67%;" />
 
 By navigating to the modified `/404.php` page, I triggered the payload and established a reverse shell as the user `shenzi`
 
-![image-20260212215647384](./shenzi.assets/image-20260212215647384.png)
+<img src="./shenzi.assets/image-20260212215647384.png" alt="image-20260212215647384" style="zoom:67%;" />
 
 # Shell as `shenzi`
 
