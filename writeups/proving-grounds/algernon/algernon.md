@@ -144,9 +144,9 @@ Shellcodes: No Results
 
 Upon further inspection of the HTTP service on port 9998, I discovered it was hosting **SmarterMail**. Searching for “SmarterMail exploit” led me to an exploit script that looked very promising for achieving initial access.
 
-![image-20260128233240628](./algernon.assets/image-20260128233240628.png)
+<img src="./algernon.assets/image-20260128233240628.png" alt="image-20260128233240628" style="zoom:67%;" />
 
-![image-20260128233252676](./algernon.assets/image-20260128233252676.png)
+<img src="./algernon.assets/image-20260128233252676.png" alt="image-20260128233252676" style="zoom:67%;" />
 
 I downloaded the exploit and updated the `LHOST` and `LPORT` settings.
 

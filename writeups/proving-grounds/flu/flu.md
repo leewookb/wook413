@@ -253,7 +253,7 @@ Nmap done: 1 IP address (1 host up) scanned in 263.63 seconds
 
 As already indicated by the Nmap output, accessing the target IP at port 8090 via the browser confirmed it was an `Atlassian` service.
 
-![image-20260211222833154](./flu.assets/image-20260211222833154.png)
+<img src="./flu.assets/image-20260211222833154.png" alt="image-20260211222833154" style="zoom:67%;" />
 
 I performed directory brute-forcing with `Gobuster` , which returned multiple directories, including `/webdav` . I attempted to connect to `/webdav` using `cadaver` , but the connection was unsuccessful.
 
