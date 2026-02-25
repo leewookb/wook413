@@ -505,6 +505,9 @@ The following hash-mode match the structure of your input hash:
       # | Name                                                       | Category
   ======+============================================================+======================================
   13100 | Kerberos 5, etype 23, TGS-REP                              | Network Protocol
+```
+
+```bash
 ┌──(kali㉿kali)-[~/Desktop]
 └─$ hashcat -m 13100 -a 0 discovery_hash.txt /usr/share/wordlists/rockyou.txt
 ```
