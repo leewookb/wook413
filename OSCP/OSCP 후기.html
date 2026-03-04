@@ -1,250 +1,976 @@
 <!doctype html>
 <html>
-<head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
-<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
-.mac-os-11 { --title-bar-height: 28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
-h1, h2, h3, h4, h5 { white-space: pre-wrap; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
-#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
-.nodeLabel p { padding-right: 2px; padding-left: 2px; }
-.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
-foreignobject { overflow: visible; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-li p { orphans: 1; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-thead, tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror-linenumber { user-select: none; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-svg { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-  #write > p:nth-child(1) { margin-top: 0px; }
-  .typora-export-show-outline .typora-export-sidebar { display: none; }
-  figure { overflow-x: visible; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.reversefootnote { font-family: ui-monospace, sans-serif; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-.md-expand mark .md-meta { opacity: 0.3 !important; }
-mark .md-meta { color: rgb(0, 0, 0); }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-fences.md-fences-math { font-size: 1em; }
-.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
-.md-fences-advanced:not(.md-focus) { background: inherit; }
-.mermaid-svg { margin: auto; }
-.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
-.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
-.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
-.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
-@media screen and (max-width: 1024px) {
-  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
-}
-@media screen and (max-width: 800px) {
-  .typora-export-sidebar { display: none; }
-}
-.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
-.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
-.outline-content strong { font-weight: 400; }
-.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
-.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
-.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
-.outline-expander:hover::before { content: ""; }
-.outline-h1 > .outline-item { padding-left: 0px; }
-.outline-h2 > .outline-item { padding-left: 1em; }
-.outline-h3 > .outline-item { padding-left: 2em; }
-.outline-h4 > .outline-item { padding-left: 3em; }
-.outline-h5 > .outline-item { padding-left: 4em; }
-.outline-h6 > .outline-item { padding-left: 5em; }
-.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
-.outline-label:hover { text-decoration: underline; }
-.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
-.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
-.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
-.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
-.outline-children { display: none; }
-.info-panel-tab-wrapper { display: none; }
-.outline-item-open > .outline-children { display: block; }
-.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
-.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
-.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
-.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
-.typora-export-collapse-outline .outline-children { display: none; }
-.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
-.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
-.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
-.md-inline-math-container mjx-container { zoom: 0.95; }
-mjx-container { break-inside: avoid; }
-.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
-.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
-.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
-.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
-.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
-.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
-.md-alert-text-note { color: rgb(9, 105, 218); }
-.md-alert-text-important { color: rgb(130, 80, 223); }
-.md-alert-text-warning { color: rgb(154, 103, 0); }
-.md-alert-text-tip { color: rgb(31, 136, 61); }
-.md-alert-text-caution { color: rgb(207, 34, 46); }
-.md-alert-text { font-size: 0.9rem; font-weight: 700; }
-.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
-.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <style type="text/css">
+      html {
+        overflow-x: initial !important;
+      }
+    </style>
+    <style type="text/css" id="style-base">
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #b5d6fc;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+      }
+      .mac-os-11 {
+        --title-bar-height: 28px;
+      }
+      html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family:
+          "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro",
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        white-space: pre-wrap;
+      }
+      body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        inset: 0px;
+        font-size: 1rem;
+        line-height: 1.42857;
+        overflow-x: hidden;
+        background: inherit;
+      }
+      iframe {
+        margin: auto;
+      }
+      a.url {
+        word-break: break-all;
+      }
+      a:active,
+      a:hover {
+        outline: 0px;
+      }
+      .in-text-selection,
+      ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+      }
+      #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+      }
+      #write.first-line-indent p {
+        text-indent: 2em;
+      }
+      #write.first-line-indent li p,
+      #write.first-line-indent p *,
+      #write.first-line-indent svg * {
+        text-indent: 0px;
+      }
+      #write.first-line-indent li {
+        margin-left: 2em;
+      }
+      .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+      .typora-export .footnote-line,
+      .typora-export li,
+      .typora-export p {
+        white-space: pre-wrap;
+      }
+      .typora-export .task-list-item input {
+        pointer-events: none;
+      }
+      @media screen and (max-width: 500px) {
+        body.typora-export {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+        #write {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+      }
+      #write ol,
+      #write ul {
+        position: relative;
+      }
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        color: inherit;
+        font: inherit;
+      }
+      input[type="checkbox"],
+      input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+      }
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
+      #write h1,
+      #write h2,
+      #write h3,
+      #write h4,
+      #write h5,
+      #write h6,
+      #write p,
+      #write pre {
+        width: inherit;
+        position: relative;
+      }
+      #write svg h1,
+      #write svg h2,
+      #write svg h3,
+      #write svg h4,
+      #write svg h5,
+      #write svg h6,
+      #write svg p {
+        position: static;
+      }
+      .nodeLabel p {
+        padding-right: 2px;
+        padding-left: 2px;
+      }
+      .typora-export .nodeLabel p {
+        padding-right: 0px;
+        padding-left: 0px;
+      }
+      foreignobject {
+        overflow: visible;
+      }
+      p {
+        line-height: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+      }
+      p {
+        orphans: 4;
+      }
+      li p {
+        orphans: 1;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.6rem;
+      }
+      h4 {
+        font-size: 1.4rem;
+      }
+      h5 {
+        font-size: 1.2rem;
+      }
+      h6 {
+        font-size: 1rem;
+      }
+      .md-math-block,
+      .md-rawblock,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      .hidden {
+        display: none;
+      }
+      .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+      }
+      a {
+        cursor: pointer;
+      }
+      sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      sup.md-footnote a,
+      sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+      }
+      #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+      }
+      figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+      }
+      figure > table {
+        margin: 0px;
+      }
+      thead,
+      tr {
+        break-inside: avoid;
+        break-after: auto;
+      }
+      thead {
+        display: table-header-group;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+      }
+      table.md-table td {
+        min-width: 32px;
+      }
+      .CodeMirror-gutters {
+        border-right: 0px;
+        background-color: inherit;
+      }
+      .CodeMirror-linenumber {
+        user-select: none;
+      }
+      .CodeMirror {
+        text-align: left;
+      }
+      .CodeMirror-placeholder {
+        opacity: 0.3;
+      }
+      .CodeMirror pre {
+        padding: 0px 4px;
+      }
+      .CodeMirror-lines {
+        padding: 0px;
+      }
+      div.hr:focus {
+        cursor: none;
+      }
+      #write pre {
+        white-space: pre-wrap;
+      }
+      #write.fences-no-line-wrapping pre {
+        white-space: pre;
+      }
+      #write pre.ty-contain-cm {
+        white-space: normal;
+      }
+      .CodeMirror-gutters {
+        margin-right: 4px;
+      }
+      .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background: inherit;
+        position: relative !important;
+      }
+      .md-fences-adv-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+      }
+      #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+      }
+      .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+      }
+      #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+      }
+      .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+      }
+      .CodeMirror-line,
+      twitterwidget {
+        break-inside: avoid;
+      }
+      svg {
+        break-inside: avoid;
+      }
+      .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+      .footnotes + .footnotes {
+        margin-top: 0px;
+      }
+      .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        background: 0px 0px;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        -webkit-tap-highlight-color: transparent;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+      }
+      li div {
+        padding-top: 0px;
+      }
+      blockquote {
+        margin: 1rem 0px;
+      }
+      li .mathjax-block,
+      li p {
+        margin: 0.5rem 0px;
+      }
+      li blockquote {
+        margin: 1rem 0px;
+      }
+      li {
+        margin: 0px;
+        position: relative;
+      }
+      blockquote > :last-child {
+        margin-bottom: 0px;
+      }
+      blockquote > :first-child,
+      li > :first-child {
+        margin-top: 0px;
+      }
+      .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+      }
+      #write .footnote-line {
+        white-space: pre-wrap;
+      }
+      @media print {
+        body,
+        html {
+          border: 1px solid transparent;
+          height: 99%;
+          break-after: avoid;
+          break-before: avoid;
+          font-variant-ligatures: no-common-ligatures;
+        }
+        #write {
+          margin-top: 0px;
+          border-color: transparent !important;
+          padding-top: 0px !important;
+          padding-bottom: 0px !important;
+        }
+        .typora-export * {
+          -webkit-print-color-adjust: exact;
+        }
+        .typora-export #write {
+          break-after: avoid;
+        }
+        .typora-export #write::after {
+          height: 0px;
+        }
+        .is-mac table {
+          break-inside: avoid;
+        }
+        #write > p:nth-child(1) {
+          margin-top: 0px;
+        }
+        .typora-export-show-outline .typora-export-sidebar {
+          display: none;
+        }
+        figure {
+          overflow-x: visible;
+        }
+      }
+      .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+      }
+      a img,
+      img a {
+        cursor: pointer;
+      }
+      pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+      }
+      p > .md-image:only-child:not(.md-img-error) img,
+      p > img:only-child {
+        display: block;
+        margin: auto;
+      }
+      #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+      }
+      p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+      }
+      #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+      }
+      .md-math-block {
+        width: 100%;
+      }
+      .md-math-block:not(:empty)::after {
+        display: none;
+      }
+      .MathJax_ref {
+        fill: currentcolor;
+      }
+      [contenteditable="true"]:active,
+      [contenteditable="true"]:focus,
+      [contenteditable="false"]:active,
+      [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+      }
+      .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+      }
+      .task-list-item.md-task-list-item {
+        padding-left: 0px;
+      }
+      .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+      }
+      .math {
+        font-size: 1rem;
+      }
+      .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+      }
+      .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+      }
+      .md-toc-content::after,
+      .md-toc::after {
+        display: none;
+      }
+      .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+      }
+      .md-toc-item a {
+        text-decoration: none;
+      }
+      .md-toc-inner:hover {
+        text-decoration: underline;
+      }
+      .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+      }
+      .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+      }
+      .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+      }
+      .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+      }
+      .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+      }
+      .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+      }
+      .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+      }
+      @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+          margin-left: 3.5em;
+        }
+        .md-toc-h4 .md-toc-inner {
+          margin-left: 5em;
+        }
+        .md-toc-h5 .md-toc-inner {
+          margin-left: 6.5em;
+        }
+        .md-toc-h6 .md-toc-inner {
+          margin-left: 8em;
+        }
+      }
+      a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+      }
+      .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+      }
+      .reversefootnote {
+        font-family: ui-monospace, sans-serif;
+      }
+      .md-attr {
+        display: none;
+      }
+      .md-fn-count::after {
+        content: ".";
+      }
+      code,
+      pre,
+      samp,
+      tt {
+        font-family: var(--monospace);
+      }
+      kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow:
+          rgba(12, 13, 14, 0.2) 0px 1px 0px,
+          rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+      .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.6;
+        font-family: var(--monospace);
+      }
+      code {
+        text-align: left;
+        vertical-align: initial;
+      }
+      a.md-print-anchor {
+        white-space: pre !important;
+        border-width: initial !important;
+        border-style: none !important;
+        border-color: initial !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        background: 0px 0px !important;
+        text-decoration: initial !important;
+        text-shadow: initial !important;
+      }
+      .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+      }
+      .md-diagram-panel > svg {
+        max-width: 100%;
+      }
+      [lang="flow"] svg,
+      [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+      }
+      [lang="mermaid"] .node text {
+        font-size: 1rem;
+      }
+      table tr th {
+        border-bottom: 0px;
+      }
+      video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+      }
+      iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+      }
+      .highlight td,
+      .highlight tr {
+        border: 0px;
+      }
+      mark {
+        background: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+      }
+      .md-html-inline .md-plain,
+      .md-html-inline strong,
+      mark .md-inline-math,
+      mark strong {
+        color: inherit;
+      }
+      .md-expand mark .md-meta {
+        opacity: 0.3 !important;
+      }
+      mark .md-meta {
+        color: rgb(0, 0, 0);
+      }
+      @media print {
+        .typora-export h1,
+        .typora-export h2,
+        .typora-export h3,
+        .typora-export h4,
+        .typora-export h5,
+        .typora-export h6 {
+          break-inside: avoid;
+        }
+      }
+      .md-diagram-panel .messageText {
+        stroke: none !important;
+      }
+      .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+      }
+      .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+      }
+      .md-fences.md-fences-math {
+        font-size: 1em;
+      }
+      .md-fences-advanced:not(.md-focus) {
+        padding: 0px;
+        white-space: nowrap;
+        border: 0px;
+      }
+      .md-fences-advanced:not(.md-focus) {
+        background: inherit;
+      }
+      .mermaid-svg {
+        margin: auto;
+      }
+      .typora-export-show-outline .typora-export-content {
+        max-width: 1440px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+      }
+      .typora-export-sidebar {
+        width: 300px;
+        font-size: 0.8rem;
+        margin-top: 80px;
+        margin-right: 18px;
+      }
+      .typora-export-show-outline #write {
+        --webkit-flex: 2;
+        flex: 2 1 0%;
+      }
+      .typora-export-sidebar .outline-content {
+        position: fixed;
+        top: 0px;
+        max-height: 100%;
+        overflow: hidden auto;
+        padding-bottom: 30px;
+        padding-top: 60px;
+        width: 300px;
+      }
+      @media screen and (max-width: 1024px) {
+        .typora-export-sidebar,
+        .typora-export-sidebar .outline-content {
+          width: 240px;
+        }
+      }
+      @media screen and (max-width: 800px) {
+        .typora-export-sidebar {
+          display: none;
+        }
+      }
+      .outline-content li,
+      .outline-content ul {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        list-style: none;
+        overflow-wrap: anywhere;
+      }
+      .outline-content ul {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      .outline-content strong {
+        font-weight: 400;
+      }
+      .outline-expander {
+        width: 1rem;
+        height: 1.42857rem;
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        cursor: pointer;
+        padding-left: 4px;
+      }
+      .outline-expander::before {
+        content: "";
+        position: relative;
+        font-family: Ionicons;
+        display: inline-block;
+        font-size: 8px;
+        vertical-align: middle;
+      }
+      .outline-item {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        cursor: pointer;
+      }
+      .outline-expander:hover::before {
+        content: "";
+      }
+      .outline-h1 > .outline-item {
+        padding-left: 0px;
+      }
+      .outline-h2 > .outline-item {
+        padding-left: 1em;
+      }
+      .outline-h3 > .outline-item {
+        padding-left: 2em;
+      }
+      .outline-h4 > .outline-item {
+        padding-left: 3em;
+      }
+      .outline-h5 > .outline-item {
+        padding-left: 4em;
+      }
+      .outline-h6 > .outline-item {
+        padding-left: 5em;
+      }
+      .outline-label {
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+        text-decoration: none;
+        color: inherit;
+      }
+      .outline-label:hover {
+        text-decoration: underline;
+      }
+      .outline-item:hover {
+        border-color: rgb(245, 245, 245);
+        background-color: var(--item-hover-bg-color);
+      }
+      .outline-item:hover {
+        margin-left: -28px;
+        margin-right: -28px;
+        border-left: 28px solid transparent;
+        border-right: 28px solid transparent;
+      }
+      .outline-item-single .outline-expander::before,
+      .outline-item-single .outline-expander:hover::before {
+        display: none;
+      }
+      .outline-item-open > .outline-item > .outline-expander::before {
+        content: "";
+      }
+      .outline-children {
+        display: none;
+      }
+      .info-panel-tab-wrapper {
+        display: none;
+      }
+      .outline-item-open > .outline-children {
+        display: block;
+      }
+      .typora-export .outline-item {
+        padding-top: 1px;
+        padding-bottom: 1px;
+      }
+      .typora-export .outline-item:hover {
+        margin-right: -8px;
+        border-right: 8px solid transparent;
+      }
+      .typora-export .outline-expander::before {
+        content: "+";
+        font-family: inherit;
+        top: -1px;
+      }
+      .typora-export .outline-expander:hover::before,
+      .typora-export
+        .outline-item-open
+        > .outline-item
+        > .outline-expander::before {
+        content: "−";
+      }
+      .typora-export-collapse-outline .outline-children {
+        display: none;
+      }
+      .typora-export-collapse-outline .outline-item-open > .outline-children,
+      .typora-export-no-collapse-outline .outline-children {
+        display: block;
+      }
+      .typora-export-no-collapse-outline .outline-expander::before {
+        content: "" !important;
+      }
+      .typora-export-show-outline
+        .outline-item-active
+        > .outline-item
+        .outline-label {
+        font-weight: 700;
+      }
+      .md-inline-math-container mjx-container {
+        zoom: 0.95;
+      }
+      mjx-container {
+        break-inside: avoid;
+      }
+      .md-alert.md-alert-note {
+        border-left-color: rgb(9, 105, 218);
+      }
+      .md-alert.md-alert-important {
+        border-left-color: rgb(130, 80, 223);
+      }
+      .md-alert.md-alert-warning {
+        border-left-color: rgb(154, 103, 0);
+      }
+      .md-alert.md-alert-tip {
+        border-left-color: rgb(31, 136, 61);
+      }
+      .md-alert.md-alert-caution {
+        border-left-color: rgb(207, 34, 46);
+      }
+      .md-alert {
+        padding: 0px 1em;
+        margin-bottom: 16px;
+        color: inherit;
+        border-left: 0.25em solid rgb(0, 0, 0);
+      }
+      .md-alert-text-note {
+        color: rgb(9, 105, 218);
+      }
+      .md-alert-text-important {
+        color: rgb(130, 80, 223);
+      }
+      .md-alert-text-warning {
+        color: rgb(154, 103, 0);
+      }
+      .md-alert-text-tip {
+        color: rgb(31, 136, 61);
+      }
+      .md-alert-text-caution {
+        color: rgb(207, 34, 46);
+      }
+      .md-alert-text {
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+      .md-alert-text svg {
+        fill: currentcolor;
+        position: relative;
+        top: 0.125em;
+        margin-right: 1ch;
+        overflow: visible;
+      }
+      .md-alert-text-container::after {
+        content: attr(data-text);
+        text-transform: capitalize;
+        pointer-events: none;
+        margin-right: 1ch;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
+      type="text/css"
+    />
+    <style type="text/css" id="style-theme_css">
+      /* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+      @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+      /* @include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext); */
 
-</style>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap' type='text/css' />
-<style type='text/css'  id="style-theme_css">/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
-@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-/* @include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext); */
+      /* =========== */
 
-/* =========== */
-
-/* --------------------------------------- PDF --------------------------------------- */
-@media print {
-  /* @page {
+      /* --------------------------------------- PDF --------------------------------------- */
+      @media print {
+        /* @page {
     margin: 2mm 0mm;
   } */
-  html {
-    font-size: 16px !important;
-  }
-  img {
-    border: 1px solid black !important;
-  }
-}
+        html {
+          font-size: 16px !important;
+        }
+        img {
+          border: 1px solid black !important;
+        }
+      }
 
-/* pt-serif-regular - latin */
-/* @font-face {
+      /* pt-serif-regular - latin */
+      /* @font-face {
   font-family: "PT Serif";
   font-style: normal;
   font-weight: normal;
@@ -257,8 +983,8 @@ mjx-container { break-inside: avoid; }
     U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
     U+FFFD;
 } */
-/* pt-serif-italic - latin */
-/* @font-face {
+      /* pt-serif-italic - latin */
+      /* @font-face {
   font-family: "PT Serif";
   font-style: italic;
   font-weight: normal;
@@ -271,8 +997,8 @@ mjx-container { break-inside: avoid; }
     U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
     U+FFFD;
 } */
-/* pt-serif-700 - latin */
-/* @font-face {
+      /* pt-serif-700 - latin */
+      /* @font-face {
   font-family: "PT Serif";
   font-style: normal;
   font-weight: bold;
@@ -285,8 +1011,8 @@ mjx-container { break-inside: avoid; }
     U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
     U+FFFD;
 } */
-/* pt-serif-700italic - latin */
-/* @font-face {
+      /* pt-serif-700italic - latin */
+      /* @font-face {
   font-family: "PT Serif";
   font-style: italic;
   font-weight: bold;
@@ -300,42 +1026,42 @@ mjx-container { break-inside: avoid; }
     U+FFFD;
 } */
 
-:root {
-  --active-file-bg-color: #dadada;
-  --active-file-bg-color: rgba(32, 43, 51, 0.63);
-  --active-file-text-color: white;
-  --bg-color: #f3f2ee;
-  --text-color: #1f0909;
-  --control-text-color: #444;
-  --rawblock-edit-panel-bd: #e5e5e5;
+      :root {
+        --active-file-bg-color: #dadada;
+        --active-file-bg-color: rgba(32, 43, 51, 0.63);
+        --active-file-text-color: white;
+        --bg-color: #f3f2ee;
+        --text-color: #1f0909;
+        --control-text-color: #444;
+        --rawblock-edit-panel-bd: #e5e5e5;
 
-  --select-text-bg-color: rgba(32, 43, 51, 0.63);
-  --select-text-font-color: white;
-}
+        --select-text-bg-color: rgba(32, 43, 51, 0.63);
+        --select-text-font-color: white;
+      }
 
-pre {
-  --select-text-bg-color: #36284e;
-  --select-text-font-color: #fff;
-}
+      pre {
+        --select-text-bg-color: #36284e;
+        --select-text-font-color: #fff;
+      }
 
-html {
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
+      html {
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+      }
 
-html,
-body {
-  background-color: #f3f2ee;
-  font-family: "PT Serif", "Times New Roman", Times, serif;
-  color: #1f0909;
-  line-height: 1.5em;
-}
+      html,
+      body {
+        background-color: #f3f2ee;
+        font-family: "PT Serif", "Times New Roman", Times, serif;
+        color: #1f0909;
+        line-height: 1.5em;
+      }
 
-img {
-  border: 1px solid black;
-}
+      img {
+        border: 1px solid black;
+      }
 
-/*#write {
+      /*#write {
 	overflow-x: auto;
     max-width: initial;
 	padding-left: calc(50% - 17em);
@@ -349,184 +1075,184 @@ img {
  	}
 }*/
 
-/* #write {
+      /* #write {
   max-width: 40em;
 } */
 
-/* @media only screen and (min-width: 1400px) {
+      /* @media only screen and (min-width: 1400px) {
   #write {
     max-width: 914px;
   }
 } */
 
-/* 강제 적용 버전 */
-#write {
-  max-width: 900px !important; /* 숫자를 더 키워보세요 */
-  width: 90% !important;
-}
+      /* 강제 적용 버전 */
+      #write {
+        max-width: 900px !important; /* 숫자를 더 키워보세요 */
+        width: 90% !important;
+      }
 
-@media only screen and (min-width: 1400px) {
-  #write {
-    max-width: 1400px !important;
-  }
-}
+      @media only screen and (min-width: 1400px) {
+        #write {
+          max-width: 1400px !important;
+        }
+      }
 
-ol li {
-  list-style-type: decimal;
-  list-style-position: outside;
-}
-ul li {
-  list-style-type: disc;
-  list-style-position: outside;
-}
+      ol li {
+        list-style-type: decimal;
+        list-style-position: outside;
+      }
+      ul li {
+        list-style-type: disc;
+        list-style-position: outside;
+      }
 
-ol,
-ul {
-  list-style: none;
-}
+      ol,
+      ul {
+        list-style: none;
+      }
 
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-/* styles */
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      /* styles */
 
-/* ====== */
+      /* ====== */
 
-/* headings */
+      /* headings */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: bold;
-}
-h1 {
-  font-size: 1.875em;
-  /*30 / 16*/
-  line-height: 1.6em;
-  /* 48 / 30*/
-  margin-top: 2em;
-}
-h2,
-h3 {
-  font-size: 1.3125em;
-  /*21 / 16*/
-  line-height: 1.15;
-  /*24 / 21*/
-  margin-top: 2.285714em;
-  /*48 / 21*/
-  margin-bottom: 1.15em;
-  /*24 / 21*/
-}
-h3 {
-  font-weight: normal;
-}
-h4 {
-  font-size: 1.125em;
-  /*18 / 16*/
-  margin-top: 2.67em;
-  /*48 / 18*/
-}
-h5,
-h6 {
-  font-size: 1em;
-  /*16*/
-}
-h1 {
-  border-bottom: 1px solid;
-  margin-bottom: 1.875em;
-  padding-bottom: 0.8125em;
-}
-/* links */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: bold;
+      }
+      h1 {
+        font-size: 1.875em;
+        /*30 / 16*/
+        line-height: 1.6em;
+        /* 48 / 30*/
+        margin-top: 2em;
+      }
+      h2,
+      h3 {
+        font-size: 1.3125em;
+        /*21 / 16*/
+        line-height: 1.15;
+        /*24 / 21*/
+        margin-top: 2.285714em;
+        /*48 / 21*/
+        margin-bottom: 1.15em;
+        /*24 / 21*/
+      }
+      h3 {
+        font-weight: normal;
+      }
+      h4 {
+        font-size: 1.125em;
+        /*18 / 16*/
+        margin-top: 2.67em;
+        /*48 / 18*/
+      }
+      h5,
+      h6 {
+        font-size: 1em;
+        /*16*/
+      }
+      h1 {
+        border-bottom: 1px solid;
+        margin-bottom: 1.875em;
+        padding-bottom: 0.8125em;
+      }
+      /* links */
 
-a {
-  text-decoration: none;
-  color: #065588;
-}
-a:hover,
-a:active {
-  text-decoration: underline;
-}
-/* block spacing */
+      a {
+        text-decoration: none;
+        color: #065588;
+      }
+      a:hover,
+      a:active {
+        text-decoration: underline;
+      }
+      /* block spacing */
 
-p,
-blockquote,
-.md-fences {
-  margin-bottom: 1.5em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 1.5em;
-}
-/* blockquote */
+      p,
+      blockquote,
+      .md-fences {
+        margin-bottom: 1.5em;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-bottom: 1.5em;
+      }
+      /* blockquote */
 
-blockquote {
-  font-style: italic;
-  border-left: 5px solid;
-  margin-left: 2em;
-  padding-left: 1em;
-}
-/* lists */
+      blockquote {
+        font-style: italic;
+        border-left: 5px solid;
+        margin-left: 2em;
+        padding-left: 1em;
+      }
+      /* lists */
 
-ul,
-ol {
-  margin: 0 0 1.5em 1.5em;
-}
-/* tables */
-.md-meta,
-.md-before,
-.md-after {
-  color: #999;
-}
+      ul,
+      ol {
+        margin: 0 0 1.5em 1.5em;
+      }
+      /* tables */
+      .md-meta,
+      .md-before,
+      .md-after {
+        color: #999;
+      }
 
-table {
-  margin-bottom: 1.5em;
-  /*24 / 16*/
-  font-size: 1em;
-  /* width: 100%; */
-}
-thead th,
-tfoot th {
-  padding: 0.25em 0.25em 0.25em 0.4em;
-  text-transform: uppercase;
-}
-th {
-  text-align: left;
-}
-td {
-  vertical-align: top;
-  padding: 0.25em 0.25em 0.25em 0.4em;
-}
+      table {
+        margin-bottom: 1.5em;
+        /*24 / 16*/
+        font-size: 1em;
+        /* width: 100%; */
+      }
+      thead th,
+      tfoot th {
+        padding: 0.25em 0.25em 0.25em 0.4em;
+        text-transform: uppercase;
+      }
+      th {
+        text-align: left;
+      }
+      td {
+        vertical-align: top;
+        padding: 0.25em 0.25em 0.25em 0.4em;
+      }
 
-code,
-.md-fences {
-  background-color: #dadada;
-  line-height: 1.6em !important;
-}
+      code,
+      .md-fences {
+        background-color: #dadada;
+        line-height: 1.6em !important;
+      }
 
-.md-fences {
-  font-size: 0.83em;
-}
+      .md-fences {
+        font-size: 0.83em;
+      }
 
-/* code {
+      /* code {
     background-color: #e8e7e7 !important; 
     color: #c7254e !important;           
     padding: 2px 5px !important;
@@ -548,389 +1274,771 @@ code,
     border: 1px solid #181a1f !important;
 } */
 
-pre,
-code,
-tt {
-  font-size: 0.875em;
-  line-height: 1.714285em;
-}
-/* some fixes */
+      pre,
+      code,
+      tt {
+        font-size: 0.875em;
+        line-height: 1.714285em;
+      }
+      /* some fixes */
 
-h1 {
-  line-height: 1.3em;
-  font-weight: normal;
-  margin-bottom: 0.5em;
-}
+      h1 {
+        line-height: 1.3em;
+        font-weight: normal;
+        margin-bottom: 0.5em;
+      }
 
-p + ul,
-p + ol {
-  margin-top: 0.5em;
-}
+      p + ul,
+      p + ol {
+        margin-top: 0.5em;
+      }
 
-h3 + ul,
-h4 + ul,
-h5 + ul,
-h6 + ul,
-h3 + ol,
-h4 + ol,
-h5 + ol,
-h6 + ol {
-  margin-top: 0.5em;
-}
+      h3 + ul,
+      h4 + ul,
+      h5 + ul,
+      h6 + ul,
+      h3 + ol,
+      h4 + ol,
+      h5 + ol,
+      h6 + ol {
+        margin-top: 0.5em;
+      }
 
-li > ul,
-li > ol {
-  margin-top: inherit;
-  margin-bottom: 0;
-}
+      li > ul,
+      li > ol {
+        margin-top: inherit;
+        margin-bottom: 0;
+      }
 
-li ol > li {
-  list-style-type: lower-alpha;
-}
+      li ol > li {
+        list-style-type: lower-alpha;
+      }
 
-li li ol > li {
-  list-style-type: lower-roman;
-}
+      li li ol > li {
+        list-style-type: lower-roman;
+      }
 
-h2,
-h3 {
-  margin-bottom: 0.75em;
-}
-hr {
-  border-top: none;
-  border-right: none;
-  border-bottom: 1px solid;
-  border-left: none;
-}
-h1 {
-  border-color: #c5c5c5;
-}
-blockquote {
-  border-color: #bababa;
-  color: #656565;
-}
+      h2,
+      h3 {
+        margin-bottom: 0.75em;
+      }
+      hr {
+        border-top: none;
+        border-right: none;
+        border-bottom: 1px solid;
+        border-left: none;
+      }
+      h1 {
+        border-color: #c5c5c5;
+      }
+      blockquote {
+        border-color: #bababa;
+        color: #656565;
+      }
 
-blockquote ul,
-blockquote ol {
-  margin-left: 0;
-}
+      blockquote ul,
+      blockquote ol {
+        margin-left: 0;
+      }
 
-.ty-table-edit {
-  background-color: transparent;
-}
-thead {
-  background-color: #dadada;
-}
-tr:nth-child(even) {
-  background: #e8e7e7;
-}
-hr {
-  border-color: #c5c5c5;
-}
-.task-list {
-  padding-left: 1rem;
-}
+      .ty-table-edit {
+        background-color: transparent;
+      }
+      thead {
+        background-color: #dadada;
+      }
+      tr:nth-child(even) {
+        background: #e8e7e7;
+      }
+      hr {
+        border-color: #c5c5c5;
+      }
+      .task-list {
+        padding-left: 1rem;
+      }
 
-.md-task-list-item {
-  padding-left: 1.5rem;
-  list-style-type: none;
-}
+      .md-task-list-item {
+        padding-left: 1.5rem;
+        list-style-type: none;
+      }
 
-.md-task-list-item > input:before {
-  content: "\221A";
-  display: inline-block;
-  width: 1.25rem;
-  height: 1.6rem;
-  vertical-align: middle;
-  text-align: center;
-  color: #ddd;
-  background-color: #f3f2ee;
-}
+      .md-task-list-item > input:before {
+        content: "\221A";
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.6rem;
+        vertical-align: middle;
+        text-align: center;
+        color: #ddd;
+        background-color: #f3f2ee;
+      }
 
-.md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before {
-  color: inherit;
-}
+      .md-task-list-item > input:checked:before,
+      .md-task-list-item > input[checked]:before {
+        color: inherit;
+      }
 
-#write pre.md-meta-block {
-  min-height: 1.875rem;
-  color: #555;
-  border: 0px;
-  background: transparent;
-  margin-top: -4px;
-  margin-left: 1em;
-  margin-top: 1em;
-}
+      #write pre.md-meta-block {
+        min-height: 1.875rem;
+        color: #555;
+        border: 0px;
+        background: transparent;
+        margin-top: -4px;
+        margin-left: 1em;
+        margin-top: 1em;
+      }
 
-.md-image > .md-meta {
-  color: #9b5146;
-}
+      .md-image > .md-meta {
+        color: #9b5146;
+      }
 
-.md-image > .md-meta {
-  font-family:
-    Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei",
-    "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
-}
+      .md-image > .md-meta {
+        font-family:
+          Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei",
+          "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
+      }
 
-#write > h3.md-focus:before {
-  left: -1.5rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h4.md-focus:before {
-  left: -1.5rem;
-  top: 0.25rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h5.md-focus:before {
-  left: -1.5rem;
-  top: 0.3125rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h6.md-focus:before {
-  left: -1.5rem;
-  top: 0.3125rem;
-  color: #999;
-  border-color: #999;
-}
+      #write > h3.md-focus:before {
+        left: -1.5rem;
+        color: #999;
+        border-color: #999;
+      }
+      #write > h4.md-focus:before {
+        left: -1.5rem;
+        top: 0.25rem;
+        color: #999;
+        border-color: #999;
+      }
+      #write > h5.md-focus:before {
+        left: -1.5rem;
+        top: 0.3125rem;
+        color: #999;
+        border-color: #999;
+      }
+      #write > h6.md-focus:before {
+        left: -1.5rem;
+        top: 0.3125rem;
+        color: #999;
+        border-color: #999;
+      }
 
-.md-toc:focus .md-toc-content {
-  margin-top: 19px;
-}
+      .md-toc:focus .md-toc-content {
+        margin-top: 19px;
+      }
 
-.md-toc-content:empty:before {
-  color: #065588;
-}
-.md-toc-item {
-  color: #065588;
-}
-#write div.md-toc-tooltip {
-  background-color: #f3f2ee;
-}
+      .md-toc-content:empty:before {
+        color: #065588;
+      }
+      .md-toc-item {
+        color: #065588;
+      }
+      #write div.md-toc-tooltip {
+        background-color: #f3f2ee;
+      }
 
-#typora-sidebar {
-  background-color: #f3f2ee;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-}
+      #typora-sidebar {
+        background-color: #f3f2ee;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+      }
 
-.pin-outline #typora-sidebar {
-  background: inherit;
-  box-shadow: none;
-  border-right: 1px dashed;
-}
+      .pin-outline #typora-sidebar {
+        background: inherit;
+        box-shadow: none;
+        border-right: 1px dashed;
+      }
 
-.pin-outline #typora-sidebar:hover .outline-title-wrapper {
-  border-left: 1px dashed;
-}
+      .pin-outline #typora-sidebar:hover .outline-title-wrapper {
+        border-left: 1px dashed;
+      }
 
-.outline-item:hover {
-  background-color: #dadada;
-  border-left: 28px solid #dadada;
-  border-right: 18px solid #dadada;
-}
+      .outline-item:hover {
+        background-color: #dadada;
+        border-left: 28px solid #dadada;
+        border-right: 18px solid #dadada;
+      }
 
-.typora-node .outline-item:hover {
-  border-right: 28px solid #dadada;
-}
+      .typora-node .outline-item:hover {
+        border-right: 28px solid #dadada;
+      }
 
-.outline-expander:before {
-  content: "\f0da";
-  font-family: FontAwesome;
-  font-size: 14px;
-  top: 1px;
-}
+      .outline-expander:before {
+        content: "\f0da";
+        font-family: FontAwesome;
+        font-size: 14px;
+        top: 1px;
+      }
 
-.outline-expander:hover:before,
-.outline-item-open > .outline-item > .outline-expander:before {
-  content: "\f0d7";
-}
+      .outline-expander:hover:before,
+      .outline-item-open > .outline-item > .outline-expander:before {
+        content: "\f0d7";
+      }
 
-.modal-content {
-  background-color: #f3f2ee;
-}
+      .modal-content {
+        background-color: #f3f2ee;
+      }
 
-.auto-suggest-container ul li {
-  list-style-type: none;
-}
+      .auto-suggest-container ul li {
+        list-style-type: none;
+      }
 
-/** UI for electron */
+      /** UI for electron */
 
-.megamenu-menu,
-#top-titlebar,
-#top-titlebar *,
-.megamenu-content {
-  background: #f3f2ee;
-  color: #1f0909;
-}
+      .megamenu-menu,
+      #top-titlebar,
+      #top-titlebar *,
+      .megamenu-content {
+        background: #f3f2ee;
+        color: #1f0909;
+      }
 
-.megamenu-menu-header {
-  border-bottom: 1px dashed #202b33;
-}
+      .megamenu-menu-header {
+        border-bottom: 1px dashed #202b33;
+      }
 
-.megamenu-menu {
-  box-shadow: none;
-  border-right: 1px dashed;
-}
+      .megamenu-menu {
+        box-shadow: none;
+        border-right: 1px dashed;
+      }
 
-header,
-.context-menu,
-.megamenu-content,
-footer {
-  font-family: "PT Serif", "Times New Roman", Times, serif;
-  color: #1f0909;
-}
+      header,
+      .context-menu,
+      .megamenu-content,
+      footer {
+        font-family: "PT Serif", "Times New Roman", Times, serif;
+        color: #1f0909;
+      }
 
-#megamenu-back-btn {
-  color: #1f0909;
-  border-color: #1f0909;
-}
+      #megamenu-back-btn {
+        color: #1f0909;
+        border-color: #1f0909;
+      }
 
-.megamenu-menu-header #megamenu-menu-header-title:before {
-  color: #1f0909;
-}
+      .megamenu-menu-header #megamenu-menu-header-title:before {
+        color: #1f0909;
+      }
 
-.megamenu-menu-list li a:hover,
-.megamenu-menu-list li a.active {
-  color: inherit;
-  background-color: #e8e7df;
-}
+      .megamenu-menu-list li a:hover,
+      .megamenu-menu-list li a.active {
+        color: inherit;
+        background-color: #e8e7df;
+      }
 
-.long-btn:hover {
-  background-color: #e8e7df;
-}
+      .long-btn:hover {
+        background-color: #e8e7df;
+      }
 
-#recent-file-panel tbody tr:nth-child(2n-1) {
-  background-color: transparent !important;
-}
+      #recent-file-panel tbody tr:nth-child(2n-1) {
+        background-color: transparent !important;
+      }
 
-.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
-  color: inherit;
-}
+      .megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+        color: inherit;
+      }
 
-.megamenu-menu-panel .btn {
-  background-color: #d2d1d1;
-}
+      .megamenu-menu-panel .btn {
+        background-color: #d2d1d1;
+      }
 
-.btn-default {
-  background-color: transparent;
-}
+      .btn-default {
+        background-color: transparent;
+      }
 
-.typora-sourceview-on #toggle-sourceview-btn,
-.ty-show-word-count #footer-word-count {
-  background: #c7c5c5;
-}
+      .typora-sourceview-on #toggle-sourceview-btn,
+      .ty-show-word-count #footer-word-count {
+        background: #c7c5c5;
+      }
 
-#typora-quick-open {
-  background-color: inherit;
-}
+      #typora-quick-open {
+        background-color: inherit;
+      }
 
-.md-diagram-panel {
-  margin-top: 8px;
-}
+      .md-diagram-panel {
+        margin-top: 8px;
+      }
 
-.file-list-item-file-name {
-  font-weight: initial;
-}
+      .file-list-item-file-name {
+        font-weight: initial;
+      }
 
-.file-list-item-summary {
-  opacity: 1;
-}
+      .file-list-item-summary {
+        opacity: 1;
+      }
 
-.file-list-item {
-  color: #777;
-}
+      .file-list-item {
+        color: #777;
+      }
 
-.file-list-item.active {
-  background-color: inherit;
-  color: black;
-}
+      .file-list-item.active {
+        background-color: inherit;
+        color: black;
+      }
 
-.ty-side-sort-btn.active {
-  background-color: inherit;
-}
+      .ty-side-sort-btn.active {
+        background-color: inherit;
+      }
 
-.file-list-item.active .file-list-item-file-name {
-  font-weight: bold;
-}
+      .file-list-item.active .file-list-item-file-name {
+        font-weight: bold;
+      }
 
-.file-list-item {
-  opacity: 1 !important;
-}
+      .file-list-item {
+        opacity: 1 !important;
+      }
 
-.file-library-node.active > .file-node-background {
-  background-color: rgba(32, 43, 51, 0.63);
-  background-color: var(--active-file-bg-color);
-}
+      .file-library-node.active > .file-node-background {
+        background-color: rgba(32, 43, 51, 0.63);
+        background-color: var(--active-file-bg-color);
+      }
 
-.file-tree-node.active > .file-node-content {
-  color: white;
-  color: var(--active-file-text-color);
-}
+      .file-tree-node.active > .file-node-content {
+        color: white;
+        color: var(--active-file-text-color);
+      }
 
-.md-task-list-item > input {
-  margin-left: -1.7em;
-  margin-top: calc(1rem - 12px);
-  -webkit-appearance: button;
-}
+      .md-task-list-item > input {
+        margin-left: -1.7em;
+        margin-top: calc(1rem - 12px);
+        -webkit-appearance: button;
+      }
 
-input {
-  border: 1px solid #aaa;
-}
+      input {
+        border: 1px solid #aaa;
+      }
 
-.megamenu-menu-header #megamenu-menu-header-title,
-.megamenu-menu-header:hover,
-.megamenu-menu-header:focus {
-  color: inherit;
-}
+      .megamenu-menu-header #megamenu-menu-header-title,
+      .megamenu-menu-header:hover,
+      .megamenu-menu-header:focus {
+        color: inherit;
+      }
 
-.dropdown-menu .divider {
-  border-color: #e5e5e5;
-  opacity: 1;
-}
+      .dropdown-menu .divider {
+        border-color: #e5e5e5;
+        opacity: 1;
+      }
 
-/* https://github.com/typora/typora-issues/issues/2046 */
-.os-windows-7 strong,
-.os-windows-7 strong {
-  font-weight: 760;
-}
+      /* https://github.com/typora/typora-issues/issues/2046 */
+      .os-windows-7 strong,
+      .os-windows-7 strong {
+        font-weight: 760;
+      }
 
-.ty-preferences .btn-default {
-  background: transparent;
-}
+      .ty-preferences .btn-default {
+        background: transparent;
+      }
 
-.ty-preferences .window-header {
-  border-bottom: 1px dashed #202b33;
-  box-shadow: none;
-}
+      .ty-preferences .window-header {
+        border-bottom: 1px dashed #202b33;
+        box-shadow: none;
+      }
 
-#sidebar-loading-template,
-#sidebar-loading-template.file-list-item {
-  color: #777;
-}
+      #sidebar-loading-template,
+      #sidebar-loading-template.file-list-item {
+        color: #777;
+      }
 
-.searchpanel-search-option-btn.active {
-  background: #777;
-  color: white;
-}
+      .searchpanel-search-option-btn.active {
+        background: #777;
+        color: white;
+      }
 
-.export-detail,
-.light .export-detail,
-.light .export-item.active,
-.light .export-items-list-control {
-  background: #e0e0e0;
-  border-radius: 2px;
-  font-weight: 700;
-  color: inherit;
-}
-</style>
-<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+      .export-detail,
+      .light .export-detail,
+      .light .export-item.active,
+      .light .export-items-list-control {
+        background: #e0e0e0;
+        border-radius: 2px;
+        font-weight: 700;
+        color: inherit;
+      }
+    </style>
+    <style type="text/css" id="style-lp">
+      ol,
+      ul {
+        padding-left: 40px;
+      }
+    </style>
 
-<title>OSCP 후기</title>
-</head>
-<body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='tldr'><strong><span>TL;DR</span></strong></h1><p><strong><span>OSCP 자격증 취득 완료. I Tried Harder!</span></strong></p><p><span>2026년 3월 2일부로 나도 공식적으로 </span><strong><span>OSCP+/OSCP</span></strong><span> 자격증 취득자가 되었다! 2년 전에 내가 사이버 보안으로 커리어 전환을 결심하고 모의해커와 레드팀이라는 직업이 세상에 존재한다는 사실을 알게 됨과 거의 동시에 OSCP 자격증의 존재도 알게 되었다. 이 성취가 그 이후 꾸준히 공부한 결과라는 것을 나 스스로가 가장 잘 알기에 매우 뿌듯하다.</span></p><p><img src="./OSCP 후기.assets/image-20260303192348682.png" alt="image-20260303192348682" style="zoom:50%;" /></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#tldr"><strong>TL;DR</strong></a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n7"><a class="md-toc-inner" href="#배경">배경</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n10"><a class="md-toc-inner" href="#pre-pen-200-기초-다지기">Pre PEN-200 기초 다지기</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n11"><a class="md-toc-inner" href="#bhpt">BHPT</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"><a class="md-toc-inner" href="#레드라쿤-멘토링">레드라쿤 멘토링</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n20"><a class="md-toc-inner" href="#oscp-준비">OSCP 준비</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n21"><a class="md-toc-inner" href="#pen-200">PEN-200</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" href="#active-directory"><strong>Active Directory</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n28"><a class="md-toc-inner" href="#추천-학습-자료">추천 학습 자료</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n30"><a class="md-toc-inner" href="#oscp-시험">OSCP 시험</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n33"><a class="md-toc-inner" href="#팁">팁</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n34"><a class="md-toc-inner" href="#cheatsheet">Cheatsheet</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n45"><a class="md-toc-inner" href="#tools">Tools</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n54"><a class="md-toc-inner" href="#마치며">마치며</a></span></p></div><h1 id='배경'><span>배경</span></h1><p><span>나는 대학에 비교적 늦은 나이에 다시 복학해서 Computer Science 전공으로 2024년 5월에 대학을 졸업했다. 그 이후 Software Engineering보다는 사이버 보안에 더 관심이 생겼다. 그러다가 우연히 보게 된 유튜브 콘텐츠가 </span><a href='https://www.redraccoon.kr/en'><span>레드라쿤 커뮤니티</span></a><span>의 </span><strong><span>Choi</span></strong><span>님과 </span><strong><span>Groot</span></strong><span>님이 레드팀을 설명하는 영상이었다. 그 후 레드라쿤 커뮤니티 디스코드에 가입해 BHPT 강의도 듣고 지속적으로 커뮤니티를 확인하며 정말 많은 정보를 얻고 배웠다. 덕분에 이 길을 한 번 제대로 걸어보고 싶다는 확신이 들었다. 특히 Penetration Tester 포지션의 거의 모든 공고에서 OSCP 자격증을 필수 또는 우대사항으로 언급하는 것을 보았고 이것이 내가 OSCP에 도전하게 된 결정적인 계기가 되었다.</span></p><p><strong><span>그렇다면 OSCP 취득을 위해 무엇을 공부해야 할까? 모든 사람의 실력과 배경은 다르기 때문에 나는 내 경험을 위주로 후기를 적어보겠다.</span></strong></p><h1 id='pre-pen-200-기초-다지기'><span>Pre PEN-200 기초 다지기</span></h1><h2 id='bhpt'><span>BHPT</span></h2><p><span>나는 모의해커나 레드티머로서 실무 경험이 없기 때문에 레드라쿤의 </span><strong><span>BHPT(Basic Host-based Penetration Testing)</span></strong><span> 강의가 큰 도움이 되었다. 칼리 리눅스 설치부터 공격자가 타겟 호스트에 접근하는 방법론, 그리고 리포트 작성까지 전반적인 과정을 배울 수 있다.</span></p><p><span>처음 BHPT 강의를 듣고 따라 하면서 VMware Workstation과 Kali Linux를 설치하고 터미널에서 </span><code>xfreerdp</code><span> 명령어로 RDP 화면을 띄웠던 그 경험이 굉장히 강렬했다. 내 컴퓨터 안에 컴퓨터(VM)가 있고, 그 안에 또 다른 컴퓨터(RDP)가 있다니!</span></p><p><span>리눅스 명령어를 더 공부하고 싶어서 </span><a href='https://overthewire.org/wargames/bandit/'><strong><span>Bandit - OverTheWire</span></strong></a><span> 와 </span><a href='https://ctf.redraccoon.kr/'><strong><span>Rcity</span></strong></a><span> 워게임도 병행했다.</span></p><h2 id='레드라쿤-멘토링'><span>레드라쿤 멘토링</span></h2><p><span>BHPT 강의를 완강하고 시험을 봤는데, 너무 어려워 거의 진행도 못 하고 떨어졌던 기억이 있다. 지금 생각해보면 의욕만 앞서서 내용을 깊게 이해하기보다 진도를 빼기에만 급급했던 것 같다.</span></p><p><span>그 즈음에 레드라쿤의 </span><strong><span>Min</span></strong><span>님이 진행하는 멘토링 세션에 신청했고 감사하게도 기회를 얻었다. 학습 방향을 못 잡겠다는 내 고민에 멘토님은 처음부터 모든 것을 배우고 문제를 푸는 Bottom-Up 방식보다, 일단 문제를 풀어보고 모르는 게 나오면 공부하는 Top-Down 방식으로 공부 해보라고 조언을 해주셨다.</span></p><p><span>이 조언을 </span><strong><span>TryHackMe</span></strong><span>, </span><strong><span>HackTheBox</span></strong><span> 그리고 </span><strong><span>OffSec</span></strong><span> 등 여러 플랫폼에 적용하며 실력이 서서히 느는 것을 체감할 수 있었다. 나는 문제를 풀다가 막히면 Writeup을 보는 것을 주저하지 않았다. 오히려 처음에는 Writeup을 그대로 따라 하며 배웠고, 나중에는 참고만 하되 다시 혼자 풀어보는 방식으로 접근했다. 이렇게 하니 학습에 속도가 붙기 시작했다.</span></p><p><img src="./OSCP 후기.assets/image-20260303193241729.png" alt="image-20260303193241729" style="zoom: 80%;" /></p><h1 id='oscp-준비'><span>OSCP 준비</span></h1><h2 id='pen-200'><span>PEN-200</span></h2><p><span>본격적으로 OSCP 공부하기 위해 OffSec에서 </span><strong><span>LearnOne 구독권</span></strong><span>을 구매했다. 솔직히 가격이 너무 사악하다... “이렇게 큰 돈을 투자했으니 미래의 내가 어떻게든 공부하고 통과하겠지” 라는 생각으로 결제했다. 결과적으로는 잘한 결정이었다.</span></p><p><span>PEN-200 코스는 텍스트 양이 정말 방대하다. 나는 미국에 오랫동안 거주하고 있기 때문에 영어가 큰 장애물은 아니었지만 그럼에도 불구하고 방대한 양의 텍스트에 압박을 많이 느꼈다. 물론 비디오 강의도 제공되지만 설명이 다소 기계적이라 집중하기 어려운 면이 있었다.</span></p><p><span>나는 나에게 맞는 Top-Down 방식으로 접근했지만, 지금 돌이켜보면 PEN-200 코스를 처음부터 끝까지 정독하고 모든 랩을 풀어보는 것이 가장 정석적이고 느리지만 사실은 가장 빠른 방법이라고 생각한다.</span></p><h3 id='active-directory'><strong><span>Active Directory</span></strong></h3><p><span>나는 Active Directory라는 개념을 OSCP를 준비하면서 처음 들어봤기에 이 섹션을 집중적으로 공부했다. 내가 강조하고 싶은 부분은 PEN-200 코스 맨 마지막에 있는 </span><strong><span>Challenge Labs 섹션의</span></strong><span> </span><strong><span>OSCP A</span></strong><span>, </span><strong><span>OSCP B</span></strong><span>, 그리고 </span><strong><span>OSCP C</span></strong><span> 랩이다. 이 세 개의 Lab들은 실제 OSCP 시험 환경과 가장 유사하게 설계되었다고 알려져 있다. 다른 플랫폼에 있는 AD 문제라고 하면 보통 타겟 호스트가 DC만 달랑 있는 머신들이 주를 이루기 때문에 Pivoting 및 Lateral Movement를 연습할 기회가 부족하다. 그런 면에서 Challenge Labs의 Lab들은 Active Directory로 연결된 네트워크 환경을 연습할 수 있는 소중한 리소스다. 나는 이 세 개의 랩을 각각 세 번씩 반복해서 풀었다.</span></p><p><img src="./OSCP 후기.assets/image-20260303193316038.png" alt="image-20260303193316038" style="zoom:80%;" /></p><h2 id='추천-학습-자료'><span>추천 학습 자료</span></h2><p><span>OSCP 리서치를 하다 보면 꼭 언급되는 두 개의 리스트가 있다: </span><a href='https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview'><span>TjNull&#39;s OSCP List</span></a><span>와 </span><a href='https://docs.google.com/spreadsheets/d/18weuz_Eeynr6sXFQ87Cd5F0slOj9Z6rt/edit?gid=487240997#gid=487240997'><span>LainKusanagi&#39;s OSCP List</span></a><span>다. 나는 </span><strong><span>LainKusanagi</span></strong><span> 리스트의 </span><strong><span>TryHackMe</span></strong><span>, </span><strong><span>Hack The Box</span></strong><span>, 그리고 </span><strong><span>PG Practice</span></strong><span> 머신들을 거의 다 풀었다. 역시 OffSec의 </span><strong><span>PG Practice</span></strong><span> 머신들이 가장 도움이 되었다고 생각한다. 시험 출제사에서 만든 머신들이니 어쩌면 당연한 말이다.</span></p><h1 id='oscp-시험'><span>OSCP 시험</span></h1><p><span>시험 내용에 대해서는 말할 수 있는 게 많이 없다. 사실 나는 작년 11월 27일에 시험을 한 번 쳤다가 아쉽게도 떨어진 전적이 있다. 다행히 내가 결제한 </span><strong><span>LearnOne 구독권</span></strong><span>에 시험 기회가 두 번 포함되어 있었기에, 한 달 정도 휴식 후 다시 마음을 다잡고 공부했다.</span></p><p><span>두 번의 시험을 치르며 느낀 점은, 초기 침투와 권한 상승으로 가는 길이 생각보다 단순할 수 있다는 것이다. 또, 자칫하면 rabbit hole에 빠져 많은 시간을 낭비할 수 있는 장치가 있다고 느꼈다. 만약 본인이 생각한 길이 생각대로 작동하지 않고 계속해서 벽에 부딪힌다면 처음으로 돌아가서 Nmap으로 포트 스캐닝을 다시 해보고 더 쉬운 다른 길이 있는지 살펴보는 게 도움이 될 것 같다. 아! 그리고 UDP 스캔도 꼭 잊지 않고 해야 한다. UDP 161번 포트에 SNMP 서비스가 실행 중일 경우 초기 침투로 가는 결정적인 단서가 있을 수 있다.</span></p><h1 id='팁'><span>팁</span></h1><h2 id='cheatsheet'><span>Cheatsheet</span></h2><p><span>나는 무조건 본인만의 노트 혹은 Cheatsheet을 만들어야 한다고 생각한다. 다른 사람들의 Writeup을 참고하여 나만의 cheatsheet을 발전시키는 게 나한테는 정말 큰 도움이 되었다. 같은 문제도 여러 사람들의 Writeup을 보면 여러 방식을 배울 수가 있다.</span></p><p><span>지금 생각나는 예시를 하나 들어보자면, Active Directory 네트워크 환경에서 첫 번째 머신에서 초기 침투 및 어드민 유저로의 권한 상승까지 마쳤고 이제 해당 머신에 있는 SAM 해시를 덤핑할 계획이라고 해보자.</span></p><ol><li><p><span>첫 번째 사람의 Writeup은 SAM과 SYSTEM 레지스트리 파일을 로컬로 옮겨와서 </span><code>impacket-secretsdump</code><span>로 덤핑하는 방식</span></p></li><li><p><span>두 번째 사람의 Writeup은 </span><code>Mimikatz</code><span>를 타겟 호스트에 전송한 후에 해시를 덤핑하는 방식</span></p></li><li><p><span>마지막으로 세 번째 사람의 Writeup은 탈취한 어드민 세션에서 새로운 유저를 만들어서 로컬 어드민 그룹에 추가하고 UAC를 비활성화한 후에 로컬 칼리에서 어떠한 파일 전송 도구도 사용하지 않고 </span><code>NetExec</code><span>으로 </span><code>--sam</code><span> 옵션을 통해서 덤핑하는 방식</span></p></li></ol><p><span>세 방식 모두 같은 결과라고 해도 이렇게 다른 사람들의 다양한 접근법을 읽고 내 것으로 흡수하는 과정에서 가장 많이 성장했다고 생각한다.</span></p><h2 id='tools'><span>Tools</span></h2><p><span>PEN-200 코스에서 언급되지 않지만 내가 특별히 도움을 많이 받았던 3개의 Tool을 소개하고자 한다.</span></p><ul><li><p><a href='https://github.com/brightio/penelope'><span>Penelope</span></a><span> - 리버스 쉘을 안정적인 TTY로 업그레이드 해주기 때문에 고생해서 얻은 쉘이 쉽게 끊어져 혈압이 올라가는 것을 방지해주는 아주 고마운 친구.</span></p></li><li><p><a href='https://github.com/BeichenDream/GodPotato'><span>GodPotato</span></a><span> - 개인적인 경험상 </span><code>SeImpersonatePrivilege</code><span> 유저가 권한이 있을 때 매우 높은 확률로 권한 상승을 성공시킨다.</span></p></li><li><p><a href='https://github.com/Nicocha30/ligolo-ng'><span>Ligolo-ng</span></a><span> - 속도와 편의성 면에서 최고의 피보팅 도구.</span></p></li></ul><h1 id='마치며'><span>마치며</span></h1><p><span>나는 아직 펜테스터로서의 실무 경험은 없지만, 이제 OSCP 자격증을 취득했으니 이력서를 업데이트를하고 이직 준비를 시작할 생각이다. 이 자격증이 내 커리어에 새로운 문을 열어주길 바란다. 또한 애써 배운 지식을 잊지 않도록 계속해서 다른 자격증도 알아보고 공부를 이어나갈 생각이다. 일단은 나 자신에게 수고했다는 말을 여러 번 해주고 맛있는 걸 먹고 쉬어야겠다.</span></p></div></div>
-</body>
+    <title>OSCP 후기</title>
+  </head>
+  <body class="typora-export os-windows">
+    <div class="typora-export-content">
+      <div id="write" class="">
+        <h1 id="tldr">
+          <strong><span>TL;DR</span></strong>
+        </h1>
+        <p>
+          <strong><span>OSCP 자격증 취득 완료. I Tried Harder!</span></strong>
+        </p>
+        <p>
+          <span>2026년 3월 2일부로 나도 공식적으로 </span
+          ><strong><span>OSCP+/OSCP</span></strong
+          ><span>
+            자격증 취득자가 되었다! 2년 전에 내가 사이버 보안으로 커리어 전환을
+            결심하고 모의해커와 레드팀이라는 직업이 세상에 존재한다는 사실을
+            알게 됨과 거의 동시에 OSCP 자격증의 존재도 알게 되었다. 이 성취가 그
+            이후 꾸준히 공부한 결과라는 것을 나 스스로가 가장 잘 알기에 매우
+            뿌듯하다.</span
+          >
+        </p>
+        <p>
+          <img
+            src="./OSCP 후기.assets/image-20260303192348682.png"
+            alt="image-20260303192348682"
+            style="zoom: 50%"
+          />
+        </p>
+        <div class="md-toc" mdtype="toc">
+          <p class="md-toc-content" role="list">
+            <span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"
+              ><a class="md-toc-inner" href="#tldr"
+                ><strong>TL;DR</strong></a
+              ></span
+            ><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n7"
+              ><a class="md-toc-inner" href="#배경">배경</a></span
+            ><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n10"
+              ><a class="md-toc-inner" href="#pre-pen-200-기초-다지기"
+                >Pre PEN-200 기초 다지기</a
+              ></span
+            ><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n11"
+              ><a class="md-toc-inner" href="#bhpt">BHPT</a></span
+            ><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"
+              ><a class="md-toc-inner" href="#레드라쿤-멘토링"
+                >레드라쿤 멘토링</a
+              ></span
+            ><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n20"
+              ><a class="md-toc-inner" href="#oscp-준비">OSCP 준비</a></span
+            ><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n21"
+              ><a class="md-toc-inner" href="#pen-200">PEN-200</a></span
+            ><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n25"
+              ><a class="md-toc-inner" href="#active-directory"
+                ><strong>Active Directory</strong></a
+              ></span
+            ><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n28"
+              ><a class="md-toc-inner" href="#추천-학습-자료"
+                >추천 학습 자료</a
+              ></span
+            ><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n30"
+              ><a class="md-toc-inner" href="#oscp-시험">OSCP 시험</a></span
+            ><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n33"
+              ><a class="md-toc-inner" href="#팁">팁</a></span
+            ><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n34"
+              ><a class="md-toc-inner" href="#cheatsheet">Cheatsheet</a></span
+            ><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n45"
+              ><a class="md-toc-inner" href="#tools">Tools</a></span
+            ><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n54"
+              ><a class="md-toc-inner" href="#마치며">마치며</a></span
+            >
+          </p>
+        </div>
+        <h1 id="배경"><span>배경</span></h1>
+        <p>
+          <span
+            >나는 대학에 비교적 늦은 나이에 다시 복학해서 Computer Science
+            전공으로 2024년 5월에 대학을 졸업했다. 그 이후 Software
+            Engineering보다는 사이버 보안에 더 관심이 생겼다. 그러다가 우연히
+            보게 된 유튜브 콘텐츠가 </span
+          ><a target="_blank" href="https://www.redraccoon.kr/en"
+            ><span>레드라쿤 커뮤니티</span></a
+          ><span>의 </span><strong><span>Choi</span></strong
+          ><span>님과 </span><strong><span>Groot</span></strong
+          ><span
+            >님이 레드팀을 설명하는 영상이었다. 그 후 레드라쿤 커뮤니티
+            디스코드에 가입해 BHPT 강의도 듣고 지속적으로 커뮤니티를 확인하며
+            정말 많은 정보를 얻고 배웠다. 덕분에 이 길을 한 번 제대로 걸어보고
+            싶다는 확신이 들었다. 특히 Penetration Tester 포지션의 거의 모든
+            공고에서 OSCP 자격증을 필수 또는 우대사항으로 언급하는 것을 보았고
+            이것이 내가 OSCP에 도전하게 된 결정적인 계기가 되었다.</span
+          >
+        </p>
+        <p>
+          <strong
+            ><span
+              >그렇다면 OSCP 취득을 위해 무엇을 공부해야 할까? 모든 사람의
+              실력과 배경은 다르기 때문에 나는 내 경험을 위주로 후기를
+              적어보겠다.</span
+            ></strong
+          >
+        </p>
+        <h1 id="pre-pen-200-기초-다지기">
+          <span>Pre PEN-200 기초 다지기</span>
+        </h1>
+        <h2 id="bhpt"><span>BHPT</span></h2>
+        <p>
+          <span
+            >나는 모의해커나 레드티머로서 실무 경험이 없기 때문에 레드라쿤의 </span
+          ><strong
+            ><span>BHPT(Basic Host-based Penetration Testing)</span></strong
+          ><span>
+            강의가 큰 도움이 되었다. 칼리 리눅스 설치부터 공격자가 타겟 호스트에
+            접근하는 방법론, 그리고 리포트 작성까지 전반적인 과정을 배울 수
+            있다.</span
+          >
+        </p>
+        <p>
+          <span
+            >처음 BHPT 강의를 듣고 따라 하면서 VMware Workstation과 Kali Linux를
+            설치하고 터미널에서 </span
+          ><code>xfreerdp</code
+          ><span>
+            명령어로 RDP 화면을 띄웠던 그 경험이 굉장히 강렬했다. 내 컴퓨터 안에
+            컴퓨터(VM)가 있고, 그 안에 또 다른 컴퓨터(RDP)가 있다니!</span
+          >
+        </p>
+        <p>
+          <span>리눅스 명령어를 더 공부하고 싶어서 </span
+          ><a target="_blank" href="https://overthewire.org/wargames/bandit/"
+            ><strong><span>Bandit - OverTheWire</span></strong></a
+          ><span> 와 </span
+          ><a target="_blank" href="https://ctf.redraccoon.kr/"
+            ><strong><span>Rcity</span></strong></a
+          ><span> 워게임도 병행했다.</span>
+        </p>
+        <h2 id="레드라쿤-멘토링"><span>레드라쿤 멘토링</span></h2>
+        <p>
+          <span
+            >BHPT 강의를 완강하고 시험을 봤는데, 너무 어려워 거의 진행도 못 하고
+            떨어졌던 기억이 있다. 지금 생각해보면 의욕만 앞서서 내용을 깊게
+            이해하기보다 진도를 빼기에만 급급했던 것 같다.</span
+          >
+        </p>
+        <p>
+          <span>그 즈음에 레드라쿤의 </span><strong><span>Min</span></strong
+          ><span
+            >님이 진행하는 멘토링 세션에 신청했고 감사하게도 기회를 얻었다. 학습
+            방향을 못 잡겠다는 내 고민에 멘토님은 처음부터 모든 것을 배우고
+            문제를 푸는 Bottom-Up 방식보다, 일단 문제를 풀어보고 모르는 게
+            나오면 공부하는 Top-Down 방식으로 공부 해보라고 조언을
+            해주셨다.</span
+          >
+        </p>
+        <p>
+          <span>이 조언을 </span><strong><span>TryHackMe</span></strong
+          ><span>, </span><strong><span>HackTheBox</span></strong
+          ><span> 그리고 </span><strong><span>OffSec</span></strong
+          ><span>
+            등 여러 플랫폼에 적용하며 실력이 서서히 느는 것을 체감할 수 있었다.
+            나는 문제를 풀다가 막히면 Writeup을 보는 것을 주저하지 않았다.
+            오히려 처음에는 Writeup을 그대로 따라 하며 배웠고, 나중에는 참고만
+            하되 다시 혼자 풀어보는 방식으로 접근했다. 이렇게 하니 학습에 속도가
+            붙기 시작했다.</span
+          >
+        </p>
+        <p>
+          <img
+            src="./OSCP 후기.assets/image-20260303193241729.png"
+            alt="image-20260303193241729"
+            style="zoom: 80%"
+          />
+        </p>
+        <h1 id="oscp-준비"><span>OSCP 준비</span></h1>
+        <h2 id="pen-200"><span>PEN-200</span></h2>
+        <p>
+          <span>본격적으로 OSCP 공부하기 위해 OffSec에서 </span
+          ><strong><span>LearnOne 구독권</span></strong
+          ><span
+            >을 구매했다. 솔직히 가격이 너무 사악하다... “이렇게 큰 돈을
+            투자했으니 미래의 내가 어떻게든 공부하고 통과하겠지” 라는 생각으로
+            결제했다. 결과적으로는 잘한 결정이었다.</span
+          >
+        </p>
+        <p>
+          <span
+            >PEN-200 코스는 텍스트 양이 정말 방대하다. 나는 미국에 오랫동안
+            거주하고 있기 때문에 영어가 큰 장애물은 아니었지만 그럼에도 불구하고
+            방대한 양의 텍스트에 압박을 많이 느꼈다. 물론 비디오 강의도
+            제공되지만 설명이 다소 기계적이라 집중하기 어려운 면이 있었다.</span
+          >
+        </p>
+        <p>
+          <span
+            >나는 나에게 맞는 Top-Down 방식으로 접근했지만, 지금 돌이켜보면
+            PEN-200 코스를 처음부터 끝까지 정독하고 모든 랩을 풀어보는 것이 가장
+            정석적이고 느리지만 사실은 가장 빠른 방법이라고 생각한다.</span
+          >
+        </p>
+        <h3 id="active-directory">
+          <strong><span>Active Directory</span></strong>
+        </h3>
+        <p>
+          <span
+            >나는 Active Directory라는 개념을 OSCP를 준비하면서 처음 들어봤기에
+            이 섹션을 집중적으로 공부했다. 내가 강조하고 싶은 부분은 PEN-200
+            코스 맨 마지막에 있는 </span
+          ><strong><span>Challenge Labs 섹션의</span></strong
+          ><span> </span><strong><span>OSCP A</span></strong
+          ><span>, </span><strong><span>OSCP B</span></strong
+          ><span>, 그리고 </span><strong><span>OSCP C</span></strong
+          ><span>
+            랩이다. 이 세 개의 Lab들은 실제 OSCP 시험 환경과 가장 유사하게
+            설계되었다고 알려져 있다. 다른 플랫폼에 있는 AD 문제라고 하면 보통
+            타겟 호스트가 DC만 달랑 있는 머신들이 주를 이루기 때문에 Pivoting 및
+            Lateral Movement를 연습할 기회가 부족하다. 그런 면에서 Challenge
+            Labs의 Lab들은 Active Directory로 연결된 네트워크 환경을 연습할 수
+            있는 소중한 리소스다. 나는 이 세 개의 랩을 각각 세 번씩 반복해서
+            풀었다.</span
+          >
+        </p>
+        <p>
+          <img
+            src="./OSCP 후기.assets/image-20260303193316038.png"
+            alt="image-20260303193316038"
+            style="zoom: 80%"
+          />
+        </p>
+        <h2 id="추천-학습-자료"><span>추천 학습 자료</span></h2>
+        <p>
+          <span
+            >OSCP 리서치를 하다 보면 꼭 언급되는 두 개의 리스트가 있다: </span
+          ><a
+            target="_blank"
+            href="https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview"
+            ><span>TjNull&#39;s OSCP List</span></a
+          ><span>와 </span
+          ><a
+            target="_blank"
+            href="https://docs.google.com/spreadsheets/d/18weuz_Eeynr6sXFQ87Cd5F0slOj9Z6rt/edit?gid=487240997#gid=487240997"
+            ><span>LainKusanagi&#39;s OSCP List</span></a
+          ><span>다. 나는 </span><strong><span>LainKusanagi</span></strong
+          ><span> 리스트의 </span><strong><span>TryHackMe</span></strong
+          ><span>, </span><strong><span>Hack The Box</span></strong
+          ><span>, 그리고 </span><strong><span>PG Practice</span></strong
+          ><span> 머신들을 거의 다 풀었다. 역시 OffSec의 </span
+          ><strong><span>PG Practice</span></strong
+          ><span>
+            머신들이 가장 도움이 되었다고 생각한다. 시험 출제사에서 만든
+            머신들이니 어쩌면 당연한 말이다.</span
+          >
+        </p>
+        <h1 id="oscp-시험"><span>OSCP 시험</span></h1>
+        <p>
+          <span
+            >시험 내용에 대해서는 말할 수 있는 게 많이 없다. 사실 나는 작년 11월
+            27일에 시험을 한 번 쳤다가 아쉽게도 떨어진 전적이 있다. 다행히 내가
+            결제한 </span
+          ><strong><span>LearnOne 구독권</span></strong
+          ><span
+            >에 시험 기회가 두 번 포함되어 있었기에, 한 달 정도 휴식 후 다시
+            마음을 다잡고 공부했다.</span
+          >
+        </p>
+        <p>
+          <span
+            >두 번의 시험을 치르며 느낀 점은, 초기 침투와 권한 상승으로 가는
+            길이 생각보다 단순할 수 있다는 것이다. 또, 자칫하면 rabbit hole에
+            빠져 많은 시간을 낭비할 수 있는 장치가 있다고 느꼈다. 만약 본인이
+            생각한 길이 생각대로 작동하지 않고 계속해서 벽에 부딪힌다면 처음으로
+            돌아가서 Nmap으로 포트 스캐닝을 다시 해보고 더 쉬운 다른 길이 있는지
+            살펴보는 게 도움이 될 것 같다. 아! 그리고 UDP 스캔도 꼭 잊지 않고
+            해야 한다. UDP 161번 포트에 SNMP 서비스가 실행 중일 경우 초기 침투로
+            가는 결정적인 단서가 있을 수 있다.</span
+          >
+        </p>
+        <h1 id="팁"><span>팁</span></h1>
+        <h2 id="cheatsheet"><span>Cheatsheet</span></h2>
+        <p>
+          <span
+            >나는 무조건 본인만의 노트 혹은 Cheatsheet을 만들어야 한다고
+            생각한다. 다른 사람들의 Writeup을 참고하여 나만의 cheatsheet을
+            발전시키는 게 나한테는 정말 큰 도움이 되었다. 같은 문제도 여러
+            사람들의 Writeup을 보면 여러 방식을 배울 수가 있다.</span
+          >
+        </p>
+        <p>
+          <span
+            >지금 생각나는 예시를 하나 들어보자면, Active Directory 네트워크
+            환경에서 첫 번째 머신에서 초기 침투 및 어드민 유저로의 권한 상승까지
+            마쳤고 이제 해당 머신에 있는 SAM 해시를 덤핑할 계획이라고
+            해보자.</span
+          >
+        </p>
+        <ol>
+          <li>
+            <p>
+              <span
+                >첫 번째 사람의 Writeup은 SAM과 SYSTEM 레지스트리 파일을 로컬로
+                옮겨와서 </span
+              ><code>impacket-secretsdump</code><span>로 덤핑하는 방식</span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>두 번째 사람의 Writeup은 </span><code>Mimikatz</code
+              ><span>를 타겟 호스트에 전송한 후에 해시를 덤핑하는 방식</span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <span
+                >마지막으로 세 번째 사람의 Writeup은 탈취한 어드민 세션에서
+                새로운 유저를 만들어서 로컬 어드민 그룹에 추가하고 UAC를
+                비활성화한 후에 로컬 칼리에서 어떠한 파일 전송 도구도 사용하지
+                않고 </span
+              ><code>NetExec</code><span>으로 </span><code>--sam</code
+              ><span> 옵션을 통해서 덤핑하는 방식</span>
+            </p>
+          </li>
+        </ol>
+        <p>
+          <span
+            >세 방식 모두 같은 결과라고 해도 이렇게 다른 사람들의 다양한
+            접근법을 읽고 내 것으로 흡수하는 과정에서 가장 많이 성장했다고
+            생각한다.</span
+          >
+        </p>
+        <h2 id="tools"><span>Tools</span></h2>
+        <p>
+          <span
+            >PEN-200 코스에서 언급되지 않지만 내가 특별히 도움을 많이 받았던
+            3개의 Tool을 소개하고자 한다.</span
+          >
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a target="_blank" href="https://github.com/brightio/penelope"
+                ><span>Penelope</span></a
+              ><span>
+                - 리버스 쉘을 안정적인 TTY로 업그레이드 해주기 때문에 고생해서
+                얻은 쉘이 쉽게 끊어져 혈압이 올라가는 것을 방지해주는 아주
+                고마운 친구.</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <a
+                target="_blank"
+                href="https://github.com/BeichenDream/GodPotato"
+                ><span>GodPotato</span></a
+              ><span> - 개인적인 경험상 </span
+              ><code>SeImpersonatePrivilege</code
+              ><span>
+                유저가 권한이 있을 때 매우 높은 확률로 권한 상승을
+                성공시킨다.</span
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              <a target="_blank" href="https://github.com/Nicocha30/ligolo-ng"
+                ><span>Ligolo-ng</span></a
+              ><span> - 속도와 편의성 면에서 최고의 피보팅 도구.</span>
+            </p>
+          </li>
+        </ul>
+        <h1 id="마치며"><span>마치며</span></h1>
+        <p>
+          <span
+            >나는 아직 펜테스터로서의 실무 경험은 없지만, 이제 OSCP 자격증을
+            취득했으니 이력서를 업데이트를하고 이직 준비를 시작할 생각이다. 이
+            자격증이 내 커리어에 새로운 문을 열어주길 바란다. 또한 애써 배운
+            지식을 잊지 않도록 계속해서 다른 자격증도 알아보고 공부를 이어나갈
+            생각이다. 일단은 나 자신에게 수고했다는 말을 여러 번 해주고 맛있는
+            걸 먹고 쉬어야겠다.</span
+          >
+        </p>
+      </div>
+    </div>
+  </body>
 </html>
