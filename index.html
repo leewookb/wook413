@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
       rel="apple-touch-icon"
       sizes="180x180"
       href="./assets/favicon_io/apple-touch-icon.png"
@@ -21,81 +21,127 @@
       href="./assets/favicon_io/favicon-16x16.png"
     />
     <link rel="manifest" href="./assets/favicon_io/site.webmanifest" />
-    <title>wook413</title>
-    <style>
-      :root {
-        --bg: #ffffff;
-        --text: #1a1a1a;
-        --link: #0066cc;
-        --border: #eeeeee;
-      }
-      body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        padding: 40px 20px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      h1 {
-        font-size: 1.5rem;
-        border-bottom: 2px solid var(--text);
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      td {
-        padding: 12px 5px;
-        border-bottom: 1px solid var(--border);
-      }
-      a {
-        color: var(--link);
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-        background: #f0f7ff;
-      }
-      footer {
-        margin-top: 50px;
-        font-size: 0.8rem;
-        color: #999;
-        text-align: center;
-      }
-      /* 모바일용 미디어 쿼리 (선택사항) */
-      @media (max-width: 600px) {
-        body {
-          padding: 15px;
-        }
-        h1 {
-          font-size: 1.1rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Index of /wook413</h1>
-    <table>
-      <tbody>
-        <tr>
-          <td><a href="../">../</a></td>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<title>wook413</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --row-hover: #eef3f8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 56px 20px 80px;
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 14px;
+    margin: 0 0 28px;
+    word-break: break-all;
+}
+
+table { width: 100%; border-collapse: collapse; }
+
+td {
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+}
+
+td a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--link);
+    text-decoration: none;
+    padding: 12px 10px;
+    border-radius: 6px;
+    margin: 0 -10px;
+}
+
+td a span.label {
+    border-radius: 3px;
+}
+
+td a:hover {
+    background: var(--row-hover);
+}
+
+td a:hover span.label { text-decoration: underline; }
+
+footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 60px; }
+    h1 { font-size: 1.15rem; }
+}
+
+.home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    color: var(--link);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.home-link:hover {
+    background: var(--row-hover, var(--code-bg));
+}
+
+@media (max-width: 600px) {
+    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<h1>Index of /wook413</h1>
+<table>
+<tbody>
+<tr>
+          <td><a href="./README.html"><span>📄</span> <span class="label">README</span></a></td>
         </tr>
-        <tr>
-          <td>📄 <a href="./README.html">README</a></td>
+<tr>
+          <td><a href="./writeups/"><span>📂</span> <span class="label">writeups</span></a></td>
         </tr>
-        <tr>
-          <td>📂 <a href="./writeups/">writeups</a></td>
+<tr>
+          <td><a href="./OSCP/"><span>📂</span> <span class="label">OSCP</span></a></td>
         </tr>
-        <tr>
-          <td>📂 <a href="./OSCP/">OSCP</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <footer>&copy; 2026 wook413.</footer>
-  </body>
+</tbody>
+</table>
+<footer>&copy; 2026 wook413.</footer>
+</body>
 </html>

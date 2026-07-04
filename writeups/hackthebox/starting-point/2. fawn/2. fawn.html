@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<title>2. fawn</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+.home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    color: var(--link);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.home-link:hover {
+    background: var(--row-hover, var(--code-bg));
+}
+
+@media (max-width: 600px) {
+    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<a class="home-link" href="../../../../index.html">🏠 Home</a>
+<div class="page">
+
+<h1 id="htb-fawn">HTB - Fawn</h1><div class="tags"><span class="tag">very-easy</span><span class="tag">linux</span></div>
+<div class="toc">
+<ul>
+<li><a href="#htb-fawn">HTB - Fawn</a><ul>
+<li><a href="#what-does-the-3-letter-acronym-ftp-stand-for">What does the 3-letter acronym FTP stand for?</a></li>
+<li><a href="#which-port-does-the-ftp-service-listen-on-usually">Which port does the FTP service listen on usually?</a></li>
+<li><a href="#ftp-sends-data-in-the-clear-without-any-encryption-what-acronym-is-used-for-a-later-protocol-designed-to-provide-similar-functionality-to-ftp-but-securely-as-an-extension-of-the-ssh-protocol">FTP sends data in the clear, without any encryption. What acronym is used for a later protocol designed to provide similar functionality to FTP but securely, as an extension of the SSH protocol?</a></li>
+<li><a href="#what-is-the-command-we-can-use-to-send-an-icmp-echo-request-to-test-our-connection-to-the-target">What is the command we can use to send an ICMP echo request to test our connection to the target?</a></li>
+<li><a href="#from-your-scans-what-version-is-ftp-running-on-the-target">From your scans, what version is FTP running on the target?</a></li>
+<li><a href="#from-your-scans-what-os-type-is-running-on-the-target">From your scans, what OS type is running on the target?</a></li>
+<li><a href="#what-is-the-command-we-need-to-run-in-order-to-display-the-ftp-client-help-menu">What is the command we need to run in order to display the 'ftp' client help menu?</a></li>
+<li><a href="#what-is-the-username-that-is-used-over-ftp-when-you-want-to-log-in-without-having-an-account">What is the username that is used over FTP when you want to log in without having an account?</a></li>
+<li><a href="#what-is-the-response-code-we-get-for-the-ftp-message-login-successful">What is the response code we get for the FTP message 'Login successful'?</a></li>
+<li><a href="#there-are-a-couple-of-commands-we-can-use-to-list-the-files-and-directories-available-on-the-ftp-server-one-is-dir-what-is-the-other-that-is-a-common-way-to-list-files-on-a-linux-system">There are a couple of commands we can use to list the files and directories available on the FTP server. One is dir. What is the other that is a common way to list files on a Linux system?</a></li>
+<li><a href="#what-is-the-command-used-to-download-the-file-we-found-of-the-ftp-server">What is the command used to download the file we found of the FTP server?</a></li>
+<li><a href="#submit-root-flag">Submit root flag</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h4 id="what-does-the-3-letter-acronym-ftp-stand-for">What does the 3-letter acronym FTP stand for?</h4>
+<p>File Transfer Protocol</p>
+<h4 id="which-port-does-the-ftp-service-listen-on-usually">Which port does the FTP service listen on usually?</h4>
+<p>21</p>
+<h4 id="ftp-sends-data-in-the-clear-without-any-encryption-what-acronym-is-used-for-a-later-protocol-designed-to-provide-similar-functionality-to-ftp-but-securely-as-an-extension-of-the-ssh-protocol">FTP sends data in the clear, without any encryption. What acronym is used for a later protocol designed to provide similar functionality to FTP but securely, as an extension of the SSH protocol?</h4>
+<p>SFTP</p>
+<h4 id="what-is-the-command-we-can-use-to-send-an-icmp-echo-request-to-test-our-connection-to-the-target">What is the command we can use to send an ICMP echo request to test our connection to the target?</h4>
+<p>ping</p>
+<h4 id="from-your-scans-what-version-is-ftp-running-on-the-target">From your scans, what version is FTP running on the target?</h4>
+<p>vsftpd 3.0.3</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap 10.129.1.47 -Pn -n --open --min-rate 3000 -p- 
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-06 18:58 UTC
+Nmap scan report for 10.129.1.47
+Host is up (0.046s latency).
+Not shown: 61808 closed tcp ports (reset), 3726 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT   STATE SERVICE
+21/tcp open  ftp
+
+Nmap done: 1 IP address (1 host up) scanned in 19.05 seconds
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap 10.129.1.47 -sC -sV -p 21                    
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-06 18:59 UTC
+Nmap scan report for 10.129.1.47
+Host is up (0.045s latency).
+
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.10.14.63
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 1
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+Service Info: OS: Unix
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1.38 seconds
+</code></pre>
+<h4 id="from-your-scans-what-os-type-is-running-on-the-target">From your scans, what OS type is running on the target?</h4>
+<p>Unix</p>
+<h4 id="what-is-the-command-we-need-to-run-in-order-to-display-the-ftp-client-help-menu">What is the command we need to run in order to display the 'ftp' client help menu?</h4>
+<p><code>ftp -?</code></p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ ftp -?
+usage: ftp [-46AadefginpRtVv] [-N NETRC] [-o OUTPUT] [-P PORT] [-q QUITTIME]
+           [-r RETRY] [-s SRCADDR] [-T DIR,MAX[,INC]] [-x XFERSIZE]
+           [[USER@]HOST [PORT]]
+           [[USER@]HOST:[PATH][/]]
+           [file:///PATH]
+           [ftp://[USER[:PASSWORD]@]HOST[:PORT]/PATH[/][;type=TYPE]]
+           [http://[USER[:PASSWORD]@]HOST[:PORT]/PATH]
+           [https://[USER[:PASSWORD]@]HOST[:PORT]/PATH]
+           ...
+       ftp -u URL FILE ...
+       ftp -?
+  -4            Only use IPv4 addresses
+  -6            Only use IPv6 addresses
+  -A            Force active mode
+  -a            Use anonymous login
+  -d            Enable debugging
+  -e            Disable command-line editing
+  -f            Force cache reload for FTP or HTTP proxy transfers
+  -g            Disable file name globbing
+  -i            Disable interactive prompt during multiple file transfers
+  -N NETRC      Use NETRC instead of ~/.netrc
+  -n            Disable auto-login
+  -o OUTPUT     Save auto-fetched files to OUTPUT
+  -P PORT       Use port PORT
+  -p            Force passive mode
+  -q QUITTIME   Quit if connection stalls for QUITTIME seconds
+  -R            Restart non-proxy auto-fetch
+  -r RETRY      Retry failed connection attempts after RETRY seconds
+  -s SRCADDR    Use source address SRCADDR
+  -t            Enable packet tracing
+  -T DIR,MAX[,INC]
+                Set maximum transfer rate for direction DIR to MAX bytes/s,
+                with optional increment INC bytes/s
+  -u URL        URL to upload file arguments to
+  -V            Disable verbose and progress
+  -v            Enable verbose and progress
+  -x XFERSIZE   Set socket send and receive size to XFERSIZE
+  -?            Display this help and exit
+</code></pre>
+<h4 id="what-is-the-username-that-is-used-over-ftp-when-you-want-to-log-in-without-having-an-account">What is the username that is used over FTP when you want to log in without having an account?</h4>
+<p>anonymous</p>
+<h4 id="what-is-the-response-code-we-get-for-the-ftp-message-login-successful">What is the response code we get for the FTP message 'Login successful'?</h4>
+<p>230</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ ftp $IP
+Connected to 10.129.1.47.
+220 (vsFTPd 3.0.3)
+Name (10.129.1.47:kali): anonymous
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+</code></pre>
+<h4 id="there-are-a-couple-of-commands-we-can-use-to-list-the-files-and-directories-available-on-the-ftp-server-one-is-dir-what-is-the-other-that-is-a-common-way-to-list-files-on-a-linux-system">There are a couple of commands we can use to list the files and directories available on the FTP server. One is <code>dir</code>. What is the other that is a common way to list files on a Linux system?</h4>
+<p><code>ls</code></p>
+<pre><code class="language-bash">ftp&gt; ls
+229 Entering Extended Passive Mode (|||44128|)
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+</code></pre>
+<h4 id="what-is-the-command-used-to-download-the-file-we-found-of-the-ftp-server">What is the command used to download the file we found of the FTP server?</h4>
+<p><code>get</code></p>
+<pre><code class="language-bash">ftp&gt; get flag.txt
+local: flag.txt remote: flag.txt
+229 Entering Extended Passive Mode (|||57017|)
+150 Opening BINARY mode data connection for flag.txt (32 bytes).
+100% |*********************************************************************************************|    32       15.43 KiB/s    00:00 ETA
+226 Transfer complete.
+32 bytes received in 00:00 (0.67 KiB/s)
+</code></pre>
+<h4 id="submit-root-flag">Submit root flag</h4>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ cat flag.txt
+035d...
+</code></pre>
+<footer>&copy; 2026 wook413.</footer>
+</div>
+</body>
+</html>

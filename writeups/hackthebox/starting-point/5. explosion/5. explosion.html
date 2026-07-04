@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<title>5. explosion</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+.home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    color: var(--link);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.home-link:hover {
+    background: var(--row-hover, var(--code-bg));
+}
+
+@media (max-width: 600px) {
+    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<a class="home-link" href="../../../../index.html">🏠 Home</a>
+<div class="page">
+
+<h1 id="htb-explosion">HTB - Explosion</h1><div class="tags"><span class="tag">very-easy</span><span class="tag">windows</span></div>
+<div class="toc">
+<ul>
+<li><a href="#htb-explosion">HTB - Explosion</a><ul>
+<li><a href="#what-does-the-3-letter-acronym-rdp-stand-for">What does the 3-letter acronym RDP stand for?</a></li>
+<li><a href="#what-is-a-3-letter-acronym-that-refers-to-interaction-with-the-host-through-a-command-line-interface">What is a 3-letter acronym that refers to interaction with the host through a command line interface?</a></li>
+<li><a href="#what-about-graphical-user-interface-interactions">What about graphical user interface interactions?</a></li>
+<li><a href="#what-is-the-name-of-an-old-remote-access-tool-that-came-without-encryption-by-default-and-listens-on-tcp-port-23">What is the name of an old remote access tool that came without encryption by default and listens on TCP port 23?</a></li>
+<li><a href="#what-is-the-name-of-the-service-running-on-port-3389-tcp">What is the name of the service running on port 3389 TCP?</a></li>
+<li><a href="#what-is-the-switch-used-to-specify-the-target-hosts-ip-address-when-using-xfreerdp">What is the switch used to specify the target host's IP address when using xfreerdp?</a></li>
+<li><a href="#what-username-successfully-returns-a-desktop-projection-to-us-with-a-blank-password">What username successfully returns a desktop projection to us with a blank password?</a></li>
+<li><a href="#submit-root-flag">Submit root flag</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h4 id="what-does-the-3-letter-acronym-rdp-stand-for">What does the 3-letter acronym RDP stand for?</h4>
+<p>Remote Desktop Protocol</p>
+<h4 id="what-is-a-3-letter-acronym-that-refers-to-interaction-with-the-host-through-a-command-line-interface">What is a 3-letter acronym that refers to interaction with the host through a command line interface?</h4>
+<p>CLI</p>
+<h4 id="what-about-graphical-user-interface-interactions">What about graphical user interface interactions?</h4>
+<p>GUI</p>
+<h4 id="what-is-the-name-of-an-old-remote-access-tool-that-came-without-encryption-by-default-and-listens-on-tcp-port-23">What is the name of an old remote access tool that came without encryption by default and listens on TCP port 23?</h4>
+<p>telnet</p>
+<h4 id="what-is-the-name-of-the-service-running-on-port-3389-tcp">What is the name of the service running on port 3389 TCP?</h4>
+<p>ms-wbt-server</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop/vpn]
+└─$ nmap $IP -Pn -n --open --min-rate 3000 -p-
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-09 03:00 UTC
+Nmap scan report for 10.129.1.13
+Host is up (0.048s latency).
+Not shown: 64563 closed tcp ports (reset), 958 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+3389/tcp  open  ms-wbt-server
+5985/tcp  open  wsman
+47001/tcp open  winrm
+49664/tcp open  unknown
+49665/tcp open  unknown
+49666/tcp open  unknown
+49667/tcp open  unknown
+49668/tcp open  unknown
+49669/tcp open  unknown
+49670/tcp open  unknown
+49671/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 15.47 seconds
+</code></pre>
+<h4 id="what-is-the-switch-used-to-specify-the-target-hosts-ip-address-when-using-xfreerdp">What is the switch used to specify the target host's IP address when using xfreerdp?</h4>
+<p><code>/v:</code></p>
+<h4 id="what-username-successfully-returns-a-desktop-projection-to-us-with-a-blank-password">What username successfully returns a desktop projection to us with a blank password?</h4>
+<p>Administrator</p>
+<p><img alt="image-20260308220411857" src="./5. explosion.assets/image-20260308220411857.png" /></p>
+<h4 id="submit-root-flag">Submit root flag</h4>
+<p>951f...</p>
+<p><img alt="image-20260308220513646" src="./5. explosion.assets/image-20260308220513646.png" /></p>
+<footer>&copy; 2026 wook413.</footer>
+</div>
+</body>
+</html>
