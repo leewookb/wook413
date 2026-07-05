@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<title>lab12</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    accent-color: var(--code-accent);
+    vertical-align: -2px;
+}
+
+.task-list-item del { color: var(--muted); }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+.home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    color: var(--link);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.home-link:hover {
+    background: var(--row-hover, var(--code-bg));
+}
+
+@media (max-width: 600px) {
+    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<a class="home-link" href="../../../../index.html">🏠 Home</a>
+<div class="page">
+<div class="byline">Write-up by wook413</div>
+<h1 id="blind-sql-injection-with-conditional-errors">Blind SQL injection with conditional errors</h1>
+<p>This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie.</p>
+<p>The results of the SQL query are not returned, and the application does not respond any differently based on whether the query returns any rows. If the SQL query causes an error, then the application returns a custom error message.</p>
+<p>The database contains a different table called <code>users</code>, with columns called <code>username</code> and <code>password</code>. You need to exploit the blind SQL injection vulnerability to find out the password of the <code>administrator</code> user.</p>
+<p>To solve the lab, log in as the <code>administrator</code> user.</p>
+<hr />
+<p>I clicked <strong>My account</strong> button on the main page.</p>
+<p><img alt="image-20260704221733780" src="./lab12.assets/image-20260704221733780.png" /></p>
+<p>I intercepted the request and sent it to <strong>Burp Repeater</strong>. As in the previous lab, we're assigned a cookie.</p>
+<p><img alt="image-20260704224012864" src="./lab12.assets/image-20260704224012864.png" /></p>
+<p>Unlike the previous lab, though, changing the cookie value to a random string doesn't produce an error. The server just returned a <strong>200 OK</strong>.</p>
+<p><img alt="image-20260704224104562" src="./lab12.assets/image-20260704224104562.png" /></p>
+<p>However, when I appended a single quote <code>'</code>, it returned a <strong>500 Internal Server Error</strong>.</p>
+<p><img alt="image-20260704224140758" src="./lab12.assets/image-20260704224140758.png" /></p>
+<p><img alt="image-20260704224207711" src="./lab12.assets/image-20260704224207711.png" /></p>
+<p>As the lab title suggests, we need to exploit this using conditional errors. Referring to the provided SQL injection cheat sheet, I came up with the following payload: <code>6Ef8LW426dGFRB1P' AND (SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE 'wook' END FROM dual) = 'wook'--</code></p>
+<p><img alt="image-20260704224730439" src="./lab12.assets/image-20260704224730439.png" /></p>
+<p>The logic here is: if the condition evaluates to true, the server tries to evaluate <code>TO_CHAR(1/0)</code>, which throws a <strong>division-by-zero error</strong>. If the condition is false, it returns a <code>'wook'</code> instead, which is then compared against the <code>'wook'</code> string outside the subquery. If they match, the overall expression is true; otherwise, false. </p>
+<p>I started with <code>1=2</code>, which is always false, so the subquery returns <code>'wook'</code>, which matches the outer <code>'wook'</code>, and the whole thing evaluates to true. It didn't error, as expected.</p>
+<p><img alt="image-20260704224714589" src="./lab12.assets/image-20260704224714589.png" /></p>
+<p>When I changed the condition to <code>1=1</code>, the server returned <strong>a 500 error</strong>, confirming the injection point works as intended.</p>
+<p><img alt="image-20260704224815091" src="./lab12.assets/image-20260704224815091.png" /></p>
+<p>Now that I'd validated the technique, I used it to find the length of the administrator's password:</p>
+<pre><code>`6Ef8LW426dGFRB1P' AND (SELECT CASE WHEN (LENGTH(password) &gt; 1) THEN TO_CHAR(1/0) ELSE 'wook' END FROM users WHERE username = 'administrator') = 'wook' -- `
+</code></pre>
+<p>This returned a 500 error, confirming the password length is greater than 1.</p>
+<p><img alt="image-20260704225354030" src="./lab12.assets/image-20260704225354030.png" /></p>
+<p>As a sanity check, I changed the <code>1</code> to <code>100</code>, and the server returned a 200 OK, confirming the password is shorter than 100 characters.</p>
+<p><img alt="image-20260704225427225" src="./lab12.assets/image-20260704225427225.png" /></p>
+<p>I sent the request to Intruder and set <code>100</code> as the payload position, sweeping values from 1 to 30.</p>
+<p><img alt="image-20260704225547257" src="./lab12.assets/image-20260704225547257.png" /></p>
+<p>The attack finished within seconds. Looking at the results, the response length stayed at 2555 with a 500 status code up through payload <strong>19</strong> but at <strong>20</strong> the status flipped to 200 and the response length jumped to 3361. This confirmed the password length is 20 characters.</p>
+<p><img alt="image-20260704225656418" src="./lab12.assets/image-20260704225656418.png" /></p>
+<p>With the length known, I moved on to extracting the password character by character:</p>
+<pre><code>6Ef8LW426dGFRB1P' AND (SELECT CASE WHEN (SUBSTR(password, 1, 1) = 'a') THEN TO_CHAR(1/0) ELSE 'wook' END FROM users WHERE username = 'administrator') = 'wook' -- 
+</code></pre>
+<p>This returned a 200 OK, meaning the first character isn't <code>'a'</code>.</p>
+<p><img alt="image-20260704230033702" src="./lab12.assets/image-20260704230033702.png" /></p>
+<p>I sent the request to Intruder again, this time with two payload positions: one sweeping the character position from 1 to 20, and the other sweeping candidate characters from a-z and 0-9.</p>
+<p>Since there are two independent payload sets, I used <strong>Cluster Bomb mode</strong> instead of <strong>Sniper mode</strong>.</p>
+<p><img alt="image-20260704230214294" src="./lab12.assets/image-20260704230214294.png" /></p>
+<p><img alt="image-20260704230233562" src="./lab12.assets/image-20260704230233562.png" /></p>
+<p><img alt="image-20260704230300305" src="./lab12.assets/image-20260704230300305.png" /></p>
+<p>This attack also completed in just a few seconds after I ran it. Sorting the results by response length and then status code, I found exactly 20 results with a response length of <strong>2555</strong> and status code <strong>500</strong> -- matching the password length exactly, which confirmed these were the correct characters. The extracted password was <code>5vjmmnpr8281md1bvksp</code>.</p>
+<p><img alt="image-20260704230428844" src="./lab12.assets/image-20260704230428844.png" /></p>
+<p>I logged in as the administrator using the password.</p>
+<p><img alt="image-20260704230514130" src="./lab12.assets/image-20260704230514130.png" /></p>
+<h3 id="solved">Solved!</h3>
+<p><img alt="image-20260704230530339" src="./lab12.assets/image-20260704230530339.png" /></p>
+<footer>&copy; 2026 wook413.</footer>
+</div>
+</body>
+</html>
