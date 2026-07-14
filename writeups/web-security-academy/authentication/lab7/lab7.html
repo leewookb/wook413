@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<title>lab7</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    accent-color: var(--code-accent);
+    vertical-align: -2px;
+}
+
+.task-list-item del { color: var(--muted); }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+.home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    color: var(--link);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+
+.home-link:hover {
+    background: var(--row-hover, var(--code-bg));
+}
+
+@media (max-width: 600px) {
+    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<a class="home-link" href="../../../../index.html">🏠 Home</a>
+<div class="page">
+<div class="byline">Write-up by wook413</div>
+<h1 id="lab-username-enumeration-via-account-lock">Lab: Username enumeration via account lock</h1>
+<p>This lab is vulnerable to username enumeration. It uses account locking, but this contains a logic flaw. To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.</p>
+<ul>
+<li><a href="https://portswigger.net/web-security/authentication/auth-lab-usernames">Candidate usernames</a></li>
+<li><a href="https://portswigger.net/web-security/authentication/auth-lab-passwords">Candidate passwords</a></li>
+</ul>
+<hr />
+<p>I went straight to the login form and tried and invalid credential pair, <code>wook:wook</code>.</p>
+<p><img alt="image-20260713202428572" src="./lab7.assets/image-20260713202428572.png" /></p>
+<p>The server returned "<strong>Invalid username or password.</strong>" I sent the same request through Burp Repeater more than 10 times, but it kept returning the same message. No account lockout occurred.</p>
+<p><img alt="image-20260713202656096" src="./lab7.assets/image-20260713202656096.png" /></p>
+<p>I suspected the lockout logic was flawed and only triggered for valid usernames. To test this theory, I sent the request to Burp Intruder and set the attack type to <strong>Cluster bomb</strong>. I added a payload position on the <code>username</code> parameter, and a second, blank payload position after the <code>password</code> value.</p>
+<p><img alt="image-20260713203931977" src="./lab7.assets/image-20260713203931977.png" /></p>
+<p>For the second position, I set the payload type to <code>Null payloads</code> and configured it to generate 5 payloads. This effectively repeats each username 5 times in a row, letting me check whether any username triggers a lockout after repeated failed attempts.</p>
+<p><img alt="image-20260713204009469" src="./lab7.assets/image-20260713204009469.png" /></p>
+<p>I ran the attack, and only one payload group returned a different response length. <code>app01</code>.</p>
+<p><img alt="image-20260713204058543" src="./lab7.assets/image-20260713204058543.png" /></p>
+<p>Pulling it up, the server returned <strong>"You have made too many incorrect login attempts. Please try again in 1 minute(s)."</strong></p>
+<p><img alt="image-20260713204140346" src="./lab7.assets/image-20260713204140346.png" /></p>
+<p>Every other request still returned <strong>"Invalid username or password"</strong>, confirming those usernames were invalid.</p>
+<p><img alt="image-20260713204208173" src="./lab7.assets/image-20260713204208173.png" /></p>
+<p>Now that I had a valid username, it was time to find the password. I switched the attack type back to <strong>Sniper</strong>, set the <code>password</code> parameter as the payload position, and loaded the provided password wordlist.</p>
+<p><img alt="image-20260713204308233" src="./lab7.assets/image-20260713204308233.png" /></p>
+<p>I ran the attack. All requests returned a <strong>200 OK</strong> status, as expected. One payload returns a distinct response length of 3266 with no error message. This is a strong indicator of success. Three payloads returned 3344, containing "<strong>Invalid username or password,</strong>" and the rest returned 3396, containing "<strong>You have made too many incorrect login attempts. Please try again in 1 minute(s)</strong>". This confirmed the account locks after 3 failed attempts: the first 3 wrong guesses return the standard error, and every attempt after that returns the lockout message instead until the successful attempt breaks the pattern.</p>
+<p><img alt="image-20260713204510322" src="./lab7.assets/image-20260713204510322.png" /></p>
+<p>I successfully authenticated as <code>app01</code> with the password.</p>
+<h3 id="solved">Solved!</h3>
+<p><img alt="image-20260713204559212" src="./lab7.assets/image-20260713204559212.png" /></p>
+<footer>&copy; 2026 wook413.</footer>
+</div>
+</body>
+</html>
