@@ -5,10 +5,7 @@ Hi, my name is Wook.
 I’m not sure how you found your way to this corner of the internet, but I built this space because my internal storage has hit its limit. I needed a place to dump everything I'm learning and showcase my work.
 
 - [x] ~~Studying for OSCP~~ OSCP Certified as of 3/2/2026
-- [ ] Web Security Academy labs & BSCP
-- [ ] Get hired as a Penetration Tester
-
-This blog tracks my evolution into a pentester, a red teamer, and hopefully, a more knowledgeable (but still likable) human being.
+- [ ] Currently solving Web Security Academy labs to prepare BSCP certification
 
 <img src="./assets/wook_photo.jpg" alt="" style="width: 200px; display: block; margin: 0 auto;">
 
