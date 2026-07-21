@@ -75,14 +75,30 @@ td a {
     padding: 12px 10px;
     border-radius: 6px;
     margin: 0 -10px;
+    transition: background 0.15s ease;
 }
 
 td a span.label {
     border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.92em;
+}
+
+td a .bracket {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.78em;
+    color: var(--muted);
+    flex: none;
+    width: 3.6em;
+    transition: color 0.15s ease;
 }
 
 td a:hover {
     background: var(--row-hover);
+}
+
+td a:hover .bracket {
+    color: var(--link);
 }
 
 td a:hover span.label { text-decoration: underline; }
@@ -127,40 +143,40 @@ footer {
 </style>
 </head>
 <body>
-<a class="home-link" href="../index.html">🏠 Home</a>
+<a class="home-link" href="../index.html">Home</a>
 <h1>Index of /wook413/OSCP</h1>
 <table>
 <tbody>
 <tr>
           <td>
-            <a href="../"><span>⤴️</span> <span class="label">../</span></a>
+            <a href="../"><span class="bracket">[UP]</span> <span class="label">../</span></a>
           </td>
         </tr>
 <tr>
           <td>
             <a target="_blank" href="./OSCP+ Certificate.pdf"
-              ><span>📜</span> <span class="label">OSCP+ Certificate</span></a
+              ><span class="bracket">[PDF]</span> <span class="label">OSCP+ Certificate</span></a
             >
           </td>
         </tr>
 <tr>
           <td>
             <a target="_blank" href="./OSCP Certificate.pdf"
-              ><span>📜</span> <span class="label">OSCP Certificate</span></a
+              ><span class="bracket">[PDF]</span> <span class="label">OSCP Certificate</span></a
             >
           </td>
         </tr>
 <tr>
           <td>
             <a target="_blank" href="./OSCP 후기.html"
-              ><span>📄</span> <span class="label">OSCP 후기</span></a
+              ><span class="bracket">[TXT]</span> <span class="label">OSCP 후기</span></a
             >
           </td>
         </tr>
 <tr>
           <td>
             <a target="_blank" href="./Wook OSCP Approach.svg"
-              ><span>🖼️</span>
+              ><span class="bracket">[IMG]</span>
               <span class="label">Wook's OSCP Approach.svg</span></a
             >
           </td>
@@ -170,7 +186,7 @@ footer {
             <a
               target="_blank"
               href="https://www.notion.so/leewookb/Wook-s-OSCP-Notes-2e256e0e1b6a8031a771c93385658fe9?source=copy_link"
-              ><span>📓</span> <span class="label">Wook's OSCP Notes</span></a
+              ><span class="bracket">[EXT]</span> <span class="label">Wook's OSCP Notes</span></a
             >
           </td>
         </tr>

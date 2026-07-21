@@ -60,14 +60,30 @@ td a {
     padding: 12px 10px;
     border-radius: 6px;
     margin: 0 -10px;
+    transition: background 0.15s ease;
 }
 
 td a span.label {
     border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.92em;
+}
+
+td a .bracket {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.78em;
+    color: var(--muted);
+    flex: none;
+    width: 3.6em;
+    transition: color 0.15s ease;
 }
 
 td a:hover {
     background: var(--row-hover);
+}
+
+td a:hover .bracket {
+    color: var(--link);
 }
 
 td a:hover span.label { text-decoration: underline; }
@@ -112,40 +128,40 @@ footer {
 </style>
 </head>
 <body>
-<a class="home-link" href="../../index.html">🏠 Home</a>
-<h1>Index of /wook413/writeups/proving-grounds</h1>
+<a class="home-link" href="../../index.html">Home</a>
+<h1>Index of /wook413/proving-grounds</h1>
 <table>
 <tbody>
-<tr><td><a href="../"><span>⤴️</span> <span class="label">../</span></a></td></tr>
-<tr><td><a href="./access/"><span>📂</span> <span class="label">access/</span></a></td></tr>
-<tr><td><a href="./algernon/"><span>📂</span> <span class="label">algernon/</span></a></td></tr>
-<tr><td><a href="./apex/"><span>📂</span> <span class="label">apex/</span></a></td></tr>
-<tr><td><a href="./astronaut/"><span>📂</span> <span class="label">astronaut/</span></a></td></tr>
-<tr><td><a href="./bullybox/"><span>📂</span> <span class="label">bullybox/</span></a></td></tr>
-<tr><td><a href="./craft/"><span>📂</span> <span class="label">craft/</span></a></td></tr>
-<tr><td><a href="./exfiltrated/"><span>📂</span> <span class="label">exfiltrated/</span></a></td></tr>
-<tr><td><a href="./extplorer/"><span>📂</span> <span class="label">extplorer/</span></a></td></tr>
-<tr><td><a href="./fanatastic/"><span>📂</span> <span class="label">fanatastic/</span></a></td></tr>
-<tr><td><a href="./flu/"><span>📂</span> <span class="label">flu/</span></a></td></tr>
-<tr><td><a href="./hokkaido/"><span>📂</span> <span class="label">hokkaido/</span></a></td></tr>
-<tr><td><a href="./hunit/"><span>📂</span> <span class="label">hunit/</span></a></td></tr>
-<tr><td><a href="./jacko/"><span>📂</span> <span class="label">jacko/</span></a></td></tr>
-<tr><td><a href="./marketing/"><span>📂</span> <span class="label">marketing/</span></a></td></tr>
-<tr><td><a href="./medjed/"><span>📂</span> <span class="label">medjed/</span></a></td></tr>
-<tr><td><a href="./nickel/"><span>📂</span> <span class="label">nickel/</span></a></td></tr>
-<tr><td><a href="./pc/"><span>📂</span> <span class="label">pc/</span></a></td></tr>
-<tr><td><a href="./peppo/"><span>📂</span> <span class="label">peppo/</span></a></td></tr>
-<tr><td><a href="./postfish/"><span>📂</span> <span class="label">postfish/</span></a></td></tr>
-<tr><td><a href="./quackerjack/"><span>📂</span> <span class="label">quackerjack/</span></a></td></tr>
-<tr><td><a href="./readys/"><span>📂</span> <span class="label">readys/</span></a></td></tr>
-<tr><td><a href="./roquefort/"><span>📂</span> <span class="label">roquefort/</span></a></td></tr>
-<tr><td><a href="./shenzi/"><span>📂</span> <span class="label">shenzi/</span></a></td></tr>
-<tr><td><a href="./sorcerer/"><span>📂</span> <span class="label">sorcerer/</span></a></td></tr>
-<tr><td><a href="./squid/"><span>📂</span> <span class="label">squid/</span></a></td></tr>
-<tr><td><a href="./sybaris/"><span>📂</span> <span class="label">sybaris/</span></a></td></tr>
-<tr><td><a href="./vault/"><span>📂</span> <span class="label">vault/</span></a></td></tr>
-<tr><td><a href="./walla/"><span>📂</span> <span class="label">walla/</span></a></td></tr>
-<tr><td><a href="./wombo/"><span>📂</span> <span class="label">wombo/</span></a></td></tr>
+<tr><td><a href="../../"><span class="bracket">[UP]</span> <span class="label">../</span></a></td></tr>
+<tr><td><a href="./access/"><span class="bracket">[DIR]</span> <span class="label">access</span></a></td></tr>
+<tr><td><a href="./algernon/"><span class="bracket">[DIR]</span> <span class="label">algernon</span></a></td></tr>
+<tr><td><a href="./apex/"><span class="bracket">[DIR]</span> <span class="label">apex</span></a></td></tr>
+<tr><td><a href="./astronaut/"><span class="bracket">[DIR]</span> <span class="label">astronaut</span></a></td></tr>
+<tr><td><a href="./bullybox/"><span class="bracket">[DIR]</span> <span class="label">bullybox</span></a></td></tr>
+<tr><td><a href="./craft/"><span class="bracket">[DIR]</span> <span class="label">craft</span></a></td></tr>
+<tr><td><a href="./exfiltrated/"><span class="bracket">[DIR]</span> <span class="label">exfiltrated</span></a></td></tr>
+<tr><td><a href="./extplorer/"><span class="bracket">[DIR]</span> <span class="label">extplorer</span></a></td></tr>
+<tr><td><a href="./fanatastic/"><span class="bracket">[DIR]</span> <span class="label">fanatastic</span></a></td></tr>
+<tr><td><a href="./flu/"><span class="bracket">[DIR]</span> <span class="label">flu</span></a></td></tr>
+<tr><td><a href="./hokkaido/"><span class="bracket">[DIR]</span> <span class="label">hokkaido</span></a></td></tr>
+<tr><td><a href="./hunit/"><span class="bracket">[DIR]</span> <span class="label">hunit</span></a></td></tr>
+<tr><td><a href="./jacko/"><span class="bracket">[DIR]</span> <span class="label">jacko</span></a></td></tr>
+<tr><td><a href="./marketing/"><span class="bracket">[DIR]</span> <span class="label">marketing</span></a></td></tr>
+<tr><td><a href="./medjed/"><span class="bracket">[DIR]</span> <span class="label">medjed</span></a></td></tr>
+<tr><td><a href="./nickel/"><span class="bracket">[DIR]</span> <span class="label">nickel</span></a></td></tr>
+<tr><td><a href="./pc/"><span class="bracket">[DIR]</span> <span class="label">pc</span></a></td></tr>
+<tr><td><a href="./peppo/"><span class="bracket">[DIR]</span> <span class="label">peppo</span></a></td></tr>
+<tr><td><a href="./postfish/"><span class="bracket">[DIR]</span> <span class="label">postfish</span></a></td></tr>
+<tr><td><a href="./quackerjack/"><span class="bracket">[DIR]</span> <span class="label">quackerjack</span></a></td></tr>
+<tr><td><a href="./readys/"><span class="bracket">[DIR]</span> <span class="label">readys</span></a></td></tr>
+<tr><td><a href="./roquefort/"><span class="bracket">[DIR]</span> <span class="label">roquefort</span></a></td></tr>
+<tr><td><a href="./shenzi/"><span class="bracket">[DIR]</span> <span class="label">shenzi</span></a></td></tr>
+<tr><td><a href="./sorcerer/"><span class="bracket">[DIR]</span> <span class="label">sorcerer</span></a></td></tr>
+<tr><td><a href="./squid/"><span class="bracket">[DIR]</span> <span class="label">squid</span></a></td></tr>
+<tr><td><a href="./sybaris/"><span class="bracket">[DIR]</span> <span class="label">sybaris</span></a></td></tr>
+<tr><td><a href="./vault/"><span class="bracket">[DIR]</span> <span class="label">vault</span></a></td></tr>
+<tr><td><a href="./walla/"><span class="bracket">[DIR]</span> <span class="label">walla</span></a></td></tr>
+<tr><td><a href="./wombo/"><span class="bracket">[DIR]</span> <span class="label">wombo</span></a></td></tr>
 </tbody>
 </table>
 <footer>&copy; 2026 wook413.</footer>

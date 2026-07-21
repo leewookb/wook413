@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<title>2. fawn</title>
+<title>fawn</title>
 <style>
 :root {
     --bg: #fdfbf7;
@@ -149,6 +149,19 @@ hr {
 
 ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
 li { margin: 0.4em 0; }
+
+ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    accent-color: var(--code-accent);
+    vertical-align: -2px;
+}
+
+.task-list-item del { color: var(--muted); }
 
 /* inline code */
 code {

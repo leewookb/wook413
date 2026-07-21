@@ -93,5 +93,5 @@ Finished
 
 6483...
 
-![image-20260308222651677](./6. preignition.assets/image-20260308222651677.png)
+![image-20260308222651677](./preignition.assets/image-20260308222651677.png)
 

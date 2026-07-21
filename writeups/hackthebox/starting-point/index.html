@@ -60,14 +60,30 @@ td a {
     padding: 12px 10px;
     border-radius: 6px;
     margin: 0 -10px;
+    transition: background 0.15s ease;
 }
 
 td a span.label {
     border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.92em;
+}
+
+td a .bracket {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.78em;
+    color: var(--muted);
+    flex: none;
+    width: 3.6em;
+    transition: color 0.15s ease;
 }
 
 td a:hover {
     background: var(--row-hover);
+}
+
+td a:hover .bracket {
+    color: var(--link);
 }
 
 td a:hover span.label { text-decoration: underline; }
@@ -112,18 +128,18 @@ footer {
 </style>
 </head>
 <body>
-<a class="home-link" href="../../../index.html">🏠 Home</a>
-<h1>Index of /wook413/writeups/hackthebox/starting-point</h1>
+<a class="home-link" href="../../../index.html">Home</a>
+<h1>Index of /wook413/hackthebox/starting-point</h1>
 <table>
 <tbody>
-<tr><td><a href="../"><span>⤴️</span> <span class="label">../</span></a></td></tr>
-<tr><td><a href="./1. meow/"><span>📂</span> <span class="label">1. meow/</span></a></td></tr>
-<tr><td><a href="./2. fawn/"><span>📂</span> <span class="label">2. fawn/</span></a></td></tr>
-<tr><td><a href="./3. dancing/"><span>📂</span> <span class="label">3. dancing/</span></a></td></tr>
-<tr><td><a href="./4. redeemer/"><span>📂</span> <span class="label">4. redeemer/</span></a></td></tr>
-<tr><td><a href="./5. explosion/"><span>📂</span> <span class="label">5. explosion/</span></a></td></tr>
-<tr><td><a href="./6. preignition/"><span>📂</span> <span class="label">6. preignition/</span></a></td></tr>
-<tr><td><a href="./7. mongod/"><span>📂</span> <span class="label">7. mongod/</span></a></td></tr>
+<tr><td><a href="../"><span class="bracket">[UP]</span> <span class="label">../</span></a></td></tr>
+<tr><td><a href="./meow/"><span class="bracket">[DIR]</span> <span class="label">meow</span></a></td></tr>
+<tr><td><a href="./fawn/"><span class="bracket">[DIR]</span> <span class="label">fawn</span></a></td></tr>
+<tr><td><a href="./dancing/"><span class="bracket">[DIR]</span> <span class="label">dancing</span></a></td></tr>
+<tr><td><a href="./redeemer/"><span class="bracket">[DIR]</span> <span class="label">redeemer</span></a></td></tr>
+<tr><td><a href="./explosion/"><span class="bracket">[DIR]</span> <span class="label">explosion</span></a></td></tr>
+<tr><td><a href="./preignition/"><span class="bracket">[DIR]</span> <span class="label">preignition</span></a></td></tr>
+<tr><td><a href="./mongod/"><span class="bracket">[DIR]</span> <span class="label">mongod</span></a></td></tr>
 </tbody>
 </table>
 <footer>&copy; 2026 wook413.</footer>

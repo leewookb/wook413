@@ -60,14 +60,30 @@ td a {
     padding: 12px 10px;
     border-radius: 6px;
     margin: 0 -10px;
+    transition: background 0.15s ease;
 }
 
 td a span.label {
     border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.92em;
+}
+
+td a .bracket {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.78em;
+    color: var(--muted);
+    flex: none;
+    width: 3.6em;
+    transition: color 0.15s ease;
 }
 
 td a:hover {
     background: var(--row-hover);
+}
+
+td a:hover .bracket {
+    color: var(--link);
 }
 
 td a:hover span.label { text-decoration: underline; }
@@ -112,13 +128,13 @@ footer {
 </style>
 </head>
 <body>
-<a class="home-link" href="../../../index.html">🏠 Home</a>
-<h1>Index of /wook413/writeups/proving-grounds/pc</h1>
+<a class="home-link" href="../../../index.html">Home</a>
+<h1>Index of /wook413/proving-grounds/pc</h1>
 <table>
 <tbody>
-<tr><td><a href="../"><span>⤴️</span> <span class="label">../</span></a></td></tr>
-<tr><td><a href="./pc.html"><span>📄</span> <span class="label">pc.html</span></a></td></tr>
-<tr><td><a href="./pc.md"><span>📄</span> <span class="label">pc.md</span></a></td></tr>
+<tr><td><a href="../"><span class="bracket">[UP]</span> <span class="label">../</span></a></td></tr>
+<tr><td><a href="./pc.html"><span class="bracket">[TXT]</span> <span class="label">pc.html</span></a></td></tr>
+<tr><td><a href="./pc.md"><span class="bracket">[TXT]</span> <span class="label">pc.md</span></a></td></tr>
 </tbody>
 </table>
 <footer>&copy; 2026 wook413.</footer>

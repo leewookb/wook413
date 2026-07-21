@@ -58,7 +58,7 @@ NoSQL
 
 `mongosh`
 
-![image-20260308224637400](./7. mongod.assets/image-20260308224637400.png)
+![image-20260308224637400](./mongod.assets/image-20260308224637400.png)
 
 ```bash
 
@@ -81,18 +81,18 @@ I encountered a `MongoServerSelectionError` because `mongo 2.x` requires at leas
 └─$ sudo apt remove mongodb-mongosh 
 ```
 
-![image-20260308225906193](./7. mongod.assets/image-20260308225906193.png)
+![image-20260308225906193](./mongod.assets/image-20260308225906193.png)
 
 ```bash
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ sudo apt install ./mongodb-mongosh_1.10.6_amd64.deb
 ```
 
-![image-20260308225941846](./7. mongod.assets/image-20260308225941846.png)
+![image-20260308225941846](./mongod.assets/image-20260308225941846.png)
 
 #### What is the command used for listing all the databases present on the MongoDB server? (No need to include a trailing `;`)
 
-![image-20260308230055393](./7. mongod.assets/image-20260308230055393.png)
+![image-20260308230055393](./mongod.assets/image-20260308230055393.png)
 
 ```bash
 test> show dbs
@@ -111,7 +111,7 @@ users                  32.00 KiB
 
 `db.flag.find()`
 
-![image-20260308230424878](./7. mongod.assets/image-20260308230424878.png)
+![image-20260308230424878](./mongod.assets/image-20260308230424878.png)
 
 #### Submit root flag
 

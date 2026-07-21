@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<title>6. preignition</title>
+<title>mongod</title>
 <style>
 :root {
     --bg: #fdfbf7;
@@ -150,6 +150,19 @@ hr {
 ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
 li { margin: 0.4em 0; }
 
+ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    accent-color: var(--code-accent);
+    vertical-align: -2px;
+}
+
+.task-list-item del { color: var(--muted); }
+
 /* inline code */
 code {
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -242,89 +255,100 @@ footer {
 <a class="home-link" href="../../../../index.html">🏠 Home</a>
 <div class="page">
 
-<h1 id="htb-preignition">HTB - Preignition</h1><div class="tags"><span class="tag">very-easy</span><span class="tag">linux</span></div>
+<h1 id="htb-mongod">HTB - Mongod</h1><div class="tags"><span class="tag">very-easy</span><span class="tag">linux</span></div>
 <div class="toc">
 <ul>
-<li><a href="#htb-preignition">HTB - Preignition</a><ul>
-<li><a href="#directory-brute-forcing-is-a-technique-used-to-check-a-lot-of-paths-on-a-web-server-to-find-hidden-pages-which-is-another-name-for-this-i-local-file-inclusion-ii-dir-busting-iii-hash-cracking">Directory Brute-forcing is a technique used to check a lot of paths on a web server to find hidden pages. Which is another name for this? (i) Local File Inclusion, (ii) dir busting, (iii) hash cracking.</a></li>
-<li><a href="#what-switch-do-we-use-for-nmaps-scan-to-specify-that-we-want-to-perform-version-detection">What switch do we use for nmap's scan to specify that we want to perform version detection</a></li>
-<li><a href="#what-does-nmap-report-is-the-service-identified-as-running-on-port-80tcp">What does Nmap report is the service identified as running on port 80/tcp?</a></li>
-<li><a href="#what-server-name-and-version-of-service-is-running-on-port-80tcp">What server name and version of service is running on port 80/tcp?</a></li>
-<li><a href="#what-switch-do-we-use-to-specify-to-gobuster-we-want-to-perform-dir-busting-specifically">What switch do we use to specify to Gobuster we want to perform dir busting specifically?</a></li>
-<li><a href="#when-using-gobuster-to-dir-bust-what-switch-do-we-add-to-make-sure-it-finds-php-pages">When using gobuster to dir bust, what switch do we add to make sure it finds PHP pages?</a></li>
-<li><a href="#what-page-is-found-during-our-dir-busting-activities">What page is found during our dir busting activities?</a></li>
-<li><a href="#what-is-the-http-status-code-reported-by-gobuster-for-the-discovered-page">What is the HTTP status code reported by Gobuster for the discovered page?</a></li>
+<li><a href="#htb-mongod">HTB - Mongod</a><ul>
+<li><a href="#how-many-tcp-ports-are-open-on-the-machine">How many TCP ports are open on the machine?</a></li>
+<li><a href="#which-service-is-running-on-port-27017-of-the-remote-host">Which service is running on port 27017 of the remote host?</a></li>
+<li><a href="#what-type-of-database-is-mongodb-choose-sql-or-nosql">What type of database is MongoDB? (Choose: SQL or NoSQL)</a></li>
+<li><a href="#what-command-is-used-to-launch-the-interactive-mongodb-shell-from-the-terminal">What command is used to launch the interactive MongoDB shell from the terminal?</a></li>
+<li><a href="#what-is-the-command-used-for-listing-all-the-databases-present-on-the-mongodb-server-no-need-to-include-a-trailing">What is the command used for listing all the databases present on the MongoDB server? (No need to include a trailing ;)</a></li>
+<li><a href="#what-is-the-command-used-for-listing-out-the-collections-in-a-database-no-need-to-include-a-trailing">What is the command used for listing out the collections in a database? (No need to include a trailing ;)</a></li>
+<li><a href="#what-command-is-used-to-dump-the-content-of-all-the-documents-within-the-collection-named-flag">What command is used to dump the content of all the documents within the collection named flag?</a></li>
 <li><a href="#submit-root-flag">Submit root flag</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<h4 id="directory-brute-forcing-is-a-technique-used-to-check-a-lot-of-paths-on-a-web-server-to-find-hidden-pages-which-is-another-name-for-this-i-local-file-inclusion-ii-dir-busting-iii-hash-cracking">Directory Brute-forcing is a technique used to check a lot of paths on a web server to find hidden pages. Which is another name for this? (i) Local File Inclusion, (ii) dir busting, (iii) hash cracking.</h4>
-<p>dir busting</p>
-<h4 id="what-switch-do-we-use-for-nmaps-scan-to-specify-that-we-want-to-perform-version-detection">What switch do we use for nmap's scan to specify that we want to perform version detection</h4>
-<p><code>-sV</code></p>
-<h4 id="what-does-nmap-report-is-the-service-identified-as-running-on-port-80tcp">What does Nmap report is the service identified as running on port 80/tcp?</h4>
-<p>http</p>
+<h4 id="how-many-tcp-ports-are-open-on-the-machine">How many TCP ports are open on the machine?</h4>
+<p>2</p>
 <pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
 └─$ nmap $IP -Pn -n --open --min-rate 3000 -p-
-Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-09 03:23 UTC
-Nmap scan report for 10.129.2.76
-Host is up (0.051s latency).
-Not shown: 65534 closed tcp ports (reset)
-PORT   STATE SERVICE
-80/tcp open  http
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-09 03:36 UTC
+Nmap scan report for 10.129.228.30
+Host is up (0.050s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT      STATE SERVICE
+22/tcp    open  ssh
+27017/tcp open  mongod
 
-Nmap done: 1 IP address (1 host up) scanned in 14.93 seconds
+Nmap done: 1 IP address (1 host up) scanned in 14.94 seconds
 </code></pre>
-<h4 id="what-server-name-and-version-of-service-is-running-on-port-80tcp">What server name and version of service is running on port 80/tcp?</h4>
-<p>nginx 1.14.2</p>
+<h4 id="which-service-is-running-on-port-27017-of-the-remote-host">Which service is running on port 27017 of the remote host?</h4>
+<p>MongoDB 3.6.8</p>
 <pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
-└─$ nmap $IP -sC -sV -p 80                    
-Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-09 03:24 UTC
-Nmap scan report for 10.129.2.76
+└─$ nmap $IP -sC -sV -p 22,27017              
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-09 03:37 UTC
+Nmap scan report for 10.129.228.30
 Host is up (0.048s latency).
 
-PORT   STATE SERVICE VERSION
-80/tcp open  http    nginx 1.14.2
-|_http-title: Welcome to nginx!
-|_http-server-header: nginx/1.14.2
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 7.85 seconds
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 48:ad:d5:b8:3a:9f:bc:be:f7:e8:20:1e:f6:bf:de:ae (RSA)
+|   256 b7:89:6c:0b:20:ed:49:b2:c1:86:7c:29:92:74:1c:1f (ECDSA)
+|_  256 18:cd:9d:08:a6:21:a8:b8:b6:f7:9f:8d:40:51:54:fb (ED25519)
+27017/tcp open  mongodb MongoDB 3.6.8 3.6.8
+| mongodb-databases: 
+|   totalSize = 245760.0
+|   ok = 1.0
+|   databases
+|     0
+|       sizeOnDisk = 32768.0
+|       name = admin
+&lt;SNIP&gt;
 </code></pre>
-<h4 id="what-switch-do-we-use-to-specify-to-gobuster-we-want-to-perform-dir-busting-specifically">What switch do we use to specify to Gobuster we want to perform dir busting specifically?</h4>
-<p>dir</p>
-<h4 id="when-using-gobuster-to-dir-bust-what-switch-do-we-add-to-make-sure-it-finds-php-pages">When using gobuster to dir bust, what switch do we add to make sure it finds PHP pages?</h4>
-<p><code>-x php</code></p>
-<h4 id="what-page-is-found-during-our-dir-busting-activities">What page is found during our dir busting activities?</h4>
-<p>admin.php</p>
+<h4 id="what-type-of-database-is-mongodb-choose-sql-or-nosql">What type of database is MongoDB? (Choose: SQL or NoSQL)</h4>
+<p>NoSQL</p>
+<h4 id="what-command-is-used-to-launch-the-interactive-mongodb-shell-from-the-terminal">What command is used to launch the interactive MongoDB shell from the terminal?</h4>
+<p><code>mongosh</code></p>
+<p><img alt="image-20260308224637400" src="./mongod.assets/image-20260308224637400.png" /></p>
+<pre><code class="language-bash">
+┌──(kali㉿kali)-[~/Downloads]
+└─$ sudo apt install ./mongodb-mongosh_2.7.0_amd64.deb
+</code></pre>
 <pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
-└─$ gobuster dir -u http://$IP -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt 
-===============================================================
-Gobuster v3.6
-by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
-===============================================================
-[+] Url:                     http://10.129.2.76
-[+] Method:                  GET
-[+] Threads:                 10
-[+] Wordlist:                /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
-[+] Negative Status codes:   404
-[+] User Agent:              gobuster/3.6
-[+] Timeout:                 10s
-===============================================================
-Starting gobuster in directory enumeration mode
-===============================================================
-/admin.php            (Status: 200) [Size: 999]
-Progress: 4746 / 4747 (99.98%)
-===============================================================
-Finished
-===============================================================
+└─$ mongosh $IP
+Current Mongosh Log ID: 69ae448adde9ee96838563b0
+Connecting to:          mongodb://10.129.228.30:27017/?directConnection=true&amp;appName=mongosh+2.7.0
+MongoServerSelectionError: Server at 10.129.228.30:27017 reports maximum wire version 6, but this version of the Node.js Driver requires at least 8 (MongoDB 4.2)
 </code></pre>
-<h4 id="what-is-the-http-status-code-reported-by-gobuster-for-the-discovered-page">What is the HTTP status code reported by Gobuster for the discovered page?</h4>
-<p>200</p>
+<p>I encountered a <code>MongoServerSelectionError</code> because <code>mongo 2.x</code> requires at least MongoDB 4.2 (Wire Version 8). Since the target was running MongoDB 3.6 (Wire Version 6), I uninstalled version 2.7.0 and downgraded to <code>mongosh 1.10.6</code> to restore connectivity.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Downloads]
+└─$ sudo apt remove mongodb-mongosh 
+</code></pre>
+<p><img alt="image-20260308225906193" src="./mongod.assets/image-20260308225906193.png" /></p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Downloads]
+└─$ sudo apt install ./mongodb-mongosh_1.10.6_amd64.deb
+</code></pre>
+<p><img alt="image-20260308225941846" src="./mongod.assets/image-20260308225941846.png" /></p>
+<h4 id="what-is-the-command-used-for-listing-all-the-databases-present-on-the-mongodb-server-no-need-to-include-a-trailing">What is the command used for listing all the databases present on the MongoDB server? (No need to include a trailing <code>;</code>)</h4>
+<p><img alt="image-20260308230055393" src="./mongod.assets/image-20260308230055393.png" /></p>
+<pre><code class="language-bash">test&gt; show dbs
+admin                  32.00 KiB
+config                 72.00 KiB
+local                  72.00 KiB
+sensitive_information  32.00 KiB
+users                  32.00 KiB
+</code></pre>
+<h4 id="what-is-the-command-used-for-listing-out-the-collections-in-a-database-no-need-to-include-a-trailing">What is the command used for listing out the collections in a database? (No need to include a trailing <code>;</code>)</h4>
+<p><code>show collections</code></p>
+<h4 id="what-command-is-used-to-dump-the-content-of-all-the-documents-within-the-collection-named-flag">What command is used to dump the content of all the documents within the collection named <code>flag</code>?</h4>
+<p><code>db.flag.find()</code></p>
+<p><img alt="image-20260308230424878" src="./mongod.assets/image-20260308230424878.png" /></p>
 <h4 id="submit-root-flag">Submit root flag</h4>
-<p>6483...</p>
-<p><img alt="image-20260308222651677" src="./6. preignition.assets/image-20260308222651677.png" /></p>
+<p>1b6e...</p>
 <footer>&copy; 2026 wook413.</footer>
 </div>
 </body>

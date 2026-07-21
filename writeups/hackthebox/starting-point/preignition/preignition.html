@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<title>1. meow</title>
+<title>preignition</title>
 <style>
 :root {
     --bg: #fdfbf7;
@@ -150,6 +150,19 @@ hr {
 ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
 li { margin: 0.4em 0; }
 
+ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    accent-color: var(--code-accent);
+    vertical-align: -2px;
+}
+
+.task-list-item del { color: var(--muted); }
+
 /* inline code */
 code {
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -242,101 +255,89 @@ footer {
 <a class="home-link" href="../../../../index.html">🏠 Home</a>
 <div class="page">
 
-<h1 id="htb-meow">HTB - Meow</h1><div class="tags"><span class="tag">very-easy</span><span class="tag">linux</span></div>
+<h1 id="htb-preignition">HTB - Preignition</h1><div class="tags"><span class="tag">very-easy</span><span class="tag">linux</span></div>
 <div class="toc">
 <ul>
-<li><a href="#htb-meow">HTB - Meow</a><ul>
-<li><a href="#what-does-the-acronym-vm-stand-for">What does the acronym VM stand for?</a></li>
-<li><a href="#what-tool-do-we-use-to-interact-with-the-operating-system-in-order-to-issue-commands-via-the-command-line-such-as-the-one-to-start-our-vpn-connection-its-also-known-as-a-console-or-shell">What tool do we use to interact with the operating system in order to issue commands via the command line, such as the one to start our VPN connection? It's also known as a console or shell.</a></li>
-<li><a href="#what-service-do-we-use-to-form-our-vpn-connection-into-htb-labs">What service do we use to form our VPN connection into HTB labs?</a></li>
-<li><a href="#what-tool-do-we-use-to-test-our-connection-to-the-target-with-an-icmp-echo-request">What tool do we use to test our connection to the target with an ICMP echo request?</a></li>
-<li><a href="#what-is-the-name-of-the-most-common-tool-for-finding-open-ports-on-a-target">What is the name of the most common tool for finding open ports on a target?</a></li>
-<li><a href="#what-service-do-we-identify-on-port-23tcp-during-our-scans">What service do we identify on port 23/tcp during our scans?</a></li>
-<li><a href="#what-username-is-able-to-log-into-the-target-over-telnet-with-a-blank-password">What username is able to log into the target over telnet with a blank password?</a></li>
+<li><a href="#htb-preignition">HTB - Preignition</a><ul>
+<li><a href="#directory-brute-forcing-is-a-technique-used-to-check-a-lot-of-paths-on-a-web-server-to-find-hidden-pages-which-is-another-name-for-this-i-local-file-inclusion-ii-dir-busting-iii-hash-cracking">Directory Brute-forcing is a technique used to check a lot of paths on a web server to find hidden pages. Which is another name for this? (i) Local File Inclusion, (ii) dir busting, (iii) hash cracking.</a></li>
+<li><a href="#what-switch-do-we-use-for-nmaps-scan-to-specify-that-we-want-to-perform-version-detection">What switch do we use for nmap's scan to specify that we want to perform version detection</a></li>
+<li><a href="#what-does-nmap-report-is-the-service-identified-as-running-on-port-80tcp">What does Nmap report is the service identified as running on port 80/tcp?</a></li>
+<li><a href="#what-server-name-and-version-of-service-is-running-on-port-80tcp">What server name and version of service is running on port 80/tcp?</a></li>
+<li><a href="#what-switch-do-we-use-to-specify-to-gobuster-we-want-to-perform-dir-busting-specifically">What switch do we use to specify to Gobuster we want to perform dir busting specifically?</a></li>
+<li><a href="#when-using-gobuster-to-dir-bust-what-switch-do-we-add-to-make-sure-it-finds-php-pages">When using gobuster to dir bust, what switch do we add to make sure it finds PHP pages?</a></li>
+<li><a href="#what-page-is-found-during-our-dir-busting-activities">What page is found during our dir busting activities?</a></li>
+<li><a href="#what-is-the-http-status-code-reported-by-gobuster-for-the-discovered-page">What is the HTTP status code reported by Gobuster for the discovered page?</a></li>
 <li><a href="#submit-root-flag">Submit root flag</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<h4 id="what-does-the-acronym-vm-stand-for">What does the acronym VM stand for?</h4>
-<p>Virtual Machine</p>
-<h4 id="what-tool-do-we-use-to-interact-with-the-operating-system-in-order-to-issue-commands-via-the-command-line-such-as-the-one-to-start-our-vpn-connection-its-also-known-as-a-console-or-shell">What tool do we use to interact with the operating system in order to issue commands via the command line, such as the one to start our VPN connection? It's also known as a console or shell.</h4>
-<p>terminal</p>
-<h4 id="what-service-do-we-use-to-form-our-vpn-connection-into-htb-labs">What service do we use to form our VPN connection into HTB labs?</h4>
-<p>openvpn</p>
-<h4 id="what-tool-do-we-use-to-test-our-connection-to-the-target-with-an-icmp-echo-request">What tool do we use to test our connection to the target with an ICMP echo request?</h4>
-<p>ping</p>
-<h4 id="what-is-the-name-of-the-most-common-tool-for-finding-open-ports-on-a-target">What is the name of the most common tool for finding open ports on a target?</h4>
-<p>nmap</p>
-<h4 id="what-service-do-we-identify-on-port-23tcp-during-our-scans">What service do we identify on port 23/tcp during our scans?</h4>
-<p>telnet</p>
+<h4 id="directory-brute-forcing-is-a-technique-used-to-check-a-lot-of-paths-on-a-web-server-to-find-hidden-pages-which-is-another-name-for-this-i-local-file-inclusion-ii-dir-busting-iii-hash-cracking">Directory Brute-forcing is a technique used to check a lot of paths on a web server to find hidden pages. Which is another name for this? (i) Local File Inclusion, (ii) dir busting, (iii) hash cracking.</h4>
+<p>dir busting</p>
+<h4 id="what-switch-do-we-use-for-nmaps-scan-to-specify-that-we-want-to-perform-version-detection">What switch do we use for nmap's scan to specify that we want to perform version detection</h4>
+<p><code>-sV</code></p>
+<h4 id="what-does-nmap-report-is-the-service-identified-as-running-on-port-80tcp">What does Nmap report is the service identified as running on port 80/tcp?</h4>
+<p>http</p>
 <pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
-└─$ nmap 10.129.1.17 -sC -sV -p 23            
-Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-07 16:45 UTC
-Nmap scan report for 10.129.1.17
-Host is up (0.046s latency).
+└─$ nmap $IP -Pn -n --open --min-rate 3000 -p-
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-09 03:23 UTC
+Nmap scan report for 10.129.2.76
+Host is up (0.051s latency).
+Not shown: 65534 closed tcp ports (reset)
+PORT   STATE SERVICE
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 14.93 seconds
+</code></pre>
+<h4 id="what-server-name-and-version-of-service-is-running-on-port-80tcp">What server name and version of service is running on port 80/tcp?</h4>
+<p>nginx 1.14.2</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
+└─$ nmap $IP -sC -sV -p 80                    
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-09 03:24 UTC
+Nmap scan report for 10.129.2.76
+Host is up (0.048s latency).
 
 PORT   STATE SERVICE VERSION
-23/tcp open  telnet  Linux telnetd
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+80/tcp open  http    nginx 1.14.2
+|_http-title: Welcome to nginx!
+|_http-server-header: nginx/1.14.2
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 20.94 seconds
+Nmap done: 1 IP address (1 host up) scanned in 7.85 seconds
 </code></pre>
-<h4 id="what-username-is-able-to-log-into-the-target-over-telnet-with-a-blank-password">What username is able to log into the target over telnet with a blank password?</h4>
-<p>root</p>
+<h4 id="what-switch-do-we-use-to-specify-to-gobuster-we-want-to-perform-dir-busting-specifically">What switch do we use to specify to Gobuster we want to perform dir busting specifically?</h4>
+<p>dir</p>
+<h4 id="when-using-gobuster-to-dir-bust-what-switch-do-we-add-to-make-sure-it-finds-php-pages">When using gobuster to dir bust, what switch do we add to make sure it finds PHP pages?</h4>
+<p><code>-x php</code></p>
+<h4 id="what-page-is-found-during-our-dir-busting-activities">What page is found during our dir busting activities?</h4>
+<p>admin.php</p>
 <pre><code class="language-bash">┌──(kali㉿kali)-[~/Desktop]
-└─$ telnet 10.129.1.17 23
-Trying 10.129.1.17...
-Connected to 10.129.1.17.
-Escape character is '^]'.
-
-  █  █         ▐▌     ▄█▄ █          ▄▄▄▄
-  █▄▄█ ▀▀█ █▀▀ ▐▌▄▀    █  █▀█ █▀█    █▌▄█ ▄▀▀▄ ▀▄▀
-  █  █ █▄█ █▄▄ ▐█▀▄    █  █ █ █▄▄    █▌▄█ ▀▄▄▀ █▀█
-
-
-Meow login: root
-Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-77-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Sat 07 Mar 2026 04:47:12 PM UTC
-
-  System load:           0.07
-  Usage of /:            41.7% of 7.75GB
-  Memory usage:          4%
-  Swap usage:            0%
-  Processes:             144
-  Users logged in:       0
-  IPv4 address for eth0: 10.129.1.17
-  IPv6 address for eth0: dead:beef::250:56ff:feb0:3029
-
- * Super-optimized for small spaces - read how we shrank the memory
-   footprint of MicroK8s to make it the smallest full K8s around.
-
-   https://ubuntu.com/blog/microk8s-memory-optimisation
-
-75 updates can be applied immediately.
-31 of these updates are standard security updates.
-To see these additional updates run: apt list --upgradable
-
-
-The list of available updates is more than a week old.
-To check for new updates run: sudo apt update
-
-Last login: Mon Sep  6 15:15:23 UTC 2021 from 10.10.14.18 on pts/0
-root@Meow:~# 
-
+└─$ gobuster dir -u http://$IP -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt 
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.2.76
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/admin.php            (Status: 200) [Size: 999]
+Progress: 4746 / 4747 (99.98%)
+===============================================================
+Finished
+===============================================================
 </code></pre>
+<h4 id="what-is-the-http-status-code-reported-by-gobuster-for-the-discovered-page">What is the HTTP status code reported by Gobuster for the discovered page?</h4>
+<p>200</p>
 <h4 id="submit-root-flag">Submit root flag</h4>
-<pre><code class="language-bash">root@Meow:~# ls
-flag.txt  snap
-root@Meow:~# cat flag.txt
-b40ab...
-</code></pre>
+<p>6483...</p>
+<p><img alt="image-20260308222651677" src="./preignition.assets/image-20260308222651677.png" /></p>
 <footer>&copy; 2026 wook413.</footer>
 </div>
 </body>

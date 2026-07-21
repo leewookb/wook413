@@ -60,14 +60,30 @@ td a {
     padding: 12px 10px;
     border-radius: 6px;
     margin: 0 -10px;
+    transition: background 0.15s ease;
 }
 
 td a span.label {
     border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.92em;
+}
+
+td a .bracket {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.78em;
+    color: var(--muted);
+    flex: none;
+    width: 3.6em;
+    transition: color 0.15s ease;
 }
 
 td a:hover {
     background: var(--row-hover);
+}
+
+td a:hover .bracket {
+    color: var(--link);
 }
 
 td a:hover span.label { text-decoration: underline; }
@@ -112,29 +128,29 @@ footer {
 </style>
 </head>
 <body>
-<a class="home-link" href="../../../index.html">🏠 Home</a>
-<h1>Index of /wook413/writeups/web-security-academy/sql-injection</h1>
+<a class="home-link" href="../../../index.html">Home</a>
+<h1>Index of /wook413/web-security-academy/sql-injection</h1>
 <table>
 <tbody>
-<tr><td><a href="../"><span>⤴️</span> <span class="label">../</span></a></td></tr>
-<tr><td><a href="./lab1/lab1.html"><span>📄</span> <span class="label">lab1</span></a></td></tr>
-<tr><td><a href="./lab2/lab2.html"><span>📄</span> <span class="label">lab2</span></a></td></tr>
-<tr><td><a href="./lab3/lab3.html"><span>📄</span> <span class="label">lab3</span></a></td></tr>
-<tr><td><a href="./lab4/lab4.html"><span>📄</span> <span class="label">lab4</span></a></td></tr>
-<tr><td><a href="./lab5/lab5.html"><span>📄</span> <span class="label">lab5</span></a></td></tr>
-<tr><td><a href="./lab6/lab6.html"><span>📄</span> <span class="label">lab6</span></a></td></tr>
-<tr><td><a href="./lab7/lab7.html"><span>📄</span> <span class="label">lab7</span></a></td></tr>
-<tr><td><a href="./lab8/lab8.html"><span>📄</span> <span class="label">lab8</span></a></td></tr>
-<tr><td><a href="./lab9/lab9.html"><span>📄</span> <span class="label">lab9</span></a></td></tr>
-<tr><td><a href="./lab10/lab10.html"><span>📄</span> <span class="label">lab10</span></a></td></tr>
-<tr><td><a href="./lab11/lab11.html"><span>📄</span> <span class="label">lab11</span></a></td></tr>
-<tr><td><a href="./lab12/lab12.html"><span>📄</span> <span class="label">lab12</span></a></td></tr>
-<tr><td><a href="./lab13/lab13.html"><span>📄</span> <span class="label">lab13</span></a></td></tr>
-<tr><td><a href="./lab14/lab14.html"><span>📄</span> <span class="label">lab14</span></a></td></tr>
-<tr><td><a href="./lab15/lab15.html"><span>📄</span> <span class="label">lab15</span></a></td></tr>
-<tr><td><a href="./lab16/lab16.html"><span>📄</span> <span class="label">lab16</span></a></td></tr>
-<tr><td><a href="./lab17/lab17.html"><span>📄</span> <span class="label">lab17</span></a></td></tr>
-<tr><td><a href="./lab18/lab18.html"><span>📄</span> <span class="label">lab18</span></a></td></tr>
+<tr><td><a href="../"><span class="bracket">[UP]</span> <span class="label">../</span></a></td></tr>
+<tr><td><a href="./lab1/lab1.html"><span class="bracket">[TXT]</span> <span class="label">lab1</span></a></td></tr>
+<tr><td><a href="./lab2/lab2.html"><span class="bracket">[TXT]</span> <span class="label">lab2</span></a></td></tr>
+<tr><td><a href="./lab3/lab3.html"><span class="bracket">[TXT]</span> <span class="label">lab3</span></a></td></tr>
+<tr><td><a href="./lab4/lab4.html"><span class="bracket">[TXT]</span> <span class="label">lab4</span></a></td></tr>
+<tr><td><a href="./lab5/lab5.html"><span class="bracket">[TXT]</span> <span class="label">lab5</span></a></td></tr>
+<tr><td><a href="./lab6/lab6.html"><span class="bracket">[TXT]</span> <span class="label">lab6</span></a></td></tr>
+<tr><td><a href="./lab7/lab7.html"><span class="bracket">[TXT]</span> <span class="label">lab7</span></a></td></tr>
+<tr><td><a href="./lab8/lab8.html"><span class="bracket">[TXT]</span> <span class="label">lab8</span></a></td></tr>
+<tr><td><a href="./lab9/lab9.html"><span class="bracket">[TXT]</span> <span class="label">lab9</span></a></td></tr>
+<tr><td><a href="./lab10/lab10.html"><span class="bracket">[TXT]</span> <span class="label">lab10</span></a></td></tr>
+<tr><td><a href="./lab11/lab11.html"><span class="bracket">[TXT]</span> <span class="label">lab11</span></a></td></tr>
+<tr><td><a href="./lab12/lab12.html"><span class="bracket">[TXT]</span> <span class="label">lab12</span></a></td></tr>
+<tr><td><a href="./lab13/lab13.html"><span class="bracket">[TXT]</span> <span class="label">lab13</span></a></td></tr>
+<tr><td><a href="./lab14/lab14.html"><span class="bracket">[TXT]</span> <span class="label">lab14</span></a></td></tr>
+<tr><td><a href="./lab15/lab15.html"><span class="bracket">[TXT]</span> <span class="label">lab15</span></a></td></tr>
+<tr><td><a href="./lab16/lab16.html"><span class="bracket">[TXT]</span> <span class="label">lab16</span></a></td></tr>
+<tr><td><a href="./lab17/lab17.html"><span class="bracket">[TXT]</span> <span class="label">lab17</span></a></td></tr>
+<tr><td><a href="./lab18/lab18.html"><span class="bracket">[TXT]</span> <span class="label">lab18</span></a></td></tr>
 </tbody>
 </table>
 <footer>&copy; 2026 wook413.</footer>

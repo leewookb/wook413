@@ -59,10 +59,10 @@ Nmap done: 1 IP address (1 host up) scanned in 15.47 seconds
 
 Administrator
 
-![image-20260308220411857](./5. explosion.assets/image-20260308220411857.png)
+![image-20260308220411857](./explosion.assets/image-20260308220411857.png)
 
 #### Submit root flag
 
 951f...
 
-![image-20260308220513646](./5. explosion.assets/image-20260308220513646.png)
+![image-20260308220513646](./explosion.assets/image-20260308220513646.png)

@@ -75,14 +75,45 @@ td a {
     padding: 12px 10px;
     border-radius: 6px;
     margin: 0 -10px;
+    transition: background 0.15s ease;
 }
 
 td a span.label {
     border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.92em;
+}
+
+td a .bracket {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.78em;
+    color: var(--muted);
+    flex: none;
+    width: 3.6em;
+    transition: color 0.15s ease;
+}
+
+td a span.count {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+h2 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 36px 0 6px;
 }
 
 td a:hover {
     background: var(--row-hover);
+}
+
+td a:hover .bracket {
+    color: var(--link);
 }
 
 td a:hover span.label { text-decoration: underline; }
@@ -132,13 +163,34 @@ footer {
 <table>
 <tbody>
 <tr>
-          <td><a href="./README.html"><span>📄</span> <span class="label">README</span></a></td>
+          <td><a href="./README.html"><span class="bracket">[TXT]</span> <span class="label">README</span></a></td>
+        </tr>
+</tbody>
+</table>
+
+<h2>Write-ups</h2>
+<table>
+<tbody>
+<tr>
+          <td><a href="./writeups/web-security-academy/"><span class="bracket">[DIR]</span> <span class="label">web-security-academy</span><span class="count">31</span></a></td>
         </tr>
 <tr>
-          <td><a href="./writeups/"><span>📂</span> <span class="label">writeups</span></a></td>
+          <td><a href="./writeups/proving-grounds/"><span class="bracket">[DIR]</span> <span class="label">proving-grounds</span><span class="count">29</span></a></td>
         </tr>
 <tr>
-          <td><a href="./OSCP/"><span>📂</span> <span class="label">OSCP</span></a></td>
+          <td><a href="./writeups/hackthebox/"><span class="bracket">[DIR]</span> <span class="label">hackthebox</span><span class="count">7</span></a></td>
+        </tr>
+<tr>
+          <td><a href="./writeups/tryhackme/"><span class="bracket">[DIR]</span> <span class="label">tryhackme</span><span class="count">2</span></a></td>
+        </tr>
+</tbody>
+</table>
+
+<h2>Certifications</h2>
+<table>
+<tbody>
+<tr>
+          <td><a href="./OSCP/"><span class="bracket">[DIR]</span> <span class="label">OSCP</span></a></td>
         </tr>
 </tbody>
 </table>
