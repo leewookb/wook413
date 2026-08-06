@@ -8,6 +8,8 @@ from site_common import FONT_LINKS, HOME_CSS, home_link_html
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 CSS = """
 :root {
     --bg: #ffffff;
@@ -436,7 +438,12 @@ def convert_md_to_html(md_path, title=None, style="mono"):
         tags_html = "".join(f'<span class="tag">{t}</span>' for t in tags)
         body_html = re.sub(r"(</h1>)", r"\1" + f'<div class="tags">{tags_html}</div>', body_html, count=1)
     css = (CSS_LIGHT if style == "read" else CSS) + HOME_CSS
-    home_html = home_link_html(md_path)
+    # depth must be computed from the repo root regardless of cwd, or the
+    # home link ends up with the wrong number of "../" when this script is
+    # run from inside a lab's own directory (e.g. `lab2.md` instead of the
+    # full writeups/.../lab2/lab2.md path)
+    repo_relative_path = os.path.relpath(os.path.abspath(md_path), REPO_ROOT)
+    home_html = home_link_html(repo_relative_path)
 
     html = f"""<!doctype html>
 <html lang="en">
