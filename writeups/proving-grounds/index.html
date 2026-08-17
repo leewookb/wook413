@@ -38,58 +38,62 @@ body {
 h1 {
     font-size: 1.4rem;
     font-weight: 700;
-    border-bottom: 2px solid var(--text);
-    padding-bottom: 14px;
     margin: 0 0 28px;
-    word-break: break-all;
 }
 
-table { width: 100%; border-collapse: collapse; }
+h2 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 36px 0 6px;
+}
 
-td {
-    border-bottom: 1px solid var(--border);
+ul.listing {
+    list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-td a {
+ul.listing li {
+    border-bottom: 1px solid var(--border);
+}
+
+ul.listing a {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     color: var(--link);
     text-decoration: none;
     padding: 12px 10px;
     border-radius: 6px;
-    margin: 0 -10px;
+    font-weight: 600;
     transition: background 0.15s ease;
 }
 
-td a span.label {
-    border-radius: 3px;
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 0.92em;
-}
-
-td a .bracket {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 0.78em;
-    color: var(--muted);
-    flex: none;
-    width: 3.6em;
-    transition: color 0.15s ease;
-}
-
-td a:hover {
+ul.listing a:hover {
     background: var(--row-hover);
 }
 
-td a:hover .bracket {
-    color: var(--link);
+ul.listing a:hover .label { text-decoration: underline; }
+
+ul.listing .count,
+ul.listing .badge {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 400;
 }
 
-td a:hover span.label { text-decoration: underline; }
+ul.listing .badge {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 1px 9px;
+}
 
 footer {
-    margin-top: 20px;
+    margin-top: 40px;
     font-size: 0.8rem;
     color: var(--muted);
     text-align: center;
@@ -100,70 +104,111 @@ footer {
     h1 { font-size: 1.15rem; }
 }
 
-.home-link {
+body { padding-top: 108px; }
+
+.site-nav {
     position: fixed;
-    top: 16px;
-    left: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
     display: flex;
-    align-items: center;
-    gap: 6px;
+    justify-content: center;
     background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-size: 0.85rem;
-    color: var(--link);
-    text-decoration: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    z-index: 10;
+    border-bottom: 1px solid var(--border);
 }
 
-.home-link:hover {
+.site-nav-inner {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    max-width: 760px;
+    padding: 12px 20px;
+}
+
+.site-nav a {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover {
+    color: var(--link);
     background: var(--row-hover, var(--code-bg));
 }
 
+.site-nav a.active {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.breadcrumb {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0 0 20px;
+}
+
+.breadcrumb a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--link);
+    text-decoration: underline;
+}
+
+.breadcrumb .sep {
+    margin: 0 6px;
+    opacity: 0.5;
+}
+
 @media (max-width: 600px) {
-    .home-link { top: 10px; left: 10px; padding: 5px 12px; font-size: 0.8rem; }
+    body { padding-top: 96px; }
+    .site-nav-inner { padding: 10px 16px; gap: 2px; }
+    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
 }
 </style>
 </head>
 <body>
-<a class="home-link" href="../../index.html">Home</a>
-<h1>Index of /wook413/proving-grounds</h1>
-<table>
-<tbody>
-<tr><td><a href="../../"><span class="bracket">[UP]</span> <span class="label">../</span></a></td></tr>
-<tr><td><a href="./access/"><span class="bracket">[DIR]</span> <span class="label">access</span></a></td></tr>
-<tr><td><a href="./algernon/"><span class="bracket">[DIR]</span> <span class="label">algernon</span></a></td></tr>
-<tr><td><a href="./apex/"><span class="bracket">[DIR]</span> <span class="label">apex</span></a></td></tr>
-<tr><td><a href="./astronaut/"><span class="bracket">[DIR]</span> <span class="label">astronaut</span></a></td></tr>
-<tr><td><a href="./bullybox/"><span class="bracket">[DIR]</span> <span class="label">bullybox</span></a></td></tr>
-<tr><td><a href="./craft/"><span class="bracket">[DIR]</span> <span class="label">craft</span></a></td></tr>
-<tr><td><a href="./exfiltrated/"><span class="bracket">[DIR]</span> <span class="label">exfiltrated</span></a></td></tr>
-<tr><td><a href="./extplorer/"><span class="bracket">[DIR]</span> <span class="label">extplorer</span></a></td></tr>
-<tr><td><a href="./fanatastic/"><span class="bracket">[DIR]</span> <span class="label">fanatastic</span></a></td></tr>
-<tr><td><a href="./flu/"><span class="bracket">[DIR]</span> <span class="label">flu</span></a></td></tr>
-<tr><td><a href="./hokkaido/"><span class="bracket">[DIR]</span> <span class="label">hokkaido</span></a></td></tr>
-<tr><td><a href="./hunit/"><span class="bracket">[DIR]</span> <span class="label">hunit</span></a></td></tr>
-<tr><td><a href="./jacko/"><span class="bracket">[DIR]</span> <span class="label">jacko</span></a></td></tr>
-<tr><td><a href="./marketing/"><span class="bracket">[DIR]</span> <span class="label">marketing</span></a></td></tr>
-<tr><td><a href="./medjed/"><span class="bracket">[DIR]</span> <span class="label">medjed</span></a></td></tr>
-<tr><td><a href="./nickel/"><span class="bracket">[DIR]</span> <span class="label">nickel</span></a></td></tr>
-<tr><td><a href="./pc/"><span class="bracket">[DIR]</span> <span class="label">pc</span></a></td></tr>
-<tr><td><a href="./peppo/"><span class="bracket">[DIR]</span> <span class="label">peppo</span></a></td></tr>
-<tr><td><a href="./postfish/"><span class="bracket">[DIR]</span> <span class="label">postfish</span></a></td></tr>
-<tr><td><a href="./quackerjack/"><span class="bracket">[DIR]</span> <span class="label">quackerjack</span></a></td></tr>
-<tr><td><a href="./readys/"><span class="bracket">[DIR]</span> <span class="label">readys</span></a></td></tr>
-<tr><td><a href="./roquefort/"><span class="bracket">[DIR]</span> <span class="label">roquefort</span></a></td></tr>
-<tr><td><a href="./shenzi/"><span class="bracket">[DIR]</span> <span class="label">shenzi</span></a></td></tr>
-<tr><td><a href="./sorcerer/"><span class="bracket">[DIR]</span> <span class="label">sorcerer</span></a></td></tr>
-<tr><td><a href="./squid/"><span class="bracket">[DIR]</span> <span class="label">squid</span></a></td></tr>
-<tr><td><a href="./sybaris/"><span class="bracket">[DIR]</span> <span class="label">sybaris</span></a></td></tr>
-<tr><td><a href="./vault/"><span class="bracket">[DIR]</span> <span class="label">vault</span></a></td></tr>
-<tr><td><a href="./walla/"><span class="bracket">[DIR]</span> <span class="label">walla</span></a></td></tr>
-<tr><td><a href="./wombo/"><span class="bracket">[DIR]</span> <span class="label">wombo</span></a></td></tr>
-</tbody>
-</table>
+<nav class="site-nav"><div class="site-nav-inner"><a href="../../index.html">Home</a><a href="../../README.html">About</a><a href="../../writeups/index.html" class="active">Writeups</a><a href="../../projects/index.html">Projects</a><a href="../../OSCP/index.html">Certifications</a></div></nav>
+<div class="breadcrumb"><a href="../index.html">Writeups</a><span class="sep">/</span><span>Proving Grounds</span></div>
+<h1>Proving Grounds</h1>
+<ul class="listing">
+<li><a href="./access/access.html"><span class="label">Access</span></a></li>
+<li><a href="./algernon/algernon.html"><span class="label">Algernon</span></a></li>
+<li><a href="./apex/apex.html"><span class="label">Apex</span></a></li>
+<li><a href="./astronaut/astronaut.html"><span class="label">Astronaut</span></a></li>
+<li><a href="./bullybox/bullybox.html"><span class="label">Bullybox</span></a></li>
+<li><a href="./craft/craft.html"><span class="label">Craft</span></a></li>
+<li><a href="./exfiltrated/exfiltrated.html"><span class="label">Exfiltrated</span></a></li>
+<li><a href="./extplorer/Extplorer.html"><span class="label">Extplorer</span></a></li>
+<li><a href="./fanatastic/fanatastic.html"><span class="label">Fanatastic</span></a></li>
+<li><a href="./flu/flu.html"><span class="label">Flu</span></a></li>
+<li><a href="./hokkaido/hokkaido.html"><span class="label">Hokkaido</span></a></li>
+<li><a href="./hunit/hunit.html"><span class="label">Hunit</span></a></li>
+<li><a href="./jacko/jacko.html"><span class="label">Jacko</span></a></li>
+<li><a href="./marketing/marketing.html"><span class="label">Marketing</span></a></li>
+<li><a href="./medjed/medjed.html"><span class="label">Medjed</span></a></li>
+<li><a href="./nickel/nickel.html"><span class="label">Nickel</span></a></li>
+<li><a href="./pc/pc.html"><span class="label">Pc</span></a></li>
+<li><a href="./peppo/peppo.html"><span class="label">Peppo</span></a></li>
+<li><a href="./postfish/Postfish.html"><span class="label">Postfish</span></a></li>
+<li><a href="./quackerjack/quackerjack.html"><span class="label">Quackerjack</span></a></li>
+<li><a href="./readys/readys.html"><span class="label">Readys</span></a></li>
+<li><a href="./roquefort/roquefort.html"><span class="label">Roquefort</span></a></li>
+<li><a href="./shenzi/shenzi.html"><span class="label">Shenzi</span></a></li>
+<li><a href="./sorcerer/sorcerer.html"><span class="label">Sorcerer</span></a></li>
+<li><a href="./squid/squid.html"><span class="label">Squid</span></a></li>
+<li><a href="./sybaris/sybaris.html"><span class="label">Sybaris</span></a></li>
+<li><a href="./vault/vault.html"><span class="label">Vault</span></a></li>
+<li><a href="./walla/Walla.html"><span class="label">Walla</span></a></li>
+<li><a href="./wombo/wombo.html"><span class="label">Wombo</span></a></li>
+</ul>
 <footer>&copy; 2026 wook413.</footer>
 </body>
 </html>

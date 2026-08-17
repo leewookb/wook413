@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<title>getting-started-with-splunk-for-security</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    accent-color: var(--code-accent);
+    vertical-align: -2px;
+}
+
+.task-list-item del { color: var(--muted); }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+body { padding-top: 108px; }
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.site-nav-inner {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    max-width: 760px;
+    padding: 12px 20px;
+}
+
+.site-nav a {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.site-nav a.active {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.breadcrumb {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0 0 20px;
+}
+
+.breadcrumb a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--link);
+    text-decoration: underline;
+}
+
+.breadcrumb .sep {
+    margin: 0 6px;
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    body { padding-top: 96px; }
+    .site-nav-inner { padding: 10px 16px; gap: 2px; }
+    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="site-nav-inner"><a href="../../../index.html">Home</a><a href="../../../README.html">About</a><a href="../../../writeups/index.html" class="active">Writeups</a><a href="../../../projects/index.html">Projects</a><a href="../../../OSCP/index.html">Certifications</a></div></nav>
+<div class="page">
+<div class="breadcrumb"><a href="../../index.html">Writeups</a><span class="sep">/</span><a href="../index.html">Boss of the SOC</a><span class="sep">/</span><span>Getting Started With Splunk For Security</span></div>
+<div class="byline">Write-up by wook413</div>
+<p>https://bots.splunk.com/workshop/3JjIyhUc2P7hYfhkBW4OE3</p>
+<pre><code>This workshop is designed to be hands-on and is using the BOTS 1.0 dataset. The goal of this workshop is to provide a better understanding of how Splunk can be used to better answer security questions that may occur within your environment. During this workshop, we will introduce you to searching with Splunk and walkthrough questions that are similar to those in the BOTS competition and develop searches that will help answer them.
+</code></pre>
+<h1 id="checkpoint-1">Checkpoint #1</h1>
+<h3 id="question-1">Question #1</h3>
+<p><strong>Based on the stream:http sourcetype, what is the likely IP address scanning imreallynotbatman.com for web aplication vulnerabilities?</strong></p>
+<p>The likely IP address scanning imreallynotbatman.com for web application vulnerabilities is <code>40.80.148.42</code>.</p>
+<p><img alt="image-20260815094259346" src="./getting-started-with-splunk-for-security.assets/image-20260815094259346.png" /></p>
+<h3 id="question-2">Question #2</h3>
+<p><strong>Based on the suricata sourcetype what is most likely the IP address that is being scanned?</strong></p>
+<p>After searching for <code>index=botxv1 sourcetype=suricata imreallynotbatman.com</code>, I selected the <code>dest_ip</code> field.</p>
+<p>The IP address that is being scanned is <code>192.168.250.70</code>.</p>
+<p><img alt="image-20260815094830531" src="./getting-started-with-splunk-for-security.assets/image-20260815094830531.png" /></p>
+<h3 id="question-3">Question #3</h3>
+<p>Based on IIS data, what user agent string is most frequently seen during the web scan?</p>
+<p><img alt="image-20260815213643850" src="./getting-started-with-splunk-for-security.assets/image-20260815213643850.png" /></p>
+<pre><code>Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/537.21+(KHTML,+like+Gecko)+Chrome/41.0.2228.0+Safari/537.21
+</code></pre>
+<h1 id="challenge-question-1-stats-and-sort-commands">Challenge Question #1 - stats and sort commands</h1>
+<p>If you recall from Checkpoint Question #1, the source address of the scan originated from 40.80.148.42. What are the top 10 URLs being returned during the scan on imreallynotbatman.com? Use August 10, 2016 for the timepicker.</p>
+<p><img alt="image-20260815215708844" src="./getting-started-with-splunk-for-security.assets/image-20260815215708844.png" /></p>
+<h1 id="challenge-question-2-wildcards">Challenge Question #2 - wildcards</h1>
+<p><strong>What IP address is likely attempting a brute force password attack against imnotreallybatman.com?</strong></p>
+<ul>
+<li>Focus on the index of interest <code>botsv1</code></li>
+<li>Look at http data specifically for interaction with web browser <code>stream:http</code></li>
+<li>Look for traffic going to our web server <code>192.168.250.70</code></li>
+<li>Look for data that is being sent to web server <code>post</code></li>
+<li>Date Range is same as before <code>August 10, 2016</code></li>
+</ul>
+<p><img alt="image-20260815221737341" src="./getting-started-with-splunk-for-security.assets/image-20260815221737341.png" /></p>
+<h1 id="checkpoint-2">Checkpoint #2</h1>
+<p>Interested in Activities on <strong>August 10, 2016 ONLY</strong></p>
+<h3 id="question-1_1">Question #1</h3>
+<p><strong>Based on the stream:http sourcetype, how many events had a http_user_agent that contained both OS X and Chrome? Provide a tabular list with the time, source address and the user agent strings.</strong></p>
+<p><strong>Hint #1: OS X will not be found if you search for "osx"</strong></p>
+<p><strong>Hint #2: time is a special field</strong></p>
+<p><code>index=botsv1 sourcetype=stream:http http_user_agent="*OS X*" http_user_agent="*chrome*" | table _time, src, http_user_agent</code></p>
+<p><img alt="image-20260815224039677" src="./getting-started-with-splunk-for-security.assets/image-20260815224039677.png" /></p>
+<h3 id="question-2_1">Question #2</h3>
+<p><strong>Based on the stream:http sourcetype, what is most frequently seen URL that does NOT reference joomla? How many times do we see this URL?</strong></p>
+<p><code>489</code></p>
+<p><img alt="image-20260815231411974" src="./getting-started-with-splunk-for-security.assets/image-20260815231411974.png" /></p>
+<h1 id="challenge-question-3-extracting-data-at-search">Challenge Question #3 - Extracting Data at Search</h1>
+<p><strong>On August 10, 2016, what was the first brute force password used?</strong></p>
+<p><img alt="image-20260815233548340" src="./getting-started-with-splunk-for-security.assets/image-20260815233548340.png" /></p>
+<p><code>12345678</code></p>
+<p><img alt="image-20260815234425126" src="./getting-started-with-splunk-for-security.assets/image-20260815234425126.png" /></p>
+<h1 id="challenge-question-4-comparing-events-against-lists-using-lookup-and-eval-commands">Challenge Question #4 - Comparing Events Against Lists Using lookup and eval Commands</h1>
+<p><strong>Which six-character password in the brute force attack is also a Coldplay song?</strong></p>
+<p>Hint: The lookup of Coldplay songs can be found at coldplay.csv</p>
+<p>building on the previous search, I added the lenpassword column using <code>eval</code>.</p>
+<pre><code>index=botsv1 sourcetype=stream:http dest=192.168.250.70 http_method=POST form_data=*username*passwd*
+| rex field=form_data &quot;passwd=(?&lt;userpassword&gt;\w+)&quot;
+| eval lenpassword=len(userpassword)
+| table form_data userpassword lenpassword
+</code></pre>
+<p><img alt="image-20260816110601341" src="./getting-started-with-splunk-for-security.assets/image-20260816110601341.png" /></p>
+<p>Then I searched for only passwords that have 6 characters long.</p>
+<pre><code>index=botsv1 sourcetype=stream:http dest=192.168.250.70 http_method=POST form_data=*username*passwd*
+| rex field=form_data &quot;passwd=(?&lt;userpassword&gt;\w+)&quot;
+| eval lenpassword=len(userpassword)
+| search lenpassword=6
+| table userpassword form_data
+</code></pre>
+<p><img alt="image-20260816111611887" src="./getting-started-with-splunk-for-security.assets/image-20260816111611887.png" /></p>
+<p>The lab already included <code>cp.csv</code> file which contains the Coldplay songs.</p>
+<pre><code>| inputlookup cp.csv
+</code></pre>
+<p><img alt="image-20260816132854380" src="./getting-started-with-splunk-for-security.assets/image-20260816132854380.png" /></p>
+<p>I converted the Songs values to lower case and call the new field <code>song</code>.</p>
+<p><img alt="image-20260816133231816" src="./getting-started-with-splunk-for-security.assets/image-20260816133231816.png" /></p>
+<p>Now it's time to put everything together. The password that matched the coldplay song is <code>yellow</code>.</p>
+<p><img alt="image-20260816134159799" src="./getting-started-with-splunk-for-security.assets/image-20260816134159799.png" /></p>
+<h1 id="challenge-question-5">Challenge Question #5</h1>
+<p><strong>Starting with the search below, write a search that shows us if any passwords were used more than once and if so, what IP addresses were they from? Output should include columns named src, count and userpassword</strong></p>
+<pre><code>index=botsv1 sourcetype=stream:http dest=192.168.250.70 http_method=POST form_data=*username*passwod*
+| rex field=form_data &quot;passwd=(?&lt;userpassword&gt;\w+)&quot;
+</code></pre>
+<p>The list below is the passwords that were used more than once. Also the table shows the source IP address which originated each password.</p>
+<p><img alt="image-20260816135817506" src="./getting-started-with-splunk-for-security.assets/image-20260816135817506.png" /></p>
+<p>The SPL below finds HTTP POST requests containing a username and password, extracts the password, counts how many times each password was used, shows the source IPs, and sorts by the most-used password.</p>
+<pre><code>index=botsv1 sourcetype=stream:http dest=192.168.250.70 http_method=POST form_data=*username*passwd*
+| rex field=form_data &quot;passwd=(?&lt;userpassword&gt;\w+)&quot;
+| stats count values(src) AS src by userpassword
+| sort - count
+</code></pre>
+<h1 id="challenge-question-6">Challenge Question #6</h1>
+<p><strong>What was the average password length used in the password brute forcing attempt, rounded to the nearest integer?</strong></p>
+<pre><code>index=botsv1 sourcetype=stream:http dest=192.168.250.70 http_method=POST form_data=*username*passwd*
+| rex field=form_data &quot;passwd=(?&lt;userpassword&gt;\w+)&quot;
+</code></pre>
+<p>Building on the SPL above, I first calculate the length of a string (userpassword) using the eval command</p>
+<pre><code>| eval lenpassword=len(userpassword)
+</code></pre>
+<p>Then calculate the average of all the lengths using stats and rename it to avgpassword</p>
+<pre><code>| stats avg(lenpassword) AS avgpassword
+</code></pre>
+<p>Finally, use the eval command with the round function. Round the avgpassword field to 0 decimal places and put it into the average_password_length field.</p>
+<pre><code>| eval average_password_length=round(avgpassword,0)
+</code></pre>
+<p><img alt="image-20260816141128060" src="./getting-started-with-splunk-for-security.assets/image-20260816141128060.png" /></p>
+<h1 id="challenge-question-7">Challenge Question #7</h1>
+<p><strong>Produce a line chart of the frequency of password attempts that were part of the brute force attack</strong></p>
+<p>Hint #1: You many need to adjust the span to get a meaningful line</p>
+<p>Hint#2: Check out the options for fixedrange</p>
+<p>Hint#3: Use the visualization tab to select a good graphic</p>
+<pre><code>index=botsv1 sourcetype=stream:http dest=192.168.250.70 http_method=POST form_data=*username*passwd*
+| rex field=form_data &quot;passwd=(?&lt;userpassword&gt;\w+)&quot;
+</code></pre>
+<p>I need to visualize the frequency of the brute force attack. To achieve this, I can use <code>timechart</code> command. This SPL simply means "Show me how many events happened every second, grouped by destination"</p>
+<pre><code>| timechart span=1s fixedrange=false count by dest
+</code></pre>
+<p><img alt="image-20260816143157124" src="./getting-started-with-splunk-for-security.assets/image-20260816143157124.png" /></p>
+<p>Here's the visualization of the SPL query when the span value is set to 1s.</p>
+<p><img alt="image-20260816143527687" src="./getting-started-with-splunk-for-security.assets/image-20260816143527687.png" /></p>
+<p>And here's the visualization when the span value is set to 1m instead.</p>
+<p><img alt="image-20260816143643720" src="./getting-started-with-splunk-for-security.assets/image-20260816143643720.png" /></p>
+<h1 id="challenge-question-8">Challenge Question #8</h1>
+<p><strong>How many seconds elapsed between the time we first saw the password batman and the time we saw it again? Round it to 2 decimals.</strong></p>
+<p>Hint: Output the duration value which was created with the transaction command</p>
+<p><img alt="image-20260816144009476" src="./getting-started-with-splunk-for-security.assets/image-20260816144009476.png" /></p>
+<p>We can use eval command to calculate a difference but we can use transaction command. The transaction command can be used to group events together and it creates additional metafields called duration and eventcount.</p>
+<pre><code>index=botsv1 sourcetype=stream:http dest=192.168.250.70 http_method=POST form_data=*username*passwd*
+| rex field=form_data &quot;passwd=(?&lt;userpassword&gt;\w+)&quot;
+| search userpassword=batman
+| transaction userpassword
+| eval round_duration=round(duration,2)
+| table userpassword duration round_duration
+</code></pre>
+<p>Duration is a value created with transaction that calculates the difference between the first and last even in seconds.</p>
+<p><img alt="image-20260816144614408" src="./getting-started-with-splunk-for-security.assets/image-20260816144614408.png" /></p>
+<h1 id="challenge-question-9">Challenge Question #9</h1>
+<p><strong>Starting with the search below, return a count of the source addresses and their geolocation details, including city, state, country and latitude and longitude and overlay it on a map</strong></p>
+<pre><code>index=botsv1 sourcetype=stream:http dest=192.168.250.70
+</code></pre>
+<p>First, I added the SPL below to return a count of the source addresses.</p>
+<pre><code>| stats count by src
+</code></pre>
+<p><img alt="image-20260816145855406" src="./getting-started-with-splunk-for-security.assets/image-20260816145855406.png" /></p>
+<p>Then I appended <code>iplocation</code> command which returned the gelocation details of the source addresses.</p>
+<pre><code>| iplocation src
+</code></pre>
+<p><img alt="image-20260816145928698" src="./getting-started-with-splunk-for-security.assets/image-20260816145928698.png" /></p>
+<pre><code>| geostats latfield=lat longfield=lon count by src
+</code></pre>
+<p><img alt="image-20260816150919757" src="./getting-started-with-splunk-for-security.assets/image-20260816150919757.png" /></p>
+<h1 id="checkpoint-3">Checkpoint #3</h1>
+<h3 id="question-1_2">Question 1</h3>
+<p><strong>On Auguest 24, 2016, how many characters were in the longest command executed? What was the name of the executable that was part of the command?</strong></p>
+<p>Hint: Microsoft Sysmon is the data source</p>
+<p>After setting the date as Aug 24, 2016, I first looked for Microsoft Sysmon data source. I was able to find <code>wineventlog:microsoft-windows-sysmon/operational</code>. The next step is to find the longest command executed.</p>
+<p><img alt="image-20260816152140202" src="./getting-started-with-splunk-for-security.assets/image-20260816152140202.png" /></p>
+<p>Made a new variable named <code>cmdLineLength</code> which contains the length of every CommandLine and I sorted them in descending order and returned the very first output.</p>
+<pre><code>index=botsv1 source=&quot;wineventlog:microsoft-windows-sysmon/operational&quot; CommandLine=*
+| eval cmdLineLength=len(CommandLine)
+| table CommandLine cmdLineLength
+| sort - cmdLineLength
+| head 1
+</code></pre>
+<p><img alt="image-20260816152542723" src="./getting-started-with-splunk-for-security.assets/image-20260816152542723.png" /></p>
+<h3 id="question-2_2">Question 2</h3>
+<p><strong>Show the top 5 Windows Event Codes for the server we8105desk.waynecorpinc.local as a pie chart. The data range should be all day, August 24, 2016.</strong></p>
+<p><img alt="image-20260816153309986" src="./getting-started-with-splunk-for-security.assets/image-20260816153309986.png" /></p>
+<h3 id="question-3_1">Question 3</h3>
+<p><strong>Generate a list of sites visited on August 24, 2016 and provide the sum of the bytes_in and bytes_out, the destination IP, associated URLs and the source IPs that visited the site. Do not include Microsoft and Google sites. Sort the results by bytes_out, largest to smallest.</strong></p>
+<p>Hint #1: Splunk Stream HTTP is the data source you will want to use</p>
+<p>Hint #2: stats command can do many things</p>
+<p><img alt="image-20260816155429973" src="./getting-started-with-splunk-for-security.assets/image-20260816155429973.png" /></p>
+<footer>&copy; 2026 wook413.</footer>
+</div>
+</body>
+</html>

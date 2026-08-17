@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<title>splunk-detection-lab-part-1</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    accent-color: var(--code-accent);
+    vertical-align: -2px;
+}
+
+.task-list-item del { color: var(--muted); }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+body { padding-top: 108px; }
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.site-nav-inner {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    max-width: 760px;
+    padding: 12px 20px;
+}
+
+.site-nav a {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.site-nav a.active {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.breadcrumb {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0 0 20px;
+}
+
+.breadcrumb a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--link);
+    text-decoration: underline;
+}
+
+.breadcrumb .sep {
+    margin: 0 6px;
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    body { padding-top: 96px; }
+    .site-nav-inner { padding: 10px 16px; gap: 2px; }
+    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="site-nav-inner"><a href="../../index.html">Home</a><a href="../../README.html">About</a><a href="../../writeups/index.html">Writeups</a><a href="../../projects/index.html" class="active">Projects</a><a href="../../OSCP/index.html">Certifications</a></div></nav>
+<div class="page">
+<div class="breadcrumb"><a href="../index.html">Projects</a><span class="sep">/</span><a href="./index.html">Splunk Detection Lab</a><span class="sep">/</span><span>Part 1</span></div>
+
+<h1 id="building-a-splunk-detection-lab-part-1">Building a Splunk Detection Lab - Part 1</h1>
+<p>This is the first post in a series on building a Splunk-based detection lab from scratch. The goal is not just to get Splunk running, but to end up with an environment where I can simulate attacks, collect the resulting telemetry, and write detections against it.</p>
+<h1 id="lab-architecture">Lab Architecture</h1>
+<p>Three virtual machines on an isolated host-only network. Kali attacks the Windows endpoint, Sysmon and the Splunk Universal Forwarder ship the resulting logs to the Splunk server, and analysis happens from there.</p>
+<p><img alt="image-20260816222018081" src="./splunk-detection-lab-part-1.assets/image-20260816222018081.png" /></p>
+<table>
+<thead>
+<tr>
+<th>VM</th>
+<th>Role</th>
+<th>Static IP</th>
+<th>vCPU</th>
+<th>RAM</th>
+<th>Disk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>splunk-server</code></td>
+<td>Ubuntu Server 24.04 LTS, Splunk Enterprise</td>
+<td>192.168.56.10</td>
+<td>4</td>
+<td>8 GB</td>
+<td>100 GB</td>
+</tr>
+<tr>
+<td><code>win-target</code></td>
+<td>Windows 11 Enterprise, Sysmon + Universal Forwarder</td>
+<td>192.168.56.20</td>
+<td>2</td>
+<td>4 GB</td>
+<td>60 GB</td>
+</tr>
+<tr>
+<td><code>kali-attacker</code></td>
+<td>Kali Linux</td>
+<td>192.168.56.30</td>
+<td>2</td>
+<td>3 GB</td>
+<td>40 GB</td>
+</tr>
+</tbody>
+</table>
+<p>Each VM gets two network adapters: NAT for internet access during setup, and a host-only adapter (<code>VMnet2</code>) carrying all lab traffic. Once setup is complete, the NAT adapter is disconnected on the Windows and Kali machines so that attack traffic is genuinely contained.</p>
+<h1 id="prerequisites">Prerequisites</h1>
+<h2 id="downloads">Downloads</h2>
+<ul>
+<li>
+<p>Kali Linux (VMware image, not the ISO): https://www.kali.org/get-kali/#kali-virtual-machines</p>
+</li>
+<li>
+<p>Ubuntu Server 24.04 LTS: https://ubuntu.com/download/server</p>
+</li>
+<li>
+<p>Windows 11 Enterprise, 90-day evaluation: https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise</p>
+</li>
+</ul>
+<h2 id="workspace-folder-and-defender-exclusion">Workspace Folder and Defender Exclusion</h2>
+<p>I created a dedicated folder named <code>homelab-splunk</code> on my Desktop to hold both the installation media and the virtual machine files.</p>
+<p><img alt="image-20260816170012324" src="./splunk-detection-lab-part-1.assets/image-20260816170012324.png" /></p>
+<p>I then went to <strong>Windows Security</strong> - <strong>Virtus &amp; threat protection</strong> - <strong>Manage settings</strong> - <strong>Add or remove exclusions</strong> - <strong>Add an exclusion</strong> - <strong>Folder</strong>, and added only <code>homelab-splunk</code>.</p>
+<p>This step is important because when I start attack simulation later, Defender will happily reach into the VM's disk files, detect the payloads sitting inside the guest, and quarantine them and break the lab from the outside.</p>
+<p><img alt="image-20260816170736925" src="./splunk-detection-lab-part-1.assets/image-20260816170736925.png" /></p>
+<h2 id="create-an-isolated-virtual-network">Create an Isolated Virtual Network</h2>
+<p>This step creates a dedicated network path where Kali attacks Windows and the resulting logs are sent to Splunk. They key is to make sure that practice traffic stays isolated and does not leak onto my real home network.</p>
+<ol>
+<li>Run VMware Workstation as Administrator.</li>
+<li>Select <code>Edit</code> - <code>Virtual Network Editor</code></li>
+<li>Select <code>Change Settings</code> on the bottom right in the Virtual Network Editor.</li>
+</ol>
+<p><img alt="image-20260816184814902" src="./splunk-detection-lab-part-1.assets/image-20260816184814902.png" /></p>
+<p>Select <strong>Add a Virtual Network</strong> and <strong>VMnet2</strong>.</p>
+<p><img alt="image-20260816203859822" src="./splunk-detection-lab-part-1.assets/image-20260816203859822.png" /></p>
+<p>Configure VMnet2 as below:</p>
+<ul>
+<li>Select <strong>Host-only (connect VMs internally in a private network)</strong></li>
+<li>Check <strong>Connect a host virtual adapter to this network</strong></li>
+<li>Uncheck <strong>Use local DHCP service to distribute IP addresses to VMs</strong></li>
+<li>Subnet IP: <strong>192.168.56.0</strong></li>
+<li>Subnet mask: <strong>255.255.255.0</strong></li>
+</ul>
+<p>We disable DHCP so that all three machines can use static IP addresses. The <strong>Splunk Forwarder</strong> has the Splunk server's IP address hardcoded in its configuration file, so if the IP address changes after every reboot, log forwarding can silently stop working.</p>
+<p><img alt="image-20260816204136441" src="./splunk-detection-lab-part-1.assets/image-20260816204136441.png" /></p>
+<p>I opened up cmd prompt and entered the <code>ipconfig</code> command. I confirmed that VMnet2 was properly configured.</p>
+<pre><code>Ethernet adapter VMware Network Adapter VMnet2:
+
+   Connection-specific DNS Suffix  . :
+   Link-local IPv6 Address . . . . . : fe80::c93e:575b:d619:1647%40
+   IPv4 Address. . . . . . . . . . . : 192.168.56.1
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . :
+</code></pre>
+<h1 id="ubuntu-vm-splunk-server">Ubuntu VM (Splunk Server)</h1>
+<h2 id="creating-the-vm">Creating the VM</h2>
+<p>I used <strong>File</strong> - <strong>New Virtual Machine</strong> - <strong>Custom (advanced)</strong> rather than Typical, because the network adapters and disk options need to bet set explicitly.</p>
+<p><img alt="image-20260816210204216" src="./splunk-detection-lab-part-1.assets/image-20260816210204216.png" /></p>
+<p>The final virtual machine settings are as below:</p>
+<p><img alt="image-20260816210622705" src="./splunk-detection-lab-part-1.assets/image-20260816210622705.png" /></p>
+<h2 id="post-install-verification">Post-Install Verification</h2>
+<p><img alt="image-20260816213106002" src="./splunk-detection-lab-part-1.assets/image-20260816213106002.png" /></p>
+<p>Checking the interfaces with <code>ip -br a</code> returned <code>ens33</code> and <code>ens34</code> as configured:</p>
+<p><img alt="image-20260816213814061" src="./splunk-detection-lab-part-1.assets/image-20260816213814061.png" /></p>
+<p><code>ping -c 3 google.com</code> confirmed the VM had internet access through NAT, and I brought the system up to date before installing anything else:</p>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade -y
+sudo reboot
+</code></pre>
+<h2 id="ssh-access">SSH Access</h2>
+<p>Working through the VMware console is workable but tedious, there is no copy-past, which matters once Splunk configuration files enter the picture. Enabling SSH lets me drive the server from a terminal on the host instead.</p>
+<p><img alt="image-20260816214159708" src="./splunk-detection-lab-part-1.assets/image-20260816214159708.png" /></p>
+<p><code>inactive (dead)</code> and <code>disabled</code> are both correct here. Ubuntu 24.04 uses <strong>socket activation</strong> for SSH: instead of keeping the daemon resident, <code>ssh.socket</code> listens on port 22 and starts <code>ssh.service</code> on demand when a connection arrives. The line that matters is <code>TriggeredBy: ssh.socket</code>; the green dot indicates the socket is active and listening.</p>
+<p>From cmd prompt on the host, I entered <code>ssh wook@192.168.56.10</code> and the connection succeeded.</p>
+<p><img alt="image-20260816214408098" src="./splunk-detection-lab-part-1.assets/image-20260816214408098.png" /></p>
+<h1 id="next">Next</h1>
+<p>The server is provisioned, reachable, and correctly sized. Part 2 will cover installing Splunk Enterprise, configuring the receiving port, and standing up the Windows endpoint with Sysmon and the Universal Forwarder so that logs actually start flowing.</p>
+<footer>&copy; 2026 wook413.</footer>
+</div>
+</body>
+</html>

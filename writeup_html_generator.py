@@ -3,7 +3,7 @@ import re
 import sys
 import markdown
 
-from site_common import FONT_LINKS, HOME_CSS, home_link_html
+from site_common import FONT_LINKS, NAV_CSS, nav_html, breadcrumb_html
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -38,6 +38,7 @@ body {
 .page {
     max-width: 760px;
     margin: 0 auto;
+    overflow-wrap: break-word;
 }
 
 .byline {
@@ -108,6 +109,8 @@ pre code {
     border-radius: 0;
     font-size: 0.85rem;
     line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
 /* images */
@@ -214,6 +217,7 @@ body {
 .page {
     max-width: 700px;
     margin: 0 auto;
+    overflow-wrap: break-word;
 }
 
 .byline {
@@ -371,6 +375,8 @@ pre code {
     border: none;
     font-size: 0.86rem;
     line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
 /* images */
@@ -437,13 +443,14 @@ def convert_md_to_html(md_path, title=None, style="mono"):
     if tags:
         tags_html = "".join(f'<span class="tag">{t}</span>' for t in tags)
         body_html = re.sub(r"(</h1>)", r"\1" + f'<div class="tags">{tags_html}</div>', body_html, count=1)
-    css = (CSS_LIGHT if style == "read" else CSS) + HOME_CSS
+    css = (CSS_LIGHT if style == "read" else CSS) + NAV_CSS
     # depth must be computed from the repo root regardless of cwd, or the
-    # home link ends up with the wrong number of "../" when this script is
-    # run from inside a lab's own directory (e.g. `lab2.md` instead of the
-    # full writeups/.../lab2/lab2.md path)
+    # nav/breadcrumb links end up with the wrong number of "../" when this
+    # script is run from inside a lab's own directory (e.g. `lab2.md`
+    # instead of the full writeups/.../lab2/lab2.md path)
     repo_relative_path = os.path.relpath(os.path.abspath(md_path), REPO_ROOT)
-    home_html = home_link_html(repo_relative_path)
+    nav = nav_html(repo_relative_path)
+    breadcrumb = breadcrumb_html(repo_relative_path)
 
     html = f"""<!doctype html>
 <html lang="en">
@@ -455,8 +462,9 @@ def convert_md_to_html(md_path, title=None, style="mono"):
 <style>{css}</style>
 </head>
 <body>
-{home_html}
+{nav}
 <div class="page">
+{breadcrumb}
 {byline_html}
 {body_html}
 <footer>&copy; 2026 wook413.</footer>
