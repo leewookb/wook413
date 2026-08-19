@@ -1,11 +1,12 @@
 import os
 import re
 
-FONT_STACK = '"Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif'
+FONT_STACK = '"Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif'
+HEADING_FONT_STACK = '"Space Grotesk", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif'
 
 FONT_LINKS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">"""
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">"""
 
 HOME_CSS = """
 .home-link {
@@ -73,6 +74,7 @@ LABELS = {
     "boss-of-the-soc": "Boss of the SOC",
     "splunk-detection-lab": "Splunk Detection Lab",
     "splunk-detection-lab-part-1": "Part 1",
+    "splunk-detection-lab-part-2": "Part 2",
     "OSCP": "OSCP",
 }
 
@@ -176,7 +178,7 @@ LISTING_CSS = """
 * { box-sizing: border-box; }
 
 body {
-    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: """ + FONT_STACK + """;
     background: var(--bg);
     color: var(--text);
     padding: 56px 20px 80px;
@@ -186,12 +188,14 @@ body {
 }
 
 h1 {
+    font-family: """ + HEADING_FONT_STACK + """;
     font-size: 1.4rem;
     font-weight: 700;
     margin: 0 0 28px;
 }
 
 h2 {
+    font-family: """ + HEADING_FONT_STACK + """;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -289,6 +293,7 @@ HOME_CARD_CSS = """
 }
 
 .home-card-label {
+    font-family: """ + HEADING_FONT_STACK + """;
     font-weight: 700;
     font-size: 0.95rem;
     color: var(--link);

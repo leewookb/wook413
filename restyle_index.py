@@ -1,7 +1,7 @@
 import re
 import sys
 
-from site_common import FONT_LINKS, HOME_CSS, home_link_html
+from site_common import FONT_LINKS, HOME_CSS, home_link_html, FONT_STACK, HEADING_FONT_STACK
 
 CSS = """
 :root {
@@ -16,7 +16,7 @@ CSS = """
 * { box-sizing: border-box; }
 
 body {
-    font-family: "Nunito", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: """ + FONT_STACK + """;
     background: var(--bg);
     color: var(--text);
     padding: 56px 20px 80px;
@@ -26,6 +26,7 @@ body {
 }
 
 h1 {
+    font-family: """ + HEADING_FONT_STACK + """;
     font-size: 1.4rem;
     font-weight: 700;
     border-bottom: 2px solid var(--text);

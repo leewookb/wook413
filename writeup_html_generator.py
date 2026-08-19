@@ -27,7 +27,7 @@ CSS = """
 * { box-sizing: border-box; }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
     margin: 0;
@@ -48,6 +48,7 @@ body {
 }
 
 h1 {
+    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 1.6rem;
     border-bottom: 2px solid var(--text);
     padding-bottom: 14px;
@@ -56,6 +57,7 @@ h1 {
 }
 
 h2, h3, h4 {
+    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin-top: 2.2em;
     margin-bottom: 0.8em;
     line-height: 1.35;
@@ -185,7 +187,7 @@ footer {
 # reading-optimized, light-only alternative: warmer paper background,
 # one clean casual sans-serif throughout, cooler light code panels
 # instead of a dark block so the whole page stays light.
-from site_common import FONT_STACK
+from site_common import FONT_STACK, HEADING_FONT_STACK
 
 CSS_LIGHT = """
 :root {
@@ -228,6 +230,7 @@ body {
 }
 
 h1 {
+    font-family: """ + HEADING_FONT_STACK + """;
     font-size: 1.55rem;
     font-weight: 700;
     border-bottom: 2px solid var(--text);
@@ -258,6 +261,7 @@ h1 {
 }
 
 h2, h3, h4 {
+    font-family: """ + HEADING_FONT_STACK + """;
     font-weight: 700;
     margin-top: 2.4em;
     margin-bottom: 0.9em;

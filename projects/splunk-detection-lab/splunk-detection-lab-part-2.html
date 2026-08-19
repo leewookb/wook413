@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<title>splunk-detection-lab-part-2</title>
+<style>
+:root {
+    --bg: #fdfbf7;
+    --text: #262220;
+    --muted: #7a736a;
+    --link: #0f5fae;
+    --border: #e7e1d6;
+    --code-bg: #eef3f8;
+    --code-border: #d3e1ee;
+    --code-text: #1f2937;
+    --code-accent: #2563eb;
+    --inline-code-bg: #eef3f8;
+    --inline-code-text: #a3271e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 56px 20px 90px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+}
+
+.byline {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 16px;
+    margin: 2.4em 0 32px;
+    line-height: 1.4;
+}
+
+/* first heading on the page sits right under the byline, not floating mid-page */
+.page > h1:first-of-type { margin-top: 10px; }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -18px 0 32px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    padding: 3px 11px;
+    border-radius: 999px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin-top: 2.4em;
+    margin-bottom: 0.9em;
+    line-height: 1.4;
+}
+
+h3 { font-size: 1.2rem; }
+
+blockquote {
+    margin: 1.6em 0;
+    padding: 0.3em 1.3em;
+    border-left: 4px solid var(--border);
+    color: var(--muted);
+    font-style: italic;
+}
+
+blockquote p { margin: 0.6em 0; }
+
+mark {
+    background: #fbe89f;
+    color: inherit;
+    padding: 0.05em 0.2em;
+    border-radius: 2px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.8em 0;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { border-bottom: 2px solid var(--text); font-weight: 700; }
+
+/* [TOC] rendered nav */
+.toc {
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 1.8em 0;
+}
+
+.toc ul { list-style: none; padding-left: 1.1em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.3em 0; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--link); text-decoration: underline; }
+
+p { margin: 1.1em 0; }
+
+strong { font-weight: 700; }
+
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(15, 95, 174, 0.35); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.8em 0;
+}
+
+ul, ol { padding-left: 1.5em; margin: 1.1em 0; }
+li { margin: 0.4em 0; }
+
+ul.task-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-list-item input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    accent-color: var(--code-accent);
+    vertical-align: -2px;
+}
+
+.task-list-item del { color: var(--muted); }
+
+/* inline code */
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--inline-code-bg);
+    color: var(--inline-code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.82em;
+    border: 1px solid var(--code-border);
+}
+
+/* fenced code blocks: light panel, not a dark box, but still clearly set apart */
+pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border: 1px solid var(--code-border);
+    border-left: 4px solid var(--code-accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 1.8em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+}
+
+p:has(> img:only-child) { text-align: center; }
+
+footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; font-size: 1.03rem; }
+    h1 { font-size: 1.3rem; }
+}
+
+body { padding-top: 108px; }
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.site-nav-inner {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    max-width: 760px;
+    padding: 12px 20px;
+}
+
+.site-nav a {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.site-nav a.active {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.breadcrumb {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0 0 20px;
+}
+
+.breadcrumb a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--link);
+    text-decoration: underline;
+}
+
+.breadcrumb .sep {
+    margin: 0 6px;
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    body { padding-top: 96px; }
+    .site-nav-inner { padding: 10px 16px; gap: 2px; }
+    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+}
+h1, h2, h3, h4, .home-card-label { font-family: "Space Grotesk", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="site-nav-inner"><a href="../../index.html">Home</a><a href="../../README.html">About</a><a href="../../writeups/index.html">Writeups</a><a href="../../projects/index.html" class="active">Projects</a><a href="../../OSCP/index.html">Certifications</a></div></nav>
+<div class="page">
+<div class="breadcrumb"><a href="../index.html">Projects</a><span class="sep">/</span><a href="./index.html">Splunk Detection Lab</a><span class="sep">/</span><span>Part 2</span></div>
+
+<p>Part 2. Time to install Splunk Enterprise.</p>
+<h1 id="part-2-plan">Part 2 Plan</h1>
+<ol>
+<li>Install Splunk Enterprise and confirm access to the Web UI</li>
+<li>Configure it to start automatically on boot</li>
+<li>Enable receiving on port 9997 (the channel the Forwarder will send logs through)</li>
+<li>Install the Windows add-on</li>
+<li>If there's time left, start building the Windows target VM</li>
+</ol>
+<hr />
+<p>First, you need a Splunk account.</p>
+<p>On the Splunk Enterprise download page, pick the <strong>Linux</strong> tab and choose <strong>.deb</strong>. Since the file needs to land on the VM rather than the host, click <strong>Copy wget link</strong> instead of the <strong>Download Now</strong> button.</p>
+<p><img alt="image-20260817210324174" src="./splunk-detection-lab-part-2.assets/image-20260817210324174.png" /></p>
+<p>I SSH'd into the Ubuntu VM from Part 1, moved to <code>/tmp</code>, and pasted the copied link to download the installer.</p>
+<p><img alt="image-20260817205545199" src="./splunk-detection-lab-part-2.assets/image-20260817205545199.png" /></p>
+<p><img alt="image-20260817210920860" src="./splunk-detection-lab-part-2.assets/image-20260817210920860.png" /></p>
+<p>The installer comes in at about 1.3 GB.</p>
+<pre><code>wook@splunk:/tmp$ ls -lh /tmp/*.deb
+-rw-rw-r-- 1 wook wook 1.3G Jul 28 21:03 /tmp/splunk-10.4.2-33c3bf42cd73-linux-amd64.deb
+</code></pre>
+<p><code>dpkg</code> is the package manager for Debian-based Linux distributions, used mainly to install or remove <code>.deb</code> files. An easy way to remember the <code>-i</code> flag is that it stands for <code>--install</code>.</p>
+<p><img alt="image-20260817211539823" src="./splunk-detection-lab-part-2.assets/image-20260817211539823.png" /></p>
+<p>Next, sort out ownership.</p>
+<ul>
+<li><code>chown</code> = change owner</li>
+<li><code>splunk:splunk</code> = <code>user:group</code> format</li>
+<li><code>-R</code> = Recursively</li>
+</ul>
+<p>So this sets the owner of <code>/opt/splunk</code> along with every directory and file underneath it to the <code>splunk</code> user and the <code>splunk</code> group. The reason this matters: if those files end up writable only by <code>root</code>, the <code>splunk</code> user won't be able to write logs.</p>
+<pre><code>wook@splunk:/tmp$ cd /opt/splunk
+wook@splunk:/opt/splunk$ sudo chown -R splunk:splunk /opt/splunk
+</code></pre>
+<p>Running <code>ls -la /opt/splunk</code> confirms that the directory and everything below it now belongs to the splunk user and splunk group.</p>
+<p><img alt="image-20260817212417149" src="./splunk-detection-lab-part-2.assets/image-20260817212417149.png" /></p>
+<p>The command below starts Splunk for the first time as the <code>splunk</code> user while accepting the license.</p>
+<pre><code>sudo -u splunk /opt/splunk/bin/splunk start --accept-license
+</code></pre>
+<p>It then prompts for an administrator username and password.</p>
+<p><img alt="image-20260817212722903" src="./splunk-detection-lab-part-2.assets/image-20260817212722903.png" /></p>
+<p>Once that finished, <strong>http://192.168.56.10:8000</strong> should have been reachable from the browser but it wasn't. So I switched to the <code>splunk</code> user and ran <code>/opt/splunk/bin/splunk status</code>, which came back with <code>splunkd is not running</code>.</p>
+<p><img alt="image-20260817213821015" src="./splunk-detection-lab-part-2.assets/image-20260817213821015.png" /></p>
+<p>I re-ran the commands below and tried <code>192.168.56.10:8000</code> again and this time the Splunk Enterprise login page came up. Success!</p>
+<pre><code>wook@splunk:~$ sudo chown -R splunk:splunk /opt/splunk/
+wook@splunk:~$ sudo -u splunk /opt/splunk/bin/splunk start
+</code></pre>
+<p><img alt="image-20260817221822320" src="./splunk-detection-lab-part-2.assets/image-20260817221822320.png" /></p>
+<p>As things stand, Splunk won't come back up if the VM reboots. Starting it by hand every time gets old fast, so let's register it as a service.</p>
+<p>First, stop the running instance.</p>
+<pre><code>wook@splunk:~$ sudo -u splunk /opt/splunk/bin/splunk stop
+</code></pre>
+<p>The command below is what makes Splunk start automatically when the server boots.</p>
+<pre><code>wook@splunk:~$ sudo /opt/splunk/bin/splunk enable boot-start -user splunk -systemd-managed 1
+</code></pre>
+<ul>
+<li><code>enable boot-start</code> = configures Splunk to start automatically at boot.</li>
+<li>Which means no more typing <code>sudo -u splunk /opt/splunk/bin/splunk start</code> every time.</li>
+<li><code>-systemd-managed 1</code> hands start-up and service management over to systemd, so Splunk can be controlled through </li>
+<li><code>systemctl start Splunkd</code></li>
+<li><code>systemctl stop Splunkd</code></li>
+<li><code>systemctl status Splunkd</code>, and so on.</li>
+</ul>
+<p><img alt="image-20260817225256482" src="./splunk-detection-lab-part-2.assets/image-20260817225256482.png" /></p>
+<h2 id="enabling-receiving-on-port-9997">Enabling Receiving on Port 9997</h2>
+<p>The Splunk server is ready. Now it needs a channel to receive the logs Windows will be sending. The Universal Forwarder sends to port 9997 by default, and our server isn't listening on it yet, so we have to turn it on.</p>
+<p>Here's how to do it from the Web UI:</p>
+<ol>
+<li><strong>Settings</strong> - <strong>Forwarding and receiving</strong></li>
+<li>Click <strong>Add new</strong> next to<strong>Configure receving</strong> </li>
+<li><strong>Listen on this port: </strong><code>9997</code></li>
+<li>Save</li>
+</ol>
+<p><img alt="image-20260817230507628" src="./splunk-detection-lab-part-2.assets/image-20260817230507628.png" /></p>
+<p><img alt="image-20260817230722010" src="./splunk-detection-lab-part-2.assets/image-20260817230722010.png" /></p>
+<p>The same thing can be done from the CLI:</p>
+<pre><code>sudo -u splunk /opt/splunk/bin/splunk enable listen 9997 -auth admin:&lt;password&gt;
+</code></pre>
+<h2 id="creating-indexes">Creating Indexes</h2>
+<p>Rather than dumping logs wherever they land, this step sends them to dedicated indexes. It means searches can be narrowed with <code>index=windows</code> later on, which helps with both speed and general housekeeping.</p>
+<p><strong>Settings</strong> - <strong>Indexes</strong> - <strong>New Index</strong></p>
+<p><img alt="image-20260817231243039" src="./splunk-detection-lab-part-2.assets/image-20260817231243039.png" /></p>
+<ul>
+<li><strong>Index Name</strong>: <code>windows</code></li>
+<li>Leave everything else at its default</li>
+<li><strong>Save</strong></li>
+</ul>
+<p><img alt="image-20260817231417926" src="./splunk-detection-lab-part-2.assets/image-20260817231417926.png" /></p>
+<p><img alt="image-20260817231523784" src="./splunk-detection-lab-part-2.assets/image-20260817231523784.png" /></p>
+<p>Claude also recommended creating a separate <code>sysmon</code> index, for the following reason:</p>
+<p><code>The reason to keep Sysmon separate from the Windows event logs is volume. Sysmon records every process creation and network connection, so there's far more of it. Splitting the indexes lets you set different retention periods for each, and makes it easier to stay under the 500 MB/day cap on the free license.</code></p>
+<p><img alt="image-20260817231813263" src="./splunk-detection-lab-part-2.assets/image-20260817231813263.png" /></p>
+<p>I had hoped to get to the Windows VM as well, but that's not happening in this part of the series. Stopping here. I'm a little paranoid, so I took a snapshot of the Ubuntu VM and named it <code>01-splunk-installed</code>.</p>
+<p><img alt="image-20260817232443968" src="./splunk-detection-lab-part-2.assets/image-20260817232443968.png" /></p>
+<footer>&copy; 2026 wook413.</footer>
+</div>
+</body>
+</html>
