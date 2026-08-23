@@ -75,6 +75,7 @@ LABELS = {
     "splunk-detection-lab": "Splunk Detection Lab",
     "splunk-detection-lab-part-1": "Part 1",
     "splunk-detection-lab-part-2": "Part 2",
+    "splunk-detection-lab-part-3": "Part 3",
     "OSCP": "OSCP",
 }
 
