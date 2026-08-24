@@ -11,100 +11,69 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <title>wook413</title>
 <style>
 :root {
     --bg: #fdfbf7;
-    --text: #262220;
-    --muted: #7a736a;
+    --card-bg: #ffffff;
+    --text: #201d1a;
+    --muted: #837b70;
     --link: #0f5fae;
-    --border: #e7e1d6;
-    --row-hover: #eef3f8;
+    --border: #ece5d8;
+    --row-hover: #f6f2ea;
+    --chip-writeup-bg: #eaf1fc;
+    --chip-writeup-text: #17539a;
+    --chip-project-bg: #e8f5ee;
+    --chip-project-text: #1c7a4d;
 }
 
 * { box-sizing: border-box; }
 
 body {
-    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: "Manrope", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
-    padding: 56px 20px 80px;
-    max-width: 760px;
+    padding: 56px 20px 90px;
+    max-width: 720px;
     margin: 0 auto;
     line-height: 1.6;
 }
 
+h1, h2, h3, h4 {
+    font-family: "Space Grotesk", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
 h1 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 0 0 28px;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 12px 0 0;
 }
 
 h2 {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--muted);
-    margin: 36px 0 6px;
-}
-
-ul.listing {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-ul.listing li {
-    border-bottom: 1px solid var(--border);
-}
-
-ul.listing a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    color: var(--link);
-    text-decoration: none;
-    padding: 12px 10px;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background 0.15s ease;
-}
-
-ul.listing a:hover {
-    background: var(--row-hover);
-}
-
-ul.listing a:hover .label { text-decoration: underline; }
-
-ul.listing .count,
-ul.listing .badge {
-    color: var(--muted);
-    font-size: 0.8rem;
-    font-weight: 400;
-}
-
-ul.listing .badge {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 1px 9px;
+    margin: 52px 0 14px;
 }
 
 footer {
-    margin-top: 40px;
+    margin-top: 48px;
     font-size: 0.8rem;
     color: var(--muted);
     text-align: center;
 }
 
 @media (max-width: 600px) {
-    body { padding: 32px 16px 60px; }
-    h1 { font-size: 1.15rem; }
+    body { padding: 32px 16px 64px; }
+    h1 { font-size: 1.6rem; }
 }
 
-body { padding-top: 108px; }
+body { padding-top: 112px; }
 
 .site-nav {
     position: fixed;
@@ -114,7 +83,8 @@ body { padding-top: 108px; }
     z-index: 50;
     display: flex;
     justify-content: center;
-    background: var(--bg);
+    background: rgba(253, 251, 247, 0.9);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
 }
 
@@ -122,12 +92,12 @@ body { padding-top: 108px; }
     display: flex;
     gap: 4px;
     width: 100%;
-    max-width: 760px;
-    padding: 12px 20px;
+    max-width: 720px;
+    padding: 14px 20px;
 }
 
 .site-nav a {
-    padding: 6px 14px;
+    padding: 7px 15px;
     border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -138,95 +108,142 @@ body { padding-top: 108px; }
 
 .site-nav a:hover {
     color: var(--link);
-    background: var(--row-hover, var(--code-bg));
+    background: var(--row-hover);
 }
 
 .site-nav a.active {
     color: var(--link);
-    background: var(--row-hover, var(--code-bg));
-}
-
-.breadcrumb {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin: 0 0 20px;
-}
-
-.breadcrumb a {
-    color: var(--muted);
-    text-decoration: none;
-}
-
-.breadcrumb a:hover {
-    color: var(--link);
-    text-decoration: underline;
-}
-
-.breadcrumb .sep {
-    margin: 0 6px;
-    opacity: 0.5;
+    background: var(--row-hover);
 }
 
 @media (max-width: 600px) {
-    body { padding-top: 96px; }
+    body { padding-top: 98px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
     .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
 }
 
-.home-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin-top: 8px;
-}
+/* -- Most Recent list -- */
 
-.home-card {
+ul.recent {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 10px;
-    padding: 36px 16px;
+}
+
+ul.recent a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 14px;
-    color: var(--text);
+    padding: 16px 18px;
     text-decoration: none;
-    background: var(--bg);
-    transition: background 0.15s ease, border-color 0.15s ease;
+    color: inherit;
+    box-shadow: 0 1px 2px rgba(32, 29, 26, 0.03);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-.home-card:hover {
-    background: var(--row-hover);
-    border-color: var(--link);
+ul.recent a:hover {
+    transform: translateY(-2px);
+    border-color: #d8cdb8;
+    box-shadow: 0 10px 24px rgba(32, 29, 26, 0.08);
 }
 
-.home-card-icon {
-    font-size: 2.2rem;
-    line-height: 1;
+ul.recent .main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
 }
 
-.home-card-label {
+ul.recent .title {
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul.recent .sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+ul.recent .side {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+ul.recent .date {
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+ul.recent .badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+ul.recent .badge-writeup { background: var(--chip-writeup-bg); color: var(--chip-writeup-text); }
+ul.recent .badge-project { background: var(--chip-project-bg); color: var(--chip-project-text); }
+
+ul.recent .arrow {
+    color: var(--muted);
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+ul.recent a:hover .arrow {
+    transform: translateX(3px);
     color: var(--link);
 }
 
-@media (max-width: 480px) {
-    .home-grid { grid-template-columns: 1fr; }
+@media (max-width: 600px) {
+    ul.recent a { padding: 14px 14px; gap: 10px; }
+    ul.recent .title { font-size: 0.94rem; }
+    ul.recent .date { display: none; }
+    ul.recent .arrow { display: none; }
 }
-h1, h2, h3, h4, .home-card-label { font-family: "Space Grotesk", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
 </style>
 </head>
 <body>
 <nav class="site-nav"><div class="site-nav-inner"><a href="./index.html" class="active">Home</a><a href="./README.html">About</a><a href="./writeups/index.html">Writeups</a><a href="./projects/index.html">Projects</a><a href="./OSCP/index.html">Certifications</a></div></nav>
 
-<h1>wook413</h1>
-<div class="home-grid">
-<a class="home-card" href="./README.html"><span class="home-card-icon">🧑‍💻</span><span class="home-card-label">About</span></a>
-<a class="home-card" href="./writeups/index.html"><span class="home-card-icon">🗂️</span><span class="home-card-label">Writeups</span></a>
-<a class="home-card" href="./projects/index.html"><span class="home-card-icon">⚙️</span><span class="home-card-label">Projects</span></a>
-<a class="home-card" href="./OSCP/index.html"><span class="home-card-icon">📜</span><span class="home-card-label">Certifications</span></a>
-</div>
+<h1>wook413 🦊</h1>
+<h2>Most Recent</h2>
+<ul class="recent">
+<li><a href="./writeups/cyberdefenders/soc-analyst-tier-1/jetbrains/jetbrains.html">
+<span class="main"><span class="title">JetBrains</span><span class="sub">CyberDefenders · SOC Analyst Tier 1</span></span>
+<span class="side"><span class="badge badge-writeup">Writeup</span><span class="date">Aug 23</span><span class="arrow">→</span></span>
+</a></li>
+<li><a href="./projects/splunk-detection-lab/splunk-detection-lab-part-3.html">
+<span class="main"><span class="title">Splunk Detection Lab — Part 3</span><span class="sub">Projects</span></span>
+<span class="side"><span class="badge badge-project">Project</span><span class="date">Aug 23</span><span class="arrow">→</span></span>
+</a></li>
+<li><a href="./projects/splunk-detection-lab/splunk-detection-lab-part-2.html">
+<span class="main"><span class="title">Splunk Detection Lab — Part 2</span><span class="sub">Projects</span></span>
+<span class="side"><span class="badge badge-project">Project</span><span class="date">Aug 18</span><span class="arrow">→</span></span>
+</a></li>
+<li><a href="./projects/splunk-detection-lab/splunk-detection-lab-part-1.html">
+<span class="main"><span class="title">Splunk Detection Lab — Part 1</span><span class="sub">Projects</span></span>
+<span class="side"><span class="badge badge-project">Project</span><span class="date">Aug 16</span><span class="arrow">→</span></span>
+</a></li>
+<li><a href="./writeups/boss-of-the-soc/getting-started-with-splunk-for-security/getting-started-with-splunk-for-security.html">
+<span class="main"><span class="title">Getting Started With Splunk For Security</span><span class="sub">Boss of the SOC</span></span>
+<span class="side"><span class="badge badge-writeup">Writeup</span><span class="date">Aug 16</span><span class="arrow">→</span></span>
+</a></li>
+</ul>
 <footer>&copy; 2026 wook413.</footer>
 </body>
 </html>

@@ -1,12 +1,12 @@
 import os
 import re
 
-FONT_STACK = '"Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif'
+FONT_STACK = '"Manrope", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif'
 HEADING_FONT_STACK = '"Space Grotesk", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif'
 
 FONT_LINKS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">"""
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">"""
 
 HOME_CSS = """
 .home-link {
@@ -99,7 +99,7 @@ NAV_ITEMS = [
 ]
 
 NAV_CSS = """
-body { padding-top: 108px; }
+body { padding-top: 112px; }
 
 .site-nav {
     position: fixed;
@@ -109,7 +109,8 @@ body { padding-top: 108px; }
     z-index: 50;
     display: flex;
     justify-content: center;
-    background: var(--bg);
+    background: rgba(253, 251, 247, 0.9);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
 }
 
@@ -118,11 +119,11 @@ body { padding-top: 108px; }
     gap: 4px;
     width: 100%;
     max-width: 760px;
-    padding: 12px 20px;
+    padding: 14px 20px;
 }
 
 .site-nav a {
-    padding: 6px 14px;
+    padding: 7px 15px;
     border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -163,7 +164,7 @@ body { padding-top: 108px; }
 }
 
 @media (max-width: 600px) {
-    body { padding-top: 96px; }
+    body { padding-top: 98px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
     .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
 }
@@ -172,11 +173,12 @@ body { padding-top: 108px; }
 LISTING_CSS = """
 :root {
     --bg: #fdfbf7;
-    --text: #262220;
-    --muted: #7a736a;
+    --card-bg: #ffffff;
+    --text: #201d1a;
+    --muted: #837b70;
     --link: #0f5fae;
-    --border: #e7e1d6;
-    --row-hover: #eef3f8;
+    --border: #ece5d8;
+    --row-hover: #f6f2ea;
 }
 
 * { box-sizing: border-box; }
@@ -185,7 +187,7 @@ body {
     font-family: """ + FONT_STACK + """;
     background: var(--bg);
     color: var(--text);
-    padding: 56px 20px 80px;
+    padding: 56px 20px 90px;
     max-width: 760px;
     margin: 0 auto;
     line-height: 1.6;
@@ -193,29 +195,29 @@ body {
 
 h1 {
     font-family: """ + HEADING_FONT_STACK + """;
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 0 0 28px;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 30px;
 }
 
 h2 {
     font-family: """ + HEADING_FONT_STACK + """;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--muted);
-    margin: 36px 0 6px;
+    margin: 40px 0 12px;
 }
 
 ul.listing {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-ul.listing li {
-    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 ul.listing a {
@@ -223,19 +225,24 @@ ul.listing a {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    color: var(--link);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
     text-decoration: none;
-    padding: 12px 10px;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background 0.15s ease;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    box-shadow: 0 1px 2px rgba(32, 29, 26, 0.03);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 ul.listing a:hover {
-    background: var(--row-hover);
+    transform: translateY(-2px);
+    border-color: #d8cdb8;
+    box-shadow: 0 10px 24px rgba(32, 29, 26, 0.08);
 }
 
-ul.listing a:hover .label { text-decoration: underline; }
+ul.listing a:hover .label { color: var(--link); }
 
 ul.listing .count,
 ul.listing .badge {
@@ -258,53 +265,9 @@ footer {
 }
 
 @media (max-width: 600px) {
-    body { padding: 32px 16px 60px; }
-    h1 { font-size: 1.15rem; }
-}
-"""
-
-HOME_CARD_CSS = """
-.home-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin-top: 8px;
-}
-
-.home-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 36px 16px;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    color: var(--text);
-    text-decoration: none;
-    background: var(--bg);
-    transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.home-card:hover {
-    background: var(--row-hover);
-    border-color: var(--link);
-}
-
-.home-card-icon {
-    font-size: 2.2rem;
-    line-height: 1;
-}
-
-.home-card-label {
-    font-family: """ + HEADING_FONT_STACK + """;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--link);
-}
-
-@media (max-width: 480px) {
-    .home-grid { grid-template-columns: 1fr; }
+    body { padding: 32px 16px 64px; }
+    h1 { font-size: 1.4rem; }
+    ul.listing a { padding: 12px 14px; }
 }
 """
 

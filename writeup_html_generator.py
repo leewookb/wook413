@@ -27,7 +27,7 @@ CSS = """
 * { box-sizing: border-box; }
 
 body {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
     margin: 0;
@@ -192,10 +192,10 @@ from site_common import FONT_STACK, HEADING_FONT_STACK
 CSS_LIGHT = """
 :root {
     --bg: #fdfbf7;
-    --text: #262220;
-    --muted: #7a736a;
+    --text: #201d1a;
+    --muted: #837b70;
     --link: #0f5fae;
-    --border: #e7e1d6;
+    --border: #ece5d8;
     --code-bg: #eef3f8;
     --code-border: #d3e1ee;
     --code-text: #1f2937;
@@ -231,12 +231,13 @@ body {
 
 h1 {
     font-family: """ + HEADING_FONT_STACK + """;
-    font-size: 1.55rem;
-    font-weight: 700;
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     border-bottom: 2px solid var(--text);
     padding-bottom: 16px;
     margin: 2.4em 0 32px;
-    line-height: 1.4;
+    line-height: 1.35;
 }
 
 /* first heading on the page sits right under the byline, not floating mid-page */
