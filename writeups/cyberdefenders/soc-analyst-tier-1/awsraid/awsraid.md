@@ -13,7 +13,7 @@ Your organization utilizes AWS to host critical data and applications. An incide
 Knowing which user account was compromised is essential for understanding the attacker's initial entry point into the environment. What is the username of the compromised user?
 
 ```
-
+helpdesk.luke
 ```
 
 First, we need to find what indexes are available for the search in the Splunk server.

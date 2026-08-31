@@ -313,7 +313,7 @@ body { padding-top: 112px; }
 <hr />
 <h3 id="q1">Q1</h3>
 <p>Knowing which user account was compromised is essential for understanding the attacker's initial entry point into the environment. What is the username of the compromised user?</p>
-<pre><code>
+<pre><code>helpdesk.luke
 </code></pre>
 <p>First, we need to find what indexes are available for the search in the Splunk server.</p>
 <p><code>| tstats count where index=* by index</code> verifies that <code>aws_cloudtrail</code> is the only index that has an event.</p>
