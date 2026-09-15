@@ -8,6 +8,49 @@ FONT_LINKS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">"""
 
+THEME_SCRIPT = """<script>
+(function () {
+    try {
+        var saved = localStorage.getItem("theme");
+        if (saved) document.documentElement.setAttribute("data-theme", saved);
+    } catch (e) {}
+})();
+function toggleTheme() {
+    var root = document.documentElement;
+    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+}
+</script>"""
+
+THEME_TOGGLE_HTML = '<button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">\U0001f319</span></button>'
+
+THEME_TOGGLE_CSS = """
+.theme-toggle {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.theme-toggle:hover { background: var(--row-hover, var(--code-bg)); }
+
+.theme-toggle .icon-moon { display: none; }
+
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
+"""
+
 HOME_CSS = """
 .home-link {
     position: fixed;
@@ -109,7 +152,7 @@ body { padding-top: 112px; }
     z-index: 50;
     display: flex;
     justify-content: center;
-    background: rgba(253, 251, 247, 0.9);
+    background: var(--nav-bg, rgba(253, 251, 247, 0.9));
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
 }
@@ -168,10 +211,21 @@ body { padding-top: 112px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
     .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
 }
-"""
+""" + THEME_TOGGLE_CSS
 
 LISTING_CSS = """
 :root {
+    --bg: #17140f;
+    --card-bg: #211d17;
+    --text: #ece7de;
+    --muted: #a39a8c;
+    --link: #6db2ff;
+    --border: #332e24;
+    --row-hover: #2a2419;
+    --nav-bg: rgba(23, 20, 15, 0.85);
+}
+
+:root[data-theme="light"] {
     --bg: #fdfbf7;
     --card-bg: #ffffff;
     --text: #201d1a;
@@ -179,6 +233,7 @@ LISTING_CSS = """
     --link: #0f5fae;
     --border: #ece5d8;
     --row-hover: #f6f2ea;
+    --nav-bg: rgba(253, 251, 247, 0.9);
 }
 
 * { box-sizing: border-box; }
@@ -291,7 +346,7 @@ def nav_html(repo_relative_path):
             active = norm == target or bool(section and top == section)
         cls = ' class="active"' if active else ""
         links.append(f'<a href="{href}"{cls}>{label}</a>')
-    return '<nav class="site-nav"><div class="site-nav-inner">' + "".join(links) + "</div></nav>"
+    return '<nav class="site-nav"><div class="site-nav-inner">' + "".join(links) + THEME_TOGGLE_HTML + "</div></nav>"
 
 
 def breadcrumb_html(repo_relative_path):

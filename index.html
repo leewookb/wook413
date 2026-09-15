@@ -2,6 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+(function () {
+    try {
+        var saved = localStorage.getItem("theme");
+        if (saved) document.documentElement.setAttribute("data-theme", saved);
+    } catch (e) {}
+})();
+function toggleTheme() {
+    var root = document.documentElement;
+    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
@@ -15,6 +29,21 @@
 <title>wook413</title>
 <style>
 :root {
+    --bg: #17140f;
+    --card-bg: #211d17;
+    --text: #ece7de;
+    --muted: #a39a8c;
+    --link: #6db2ff;
+    --border: #332e24;
+    --row-hover: #2a2419;
+    --chip-writeup-bg: #1c2c44;
+    --chip-writeup-text: #8ec2ff;
+    --chip-project-bg: #16301f;
+    --chip-project-text: #7ad9a0;
+    --nav-bg: rgba(23, 20, 15, 0.85);
+}
+
+:root[data-theme="light"] {
     --bg: #fdfbf7;
     --card-bg: #ffffff;
     --text: #201d1a;
@@ -26,6 +55,7 @@
     --chip-writeup-text: #17539a;
     --chip-project-bg: #e8f5ee;
     --chip-project-text: #1c7a4d;
+    --nav-bg: rgba(253, 251, 247, 0.9);
 }
 
 * { box-sizing: border-box; }
@@ -50,6 +80,7 @@ h1 {
     letter-spacing: -0.03em;
     line-height: 1.15;
     margin: 12px 0 0;
+    text-align: center;
 }
 
 h2 {
@@ -83,7 +114,7 @@ body { padding-top: 112px; }
     z-index: 50;
     display: flex;
     justify-content: center;
-    background: rgba(253, 251, 247, 0.9);
+    background: var(--nav-bg);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
 }
@@ -121,6 +152,30 @@ body { padding-top: 112px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
     .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
 }
+
+.theme-toggle {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.theme-toggle:hover { background: var(--row-hover); }
+
+.theme-toggle .icon-moon { display: none; }
+
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
 
 /* -- Most Recent list -- */
 
@@ -218,9 +273,9 @@ ul.recent a:hover .arrow {
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="site-nav-inner"><a href="./index.html" class="active">Home</a><a href="./README.html">About</a><a href="./writeups/index.html">Writeups</a><a href="./projects/index.html">Projects</a><a href="./OSCP/index.html">Certifications</a></div></nav>
+<nav class="site-nav"><div class="site-nav-inner"><a href="./index.html" class="active">Home</a><a href="./README.html">About</a><a href="./writeups/index.html">Writeups</a><a href="./projects/index.html">Projects</a><a href="./OSCP/index.html">Certifications</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
 
-<h1>wook413 🦊</h1>
+<h1>W👀K413</h1>
 <h2>Most Recent</h2>
 <ul class="recent">
 <li><a href="./writeups/cyberdefenders/soc-analyst-tier-1/grabthephisher/grabthephisher.html">

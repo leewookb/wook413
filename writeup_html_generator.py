@@ -3,7 +3,7 @@ import re
 import sys
 import markdown
 
-from site_common import FONT_LINKS, NAV_CSS, nav_html, breadcrumb_html
+from site_common import FONT_LINKS, NAV_CSS, THEME_SCRIPT, nav_html, breadcrumb_html
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -191,6 +191,21 @@ from site_common import FONT_STACK, HEADING_FONT_STACK
 
 CSS_LIGHT = """
 :root {
+    --bg: #17140f;
+    --text: #ece7de;
+    --muted: #a39a8c;
+    --link: #6db2ff;
+    --border: #332e24;
+    --code-bg: #1c2532;
+    --code-border: #2f3f57;
+    --code-text: #dbe4f0;
+    --code-accent: #5b9dff;
+    --inline-code-bg: #2c211d;
+    --inline-code-text: #ff9086;
+    --nav-bg: rgba(23, 20, 15, 0.85);
+}
+
+:root[data-theme="light"] {
     --bg: #fdfbf7;
     --text: #201d1a;
     --muted: #837b70;
@@ -202,6 +217,7 @@ CSS_LIGHT = """
     --code-accent: #2563eb;
     --inline-code-bg: #eef3f8;
     --inline-code-text: #a3271e;
+    --nav-bg: rgba(253, 251, 247, 0.9);
 }
 
 * { box-sizing: border-box; }
@@ -393,7 +409,10 @@ img {
     border: 1px solid var(--border);
     border-radius: 6px;
     box-shadow: 0 3px 10px rgba(38, 34, 32, 0.08);
+    filter: brightness(0.85);
 }
+
+:root[data-theme="light"] img { filter: none; }
 
 p:has(> img:only-child) { text-align: center; }
 
@@ -461,6 +480,7 @@ def convert_md_to_html(md_path, title=None, style="mono"):
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+{THEME_SCRIPT}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {FONT_LINKS}
 <title>{title}</title>
