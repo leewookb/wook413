@@ -145,7 +145,16 @@ CSS = """
 
 .hero h1 { margin: 0; }
 .hero .role { margin: 14px 0 0; font-size: 1.05rem; font-weight: 600; }
-.hero .blurb { margin: 8px 0 0; color: var(--muted); max-width: 560px; }
+.hero .blurb { margin: 8px 0 0; color: var(--muted); max-width: 560px; text-wrap: pretty; }
+.hero .nowline {
+    display: inline-flex; align-items: center; gap: 8px; margin: 14px 0 0;
+    padding: 4px 12px; border: 1px solid var(--border); border-radius: 999px;
+    font-size: 0.78rem; font-weight: 600; color: var(--muted);
+}
+.hero .nowline .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #3fb950; box-shadow: 0 0 0 3px rgba(63, 185, 80, 0.18);
+}
 .hero .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
 .hero .links a {
     font-size: 0.82rem; font-weight: 600; padding: 7px 14px; border-radius: 999px;
@@ -312,8 +321,9 @@ JS = """<script>
 
 body = f"""<section class="hero">
 <h1>Wook Lee</h1>
-<p class="role">Security Operations Engineer · OSCP+</p>
-<p class="blurb">DFIR, threat hunting and detection engineering. Currently studying for the GCFA.</p>
+<p class="role">Security Operations Engineer</p>
+<p class="blurb">DFIR, threat hunting and detection engineering.</p>
+<p class="nowline"><span class="dot"></span>Now: studying for GCFA</p>
 <div class="links"><a href="https://www.linkedin.com/in/leewookb" target="_blank" rel="noopener">LinkedIn ↗</a><a href="mailto:leewookb@gmail.com">leewookb@gmail.com</a></div>
 </section>
 
