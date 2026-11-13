@@ -287,7 +287,11 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
 :root[data-theme="light"] .logo { outline-color: rgba(0, 0, 0, 0.07); }
 
 /* -- swimlane timeline: one straight line per kind, shared time columns -- */
-.tl { --label-w: 104px; position: relative; margin: 0 0 190px; }
+/* clip x only: hidden popovers near the edges must not widen the page (that
+   stretches the fixed nav on phones); y stays visible for the open popover */
+.tl { --label-w: 104px; position: relative; margin: 0 0 190px; overflow-x: clip; }
+/* let the clip box reach into the right gutter so the last logo isn't cut */
+.tl { margin-right: -16px; padding-right: 16px; }
 .tl .track { position: relative; margin-left: var(--label-w); height: 212px; }
 
 .hd {
@@ -427,13 +431,16 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
         var a = document.activeElement;
         if (a && tl.contains(a)) a.blur();
     }
-    // nudge the popover sideways so it stays inside the viewport
+    // nudge the popover sideways so it stays on screen
     function place(n) {
         var p = n.querySelector(".pop");
         p.style.setProperty("--shift", "0px");
-        var r = p.getBoundingClientRect(), vw = document.documentElement.clientWidth, m = 12, s = 0;
-        if (r.left < m) s = m - r.left;
-        else if (r.right > vw - m) s = vw - m - r.right;
+        // keep it inside the timeline box (which clips x) and the viewport
+        var r = p.getBoundingClientRect(), t = tl.getBoundingClientRect(),
+            vw = document.documentElement.clientWidth, m = 16, s = 0,
+            lo = Math.max(m, t.left), hi = Math.min(vw - m, t.right - 16);
+        if (r.left < lo) s = lo - r.left;
+        else if (r.right > hi) s = hi - r.right;
         p.style.setProperty("--shift", s + "px");
     }
     tl.querySelectorAll(".node").forEach(function (n) {
