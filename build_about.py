@@ -69,7 +69,7 @@ NODES = [
 NODES.sort(key=lambda nd: nd["at"])
 
 # --- positions: nodes evenly spaced; dates in between interpolated --------
-PAD = 5.0
+PAD = 4.0
 n = len(NODES)
 xs = [PAD + i * (100 - 2 * PAD) / (n - 1) for i in range(n)]
 ds = [D(nd["at"]) for nd in NODES]
@@ -98,13 +98,13 @@ def pop(nd):
     return "".join(out)
 
 
-LANES = [("work", "Work"), ("edu", "Education"), ("cert", "Certifications")]
+LANES = [("work", "Work", "Work"), ("edu", "Education", "Edu"), ("cert", "Certifications", "Cert")]
 KIND_LABEL = {"work": "Work", "edu": "Education", "cert": "Certification"}
-LANE_TOP = {k: 40 + i * 62 for i, (k, _) in enumerate(LANES)}  # px; lane line sits 20px below
+LANE_TOP = {k: 40 + i * 62 for i, (k, _, _) in enumerate(LANES)}  # px; lane line sits 20px below
 TRACK_H = LANE_TOP[LANES[-1][0]] + 48
 
 heads_html, nodes_html = [], []
-bars_html = {k: [] for k, _ in LANES}
+bars_html = {k: [] for k, _, _ in LANES}
 prev_year = None
 for nd, x in zip(NODES, xs):
     d = D(nd["at"])
@@ -125,9 +125,10 @@ for nd, x in zip(NODES, xs):
             f'<span class="bar" data-k="{nd["k"]}" style="left:{a:.2f}%;width:{max(b - a, 0.8):.2f}%"></span>')
 
 lanes_html = "".join(
-    f'<div class="lane {k}" style="--y:{LANE_TOP[k]}px"><span class="lbl">{label}</span>'
+    f'<div class="lane {k}" style="--y:{LANE_TOP[k]}px"><span class="lbl">'
+    f'<span class="full">{label}</span><span class="short">{short}</span></span>'
     f'<div class="line">{"".join(bars_html[k])}</div></div>'
-    for k, label in LANES)
+    for k, label, short in LANES)
 
 
 CSS = """
@@ -187,18 +188,29 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
 .lane.edu .bar { background: var(--c-edu); }
 .bar.on { opacity: 1; top: -2px; height: 5px; }
 
+.lane .lbl .short { display: none; }
+
+/* node is centered on its lane line (line sits 20px below --y) */
 .node {
-    position: absolute; left: var(--x); top: var(--y); transform: translateX(-50%);
-    outline: none; cursor: default; z-index: 1;
+    position: absolute; left: var(--x); top: calc(var(--y) + 20px); transform: translate(-50%, -50%);
+    outline: none; cursor: pointer; z-index: 1;
 }
 .node .logo { box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--border); transition: transform 0.15s ease, box-shadow 0.15s ease; }
-.node:hover, .node:focus-within, .node.open { z-index: 5; }
-.node:hover .logo, .node:focus-visible .logo, .node.open .logo {
+.node:focus-within, .node.open { z-index: 5; }
+.node:focus-visible .logo, .node.open .logo {
     transform: translateY(-2px); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--muted);
 }
+@media (hover: hover) {
+    .node:hover { z-index: 5; }
+    .node:hover .logo { transform: translateY(-2px); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--muted); }
+    .node:hover .pop { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); }
+    .node.first:hover .pop, .node.last:hover .pop { transform: translate(0, 0); }
+}
 
+/* --shift is set by JS so the popover never leaves the viewport */
 .pop {
-    position: absolute; top: 100%; left: 50%; width: 270px;
+    position: absolute; top: 100%; left: 50%; width: min(270px, calc(100vw - 32px));
+    translate: var(--shift, 0px) 0;
     transform: translate(-50%, 6px);
     padding: 14px 16px; margin-top: 10px;
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
@@ -210,11 +222,11 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
 .pop::before { content: ""; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
 .node.first .pop { left: 0; transform: translate(0, 6px); }
 .node.last .pop { left: auto; right: 0; transform: translate(0, 6px); }
-.node:hover .pop, .node:focus-within .pop, .node.open .pop {
+.node:focus-within .pop, .node.open .pop {
     opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0);
 }
-.node.first:hover .pop, .node.first:focus-within .pop, .node.first.open .pop,
-.node.last:hover .pop, .node.last:focus-within .pop, .node.last.open .pop { transform: translate(0, 0); }
+.node.first:focus-within .pop, .node.first.open .pop,
+.node.last:focus-within .pop, .node.last.open .pop { transform: translate(0, 0); }
 .pop .kind { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
 .node.work .kind { color: var(--c-work); }
 .node.edu .kind { color: var(--c-edu); }
@@ -233,25 +245,21 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
     display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-left: 8px; vertical-align: 2px;
     background: #3fb950; box-shadow: 0 0 0 3px rgba(63, 185, 80, 0.18);
 }
-.rail-v { display: none; }
 
-/* -- phones: one vertical timeline, details always shown, kind label on each -- */
+/* -- phones: same swimlane timeline, just compacted to fit -- */
 @media (max-width: 640px) {
-    .tl { margin-bottom: 8px; }
-    .tl .track { margin-left: 0; height: auto; }
-    .hd, .lane { display: none; }
-    .rail-v { display: block; position: absolute; left: 20px; top: 20px; bottom: 60px; width: 1px; background: var(--border); }
-    .node {
-        position: relative; left: auto; top: auto; transform: none;
-        display: grid; grid-template-columns: 40px 1fr; column-gap: 16px; align-items: start;
-        padding-bottom: 26px;
+    .tl { --label-w: 40px; }
+    .lane .lbl { font-size: 0.6rem; letter-spacing: 0.06em; }
+    .lane .lbl .full { display: none; }
+    .lane .lbl .short { display: inline; }
+    .hd { font-size: 0.6rem; }
+    .hd b { letter-spacing: 0.02em; }
+    .node .logo {
+        width: 24px; height: 24px; border-radius: 6px;
+        box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--border);
     }
-    .node .pop, .node.first .pop, .node.last .pop {
-        position: static; width: auto; transform: none; margin: 0; padding: 0;
-        background: none; border: 0; box-shadow: none;
-        opacity: 1; visibility: visible; pointer-events: auto;
-    }
-    .node:hover .logo { transform: none; }
+    .node:focus-visible .logo, .node.open .logo { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--muted); }
+    .pop .links a { padding: 6px 11px; }
 }
 """
 
@@ -264,18 +272,30 @@ JS = """<script>
     }
     function closeAll() {
         tl.querySelectorAll(".node.open").forEach(function (o) { o.classList.remove("open"); });
+        var a = document.activeElement;
+        if (a && tl.contains(a)) a.blur();
+    }
+    // nudge the popover sideways so it stays inside the viewport
+    function place(n) {
+        var p = n.querySelector(".pop");
+        p.style.setProperty("--shift", "0px");
+        var r = p.getBoundingClientRect(), vw = document.documentElement.clientWidth, m = 12, s = 0;
+        if (r.left < m) s = m - r.left;
+        else if (r.right > vw - m) s = vw - m - r.right;
+        p.style.setProperty("--shift", s + "px");
     }
     tl.querySelectorAll(".node").forEach(function (n) {
-        n.addEventListener("mouseenter", function () { light(n.dataset.k); });
+        n.addEventListener("mouseenter", function () { place(n); light(n.dataset.k); });
         n.addEventListener("mouseleave", function () { light(null); });
-        n.addEventListener("focusin", function () { light(n.dataset.k); });
+        n.addEventListener("focusin", function () { place(n); light(n.dataset.k); });
         n.addEventListener("focusout", function () { light(null); });
-        // touch / click: pin the popover open
+        // touch / click: pin the popover open, tap again to close
         n.addEventListener("click", function (e) {
             if (e.target.closest("a")) return;
             var was = n.classList.contains("open");
             closeAll();
-            if (!was) n.classList.add("open");
+            if (!was) { place(n); n.classList.add("open"); n.focus(); light(n.dataset.k); }
+            else light(null);
         });
     });
     document.addEventListener("click", function (e) {
@@ -300,7 +320,6 @@ body = f"""<section class="hero">
 <h2>Timeline</h2>
 <div class="tl" id="tl">
 <div class="track">
-<div class="rail-v"></div>
 {"".join(heads_html)}
 {lanes_html}
 {chr(10).join(nodes_html)}

@@ -303,18 +303,29 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
 .lane.edu .bar { background: var(--c-edu); }
 .bar.on { opacity: 1; top: -2px; height: 5px; }
 
+.lane .lbl .short { display: none; }
+
+/* node is centered on its lane line (line sits 20px below --y) */
 .node {
-    position: absolute; left: var(--x); top: var(--y); transform: translateX(-50%);
-    outline: none; cursor: default; z-index: 1;
+    position: absolute; left: var(--x); top: calc(var(--y) + 20px); transform: translate(-50%, -50%);
+    outline: none; cursor: pointer; z-index: 1;
 }
 .node .logo { box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--border); transition: transform 0.15s ease, box-shadow 0.15s ease; }
-.node:hover, .node:focus-within, .node.open { z-index: 5; }
-.node:hover .logo, .node:focus-visible .logo, .node.open .logo {
+.node:focus-within, .node.open { z-index: 5; }
+.node:focus-visible .logo, .node.open .logo {
     transform: translateY(-2px); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--muted);
 }
+@media (hover: hover) {
+    .node:hover { z-index: 5; }
+    .node:hover .logo { transform: translateY(-2px); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--muted); }
+    .node:hover .pop { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); }
+    .node.first:hover .pop, .node.last:hover .pop { transform: translate(0, 0); }
+}
 
+/* --shift is set by JS so the popover never leaves the viewport */
 .pop {
-    position: absolute; top: 100%; left: 50%; width: 270px;
+    position: absolute; top: 100%; left: 50%; width: min(270px, calc(100vw - 32px));
+    translate: var(--shift, 0px) 0;
     transform: translate(-50%, 6px);
     padding: 14px 16px; margin-top: 10px;
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
@@ -326,11 +337,11 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
 .pop::before { content: ""; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
 .node.first .pop { left: 0; transform: translate(0, 6px); }
 .node.last .pop { left: auto; right: 0; transform: translate(0, 6px); }
-.node:hover .pop, .node:focus-within .pop, .node.open .pop {
+.node:focus-within .pop, .node.open .pop {
     opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0);
 }
-.node.first:hover .pop, .node.first:focus-within .pop, .node.first.open .pop,
-.node.last:hover .pop, .node.last:focus-within .pop, .node.last.open .pop { transform: translate(0, 0); }
+.node.first:focus-within .pop, .node.first.open .pop,
+.node.last:focus-within .pop, .node.last.open .pop { transform: translate(0, 0); }
 .pop .kind { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
 .node.work .kind { color: var(--c-work); }
 .node.edu .kind { color: var(--c-edu); }
@@ -349,25 +360,21 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
     display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-left: 8px; vertical-align: 2px;
     background: #3fb950; box-shadow: 0 0 0 3px rgba(63, 185, 80, 0.18);
 }
-.rail-v { display: none; }
 
-/* -- phones: one vertical timeline, details always shown, kind label on each -- */
+/* -- phones: same swimlane timeline, just compacted to fit -- */
 @media (max-width: 640px) {
-    .tl { margin-bottom: 8px; }
-    .tl .track { margin-left: 0; height: auto; }
-    .hd, .lane { display: none; }
-    .rail-v { display: block; position: absolute; left: 20px; top: 20px; bottom: 60px; width: 1px; background: var(--border); }
-    .node {
-        position: relative; left: auto; top: auto; transform: none;
-        display: grid; grid-template-columns: 40px 1fr; column-gap: 16px; align-items: start;
-        padding-bottom: 26px;
+    .tl { --label-w: 40px; }
+    .lane .lbl { font-size: 0.6rem; letter-spacing: 0.06em; }
+    .lane .lbl .full { display: none; }
+    .lane .lbl .short { display: inline; }
+    .hd { font-size: 0.6rem; }
+    .hd b { letter-spacing: 0.02em; }
+    .node .logo {
+        width: 24px; height: 24px; border-radius: 6px;
+        box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--border);
     }
-    .node .pop, .node.first .pop, .node.last .pop {
-        position: static; width: auto; transform: none; margin: 0; padding: 0;
-        background: none; border: 0; box-shadow: none;
-        opacity: 1; visibility: visible; pointer-events: auto;
-    }
-    .node:hover .logo { transform: none; }
+    .node:focus-visible .logo, .node.open .logo { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--muted); }
+    .pop .links a { padding: 6px 11px; }
 }
 </style>
 </head>
@@ -384,19 +391,18 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
 <h2>Timeline</h2>
 <div class="tl" id="tl">
 <div class="track">
-<div class="rail-v"></div>
-<span class="hd" style="--x:5.00%"><b>2021</b>Aug</span><span class="hd" style="--x:15.00%"><b></b>Dec</span><span class="hd" style="--x:25.00%"><b>2022</b>May</span><span class="hd" style="--x:35.00%"><b>2024</b>Apr</span><span class="hd" style="--x:45.00%"><b></b>Jun</span><span class="hd" style="--x:55.00%"><b></b>Aug</span><span class="hd" style="--x:65.00%"><b>2026</b>Mar</span><span class="hd" style="--x:75.00%"><b></b>Aug</span><span class="hd" style="--x:85.00%"><b></b>Oct</span><span class="hd" style="--x:95.00%"><b></b>Nov</span>
-<div class="lane work" style="--y:40px"><span class="lbl">Work</span><div class="line"><span class="bar" data-k="tmobile" style="left:25.00%;width:1.31%"></span><span class="bar" data-k="sk" style="left:55.00%;width:20.00%"></span><span class="bar" data-k="absolics" style="left:75.00%;width:20.00%"></span><span class="bar" data-k="vertex" style="left:95.00%;width:5.00%"></span></div></div><div class="lane edu" style="--y:102px"><span class="lbl">Education</span><div class="line"><span class="bar" data-k="gsu" style="left:5.00%;width:34.92%"></span></div></div><div class="lane cert" style="--y:164px"><span class="lbl">Certifications</span><div class="line"></div></div>
-<div class="node edu first" style="--x:5.00%;--y:102px" data-k="gsu" tabindex="0"><img class="logo" src="../assets/logo/gsu_logo.png" alt="Georgia State University logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Education</div><div class="t">B.S. Computer Science</div><div class="o">Georgia State University</div><div class="d">Aug 2021 – May 2024</div></div></div>
-<div class="node cert first" style="--x:15.00%;--y:164px" data-k="aws" tabindex="0"><img class="logo" src="../assets/logo/amazon_web_services_logo.png" alt="AWS logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">AWS Certified Cloud Practitioner</div><div class="o">Amazon Web Services</div><div class="d">Issued Dec 2021</div><div class="links"><a href="https://www.credly.com/badges/da0ff6b1-edbb-4d80-8e16-914d2e229fd7" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
-<div class="node work" style="--x:25.00%;--y:40px" data-k="tmobile" tabindex="0"><img class="logo" src="../assets/logo/t_mobile_logo.png" alt="T-Mobile logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Software Engineer Intern</div><div class="o">T-Mobile</div><div class="d">May 2022 – Aug 2022 · Atlanta, GA</div></div></div>
-<div class="node cert" style="--x:35.00%;--y:164px" data-k="google" tabindex="0"><img class="logo" src="../assets/logo/coursera_logo.png" alt="Coursera logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Google Cybersecurity Certificate</div><div class="o">Google · Coursera</div><div class="d">Issued Apr 2024</div><div class="links"><a href="https://www.credly.com/badges/5e61d274-3755-4aa6-a915-35880db6f655" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
-<div class="node cert" style="--x:45.00%;--y:164px" data-k="secplus" tabindex="0"><img class="logo" src="../assets/logo/comptia_logo.png" alt="CompTIA logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Security+</div><div class="o">CompTIA</div><div class="d">Issued Jun 2024</div><div class="links"><a href="https://www.credly.com/badges/81f57b79-5097-4546-897b-61bebe8b4363/public_url" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
-<div class="node work" style="--x:55.00%;--y:40px" data-k="sk" tabindex="0"><img class="logo" src="../assets/logo/sk_on_tennessee_logo.png" alt="SK On Tennessee logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Cyber Security Specialist</div><div class="o">BlueOval SK → SK On Tennessee</div><div class="d">Aug 2024 – Aug 2026 · Stanton, TN</div><div class="note">BlueOval SK was rebranded as SK On Tennessee in May 2026.</div></div></div>
-<div class="node cert" style="--x:65.00%;--y:164px" data-k="oscp" tabindex="0"><img class="logo" src="../assets/logo/offensive_security_logo.png" alt="OffSec logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">OSCP+ &amp; OSCP</div><div class="o">OffSec</div><div class="d">Issued Mar 2026 · OSCP+ valid until Mar 2029</div><div class="links"><a href="https://credentials.offsec.com/f66586b1-cbb7-4a10-b9b2-ecf5648573c2" target="_blank" rel="noopener">Verify OSCP+ ↗</a><a href="https://credentials.offsec.com/63b7fb02-b876-4ed2-8729-61b0f05828b8" target="_blank" rel="noopener">Verify OSCP ↗</a><a href="../OSCP/OSCP 후기.html">OSCP 후기</a><a href="../OSCP/Wook OSCP Approach.svg" target="_blank" rel="noopener">Approach map</a><a href="https://www.notion.so/leewookb/Wook-s-OSCP-Notes-2e256e0e1b6a8031a771c93385658fe9?source=copy_link" target="_blank" rel="noopener">Notes ↗</a></div></div></div>
-<div class="node work" style="--x:75.00%;--y:40px" data-k="absolics" tabindex="0"><img class="logo" src="../assets/logo/absolics_logo.png" alt="Absolics logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Cyber Security Engineer</div><div class="o">Absolics Inc.</div><div class="d">Aug 2026 – Nov 2026 · Covington, GA</div></div></div>
-<div class="node cert last" style="--x:85.00%;--y:164px" data-k="13cubed" tabindex="0"><img class="logo" src="../assets/logo/13cubed_logo.png" alt="13Cubed logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Investigating Windows Endpoints (Gold)</div><div class="o">13Cubed</div><div class="d">Issued Oct 2026</div><div class="links"><a href="https://credsverse.com/credentials/21136ab8-91ca-4d14-9ba3-b35d076910a6" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
-<div class="node work last" style="--x:95.00%;--y:40px" data-k="vertex" tabindex="0"><img class="logo" src="../assets/logo/vertex_inc_logo.png" alt="Vertex logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Security Operations Engineer<span class="now" title="Current"></span></div><div class="o">Vertex Inc.</div><div class="d">Nov 2026 – Present</div></div></div>
+<span class="hd" style="--x:4.00%"><b>2021</b>Aug</span><span class="hd" style="--x:14.22%"><b></b>Dec</span><span class="hd" style="--x:24.44%"><b>2022</b>May</span><span class="hd" style="--x:34.67%"><b>2024</b>Apr</span><span class="hd" style="--x:44.89%"><b></b>Jun</span><span class="hd" style="--x:55.11%"><b></b>Aug</span><span class="hd" style="--x:65.33%"><b>2026</b>Mar</span><span class="hd" style="--x:75.56%"><b></b>Aug</span><span class="hd" style="--x:85.78%"><b></b>Oct</span><span class="hd" style="--x:96.00%"><b></b>Nov</span>
+<div class="lane work" style="--y:40px"><span class="lbl"><span class="full">Work</span><span class="short">Work</span></span><div class="line"><span class="bar" data-k="tmobile" style="left:24.44%;width:1.34%"></span><span class="bar" data-k="sk" style="left:55.11%;width:20.44%"></span><span class="bar" data-k="absolics" style="left:75.56%;width:20.44%"></span><span class="bar" data-k="vertex" style="left:96.00%;width:4.00%"></span></div></div><div class="lane edu" style="--y:102px"><span class="lbl"><span class="full">Education</span><span class="short">Edu</span></span><div class="line"><span class="bar" data-k="gsu" style="left:4.00%;width:35.69%"></span></div></div><div class="lane cert" style="--y:164px"><span class="lbl"><span class="full">Certifications</span><span class="short">Cert</span></span><div class="line"></div></div>
+<div class="node edu first" style="--x:4.00%;--y:102px" data-k="gsu" tabindex="0"><img class="logo" src="../assets/logo/gsu_logo.png" alt="Georgia State University logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Education</div><div class="t">B.S. Computer Science</div><div class="o">Georgia State University</div><div class="d">Aug 2021 – May 2024</div></div></div>
+<div class="node cert first" style="--x:14.22%;--y:164px" data-k="aws" tabindex="0"><img class="logo" src="../assets/logo/amazon_web_services_logo.png" alt="AWS logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">AWS Certified Cloud Practitioner</div><div class="o">Amazon Web Services</div><div class="d">Issued Dec 2021</div><div class="links"><a href="https://www.credly.com/badges/da0ff6b1-edbb-4d80-8e16-914d2e229fd7" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
+<div class="node work first" style="--x:24.44%;--y:40px" data-k="tmobile" tabindex="0"><img class="logo" src="../assets/logo/t_mobile_logo.png" alt="T-Mobile logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Software Engineer Intern</div><div class="o">T-Mobile</div><div class="d">May 2022 – Aug 2022 · Atlanta, GA</div></div></div>
+<div class="node cert" style="--x:34.67%;--y:164px" data-k="google" tabindex="0"><img class="logo" src="../assets/logo/coursera_logo.png" alt="Coursera logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Google Cybersecurity Certificate</div><div class="o">Google · Coursera</div><div class="d">Issued Apr 2024</div><div class="links"><a href="https://www.credly.com/badges/5e61d274-3755-4aa6-a915-35880db6f655" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
+<div class="node cert" style="--x:44.89%;--y:164px" data-k="secplus" tabindex="0"><img class="logo" src="../assets/logo/comptia_logo.png" alt="CompTIA logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Security+</div><div class="o">CompTIA</div><div class="d">Issued Jun 2024</div><div class="links"><a href="https://www.credly.com/badges/81f57b79-5097-4546-897b-61bebe8b4363/public_url" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
+<div class="node work" style="--x:55.11%;--y:40px" data-k="sk" tabindex="0"><img class="logo" src="../assets/logo/sk_on_tennessee_logo.png" alt="SK On Tennessee logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Cyber Security Specialist</div><div class="o">BlueOval SK → SK On Tennessee</div><div class="d">Aug 2024 – Aug 2026 · Stanton, TN</div><div class="note">BlueOval SK was rebranded as SK On Tennessee in May 2026.</div></div></div>
+<div class="node cert" style="--x:65.33%;--y:164px" data-k="oscp" tabindex="0"><img class="logo" src="../assets/logo/offensive_security_logo.png" alt="OffSec logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">OSCP+ &amp; OSCP</div><div class="o">OffSec</div><div class="d">Issued Mar 2026 · OSCP+ valid until Mar 2029</div><div class="links"><a href="https://credentials.offsec.com/f66586b1-cbb7-4a10-b9b2-ecf5648573c2" target="_blank" rel="noopener">Verify OSCP+ ↗</a><a href="https://credentials.offsec.com/63b7fb02-b876-4ed2-8729-61b0f05828b8" target="_blank" rel="noopener">Verify OSCP ↗</a><a href="../OSCP/OSCP 후기.html">OSCP 후기</a><a href="../OSCP/Wook OSCP Approach.svg" target="_blank" rel="noopener">Approach map</a><a href="https://www.notion.so/leewookb/Wook-s-OSCP-Notes-2e256e0e1b6a8031a771c93385658fe9?source=copy_link" target="_blank" rel="noopener">Notes ↗</a></div></div></div>
+<div class="node work last" style="--x:75.56%;--y:40px" data-k="absolics" tabindex="0"><img class="logo" src="../assets/logo/absolics_logo.png" alt="Absolics logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Cyber Security Engineer</div><div class="o">Absolics Inc.</div><div class="d">Aug 2026 – Nov 2026 · Covington, GA</div></div></div>
+<div class="node cert last" style="--x:85.78%;--y:164px" data-k="13cubed" tabindex="0"><img class="logo" src="../assets/logo/13cubed_logo.png" alt="13Cubed logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Investigating Windows Endpoints (Gold)</div><div class="o">13Cubed</div><div class="d">Issued Oct 2026</div><div class="links"><a href="https://credsverse.com/credentials/21136ab8-91ca-4d14-9ba3-b35d076910a6" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
+<div class="node work last" style="--x:96.00%;--y:40px" data-k="vertex" tabindex="0"><img class="logo" src="../assets/logo/vertex_inc_logo.png" alt="Vertex logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Security Operations Engineer<span class="now" title="Current"></span></div><div class="o">Vertex Inc.</div><div class="d">Nov 2026 – Present</div></div></div>
 </div>
 </div>
 <script>
@@ -408,18 +414,30 @@ h2 { margin-top: 56px; margin-bottom: 18px; }
     }
     function closeAll() {
         tl.querySelectorAll(".node.open").forEach(function (o) { o.classList.remove("open"); });
+        var a = document.activeElement;
+        if (a && tl.contains(a)) a.blur();
+    }
+    // nudge the popover sideways so it stays inside the viewport
+    function place(n) {
+        var p = n.querySelector(".pop");
+        p.style.setProperty("--shift", "0px");
+        var r = p.getBoundingClientRect(), vw = document.documentElement.clientWidth, m = 12, s = 0;
+        if (r.left < m) s = m - r.left;
+        else if (r.right > vw - m) s = vw - m - r.right;
+        p.style.setProperty("--shift", s + "px");
     }
     tl.querySelectorAll(".node").forEach(function (n) {
-        n.addEventListener("mouseenter", function () { light(n.dataset.k); });
+        n.addEventListener("mouseenter", function () { place(n); light(n.dataset.k); });
         n.addEventListener("mouseleave", function () { light(null); });
-        n.addEventListener("focusin", function () { light(n.dataset.k); });
+        n.addEventListener("focusin", function () { place(n); light(n.dataset.k); });
         n.addEventListener("focusout", function () { light(null); });
-        // touch / click: pin the popover open
+        // touch / click: pin the popover open, tap again to close
         n.addEventListener("click", function (e) {
             if (e.target.closest("a")) return;
             var was = n.classList.contains("open");
             closeAll();
-            if (!was) n.classList.add("open");
+            if (!was) { place(n); n.classList.add("open"); n.focus(); light(n.dataset.k); }
+            else light(null);
         });
     });
     document.addEventListener("click", function (e) {
