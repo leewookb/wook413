@@ -508,3 +508,6 @@ if __name__ == "__main__":
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"wrote {out_path}")
+    # refresh the writeups archive, home "Most Recent", dates and prev/next
+    import build_site
+    build_site.main()

@@ -330,7 +330,10 @@ body { padding-top: 112px; }
 @media (max-width: 600px) {
     body { padding-top: 98px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
-    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+    .site-nav-inner { overflow-x: auto; scrollbar-width: none; }
+    .site-nav-inner::-webkit-scrollbar { display: none; }
+    .site-nav a { padding: 5px 9px; font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+    .theme-toggle { flex-shrink: 0; }
 }
 
 .theme-toggle {
@@ -357,9 +360,27 @@ body { padding-top: 112px; }
 :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
 :root[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
 </style>
+<style id="brand-css">
+.site-nav-inner { align-items: center; }
+.site-nav a.brand { display: inline-flex; align-items: center; padding: 4px 10px 4px 4px; margin-right: 6px; background: none; }
+/* reset article pages' generic img rule (margin/border/shadow/brightness) */
+.site-nav a.brand img {
+    display: block; width: 26px; height: 26px; max-width: none; margin: 0;
+    border: 0; border-radius: 0; box-shadow: none;
+    filter: invert(0.9); transition: opacity 0.15s ease;
+}
+:root[data-theme="light"] .site-nav a.brand img { filter: none; }
+.site-nav a.brand:hover { background: none; }
+.site-nav a.brand:hover img { opacity: 0.7; }
+@media (max-width: 600px) {
+    .site-nav a.brand { padding: 2px 6px 2px 0; margin-right: 2px; }
+    .site-nav a.brand img { width: 22px; height: 22px; }
+}
+</style>
+<!--icons--><link rel="icon" href="../favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png"><link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png"><link rel="manifest" href="../assets/favicon_io/site.webmanifest"><!--/icons-->
 </head>
 <body>
-<nav class="site-nav"><div class="site-nav-inner"><a href="../index.html">Home</a><a href="../README.html">About</a><a href="../writeups/index.html">Writeups</a><a href="../projects/index.html">Projects</a><a href="../OSCP/index.html" class="active">Certifications</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
+<nav class="site-nav"><div class="site-nav-inner"><a class="brand" href="../index.html" aria-label="wook413 home"><img src="../assets/favicon_io/android-chrome-192x192.png" alt="" width="26" height="26"></a><a href="../index.html">Home</a><a href="../writeups/index.html">Writeups</a><a href="../projects/index.html">Projects</a><a href="../about/index.html" class="active">About</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
 <div class="page">
 
 

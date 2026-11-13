@@ -17,10 +17,6 @@ function toggleTheme() {
 }
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./assets/favicon_io/site.webmanifest">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,7 +146,10 @@ body { padding-top: 112px; }
 @media (max-width: 600px) {
     body { padding-top: 98px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
-    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+    .site-nav-inner { overflow-x: auto; scrollbar-width: none; }
+    .site-nav-inner::-webkit-scrollbar { display: none; }
+    .site-nav a { padding: 5px 9px; font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+    .theme-toggle { flex-shrink: 0; }
 }
 
 .theme-toggle {
@@ -270,14 +269,65 @@ ul.recent a:hover .arrow {
     ul.recent .date { display: none; }
     ul.recent .arrow { display: none; }
 }
+
+/* -- Hero -- */
+
+.hero { text-align: left; margin: 8px 0 0; }
+.hero h1 { text-align: left; margin: 0; }
+.hero .role {
+    margin: 14px 0 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.hero .blurb { margin: 8px 0 0; color: var(--muted); max-width: 560px; }
+.hero .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
+.hero .links a {
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+.hero .links a:hover { border-color: var(--link); color: var(--link); }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; }
+.section-head a { font-size: 0.8rem; font-weight: 600; color: var(--muted); text-decoration: none; }
+.section-head a:hover { color: var(--link); }
+.section-head h2 { margin-bottom: 14px; }
 </style>
+<style id="brand-css">
+.site-nav-inner { align-items: center; }
+.site-nav a.brand { display: inline-flex; align-items: center; padding: 4px 10px 4px 4px; margin-right: 6px; background: none; }
+/* reset article pages' generic img rule (margin/border/shadow/brightness) */
+.site-nav a.brand img {
+    display: block; width: 26px; height: 26px; max-width: none; margin: 0;
+    border: 0; border-radius: 0; box-shadow: none;
+    filter: invert(0.9); transition: opacity 0.15s ease;
+}
+:root[data-theme="light"] .site-nav a.brand img { filter: none; }
+.site-nav a.brand:hover { background: none; }
+.site-nav a.brand:hover img { opacity: 0.7; }
+@media (max-width: 600px) {
+    .site-nav a.brand { padding: 2px 6px 2px 0; margin-right: 2px; }
+    .site-nav a.brand img { width: 22px; height: 22px; }
+}
+</style>
+<!--icons--><link rel="icon" href="./favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png"><link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png"><link rel="manifest" href="./assets/favicon_io/site.webmanifest"><!--/icons-->
 </head>
 <body>
-<nav class="site-nav"><div class="site-nav-inner"><a href="./index.html" class="active">Home</a><a href="./README.html">About</a><a href="./writeups/index.html">Writeups</a><a href="./projects/index.html">Projects</a><a href="./OSCP/index.html">Certifications</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
+<nav class="site-nav"><div class="site-nav-inner"><a class="brand" href="./index.html" aria-label="wook413 home"><img src="./assets/favicon_io/android-chrome-192x192.png" alt="" width="26" height="26"></a><a href="./index.html" class="active">Home</a><a href="./writeups/index.html">Writeups</a><a href="./projects/index.html">Projects</a><a href="./about/index.html">About</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
 
+<section class="hero">
 <h1>W👀K413</h1>
-<h2>Most Recent</h2>
-<ul class="recent">
+<p class="role">Security Operations Engineer · OSCP+</p>
+<p class="blurb">Notes and writeups on DFIR, threat hunting and detection engineering, plus the occasional offensive lab.</p>
+<div class="links"><a href="./writeups/index.html">Writeups</a><a href="./projects/index.html">Projects</a><a href="./about/index.html">About me</a><a href="https://www.linkedin.com/in/leewookb" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+</section>
+<div class="section-head"><h2>Most Recent</h2><a href="./writeups/index.html">All writeups →</a></div>
+<!--recent--><ul class="recent">
 <li><a href="./writeups/cyberdefenders/soc-analyst-tier-1/grabthephisher/grabthephisher.html">
 <span class="main"><span class="title">GrabThePhisher</span><span class="sub">CyberDefenders · SOC Analyst Tier 1</span></span>
 <span class="side"><span class="badge badge-writeup">Writeup</span><span class="date">Sep 13</span><span class="arrow">→</span></span>
@@ -287,7 +337,7 @@ ul.recent a:hover .arrow {
 <span class="side"><span class="badge badge-writeup">Writeup</span><span class="date">Sep 13</span><span class="arrow">→</span></span>
 </a></li>
 <li><a href="./writeups/cyberdefenders/soc-analyst-tier-1/psexechunt/psexechunt.html">
-<span class="main"><span class="title">PsExecHunt</span><span class="sub">CyberDefenders · SOC Analyst Tier 1</span></span>
+<span class="main"><span class="title">PsExec Hunt</span><span class="sub">CyberDefenders · SOC Analyst Tier 1</span></span>
 <span class="side"><span class="badge badge-writeup">Writeup</span><span class="date">Sep 11</span><span class="arrow">→</span></span>
 </a></li>
 <li><a href="./writeups/cyberdefenders/soc-analyst-tier-1/poisonedcredentials/poisonedcredentials.html">
@@ -298,7 +348,7 @@ ul.recent a:hover .arrow {
 <span class="main"><span class="title">AWSRaid</span><span class="sub">CyberDefenders · SOC Analyst Tier 1</span></span>
 <span class="side"><span class="badge badge-writeup">Writeup</span><span class="date">Aug 30</span><span class="arrow">→</span></span>
 </a></li>
-</ul>
+</ul><!--/recent-->
 <footer>&copy; 2026 wook413.</footer>
 </body>
 </html>

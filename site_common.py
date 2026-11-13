@@ -123,6 +123,12 @@ LABELS = {
     "splunk-detection-lab-part-2": "Part 2",
     "splunk-detection-lab-part-3": "Part 3",
     "OSCP": "OSCP",
+    "about": "About",
+    "pc": "PC",
+    "bullybox": "BullyBox",
+    "quackerjack": "QuackerJack",
+    "vulnnet-active": "VulnNet: Active",
+    "getting-started-with-splunk-for-security": "Getting Started with Splunk for Security",
 }
 
 
@@ -135,10 +141,9 @@ def prettify(slug):
 
 NAV_ITEMS = [
     ("Home", "index.html"),
-    ("About", "README.html"),
     ("Writeups", "writeups/index.html"),
     ("Projects", "projects/index.html"),
-    ("Certifications", "OSCP/index.html"),
+    ("About", "about/index.html"),
 ]
 
 NAV_CSS = """
@@ -209,9 +214,46 @@ body { padding-top: 112px; }
 @media (max-width: 600px) {
     body { padding-top: 98px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
-    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+    .site-nav-inner { overflow-x: auto; scrollbar-width: none; }
+    .site-nav-inner::-webkit-scrollbar { display: none; }
+    .site-nav a { padding: 5px 9px; font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+    .theme-toggle { flex-shrink: 0; }
 }
 """ + THEME_TOGGLE_CSS
+
+# the "413" favicon as a home-link brand mark at the left of the nav bar.
+# The glyph is black on transparent, so it's inverted in dark mode.
+BRAND_CSS = """
+.site-nav-inner { align-items: center; }
+.site-nav a.brand { display: inline-flex; align-items: center; padding: 4px 10px 4px 4px; margin-right: 6px; background: none; }
+/* reset article pages' generic img rule (margin/border/shadow/brightness) */
+.site-nav a.brand img {
+    display: block; width: 26px; height: 26px; max-width: none; margin: 0;
+    border: 0; border-radius: 0; box-shadow: none;
+    filter: invert(0.9); transition: opacity 0.15s ease;
+}
+:root[data-theme="light"] .site-nav a.brand img { filter: none; }
+.site-nav a.brand:hover { background: none; }
+.site-nav a.brand:hover img { opacity: 0.7; }
+@media (max-width: 600px) {
+    .site-nav a.brand { padding: 2px 6px 2px 0; margin-right: 2px; }
+    .site-nav a.brand img { width: 22px; height: 22px; }
+}
+"""
+NAV_CSS += BRAND_CSS
+
+
+def icon_links_html(repo_relative_path):
+    """Favicon / touch icon / manifest <link>s with paths relative to the
+    page, so the tab icon also shows when a page is opened from disk."""
+    depth = depth_from_repo_root(repo_relative_path)
+    p = ("../" * depth) if depth else "./"
+    return ("<!--icons-->"
+            f'<link rel="icon" href="{p}favicon.ico" sizes="48x48">'
+            f'<link rel="icon" type="image/png" sizes="32x32" href="{p}assets/favicon_io/favicon-32x32.png">'
+            f'<link rel="apple-touch-icon" sizes="180x180" href="{p}assets/favicon_io/apple-touch-icon.png">'
+            f'<link rel="manifest" href="{p}assets/favicon_io/site.webmanifest">'
+            "<!--/icons-->")
 
 LISTING_CSS = """
 :root {
@@ -328,18 +370,19 @@ footer {
 
 
 def nav_html(repo_relative_path):
-    """Fixed top nav bar (Home / About / Writeups / Projects / Certifications),
+    """Fixed top nav bar (Home / Writeups / Projects / About),
     with the current section highlighted."""
     norm = os.path.normpath(repo_relative_path).replace("\\", "/")
     depth = depth_from_repo_root(repo_relative_path)
     prefix = ("../" * depth) if depth else "./"
     top = norm.split("/")[0]
-    links = []
+    links = [f'<a class="brand" href="{prefix}index.html" aria-label="wook413 home">'
+             f'<img src="{prefix}assets/favicon_io/android-chrome-192x192.png" alt="" width="26" height="26"></a>']
     for label, target in NAV_ITEMS:
         href = prefix + target
         section = target.split("/")[0] if "/" in target else None
-        if target == "README.html":
-            active = norm in ("README.md", "README.html")
+        if target == "about/index.html":
+            active = top in ("about", "OSCP") or norm in ("README.md", "README.html")
         elif target == "index.html":
             active = norm == "index.html"
         else:
@@ -375,6 +418,12 @@ def breadcrumb_html(repo_relative_path):
         label = LABELS.get(dir_parts[i], prettify(dir_parts[i]))
         up = n - 1 - i
         href = ("../" * up + "index.html") if up else "./index.html"
+        # writeup categories have no listing pages of their own anymore --
+        # they're filters on the single writeups/index.html archive
+        if dir_parts[0] == "writeups" and 0 < i <= 2:
+            href = "../" * (n - 1) + "index.html?p=" + dir_parts[1]
+            if i == 2:
+                href += "&amp;s=" + dir_parts[2]
         crumbs.append(f'<a href="{href}">{label}</a>')
 
     final_key = basename_noext if standalone_file else dir_parts[-1]

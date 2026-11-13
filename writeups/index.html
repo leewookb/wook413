@@ -17,16 +17,11 @@ function toggleTheme() {
 }
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/assets/favicon_io/site.webmanifest">
-
-
+<!--icons--><link rel="icon" href="../favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png"><link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png"><link rel="manifest" href="../assets/favicon_io/site.webmanifest"><!--/icons-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<title>wook413</title>
+<title>Writeups · wook413</title>
 <style>
 :root {
     --bg: #17140f;
@@ -206,7 +201,10 @@ body { padding-top: 112px; }
 @media (max-width: 600px) {
     body { padding-top: 98px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
-    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+    .site-nav-inner { overflow-x: auto; scrollbar-width: none; }
+    .site-nav-inner::-webkit-scrollbar { display: none; }
+    .site-nav a { padding: 5px 9px; font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+    .theme-toggle { flex-shrink: 0; }
 }
 
 .theme-toggle {
@@ -232,20 +230,245 @@ body { padding-top: 112px; }
 
 :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
 :root[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
+
+.site-nav-inner { align-items: center; }
+.site-nav a.brand { display: inline-flex; align-items: center; padding: 4px 10px 4px 4px; margin-right: 6px; background: none; }
+/* reset article pages' generic img rule (margin/border/shadow/brightness) */
+.site-nav a.brand img {
+    display: block; width: 26px; height: 26px; max-width: none; margin: 0;
+    border: 0; border-radius: 0; box-shadow: none;
+    filter: invert(0.9); transition: opacity 0.15s ease;
+}
+:root[data-theme="light"] .site-nav a.brand img { filter: none; }
+.site-nav a.brand:hover { background: none; }
+.site-nav a.brand:hover img { opacity: 0.7; }
+@media (max-width: 600px) {
+    .site-nav a.brand { padding: 2px 6px 2px 0; margin-right: 2px; }
+    .site-nav a.brand img { width: 22px; height: 22px; }
+}
+
+.lede { color: var(--muted); margin: -18px 0 28px; font-size: 0.95rem; }
+
+.search {
+    width: 100%;
+    padding: 12px 16px;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+.search:focus { border-color: var(--link); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.chips[hidden] { display: none; }
+.chip {
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.chip:hover { color: var(--text); }
+.chip .n { opacity: 0.6; margin-left: 4px; font-weight: 500; }
+.chip.on { color: var(--link); border-color: var(--link); background: var(--row-hover); }
+.chips.sub .chip { font-size: 0.75rem; padding: 4px 10px; }
+
+ul.archive { list-style: none; padding: 0; margin: 28px 0 0; border-top: 1px solid var(--border); }
+ul.archive li { border-bottom: 1px solid var(--border); }
+ul.archive li[hidden] { display: none; }
+ul.archive a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 8px;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+ul.archive a:hover { background: var(--row-hover); }
+ul.archive a:hover .t { color: var(--link); }
+ul.archive .main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+ul.archive .t { font-weight: 700; transition: color 0.15s ease; }
+ul.archive .m { font-size: 0.8rem; color: var(--muted); }
+ul.archive time { font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.empty { color: var(--muted); text-align: center; margin: 32px 0; }
+
+@media (max-width: 600px) {
+    ul.archive a { flex-direction: column; gap: 2px; padding: 12px 4px; }
+}
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="site-nav-inner"><a href="../index.html">Home</a><a href="../README.html">About</a><a href="../writeups/index.html" class="active">Writeups</a><a href="../projects/index.html">Projects</a><a href="../OSCP/index.html">Certifications</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
+<nav class="site-nav"><div class="site-nav-inner"><a class="brand" href="../index.html" aria-label="wook413 home"><img src="../assets/favicon_io/android-chrome-192x192.png" alt="" width="26" height="26"></a><a href="../index.html">Home</a><a href="../writeups/index.html" class="active">Writeups</a><a href="../projects/index.html">Projects</a><a href="../about/index.html">About</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
 
 <h1>Writeups</h1>
-<ul class="listing">
-<li><a href="./proving-grounds/"><span class="label">Proving Grounds</span><span class="count">29</span></a></li>
-<li><a href="./tryhackme/"><span class="label">TryHackMe</span><span class="count">2</span></a></li>
-<li><a href="./web-security-academy/"><span class="label">Web Security Academy</span><span class="count">44</span></a></li>
-<li><a href="./hackthebox/"><span class="label">HackTheBox</span><span class="count">7</span></a></li>
-<li><a href="./boss-of-the-soc/"><span class="label">Boss of the SOC</span><span class="count">1</span></a></li>
-<li><a href="./cyberdefenders/"><span class="label">CyberDefenders</span><span class="count">7</span></a></li>
+<p class="lede">90 writeups from CTF platforms and practice labs, newest first.</p>
+<input type="search" id="q" class="search" placeholder="Search by title, platform or tag…" autocomplete="off">
+<div class="chips" id="platforms"><button type="button" class="chip" data-p="">All<span class="n">90</span></button><button type="button" class="chip" data-p="cyberdefenders">CyberDefenders<span class="n">7</span></button><button type="button" class="chip" data-p="boss-of-the-soc">Boss of the SOC<span class="n">1</span></button><button type="button" class="chip" data-p="web-security-academy">Web Security Academy<span class="n">44</span></button><button type="button" class="chip" data-p="hackthebox">HackTheBox<span class="n">7</span></button><button type="button" class="chip" data-p="proving-grounds">Proving Grounds<span class="n">29</span></button><button type="button" class="chip" data-p="tryhackme">TryHackMe<span class="n">2</span></button></div>
+<div class="chips sub" id="subs" hidden><button type="button" class="chip" data-p="web-security-academy" data-s="authentication" hidden>Authentication<span class="n">12</span></button><button type="button" class="chip" data-p="web-security-academy" data-s="business-logic-vulnerabilities" hidden>Business Logic Vulnerabilities<span class="n">3</span></button><button type="button" class="chip" data-p="web-security-academy" data-s="command-injection" hidden>Command Injection<span class="n">5</span></button><button type="button" class="chip" data-p="web-security-academy" data-s="path-traversal" hidden>Path Traversal<span class="n">6</span></button><button type="button" class="chip" data-p="web-security-academy" data-s="sql-injection" hidden>SQL Injection<span class="n">18</span></button></div>
+<ul class="archive" id="list">
+<li data-p="cyberdefenders" data-s="soc-analyst-tier-1" data-t="grabthephisher cyberdefenders soc analyst tier 1 "><a href="cyberdefenders/soc-analyst-tier-1/grabthephisher/grabthephisher.html"><span class="main"><span class="t">GrabThePhisher</span><span class="m">CyberDefenders · SOC Analyst Tier 1</span></span><time datetime="2026-09-13">Sep 13, 2026</time></a></li>
+<li data-p="cyberdefenders" data-s="soc-analyst-tier-1" data-t="tomcat takeover cyberdefenders soc analyst tier 1 "><a href="cyberdefenders/soc-analyst-tier-1/tomcat-takeover/tomcat-takeover.html"><span class="main"><span class="t">Tomcat Takeover</span><span class="m">CyberDefenders · SOC Analyst Tier 1</span></span><time datetime="2026-09-13">Sep 13, 2026</time></a></li>
+<li data-p="cyberdefenders" data-s="soc-analyst-tier-1" data-t="psexec hunt cyberdefenders soc analyst tier 1 "><a href="cyberdefenders/soc-analyst-tier-1/psexechunt/psexechunt.html"><span class="main"><span class="t">PsExec Hunt</span><span class="m">CyberDefenders · SOC Analyst Tier 1</span></span><time datetime="2026-09-11">Sep 11, 2026</time></a></li>
+<li data-p="cyberdefenders" data-s="soc-analyst-tier-1" data-t="poisonedcredentials cyberdefenders soc analyst tier 1 "><a href="cyberdefenders/soc-analyst-tier-1/poisonedcredentials/poisonedcredentials.html"><span class="main"><span class="t">PoisonedCredentials</span><span class="m">CyberDefenders · SOC Analyst Tier 1</span></span><time datetime="2026-09-07">Sep 7, 2026</time></a></li>
+<li data-p="cyberdefenders" data-s="soc-analyst-tier-1" data-t="awsraid cyberdefenders soc analyst tier 1 "><a href="cyberdefenders/soc-analyst-tier-1/awsraid/awsraid.html"><span class="main"><span class="t">AWSRaid</span><span class="m">CyberDefenders · SOC Analyst Tier 1</span></span><time datetime="2026-08-30">Aug 30, 2026</time></a></li>
+<li data-p="cyberdefenders" data-s="soc-analyst-tier-1" data-t="retailbreach cyberdefenders soc analyst tier 1 "><a href="cyberdefenders/soc-analyst-tier-1/retailbreach/retailbreach.html"><span class="main"><span class="t">RetailBreach</span><span class="m">CyberDefenders · SOC Analyst Tier 1</span></span><time datetime="2026-08-24">Aug 24, 2026</time></a></li>
+<li data-p="cyberdefenders" data-s="soc-analyst-tier-1" data-t="jetbrains cyberdefenders soc analyst tier 1 "><a href="cyberdefenders/soc-analyst-tier-1/jetbrains/jetbrains.html"><span class="main"><span class="t">JetBrains</span><span class="m">CyberDefenders · SOC Analyst Tier 1</span></span><time datetime="2026-08-23">Aug 23, 2026</time></a></li>
+<li data-p="boss-of-the-soc" data-s="" data-t="getting started with splunk for security boss of the soc  "><a href="boss-of-the-soc/getting-started-with-splunk-for-security/getting-started-with-splunk-for-security.html"><span class="main"><span class="t">Getting Started with Splunk for Security</span><span class="m">Boss of the SOC</span></span><time datetime="2026-08-16">Aug 16, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="business-logic-vulnerabilities" data-t="lab: inconsistent security controls web security academy business logic vulnerabilities "><a href="web-security-academy/business-logic-vulnerabilities/lab3/lab3.html"><span class="main"><span class="t">Lab: Inconsistent security controls</span><span class="m">Web Security Academy · Business Logic Vulnerabilities</span></span><time datetime="2026-08-07">Aug 7, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="business-logic-vulnerabilities" data-t="lab: high-level logic vulnerability web security academy business logic vulnerabilities "><a href="web-security-academy/business-logic-vulnerabilities/lab2/lab2.html"><span class="main"><span class="t">Lab: High-level logic vulnerability</span><span class="m">Web Security Academy · Business Logic Vulnerabilities</span></span><time datetime="2026-08-05">Aug 5, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="business-logic-vulnerabilities" data-t="lab: excessive trust in client-side controls web security academy business logic vulnerabilities "><a href="web-security-academy/business-logic-vulnerabilities/lab1/lab1.html"><span class="main"><span class="t">Lab: Excessive trust in client-side controls</span><span class="m">Web Security Academy · Business Logic Vulnerabilities</span></span><time datetime="2026-07-31">Jul 31, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="command-injection" data-t="lab: blind os command injection with out-of-band data exfiltration web security academy command injection "><a href="web-security-academy/command-injection/lab5/lab5.html"><span class="main"><span class="t">Lab: Blind OS command injection with out-of-band data exfiltration</span><span class="m">Web Security Academy · Command Injection</span></span><time datetime="2026-07-30">Jul 30, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="command-injection" data-t="lab: blind os command injection with out-of-band interaction web security academy command injection "><a href="web-security-academy/command-injection/lab4/lab4.html"><span class="main"><span class="t">Lab: Blind OS command injection with out-of-band interaction</span><span class="m">Web Security Academy · Command Injection</span></span><time datetime="2026-07-29">Jul 29, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="command-injection" data-t="lab: blind os command injection with output redirection web security academy command injection "><a href="web-security-academy/command-injection/lab3/lab3.html"><span class="main"><span class="t">Lab: Blind OS command injection with output redirection</span><span class="m">Web Security Academy · Command Injection</span></span><time datetime="2026-07-28">Jul 28, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="command-injection" data-t="lab: blind os command injection with time delays web security academy command injection "><a href="web-security-academy/command-injection/lab2/lab2.html"><span class="main"><span class="t">Lab: Blind OS command injection with time delays</span><span class="m">Web Security Academy · Command Injection</span></span><time datetime="2026-07-28">Jul 28, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="command-injection" data-t="lab: os command injection, simple case web security academy command injection "><a href="web-security-academy/command-injection/lab1/lab1.html"><span class="main"><span class="t">Lab: OS command injection, simple case</span><span class="m">Web Security Academy · Command Injection</span></span><time datetime="2026-07-27">Jul 27, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="path-traversal" data-t="lab: file path traversal, validation of file extension with null byte bypass web security academy path traversal "><a href="web-security-academy/path-traversal/lab6/lab6.html"><span class="main"><span class="t">Lab: File path traversal, validation of file extension with null byte bypass</span><span class="m">Web Security Academy · Path Traversal</span></span><time datetime="2026-07-24">Jul 24, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="path-traversal" data-t="lab: file path traversal, validation of start of path web security academy path traversal "><a href="web-security-academy/path-traversal/lab5/lab5.html"><span class="main"><span class="t">Lab: File path traversal, validation of start of path</span><span class="m">Web Security Academy · Path Traversal</span></span><time datetime="2026-07-24">Jul 24, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="path-traversal" data-t="lab: file path traversal, traversal sequences stripped with superfluous url-decode web security academy path traversal "><a href="web-security-academy/path-traversal/lab4/lab4.html"><span class="main"><span class="t">Lab: File path traversal, traversal sequences stripped with superfluous URL-decode</span><span class="m">Web Security Academy · Path Traversal</span></span><time datetime="2026-07-23">Jul 23, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="path-traversal" data-t="lab: file path traversal, traversal sequences stripped non-recursively web security academy path traversal "><a href="web-security-academy/path-traversal/lab3/lab3.html"><span class="main"><span class="t">Lab: File path traversal, traversal sequences stripped non-recursively</span><span class="m">Web Security Academy · Path Traversal</span></span><time datetime="2026-07-22">Jul 22, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="path-traversal" data-t="lab: file path traversal, traversal sequences blocked with absolute path bypass web security academy path traversal "><a href="web-security-academy/path-traversal/lab2/lab2.html"><span class="main"><span class="t">Lab: File path traversal, traversal sequences blocked with absolute path bypass</span><span class="m">Web Security Academy · Path Traversal</span></span><time datetime="2026-07-21">Jul 21, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="path-traversal" data-t="lab: file path traversal, simple case web security academy path traversal "><a href="web-security-academy/path-traversal/lab1/lab1.html"><span class="main"><span class="t">Lab: File path traversal, simple case</span><span class="m">Web Security Academy · Path Traversal</span></span><time datetime="2026-07-21">Jul 21, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: password brute-force via password change web security academy authentication "><a href="web-security-academy/authentication/lab12/lab12.html"><span class="main"><span class="t">Lab: Password brute-force via password change</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-20">Jul 20, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: password reset poisoning via middleware web security academy authentication "><a href="web-security-academy/authentication/lab11/lab11.html"><span class="main"><span class="t">Lab: Password reset poisoning via middleware</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-19">Jul 19, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: offline password cracking web security academy authentication "><a href="web-security-academy/authentication/lab10/lab10.html"><span class="main"><span class="t">Lab: Offline password cracking</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-18">Jul 18, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: brute-forcing a stay-logged-in cookie web security academy authentication "><a href="web-security-academy/authentication/lab9/lab9.html"><span class="main"><span class="t">Lab: Brute-forcing a stay-logged-in cookie</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-18">Jul 18, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: 2fa broken logic web security academy authentication "><a href="web-security-academy/authentication/lab8/lab8.html"><span class="main"><span class="t">Lab: 2FA broken logic</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-14">Jul 14, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: username enumeration via account lock web security academy authentication "><a href="web-security-academy/authentication/lab7/lab7.html"><span class="main"><span class="t">Lab: Username enumeration via account lock</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-13">Jul 13, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: broken brute-force protection, ip block web security academy authentication "><a href="web-security-academy/authentication/lab6/lab6.html"><span class="main"><span class="t">Lab: Broken brute-force protection, IP block</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-12">Jul 12, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: username enumeration via response timing web security academy authentication "><a href="web-security-academy/authentication/lab5/lab5.html"><span class="main"><span class="t">Lab: Username enumeration via response timing</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-12">Jul 12, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: username enumeration via subtly different responses web security academy authentication "><a href="web-security-academy/authentication/lab4/lab4.html"><span class="main"><span class="t">Lab: Username enumeration via subtly different responses</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-11">Jul 11, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: password reset broken logic web security academy authentication "><a href="web-security-academy/authentication/lab3/lab3.html"><span class="main"><span class="t">Lab: Password reset broken logic</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-11">Jul 11, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: 2fa simple bypass web security academy authentication "><a href="web-security-academy/authentication/lab2/lab2.html"><span class="main"><span class="t">Lab: 2FA simple bypass</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-10">Jul 10, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="authentication" data-t="lab: username enumeration via different responses web security academy authentication "><a href="web-security-academy/authentication/lab1/lab1.html"><span class="main"><span class="t">Lab: Username enumeration via different responses</span><span class="m">Web Security Academy · Authentication</span></span><time datetime="2026-07-09">Jul 9, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection with filter bypass via xml encoding web security academy sql injection "><a href="web-security-academy/sql-injection/lab18/lab18.html"><span class="main"><span class="t">Lab: SQL injection with filter bypass via XML encoding</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-08">Jul 8, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: blind sql injection with out-of-band data exfiltration web security academy sql injection "><a href="web-security-academy/sql-injection/lab17/lab17.html"><span class="main"><span class="t">Lab: Blind SQL injection with out-of-band data exfiltration</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-07">Jul 7, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: blind sql injection with out-of-band interaction web security academy sql injection "><a href="web-security-academy/sql-injection/lab16/lab16.html"><span class="main"><span class="t">Lab: Blind SQL injection with out-of-band interaction</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-07">Jul 7, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: blind sql injection with time delays and information retrieval web security academy sql injection "><a href="web-security-academy/sql-injection/lab15/lab15.html"><span class="main"><span class="t">Lab: Blind SQL injection with time delays and information retrieval</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-06">Jul 6, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: blind sql injection with time delays web security academy sql injection "><a href="web-security-academy/sql-injection/lab14/lab14.html"><span class="main"><span class="t">Lab: Blind SQL injection with time delays</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-06">Jul 6, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: visible error-based sql injection web security academy sql injection "><a href="web-security-academy/sql-injection/lab13/lab13.html"><span class="main"><span class="t">Lab: Visible error-based SQL injection</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-05">Jul 5, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="blind sql injection with conditional errors web security academy sql injection "><a href="web-security-academy/sql-injection/lab12/lab12.html"><span class="main"><span class="t">Blind SQL injection with conditional errors</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: blind sql injection with conditional responses web security academy sql injection "><a href="web-security-academy/sql-injection/lab11/lab11.html"><span class="main"><span class="t">Lab: Blind SQL injection with conditional responses</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="hackthebox" data-s="starting-point" data-t="htb - redeemer hackthebox starting point very-easy linux"><a href="hackthebox/starting-point/redeemer/redeemer.html"><span class="main"><span class="t">HTB - Redeemer</span><span class="m">HackTheBox · Starting Point</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="hackthebox" data-s="starting-point" data-t="htb - preignition hackthebox starting point very-easy linux"><a href="hackthebox/starting-point/preignition/preignition.html"><span class="main"><span class="t">HTB - Preignition</span><span class="m">HackTheBox · Starting Point</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="hackthebox" data-s="starting-point" data-t="htb - mongod hackthebox starting point very-easy linux"><a href="hackthebox/starting-point/mongod/mongod.html"><span class="main"><span class="t">HTB - Mongod</span><span class="m">HackTheBox · Starting Point</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="hackthebox" data-s="starting-point" data-t="htb - meow hackthebox starting point very-easy linux"><a href="hackthebox/starting-point/meow/meow.html"><span class="main"><span class="t">HTB - Meow</span><span class="m">HackTheBox · Starting Point</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="hackthebox" data-s="starting-point" data-t="htb - fawn hackthebox starting point very-easy linux"><a href="hackthebox/starting-point/fawn/fawn.html"><span class="main"><span class="t">HTB - Fawn</span><span class="m">HackTheBox · Starting Point</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="hackthebox" data-s="starting-point" data-t="htb - explosion hackthebox starting point very-easy windows"><a href="hackthebox/starting-point/explosion/explosion.html"><span class="main"><span class="t">HTB - Explosion</span><span class="m">HackTheBox · Starting Point</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="hackthebox" data-s="starting-point" data-t="htb - dancing hackthebox starting point very-easy windows"><a href="hackthebox/starting-point/dancing/dancing.html"><span class="main"><span class="t">HTB - Dancing</span><span class="m">HackTheBox · Starting Point</span></span><time datetime="2026-07-04">Jul 4, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection union attack, retrieving multiple values in a single column web security academy sql injection "><a href="web-security-academy/sql-injection/lab10/lab10.html"><span class="main"><span class="t">Lab: SQL injection UNION attack, retrieving multiple values in a single column</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-03">Jul 3, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection union attack, retrieving data from other tables web security academy sql injection "><a href="web-security-academy/sql-injection/lab9/lab9.html"><span class="main"><span class="t">Lab: SQL injection UNION attack, retrieving data from other tables</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-03">Jul 3, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection union attack, finding a column containing text web security academy sql injection "><a href="web-security-academy/sql-injection/lab8/lab8.html"><span class="main"><span class="t">Lab: SQL injection UNION attack, finding a column containing text</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-02">Jul 2, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection union attack, determining the number of columns returned by the query web security academy sql injection "><a href="web-security-academy/sql-injection/lab7/lab7.html"><span class="main"><span class="t">Lab: SQL injection UNION attack, determining the number of columns returned by the query</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-02">Jul 2, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection attack, listing the database contents on oracle web security academy sql injection "><a href="web-security-academy/sql-injection/lab6/lab6.html"><span class="main"><span class="t">Lab: SQL injection attack, listing the database contents on Oracle</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-02">Jul 2, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection attack, listing the database contents on non-oracle databases web security academy sql injection "><a href="web-security-academy/sql-injection/lab5/lab5.html"><span class="main"><span class="t">Lab: SQL injection attack, listing the database contents on non-Oracle databases</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-07-01">Jul 1, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection attack, querying the database type and version on mysql and microsoft web security academy sql injection "><a href="web-security-academy/sql-injection/lab4/lab4.html"><span class="main"><span class="t">Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-06-30">Jun 30, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection attack, querying the database type and version on oracle web security academy sql injection "><a href="web-security-academy/sql-injection/lab3/lab3.html"><span class="main"><span class="t">Lab: SQL injection attack, querying the database type and version on Oracle</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-06-30">Jun 30, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection vulnerability allowing login bypass web security academy sql injection "><a href="web-security-academy/sql-injection/lab2/lab2.html"><span class="main"><span class="t">Lab: SQL injection vulnerability allowing login bypass</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-06-29">Jun 29, 2026</time></a></li>
+<li data-p="web-security-academy" data-s="sql-injection" data-t="lab: sql injection vulnerability in where clause allowing retrieval of hidden data web security academy sql injection "><a href="web-security-academy/sql-injection/lab1/lab1.html"><span class="main"><span class="t">Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data</span><span class="m">Web Security Academy · SQL Injection</span></span><time datetime="2026-06-29">Jun 29, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="hokkaido proving grounds  "><a href="proving-grounds/hokkaido/hokkaido.html"><span class="main"><span class="t">Hokkaido</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-24">Feb 24, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="vault proving grounds  "><a href="proving-grounds/vault/vault.html"><span class="main"><span class="t">Vault</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-18">Feb 18, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="roquefort proving grounds  "><a href="proving-grounds/roquefort/roquefort.html"><span class="main"><span class="t">Roquefort</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-14">Feb 14, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="shenzi proving grounds  "><a href="proving-grounds/shenzi/shenzi.html"><span class="main"><span class="t">Shenzi</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-12">Feb 12, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="flu proving grounds  "><a href="proving-grounds/flu/flu.html"><span class="main"><span class="t">Flu</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-11">Feb 11, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="wombo proving grounds  "><a href="proving-grounds/wombo/wombo.html"><span class="main"><span class="t">Wombo</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-10">Feb 10, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="quackerjack proving grounds  "><a href="proving-grounds/quackerjack/quackerjack.html"><span class="main"><span class="t">QuackerJack</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-10">Feb 10, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="medjed proving grounds  "><a href="proving-grounds/medjed/medjed.html"><span class="main"><span class="t">Medjed</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-09">Feb 9, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="fanatastic proving grounds  "><a href="proving-grounds/fanatastic/fanatastic.html"><span class="main"><span class="t">Fanatastic</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-09">Feb 9, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="exfiltrated proving grounds  "><a href="proving-grounds/exfiltrated/exfiltrated.html"><span class="main"><span class="t">Exfiltrated</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-09">Feb 9, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="marketing proving grounds  "><a href="proving-grounds/marketing/marketing.html"><span class="main"><span class="t">Marketing</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-08">Feb 8, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="nickel proving grounds  "><a href="proving-grounds/nickel/nickel.html"><span class="main"><span class="t">Nickel</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-07">Feb 7, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="bullybox proving grounds  "><a href="proving-grounds/bullybox/bullybox.html"><span class="main"><span class="t">BullyBox</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-05">Feb 5, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="readys proving grounds  "><a href="proving-grounds/readys/readys.html"><span class="main"><span class="t">Readys</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-04">Feb 4, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="astronaut proving grounds  "><a href="proving-grounds/astronaut/astronaut.html"><span class="main"><span class="t">Astronaut</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-04">Feb 4, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="access proving grounds  "><a href="proving-grounds/access/access.html"><span class="main"><span class="t">Access</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-03">Feb 3, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="hunit proving grounds  "><a href="proving-grounds/hunit/hunit.html"><span class="main"><span class="t">Hunit</span><span class="m">Proving Grounds</span></span><time datetime="2026-02-01">Feb 1, 2026</time></a></li>
+<li data-p="tryhackme" data-s="" data-t="vulnnet: active tryhackme  "><a href="tryhackme/vulnnet-active/vulnnet-active.html"><span class="main"><span class="t">VulnNet: Active</span><span class="m">TryHackMe</span></span><time datetime="2026-02-01">Feb 1, 2026</time></a></li>
+<li data-p="tryhackme" data-s="" data-t="enterprise tryhackme  "><a href="tryhackme/enterprise/enterprise.html"><span class="main"><span class="t">Enterprise</span><span class="m">TryHackMe</span></span><time datetime="2026-02-01">Feb 1, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="peppo proving grounds  "><a href="proving-grounds/peppo/peppo.html"><span class="main"><span class="t">Peppo</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-29">Jan 29, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="squid proving grounds  "><a href="proving-grounds/squid/squid.html"><span class="main"><span class="t">Squid</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-29">Jan 29, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="sybaris proving grounds  "><a href="proving-grounds/sybaris/sybaris.html"><span class="main"><span class="t">Sybaris</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-29">Jan 29, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="craft proving grounds  "><a href="proving-grounds/craft/craft.html"><span class="main"><span class="t">Craft</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-29">Jan 29, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="jacko proving grounds  "><a href="proving-grounds/jacko/jacko.html"><span class="main"><span class="t">Jacko</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-29">Jan 29, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="sorcerer proving grounds  "><a href="proving-grounds/sorcerer/sorcerer.html"><span class="main"><span class="t">Sorcerer</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-28">Jan 28, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="algernon proving grounds  "><a href="proving-grounds/algernon/algernon.html"><span class="main"><span class="t">Algernon</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-28">Jan 28, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="pc proving grounds  "><a href="proving-grounds/pc/pc.html"><span class="main"><span class="t">PC</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-28">Jan 28, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="apex proving grounds  "><a href="proving-grounds/apex/apex.html"><span class="main"><span class="t">Apex</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-28">Jan 28, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="walla proving grounds  "><a href="proving-grounds/walla/Walla.html"><span class="main"><span class="t">Walla</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-28">Jan 28, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="postfish proving grounds  "><a href="proving-grounds/postfish/Postfish.html"><span class="main"><span class="t">Postfish</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-28">Jan 28, 2026</time></a></li>
+<li data-p="proving-grounds" data-s="" data-t="extplorer proving grounds  "><a href="proving-grounds/extplorer/Extplorer.html"><span class="main"><span class="t">Extplorer</span><span class="m">Proving Grounds</span></span><time datetime="2026-01-28">Jan 28, 2026</time></a></li>
 </ul>
+<p class="empty" id="empty" hidden>No writeups match.</p>
+<script>
+(function () {
+    var list = document.getElementById("list");
+    var rows = Array.prototype.slice.call(list.children);
+    var q = document.getElementById("q");
+    var platforms = document.getElementById("platforms");
+    var subs = document.getElementById("subs");
+    var empty = document.getElementById("empty");
+    var params = new URLSearchParams(location.search);
+    var state = { p: params.get("p") || "", s: params.get("s") || "", q: params.get("q") || "" };
+    q.value = state.q;
+
+    function render() {
+        var words = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+        var shown = 0;
+        rows.forEach(function (li) {
+            var ok = (!state.p || li.dataset.p === state.p) &&
+                     (!state.s || li.dataset.s === state.s) &&
+                     words.every(function (w) { return li.dataset.t.indexOf(w) !== -1; });
+            li.hidden = !ok;
+            if (ok) shown++;
+        });
+        empty.hidden = shown > 0;
+        Array.prototype.forEach.call(platforms.children, function (b) {
+            b.classList.toggle("on", b.dataset.p === state.p);
+        });
+        var anySub = false;
+        Array.prototype.forEach.call(subs.children, function (b) {
+            var mine = b.dataset.p === state.p;
+            b.hidden = !mine;
+            if (mine) anySub = true;
+            b.classList.toggle("on", mine && b.dataset.s === state.s);
+        });
+        subs.hidden = !anySub;
+        var out = new URLSearchParams();
+        if (state.p) out.set("p", state.p);
+        if (state.s) out.set("s", state.s);
+        if (state.q) out.set("q", state.q);
+        var qs = out.toString();
+        history.replaceState(null, "", location.pathname + (qs ? "?" + qs : ""));
+    }
+
+    platforms.addEventListener("click", function (e) {
+        var b = e.target.closest(".chip");
+        if (!b) return;
+        state.p = b.dataset.p;
+        state.s = "";
+        render();
+    });
+    subs.addEventListener("click", function (e) {
+        var b = e.target.closest(".chip");
+        if (!b) return;
+        state.s = state.s === b.dataset.s ? "" : b.dataset.s;
+        render();
+    });
+    q.addEventListener("input", function () { state.q = q.value.trim(); render(); });
+    render();
+})();
+</script>
 <footer>&copy; 2026 wook413.</footer>
 </body>
 </html>

@@ -17,16 +17,11 @@ function toggleTheme() {
 }
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/assets/favicon_io/site.webmanifest">
-
-
+<!--icons--><link rel="icon" href="../../favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon_io/favicon-32x32.png"><link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon_io/apple-touch-icon.png"><link rel="manifest" href="../../assets/favicon_io/site.webmanifest"><!--/icons-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<title>wook413</title>
+<title>Splunk Detection Lab · wook413</title>
 <style>
 :root {
     --bg: #17140f;
@@ -206,7 +201,10 @@ body { padding-top: 112px; }
 @media (max-width: 600px) {
     body { padding-top: 98px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
-    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+    .site-nav-inner { overflow-x: auto; scrollbar-width: none; }
+    .site-nav-inner::-webkit-scrollbar { display: none; }
+    .site-nav a { padding: 5px 9px; font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+    .theme-toggle { flex-shrink: 0; }
 }
 
 .theme-toggle {
@@ -232,16 +230,115 @@ body { padding-top: 112px; }
 
 :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
 :root[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
+
+.site-nav-inner { align-items: center; }
+.site-nav a.brand { display: inline-flex; align-items: center; padding: 4px 10px 4px 4px; margin-right: 6px; background: none; }
+/* reset article pages' generic img rule (margin/border/shadow/brightness) */
+.site-nav a.brand img {
+    display: block; width: 26px; height: 26px; max-width: none; margin: 0;
+    border: 0; border-radius: 0; box-shadow: none;
+    filter: invert(0.9); transition: opacity 0.15s ease;
+}
+:root[data-theme="light"] .site-nav a.brand img { filter: none; }
+.site-nav a.brand:hover { background: none; }
+.site-nav a.brand:hover img { opacity: 0.7; }
+@media (max-width: 600px) {
+    .site-nav a.brand { padding: 2px 6px 2px 0; margin-right: 2px; }
+    .site-nav a.brand img { width: 22px; height: 22px; }
+}
+
+.lede { color: var(--muted); margin: -18px 0 28px; font-size: 0.95rem; }
+
+ul.projects { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+ul.projects a {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+ul.projects a:hover { transform: translateY(-2px); border-color: var(--link); }
+ul.projects .t { font-weight: 700; font-size: 1.1rem; }
+ul.projects .desc { color: var(--muted); font-size: 0.92rem; }
+ul.projects .m { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+
+.lede { color: var(--muted); margin: -18px 0 28px; font-size: 0.95rem; }
+
+.search {
+    width: 100%;
+    padding: 12px 16px;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+.search:focus { border-color: var(--link); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.chips[hidden] { display: none; }
+.chip {
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.chip:hover { color: var(--text); }
+.chip .n { opacity: 0.6; margin-left: 4px; font-weight: 500; }
+.chip.on { color: var(--link); border-color: var(--link); background: var(--row-hover); }
+.chips.sub .chip { font-size: 0.75rem; padding: 4px 10px; }
+
+ul.archive { list-style: none; padding: 0; margin: 28px 0 0; border-top: 1px solid var(--border); }
+ul.archive li { border-bottom: 1px solid var(--border); }
+ul.archive li[hidden] { display: none; }
+ul.archive a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 8px;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+ul.archive a:hover { background: var(--row-hover); }
+ul.archive a:hover .t { color: var(--link); }
+ul.archive .main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+ul.archive .t { font-weight: 700; transition: color 0.15s ease; }
+ul.archive .m { font-size: 0.8rem; color: var(--muted); }
+ul.archive time { font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.empty { color: var(--muted); text-align: center; margin: 32px 0; }
+
+@media (max-width: 600px) {
+    ul.archive a { flex-direction: column; gap: 2px; padding: 12px 4px; }
+}
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="site-nav-inner"><a href="../../index.html">Home</a><a href="../../README.html">About</a><a href="../../writeups/index.html">Writeups</a><a href="../../projects/index.html" class="active">Projects</a><a href="../../OSCP/index.html">Certifications</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
+<nav class="site-nav"><div class="site-nav-inner"><a class="brand" href="../../index.html" aria-label="wook413 home"><img src="../../assets/favicon_io/android-chrome-192x192.png" alt="" width="26" height="26"></a><a href="../../index.html">Home</a><a href="../../writeups/index.html">Writeups</a><a href="../../projects/index.html" class="active">Projects</a><a href="../../about/index.html">About</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
+
 <div class="breadcrumb"><a href="../index.html">Projects</a><span class="sep">/</span><span>Splunk Detection Lab</span></div>
 <h1>Splunk Detection Lab</h1>
-<ul class="listing">
-<li><a href="./splunk-detection-lab-part-1.html"><span class="label">Part 1</span></a></li>
-<li><a href="./splunk-detection-lab-part-2.html"><span class="label">Part 2</span></a></li>
-<li><a href="./splunk-detection-lab-part-3.html"><span class="label">Part 3</span></a></li>
+<p class="lede">A home lab where I simulate attacks, collect the telemetry in Splunk, and write detections against it.</p>
+<ul class="archive">
+<li><a href="splunk-detection-lab-part-1.html"><span class="main"><span class="t">Part 1</span></span><time datetime="2026-08-16">Aug 16, 2026</time></a></li>
+<li><a href="splunk-detection-lab-part-2.html"><span class="main"><span class="t">Part 2</span></span><time datetime="2026-08-18">Aug 18, 2026</time></a></li>
+<li><a href="splunk-detection-lab-part-3.html"><span class="main"><span class="t">Part 3</span></span><time datetime="2026-08-23">Aug 23, 2026</time></a></li>
 </ul>
 <footer>&copy; 2026 wook413.</footer>
 </body>

@@ -330,7 +330,10 @@ body { padding-top: 112px; }
 @media (max-width: 600px) {
     body { padding-top: 98px; }
     .site-nav-inner { padding: 10px 16px; gap: 2px; }
-    .site-nav a { padding: 5px 10px; font-size: 0.8rem; }
+    .site-nav-inner { overflow-x: auto; scrollbar-width: none; }
+    .site-nav-inner::-webkit-scrollbar { display: none; }
+    .site-nav a { padding: 5px 9px; font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+    .theme-toggle { flex-shrink: 0; }
 }
 
 .theme-toggle {
@@ -357,11 +360,71 @@ body { padding-top: 112px; }
 :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
 :root[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
 </style>
+<style id="brand-css">
+.site-nav-inner { align-items: center; }
+.site-nav a.brand { display: inline-flex; align-items: center; padding: 4px 10px 4px 4px; margin-right: 6px; background: none; }
+/* reset article pages' generic img rule (margin/border/shadow/brightness) */
+.site-nav a.brand img {
+    display: block; width: 26px; height: 26px; max-width: none; margin: 0;
+    border: 0; border-radius: 0; box-shadow: none;
+    filter: invert(0.9); transition: opacity 0.15s ease;
+}
+:root[data-theme="light"] .site-nav a.brand img { filter: none; }
+.site-nav a.brand:hover { background: none; }
+.site-nav a.brand:hover img { opacity: 0.7; }
+@media (max-width: 600px) {
+    .site-nav a.brand { padding: 2px 6px 2px 0; margin-right: 2px; }
+    .site-nav a.brand img { width: 22px; height: 22px; }
+}
+</style>
+<!--icons--><link rel="icon" href="../../../favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon_io/favicon-32x32.png"><link rel="apple-touch-icon" sizes="180x180" href="../../../assets/favicon_io/apple-touch-icon.png"><link rel="manifest" href="../../../assets/favicon_io/site.webmanifest"><!--/icons-->
+<style id="post-extras">
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    margin: -4px 0 28px;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+.post-title { font-size: 2.1rem; margin-bottom: 14px; }
+.post-meta a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); }
+.post-meta a:hover { color: var(--link); border-color: var(--link); }
+.post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 56px 0 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+.post-nav a {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.post-nav a:hover { border-color: var(--link); transform: translateY(-1px); }
+.post-nav .next { grid-column: 2; text-align: right; }
+.post-nav .dir { font-size: 0.75rem; color: var(--muted); }
+.post-nav .pt { font-weight: 700; font-size: 0.92rem; }
+@media (max-width: 600px) {
+    .post-nav { grid-template-columns: 1fr; }
+    .post-nav .next { grid-column: 1; }
+}
+</style>
 </head>
 <body>
-<nav class="site-nav"><div class="site-nav-inner"><a href="../../../index.html">Home</a><a href="../../../README.html">About</a><a href="../../../writeups/index.html" class="active">Writeups</a><a href="../../../projects/index.html">Projects</a><a href="../../../OSCP/index.html">Certifications</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
+<nav class="site-nav"><div class="site-nav-inner"><a class="brand" href="../../../index.html" aria-label="wook413 home"><img src="../../../assets/favicon_io/android-chrome-192x192.png" alt="" width="26" height="26"></a><a href="../../../index.html">Home</a><a href="../../../writeups/index.html" class="active">Writeups</a><a href="../../../projects/index.html">Projects</a><a href="../../../about/index.html">About</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
 <div class="page">
-<div class="breadcrumb"><a href="../../index.html">Writeups</a><span class="sep">/</span><a href="../index.html">Proving Grounds</a><span class="sep">/</span><span>Flu</span></div>
+<div class="breadcrumb"><a href="../../index.html">Writeups</a><span class="sep">/</span><a href="../../index.html?p=proving-grounds">Proving Grounds</a><span class="sep">/</span><span>Flu</span></div>
+<!--post-title--><h1 class="post-title">Flu</h1><!--post-meta--><div class="post-meta"><time datetime="2026-02-11">Feb 11, 2026</time><span>·</span><a href="../../index.html?p=proving-grounds">Proving Grounds</a></div><!--/post-meta--><!--/post-title-->
 <div class="byline">Write-up by wook413</div>
 <div class="toc">
 <ul>
@@ -829,6 +892,7 @@ root
 <pre><code class="language-bash">bash-5.2# cat proof.txt 
 c78...
 </code></pre>
+<!--post-nav--><nav class="post-nav"><a class="prev" href="../wombo/wombo.html"><span class="dir">← Previous</span><span class="pt">Wombo</span></a><a class="next" href="../shenzi/shenzi.html"><span class="dir">Next →</span><span class="pt">Shenzi</span></a></nav><!--/post-nav-->
 <footer>&copy; 2026 wook413.</footer>
 </div>
 </body>

@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+(function () {
+    try {
+        var saved = localStorage.getItem("theme");
+        if (saved) document.documentElement.setAttribute("data-theme", saved);
+    } catch (e) {}
+})();
+function toggleTheme() {
+    var root = document.documentElement;
+    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--icons--><link rel="icon" href="../favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png"><link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png"><link rel="manifest" href="../assets/favicon_io/site.webmanifest"><!--/icons-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>About · wook413</title>
+<style>
+:root {
+    --bg: #17140f;
+    --card-bg: #211d17;
+    --text: #ece7de;
+    --muted: #a39a8c;
+    --link: #6db2ff;
+    --border: #332e24;
+    --row-hover: #2a2419;
+    --nav-bg: rgba(23, 20, 15, 0.85);
+}
+
+:root[data-theme="light"] {
+    --bg: #fdfbf7;
+    --card-bg: #ffffff;
+    --text: #201d1a;
+    --muted: #837b70;
+    --link: #0f5fae;
+    --border: #ece5d8;
+    --row-hover: #f6f2ea;
+    --nav-bg: rgba(253, 251, 247, 0.9);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Manrope", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 56px 20px 90px;
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+h1 {
+    font-family: "Space Grotesk", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 30px;
+}
+
+h2 {
+    font-family: "Space Grotesk", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 40px 0 12px;
+}
+
+ul.listing {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+ul.listing a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    box-shadow: 0 1px 2px rgba(32, 29, 26, 0.03);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+ul.listing a:hover {
+    transform: translateY(-2px);
+    border-color: #d8cdb8;
+    box-shadow: 0 10px 24px rgba(32, 29, 26, 0.08);
+}
+
+ul.listing a:hover .label { color: var(--link); }
+
+ul.listing .count,
+ul.listing .badge {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+ul.listing .badge {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 1px 9px;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 16px 64px; }
+    h1 { font-size: 1.4rem; }
+    ul.listing a { padding: 12px 14px; }
+}
+
+body { padding-top: 112px; }
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    background: var(--nav-bg, rgba(253, 251, 247, 0.9));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+}
+
+.site-nav-inner {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    max-width: 760px;
+    padding: 14px 20px;
+}
+
+.site-nav a {
+    padding: 7px 15px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.site-nav a.active {
+    color: var(--link);
+    background: var(--row-hover, var(--code-bg));
+}
+
+.breadcrumb {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0 0 20px;
+}
+
+.breadcrumb a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--link);
+    text-decoration: underline;
+}
+
+.breadcrumb .sep {
+    margin: 0 6px;
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    body { padding-top: 98px; }
+    .site-nav-inner { padding: 10px 16px; gap: 2px; }
+    .site-nav-inner { overflow-x: auto; scrollbar-width: none; }
+    .site-nav-inner::-webkit-scrollbar { display: none; }
+    .site-nav a { padding: 5px 9px; font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+    .theme-toggle { flex-shrink: 0; }
+}
+
+.theme-toggle {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.theme-toggle:hover { background: var(--row-hover, var(--code-bg)); }
+
+.theme-toggle .icon-moon { display: none; }
+
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
+
+.site-nav-inner { align-items: center; }
+.site-nav a.brand { display: inline-flex; align-items: center; padding: 4px 10px 4px 4px; margin-right: 6px; background: none; }
+/* reset article pages' generic img rule (margin/border/shadow/brightness) */
+.site-nav a.brand img {
+    display: block; width: 26px; height: 26px; max-width: none; margin: 0;
+    border: 0; border-radius: 0; box-shadow: none;
+    filter: invert(0.9); transition: opacity 0.15s ease;
+}
+:root[data-theme="light"] .site-nav a.brand img { filter: none; }
+.site-nav a.brand:hover { background: none; }
+.site-nav a.brand:hover img { opacity: 0.7; }
+@media (max-width: 600px) {
+    .site-nav a.brand { padding: 2px 6px 2px 0; margin-right: 2px; }
+    .site-nav a.brand img { width: 22px; height: 22px; }
+}
+
+:root {
+    --c-work: #6db2ff;
+    --c-edu: #b99cf5;
+    --c-cert: #4cc277;
+}
+:root[data-theme="light"] {
+    --c-work: #0f5fae;
+    --c-edu: #7a4fd0;
+    --c-cert: #1a7f37;
+}
+
+.hero h1 { margin: 0; }
+.hero .role { margin: 14px 0 0; font-size: 1.05rem; font-weight: 600; }
+.hero .blurb { margin: 8px 0 0; color: var(--muted); max-width: 560px; }
+.hero .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
+.hero .links a {
+    font-size: 0.82rem; font-weight: 600; padding: 7px 14px; border-radius: 999px;
+    border: 1px solid var(--border); color: var(--text); text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+.hero .links a:hover { border-color: var(--link); color: var(--link); }
+
+h2 { margin-top: 56px; margin-bottom: 18px; }
+
+.logo {
+    display: block; width: 40px; height: 40px; border-radius: 10px; object-fit: cover;
+    outline: 1px solid rgba(255, 255, 255, 0.07); outline-offset: -1px;
+}
+:root[data-theme="light"] .logo { outline-color: rgba(0, 0, 0, 0.07); }
+
+/* -- swimlane timeline: one straight line per kind, shared time columns -- */
+.tl { --label-w: 104px; position: relative; margin: 0 0 190px; }
+.tl .track { position: relative; margin-left: var(--label-w); height: 212px; }
+
+.hd {
+    position: absolute; left: var(--x); top: 0; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    font-size: 0.72rem; color: var(--muted); line-height: 1.3;
+}
+.hd b { height: 1.3em; font-weight: 700; letter-spacing: 0.04em; color: var(--text); opacity: 0.7; }
+
+.lane { position: absolute; left: calc(-1 * var(--label-w)); right: 0; top: var(--y); height: 40px; }
+.lane .lbl {
+    position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+}
+.lane .line { position: absolute; left: var(--label-w); right: 0; top: 50%; height: 1px; background: var(--border); }
+/* periods: colored stretches of the lane's own line */
+.bar {
+    position: absolute; top: -1px; height: 3px; border-radius: 999px;
+    opacity: 0.5; transition: opacity 0.15s ease, height 0.15s ease, top 0.15s ease;
+}
+.lane.work .bar { background: var(--c-work); }
+.lane.edu .bar { background: var(--c-edu); }
+.bar.on { opacity: 1; top: -2px; height: 5px; }
+
+.node {
+    position: absolute; left: var(--x); top: var(--y); transform: translateX(-50%);
+    outline: none; cursor: default; z-index: 1;
+}
+.node .logo { box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--border); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.node:hover, .node:focus-within, .node.open { z-index: 5; }
+.node:hover .logo, .node:focus-visible .logo, .node.open .logo {
+    transform: translateY(-2px); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--muted);
+}
+
+.pop {
+    position: absolute; top: 100%; left: 50%; width: 270px;
+    transform: translate(-50%, 6px);
+    padding: 14px 16px; margin-top: 10px;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    text-align: left; font-size: 0.85rem; line-height: 1.5;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+.pop::before { content: ""; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
+.node.first .pop { left: 0; transform: translate(0, 6px); }
+.node.last .pop { left: auto; right: 0; transform: translate(0, 6px); }
+.node:hover .pop, .node:focus-within .pop, .node.open .pop {
+    opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0);
+}
+.node.first:hover .pop, .node.first:focus-within .pop, .node.first.open .pop,
+.node.last:hover .pop, .node.last:focus-within .pop, .node.last.open .pop { transform: translate(0, 0); }
+.pop .kind { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.node.work .kind { color: var(--c-work); }
+.node.edu .kind { color: var(--c-edu); }
+.node.cert .kind { color: var(--c-cert); }
+.pop .t { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+.pop .o { color: var(--text); }
+.pop .d, .pop .note { color: var(--muted); font-size: 0.8rem; }
+.pop .note { margin-top: 4px; }
+.pop .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.pop .links a {
+    font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px;
+    border: 1px solid var(--border); color: var(--text); text-decoration: none;
+}
+.pop .links a:hover { border-color: var(--link); color: var(--link); }
+.now {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-left: 8px; vertical-align: 2px;
+    background: #3fb950; box-shadow: 0 0 0 3px rgba(63, 185, 80, 0.18);
+}
+.rail-v { display: none; }
+
+/* -- phones: one vertical timeline, details always shown, kind label on each -- */
+@media (max-width: 640px) {
+    .tl { margin-bottom: 8px; }
+    .tl .track { margin-left: 0; height: auto; }
+    .hd, .lane { display: none; }
+    .rail-v { display: block; position: absolute; left: 20px; top: 20px; bottom: 60px; width: 1px; background: var(--border); }
+    .node {
+        position: relative; left: auto; top: auto; transform: none;
+        display: grid; grid-template-columns: 40px 1fr; column-gap: 16px; align-items: start;
+        padding-bottom: 26px;
+    }
+    .node .pop, .node.first .pop, .node.last .pop {
+        position: static; width: auto; transform: none; margin: 0; padding: 0;
+        background: none; border: 0; box-shadow: none;
+        opacity: 1; visibility: visible; pointer-events: auto;
+    }
+    .node:hover .logo { transform: none; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="site-nav-inner"><a class="brand" href="../index.html" aria-label="wook413 home"><img src="../assets/favicon_io/android-chrome-192x192.png" alt="" width="26" height="26"></a><a href="../index.html">Home</a><a href="../writeups/index.html">Writeups</a><a href="../projects/index.html">Projects</a><a href="../about/index.html" class="active">About</a><button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></nav>
+
+<section class="hero">
+<h1>Wook Lee</h1>
+<p class="role">Security Operations Engineer · OSCP+</p>
+<p class="blurb">DFIR, threat hunting and detection engineering. Currently studying for the GCFA.</p>
+<div class="links"><a href="https://www.linkedin.com/in/leewookb" target="_blank" rel="noopener">LinkedIn ↗</a><a href="mailto:leewookb@gmail.com">leewookb@gmail.com</a></div>
+</section>
+
+<h2>Timeline</h2>
+<div class="tl" id="tl">
+<div class="track">
+<div class="rail-v"></div>
+<span class="hd" style="--x:5.00%"><b>2021</b>Aug</span><span class="hd" style="--x:15.00%"><b></b>Dec</span><span class="hd" style="--x:25.00%"><b>2022</b>May</span><span class="hd" style="--x:35.00%"><b>2024</b>Apr</span><span class="hd" style="--x:45.00%"><b></b>Jun</span><span class="hd" style="--x:55.00%"><b></b>Aug</span><span class="hd" style="--x:65.00%"><b>2026</b>Mar</span><span class="hd" style="--x:75.00%"><b></b>Aug</span><span class="hd" style="--x:85.00%"><b></b>Oct</span><span class="hd" style="--x:95.00%"><b></b>Nov</span>
+<div class="lane work" style="--y:40px"><span class="lbl">Work</span><div class="line"><span class="bar" data-k="tmobile" style="left:25.00%;width:1.31%"></span><span class="bar" data-k="sk" style="left:55.00%;width:20.00%"></span><span class="bar" data-k="absolics" style="left:75.00%;width:20.00%"></span><span class="bar" data-k="vertex" style="left:95.00%;width:5.00%"></span></div></div><div class="lane edu" style="--y:102px"><span class="lbl">Education</span><div class="line"><span class="bar" data-k="gsu" style="left:5.00%;width:34.92%"></span></div></div><div class="lane cert" style="--y:164px"><span class="lbl">Certifications</span><div class="line"></div></div>
+<div class="node edu first" style="--x:5.00%;--y:102px" data-k="gsu" tabindex="0"><img class="logo" src="../assets/logo/gsu_logo.png" alt="Georgia State University logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Education</div><div class="t">B.S. Computer Science</div><div class="o">Georgia State University</div><div class="d">Aug 2021 – May 2024</div></div></div>
+<div class="node cert first" style="--x:15.00%;--y:164px" data-k="aws" tabindex="0"><img class="logo" src="../assets/logo/amazon_web_services_logo.png" alt="AWS logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">AWS Certified Cloud Practitioner</div><div class="o">Amazon Web Services</div><div class="d">Issued Dec 2021</div><div class="links"><a href="https://www.credly.com/badges/da0ff6b1-edbb-4d80-8e16-914d2e229fd7" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
+<div class="node work" style="--x:25.00%;--y:40px" data-k="tmobile" tabindex="0"><img class="logo" src="../assets/logo/t_mobile_logo.png" alt="T-Mobile logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Software Engineer Intern</div><div class="o">T-Mobile</div><div class="d">May 2022 – Aug 2022 · Atlanta, GA</div></div></div>
+<div class="node cert" style="--x:35.00%;--y:164px" data-k="google" tabindex="0"><img class="logo" src="../assets/logo/coursera_logo.png" alt="Coursera logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Google Cybersecurity Certificate</div><div class="o">Google · Coursera</div><div class="d">Issued Apr 2024</div><div class="links"><a href="https://www.credly.com/badges/5e61d274-3755-4aa6-a915-35880db6f655" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
+<div class="node cert" style="--x:45.00%;--y:164px" data-k="secplus" tabindex="0"><img class="logo" src="../assets/logo/comptia_logo.png" alt="CompTIA logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Security+</div><div class="o">CompTIA</div><div class="d">Issued Jun 2024</div><div class="links"><a href="https://www.credly.com/badges/81f57b79-5097-4546-897b-61bebe8b4363/public_url" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
+<div class="node work" style="--x:55.00%;--y:40px" data-k="sk" tabindex="0"><img class="logo" src="../assets/logo/sk_on_tennessee_logo.png" alt="SK On Tennessee logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Cyber Security Specialist</div><div class="o">BlueOval SK → SK On Tennessee</div><div class="d">Aug 2024 – Aug 2026 · Stanton, TN</div><div class="note">BlueOval SK was rebranded as SK On Tennessee in May 2026.</div></div></div>
+<div class="node cert" style="--x:65.00%;--y:164px" data-k="oscp" tabindex="0"><img class="logo" src="../assets/logo/offensive_security_logo.png" alt="OffSec logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">OSCP+ &amp; OSCP</div><div class="o">OffSec</div><div class="d">Issued Mar 2026 · OSCP+ valid until Mar 2029</div><div class="links"><a href="https://credentials.offsec.com/f66586b1-cbb7-4a10-b9b2-ecf5648573c2" target="_blank" rel="noopener">Verify OSCP+ ↗</a><a href="https://credentials.offsec.com/63b7fb02-b876-4ed2-8729-61b0f05828b8" target="_blank" rel="noopener">Verify OSCP ↗</a><a href="../OSCP/OSCP 후기.html">OSCP 후기</a><a href="../OSCP/Wook OSCP Approach.svg" target="_blank" rel="noopener">Approach map</a><a href="https://www.notion.so/leewookb/Wook-s-OSCP-Notes-2e256e0e1b6a8031a771c93385658fe9?source=copy_link" target="_blank" rel="noopener">Notes ↗</a></div></div></div>
+<div class="node work" style="--x:75.00%;--y:40px" data-k="absolics" tabindex="0"><img class="logo" src="../assets/logo/absolics_logo.png" alt="Absolics logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Cyber Security Engineer</div><div class="o">Absolics Inc.</div><div class="d">Aug 2026 – Nov 2026 · Covington, GA</div></div></div>
+<div class="node cert last" style="--x:85.00%;--y:164px" data-k="13cubed" tabindex="0"><img class="logo" src="../assets/logo/13cubed_logo.png" alt="13Cubed logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Certification</div><div class="t">Investigating Windows Endpoints (Gold)</div><div class="o">13Cubed</div><div class="d">Issued Oct 2026</div><div class="links"><a href="https://credsverse.com/credentials/21136ab8-91ca-4d14-9ba3-b35d076910a6" target="_blank" rel="noopener">Verify ↗</a></div></div></div>
+<div class="node work last" style="--x:95.00%;--y:40px" data-k="vertex" tabindex="0"><img class="logo" src="../assets/logo/vertex_inc_logo.png" alt="Vertex logo" width="40" height="40"><div class="pop" role="tooltip"><div class="kind">Work</div><div class="t">Security Operations Engineer<span class="now" title="Current"></span></div><div class="o">Vertex Inc.</div><div class="d">Nov 2026 – Present</div></div></div>
+</div>
+</div>
+<script>
+(function () {
+    var tl = document.getElementById("tl");
+    var bars = tl.querySelectorAll(".bar");
+    function light(k) {
+        bars.forEach(function (b) { b.classList.toggle("on", b.dataset.k === k); });
+    }
+    function closeAll() {
+        tl.querySelectorAll(".node.open").forEach(function (o) { o.classList.remove("open"); });
+    }
+    tl.querySelectorAll(".node").forEach(function (n) {
+        n.addEventListener("mouseenter", function () { light(n.dataset.k); });
+        n.addEventListener("mouseleave", function () { light(null); });
+        n.addEventListener("focusin", function () { light(n.dataset.k); });
+        n.addEventListener("focusout", function () { light(null); });
+        // touch / click: pin the popover open
+        n.addEventListener("click", function (e) {
+            if (e.target.closest("a")) return;
+            var was = n.classList.contains("open");
+            closeAll();
+            if (!was) n.classList.add("open");
+        });
+    });
+    document.addEventListener("click", function (e) {
+        if (!e.target.closest("#tl .node")) closeAll();
+    });
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeAll();
+            if (document.activeElement && tl.contains(document.activeElement)) document.activeElement.blur();
+        }
+    });
+})();
+</script>
+
+<footer>&copy; 2026 wook413.</footer>
+</body>
+</html>
